@@ -1,0 +1,10 @@
+#ifndef _LOG_INCLUDE
+
+FILE * open_log_file();
+void close_log_file();
+void print_log(const char *ms, ...);
+
+
+
+
+#endif //_LOG_INCLUDE

@@ -135,34 +135,3 @@ void print_log(FILE *file,const char *ms, ... )
     return ;  
 }  
 
-/*
-FILE * file1;
-FILE * file2;
-
-int main(int argc,char *argv[] )
-{
-     
-     int age,i;
-     age=28;
-     char path1[512]={0};
-     char path2[512]={0};
-
-     strcpy(path1,"/home/syslog.dat");
-     file1 =  open_log_file(path1);
-
-     strcpy(path2,"/home/consumer.dat");
-     file2 =  open_log_file(path2);
-
-
-     while(1) 
-     {
-       print_log(file1,"file1:i'm myjalo,age=%d,name=%s\n",age,"xzy" ); 
-       print_log(file2,"file2:i'm myjalo,age=%d,name=%s\n",age,"xzy" ); 
-     }
-       close_log_file(file1);
-       close_log_file(file2);
-   
-	
-     return 0;
-}
-*/

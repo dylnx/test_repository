@@ -1,0 +1,1161 @@
+!_TAG_FILE_FORMAT	2	/extended format; --format=1 will not append ;" to lines/
+!_TAG_FILE_SORTED	1	/0=unsorted, 1=sorted, 2=foldcase/
+!_TAG_PROGRAM_AUTHOR	Darren Hiebert	/dhiebert@users.sourceforge.net/
+!_TAG_PROGRAM_NAME	Exuberant Ctags	//
+!_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
+!_TAG_PROGRAM_VERSION	5.9~svn20110310	//
+ACTION_DISENABLE_INPUT	gpio.h	/^	ACTION_DISENABLE_INPUT,$/;"	e	enum:__anon7
+ACTION_DISENABLE_OUTPUT	gpio.h	/^	ACTION_DISENABLE_OUTPUT,$/;"	e	enum:__anon7
+ACTION_ENABLE_INPUT	gpio.h	/^	ACTION_ENABLE_INPUT,$/;"	e	enum:__anon7
+ACTION_ENABLE_OUTPUT	gpio.h	/^	ACTION_ENABLE_OUTPUT,$/;"	e	enum:__anon7
+ACTION_GET_VALUE	gpio.h	/^	ACTION_GET_VALUE,$/;"	e	enum:__anon7
+ACTION_MIN	gpio.h	/^	ACTION_MIN=0,$/;"	e	enum:__anon7
+ACTION_SET_VALUE	gpio.h	/^	ACTION_SET_VALUE,$/;"	e	enum:__anon7
+ACTMODE_INSERT	system.h	35;"	d
+ACTMODE_INSERT	system.h	379;"	d
+ACTMODE_REPLACE	system.h	36;"	d
+ACTMODE_REPLACE	system.h	380;"	d
+ADD2ARG_BitsArray	argument.h	109;"	d
+ADD2ARG_Bytes	argument.h	113;"	d
+ADD2ARG_BytesArray	argument.h	110;"	d
+ADD2ARG_Data	argument.h	112;"	d
+ADD2ARG_DoubleBytesArray	argument.h	111;"	d
+ADD2MHA_Bytes	message.h	45;"	d
+ADD2MHA_Data	message.h	46;"	d
+ADD2MHB_Bytes	message.h	51;"	d
+ADD2MH_Bytes	message.h	39;"	d
+ADD2MH_Data	message.h	40;"	d
+ANTENNA_1	api.h	11;"	d
+ANTENNA_2	api.h	12;"	d
+ANTENNA_3	api.h	13;"	d
+ANTENNA_4	api.h	14;"	d
+ANTENNA_NONE	api.h	15;"	d
+ANTNUMERROR	threads_sz.c	23;"	d	file:
+API_H_PVYP9UZN	api.h	2;"	d
+APPReadTags	Makefile	/^APPReadTags = ReadTags$/;"	m
+ARGHeader	argument.h	/^} ARGHeader;$/;"	t	typeref:struct:arg_header
+ARGUMENT_H_WRFHNA6N	argument.h	2;"	d
+AddChapter	LedUtils.c	/^void AddChapter(DWORD time, WORD wait)$/;"	f
+AddChildFontSetText	LedUtils.c	/^void AddChildFontSetText(char* str, char* fontfile, unsigned long color, long inmethod, long inspeed, long outmethod, long outspeed, long stopmethod, long stopspeed, long stoptime)$/;"	f
+AddChildString	LedUtils.c	/^void AddChildString(char* string, long fontset, long color, long inmethod, long inspeed, long outmethod, long outspeed, long stopmethod, long stopspeed, long stoptime)$/;"	f
+AddChildText	LedUtils.c	/^void AddChildText(char* str, char* fontname, DWORD fontsize, DWORD fontcolor, long inmethod, long inspeed, long outmethod, long outspeed, long stopmethod, long stopspeed, long stoptime)$/;"	f
+AddChildWindow	LedUtils.c	/^void AddChildWindow(BYTE* dibbuffer, long cx, long cy, long inmethod, long inspeed, long outmethod, long outspeed, long stopmethod, long stopspeed, long stoptime)$/;"	f
+AddCounter	LedUtils.c	/^void AddCounter(long left, long top, long width, long height, long transparent, long counter_type, long format, long year, long month, long day, long hour, long minute, long second)$/;"	f
+AddDateTime	LedUtils.c	/^void AddDateTime(long left, long top, long width, long height, long transparent)$/;"	f
+AddLeaf	LedUtils.c	/^void AddLeaf(DWORD time, WORD wait)$/;"	f
+AddRegion	LedUtils.c	/^void AddRegion(long left, long top, long width, long height)$/;"	f
+AddStrings	LedUtils.c	/^void AddStrings(long left, long top, long width, long height, long transparent)$/;"	f
+AddTagsToLedList	threads_sz.c	/^bool AddTagsToLedList(int operate_index)$/;"	f
+AddWindows	LedUtils.c	/^void AddWindows(long left, long top, long width, long height, long transparent)$/;"	f
+AirProtocol	api.h	/^} AirProtocol;$/;"	t	typeref:enum:__anon1
+AntennaConfig	reader.h	/^struct AntennaConfig$/;"	s
+BB_EPC	api.h	83;"	d
+BB_SEC	api.h	84;"	d
+BB_TID	api.h	82;"	d
+BB_USR	api.h	85;"	d
+BITMAP_COLOR	system.h	413;"	d
+BITMAP_COLOR	system.h	69;"	d
+BITMAP_GREEN	system.h	411;"	d
+BITMAP_GREEN	system.h	67;"	d
+BITMAP_RED	system.h	410;"	d
+BITMAP_RED	system.h	66;"	d
+BITMAP_YELLOW	system.h	412;"	d
+BITMAP_YELLOW	system.h	68;"	d
+BLOCKED	tcpcommon.h	13;"	d
+BOARDPARAM	system.h	/^typedef struct BOARDPARAM{$/;"	s
+BYTE	system.h	/^typedef   unsigned char   BYTE;$/;"	t
+BitToPixels	LedUtils.c	/^void BitToPixels(DWORD *dst, long x, long y, long width, long height, BYTE *src, long xSrc, long ySrc, long srcWidth, long srcHeight, DWORD color, DWORD MatrixWidth, DWORD MatrixHeight)$/;"	f
+BufferSeek	LedUtils.c	/^DWORD BufferSeek=0;$/;"	v
+C	Makefile	/^C := gcc$/;"	m
+CAR_NUM_LEN	common_sz.h	20;"	d
+CAR_RIGHT_LEN	common_sz.h	21;"	d
+CFILE	Makefile	/^CFILE = $(shell cd $(SOURCE_DIR); ls $(CFILE_PATTERN))$/;"	m
+CFILE_PATTERN	Makefile	/^CFILE_PATTERN = *.c$/;"	m
+CFLAGS	Makefile	/^CFLAGS =  -I..\/lib -c -g -O2 -Wall$/;"	m
+CHAPTER	system.h	/^typedef struct CHAPTER{$/;"	s
+CK_PLAY_ALWAYS	system.h	10;"	d
+CK_PLAY_ALWAYS	system.h	354;"	d
+CK_PLAY_PERDAY	system.h	11;"	d
+CK_PLAY_PERDAY	system.h	355;"	d
+CK_PLAY_PERIOD	system.h	12;"	d
+CK_PLAY_PERIOD	system.h	356;"	d
+CLOSE_CONNECTION	command.h	23;"	d
+CLOSE_CONNECTION_RESPONSE	command.h	24;"	d
+COM1	serial.c	13;"	d	file:
+COM2	serial.c	14;"	d	file:
+COM3	serial.c	15;"	d	file:
+COM4	serial.c	16;"	d	file:
+COM5	serial.c	17;"	d	file:
+COM6	serial.c	18;"	d	file:
+COM7	serial.c	19;"	d	file:
+COM8	serial.c	20;"	d	file:
+COM9	serial.c	21;"	d	file:
+COMMAND_H_KDPB2ZF3	command.h	2;"	d
+COMMON_SZ_DEFIN	common_sz.h	2;"	d
+CONNECTED	tcpcommon.h	/^	CONNECTED,$/;"	e	enum:con_status
+CONNECTTING	tcpcommon.h	/^	CONNECTTING,$/;"	e	enum:con_status
+CONNECT_TIMEOUT	tcpclient.h	7;"	d
+CONN_TIMEOUT	tcpcommon.h	/^	CONN_TIMEOUT,$/;"	e	enum:con_status
+COUNTER	system.h	/^typedef struct COUNTER{$/;"	s
+CPRID	socket_client.h	/^    unsigned char CPRID;$/;"	m	struct:TPlateInfo_my
+CRCTableHi	crc.c	/^BYTE CRCTableHi[256]={0x00, 0xC1, 0x81, 0x40, 0x01, 0xC0, 0x80, 0x41, 0x01, 0xC0, 0x80, 0x41, 0x00, 0xC1, 0x81, 0x40,$/;"	v
+CRCTableLo	crc.c	/^BYTE CRCTableLo[256]={0x00, 0xC0, 0xC1, 0x01, 0xC3, 0x03, 0x02, 0xC2, 0xC6, 0x06, 0x07, 0xC7, 0x05, 0xC5, 0xC4, 0x04,$/;"	v
+CUSTOMACTION	system.h	/^typedef struct CUSTOMACTION{$/;"	s
+CUSTOM_MESSAGE	command.h	42;"	d
+CheckLandInduction	threads_sz.c	/^int CheckLandInduction(int *whitchInduction)$/;"	f
+CloseSocket	packet.c	/^int CloseSocket(int s)$/;"	f
+Command	api.h	/^typedef struct Command{$/;"	s
+Command	api.h	/^} Command;$/;"	t	typeref:struct:Command
+Command	packet.h	/^  WORD         Command;$/;"	m	struct:PKG_RESPOND
+Command	packet.h	/^  WORD   Command;$/;"	m	struct:PKG_HEADER
+Command	packet.h	/^  WORD   Command;$/;"	m	struct:PKG_HEADER_EX
+ConnectionReader	threads_sz.c	/^int ConnectionReader()$/;"	f
+Ctrl_gateway	serial.c	/^int Ctrl_gateway(int fd,char* cmd)$/;"	f
+DCFORMAT	system.h	/^typedef struct DCFORMAT{$/;"	s
+DCLOCK	system.h	/^typedef struct DCLOCK{$/;"	s
+DEBUG	utils.h	26;"	d
+DEFAULT_LOG_SIZE	log.c	9;"	d	file:
+DEV_GPIO	gpio.h	/^} DEV_GPIO;$/;"	t	typeref:enum:__anon5
+DF_CHNDATE	system.h	424;"	d
+DF_CHNDATE	system.h	80;"	d
+DF_CHNDAY	system.h	426;"	d
+DF_CHNDAY	system.h	82;"	d
+DF_CHNMONTH	system.h	425;"	d
+DF_CHNMONTH	system.h	81;"	d
+DF_DAY	system.h	417;"	d
+DF_DAY	system.h	73;"	d
+DF_FLICKER	system.h	423;"	d
+DF_FLICKER	system.h	79;"	d
+DF_HOUR	system.h	419;"	d
+DF_HOUR	system.h	75;"	d
+DF_MINUTE	system.h	420;"	d
+DF_MINUTE	system.h	76;"	d
+DF_MONTH	system.h	416;"	d
+DF_MONTH	system.h	72;"	d
+DF_SECOND	system.h	421;"	d
+DF_SECOND	system.h	77;"	d
+DF_USER	system.h	422;"	d
+DF_USER	system.h	78;"	d
+DF_WEEK	system.h	418;"	d
+DF_WEEK	system.h	74;"	d
+DF_YEAR	system.h	415;"	d
+DF_YEAR	system.h	71;"	d
+DISCONNECT	tcpcommon.h	/^	DISCONNECT = 0,$/;"	e	enum:con_status
+DWORD	system.h	/^typedef   unsigned long   DWORD;$/;"	t
+De2BytesArray	argument.h	115;"	d
+De2Data	argument.h	116;"	d
+DoAllDataPacket	LedUtils.c	/^DWORD DoAllDataPacket(BYTE* ibuf, BYTE* obuf, BYTE dstAddr)$/;"	f
+DoBeginPacket	LedUtils.c	/^DWORD DoBeginPacket(BYTE* obuf, BYTE dstAddr)$/;"	f
+DoBeginPacketEx	LedUtils.c	/^DWORD DoBeginPacketEx(BYTE* obuf, BYTE dstAddr, DWORD key)$/;"	f
+DoDataPacket	LedUtils.c	/^DWORD DoDataPacket(BYTE* ibuf, DWORD index, BYTE* obuf, BYTE dstAddr)$/;"	f
+DoEndPacket	LedUtils.c	/^DWORD DoEndPacket(BYTE* obuf, DWORD index, BYTE dstAddr)$/;"	f
+ERROR	api.h	6;"	d
+ERROR	threads_sz.c	21;"	d	file:
+ERROR_MESSAGE	command.h	43;"	d
+ETHER_ADDRESS_LENGTH	system.h	281;"	d
+ETHER_ADDRESS_LENGTH	system.h	625;"	d
+EVENT_REPORT	command.h	38;"	d
+EXEFLAGS	Makefile	/^EXEFLAGS = -L .\/ -L\/lib  -lreader -lpthread$/;"	m
+EncodeTimeStamp	LedUtils.c	/^void EncodeTimeStamp(int year, int month, int day, int hour, int minute, int second, PTimeStamp otime)$/;"	f
+FALSE	common.h	34;"	d
+FALSE	serial.c	45;"	d	file:
+FIRMWARE_UPGRADE	command.h	25;"	d
+FIRMWARE_UPGRADE_RESPONSE	command.h	26;"	d
+FONTSET	system.h	/^typedef struct FONTSET{$/;"	s
+FONT_SET_16	system.h	407;"	d
+FONT_SET_16	system.h	63;"	d
+FONT_SET_24	system.h	408;"	d
+FONT_SET_24	system.h	64;"	d
+FOR_EACH	linklist.h	50;"	d
+FREQ_DYN	api.h	/^	FREQ_DYN                   = 0x01,\/\/Ë∑≥È¢ë$/;"	e	enum:__anon3
+FREQ_FIXED	api.h	/^	FREQ_FIXED                 = 0x00,\/\/ÂÆöÈ¢ë$/;"	e	enum:__anon3
+FilterTags	threads_sz.c	/^bool FilterTags(STRUCT_OPERATE_INFO *opt_info,POLDPASSEDOBJ _old_passed_array)$/;"	f
+Format	system.h	/^	BYTE Format;$/;"	m	struct:DCFORMAT
+FreqMode	api.h	/^} FreqMode;$/;"	t	typeref:enum:__anon3
+GB_EPC	api.h	73;"	d
+GB_SEC	api.h	74;"	d
+GB_TID	api.h	72;"	d
+GB_USR	api.h	75;"	d
+GET_ACCESS_SPEC	command.h	16;"	d
+GET_ACCESS_SPEC_RESPONSE	command.h	17;"	d
+GET_CAPABILITIES	command.h	7;"	d
+GET_CAPABILITIES_RESPONSE	command.h	8;"	d
+GET_CONFIG	command.h	19;"	d
+GET_CONFIG_RESPONSE	command.h	20;"	d
+GET_INVENTORY_SPEC	command.h	12;"	d
+GET_INVENTORY_SPEC_RESPONSE	command.h	13;"	d
+GET_REPORT_SPEC	command.h	34;"	d
+GET_REPORT_SPEC_RESPONSE	command.h	35;"	d
+GET_TAG_REPORT	command.h	36;"	d
+GET_VERSION	command.h	4;"	d
+GET_VERSION_RESPONSE	command.h	5;"	d
+GPIO10	common_sz.h	31;"	d
+GPIO12	common_sz.h	32;"	d
+GPIO14	common_sz.h	33;"	d
+GPIO8	common_sz.h	30;"	d
+GPIO_1	gpio.h	/^	GPIO_1 = 0,$/;"	e	enum:__anon5
+GPIO_10	gpio.h	/^	GPIO_10,		$/;"	e	enum:__anon5
+GPIO_11	gpio.h	/^	GPIO_11,		$/;"	e	enum:__anon5
+GPIO_12	gpio.h	/^	GPIO_12,		$/;"	e	enum:__anon5
+GPIO_13	gpio.h	/^	GPIO_13,		$/;"	e	enum:__anon5
+GPIO_14	gpio.h	/^	GPIO_14,		$/;"	e	enum:__anon5
+GPIO_15	gpio.h	/^	GPIO_15,		$/;"	e	enum:__anon5
+GPIO_16	gpio.h	/^	GPIO_16,		$/;"	e	enum:__anon5
+GPIO_17	gpio.h	/^	GPIO_17,		$/;"	e	enum:__anon5
+GPIO_18	gpio.h	/^	GPIO_18,		$/;"	e	enum:__anon5
+GPIO_19	gpio.h	/^	GPIO_19,		$/;"	e	enum:__anon5
+GPIO_2	gpio.h	/^	GPIO_2,			$/;"	e	enum:__anon5
+GPIO_20	gpio.h	/^	GPIO_20,		$/;"	e	enum:__anon5
+GPIO_21	gpio.h	/^	GPIO_21,		$/;"	e	enum:__anon5
+GPIO_22	gpio.h	/^	GPIO_22,$/;"	e	enum:__anon5
+GPIO_23	gpio.h	/^	GPIO_23,		$/;"	e	enum:__anon5
+GPIO_24	gpio.h	/^	GPIO_24,		$/;"	e	enum:__anon5
+GPIO_25	gpio.h	/^	GPIO_25,		$/;"	e	enum:__anon5
+GPIO_26	gpio.h	/^	GPIO_26,		$/;"	e	enum:__anon5
+GPIO_27	gpio.h	/^	GPIO_27,		$/;"	e	enum:__anon5
+GPIO_28	gpio.h	/^	GPIO_28,		$/;"	e	enum:__anon5
+GPIO_29	gpio.h	/^	GPIO_29,		$/;"	e	enum:__anon5
+GPIO_3	gpio.h	/^	GPIO_3,			$/;"	e	enum:__anon5
+GPIO_30	gpio.h	/^	GPIO_30,		$/;"	e	enum:__anon5
+GPIO_31	gpio.h	/^	GPIO_31,		$/;"	e	enum:__anon5
+GPIO_32	gpio.h	/^	GPIO_32,$/;"	e	enum:__anon5
+GPIO_33	gpio.h	/^	GPIO_33,		$/;"	e	enum:__anon5
+GPIO_34	gpio.h	/^	GPIO_34,		$/;"	e	enum:__anon5
+GPIO_35	gpio.h	/^	GPIO_35,		$/;"	e	enum:__anon5
+GPIO_36	gpio.h	/^	GPIO_36,		$/;"	e	enum:__anon5
+GPIO_37	gpio.h	/^	GPIO_37,		$/;"	e	enum:__anon5
+GPIO_38	gpio.h	/^	GPIO_38,		$/;"	e	enum:__anon5
+GPIO_39	gpio.h	/^	GPIO_39,$/;"	e	enum:__anon5
+GPIO_4	gpio.h	/^	GPIO_4,			$/;"	e	enum:__anon5
+GPIO_5	gpio.h	/^	GPIO_5,			$/;"	e	enum:__anon5
+GPIO_6	gpio.h	/^	GPIO_6,			$/;"	e	enum:__anon5
+GPIO_7	gpio.h	/^	GPIO_7,			$/;"	e	enum:__anon5
+GPIO_8	gpio.h	/^	GPIO_8,			$/;"	e	enum:__anon5
+GPIO_9	gpio.h	/^	GPIO_9,			$/;"	e	enum:__anon5
+GPIO_NODE	gpio.h	4;"	d
+GateIP	system.h	/^  BYTE   GateIP[IP_ADDRESS_LENGTH];$/;"	m	struct:BOARDPARAM
+GetDataPacketCount	LedUtils.c	/^DWORD GetDataPacketCount(BYTE* ibuf)$/;"	f
+GetGatewayStat	serial.c	/^int GetGatewayStat(int fd,int gateNum)$/;"	f
+GetPixelsSize	LedUtils.c	/^DWORD GetPixelsSize(long cx, long cy)$/;"	f
+GetRawArrayFlag	threads_sz.c	/^int  GetRawArrayFlag(TAGOBJ rawTags[],int rawLen,char *flag)$/;"	f
+GetTagsAndDeal	threads_sz.c	/^int GetTagsAndDeal(int *whitchInduction)$/;"	f
+GetTextRect	LedUtils.c	/^void GetTextRect(BYTE *str, long* ox, long* oy, WORD cx)$/;"	f
+HAVE_ARPA_INET_H	config.h	5;"	d
+HAVE_BZERO	config.h	8;"	d
+HAVE_FCNTL_H	config.h	11;"	d
+HAVE_FORK	config.h	14;"	d
+HAVE_GETTIMEOFDAY	config.h	17;"	d
+HAVE_INTTYPES_H	config.h	20;"	d
+HAVE_LIBPTHREAD	config.h	23;"	d
+HAVE_LOCALTIME_R	config.h	26;"	d
+HAVE_MALLOC	config.h	30;"	d
+HAVE_MEMMOVE	config.h	33;"	d
+HAVE_MEMORY_H	config.h	36;"	d
+HAVE_MEMSET	config.h	39;"	d
+HAVE_NETDB_H	config.h	42;"	d
+HAVE_NETINET_IN_H	config.h	45;"	d
+HAVE_REALLOC	config.h	49;"	d
+HAVE_SELECT	config.h	52;"	d
+HAVE_SOCKET	config.h	55;"	d
+HAVE_STDINT_H	config.h	58;"	d
+HAVE_STDLIB_H	config.h	61;"	d
+HAVE_STRCHR	config.h	64;"	d
+HAVE_STRDUP	config.h	67;"	d
+HAVE_STRERROR	config.h	70;"	d
+HAVE_STRINGS_H	config.h	73;"	d
+HAVE_STRING_H	config.h	76;"	d
+HAVE_STRTOL	config.h	79;"	d
+HAVE_SYS_IOCTL_H	config.h	82;"	d
+HAVE_SYS_PARAM_H	config.h	85;"	d
+HAVE_SYS_SOCKET_H	config.h	88;"	d
+HAVE_SYS_STAT_H	config.h	91;"	d
+HAVE_SYS_TIME_H	config.h	94;"	d
+HAVE_SYS_TYPES_H	config.h	97;"	d
+HAVE_UNISTD_H	config.h	100;"	d
+HAVE_VFORK	config.h	103;"	d
+HAVE_WORKING_FORK	config.h	109;"	d
+HAVE_WORKING_VFORK	config.h	112;"	d
+HEARTBEAT	command.h	39;"	d
+HEARTBEAT_ACK	command.h	40;"	d
+Header	packet.h	/^  TPKG_Header  Header;$/;"	m	struct:PKG_RESPOND
+ID_ACLOCK	system.h	401;"	d
+ID_ACLOCK	system.h	57;"	d
+ID_CAMPAIGNTIME	system.h	402;"	d
+ID_CAMPAIGNTIME	system.h	58;"	d
+ID_CHAPTER	system.h	382;"	d
+ID_CHAPTER	system.h	38;"	d
+ID_COUNTER	system.h	393;"	d
+ID_COUNTER	system.h	49;"	d
+ID_DCLOCK	system.h	386;"	d
+ID_DCLOCK	system.h	42;"	d
+ID_EFFECT	system.h	388;"	d
+ID_EFFECT	system.h	44;"	d
+ID_FONTSET	system.h	389;"	d
+ID_FONTSET	system.h	45;"	d
+ID_HUMIDITY	system.h	398;"	d
+ID_HUMIDITY	system.h	54;"	d
+ID_IMPORT	system.h	400;"	d
+ID_IMPORT	system.h	56;"	d
+ID_LEAF	system.h	384;"	d
+ID_LEAF	system.h	40;"	d
+ID_MOVIE	system.h	392;"	d
+ID_MOVIE	system.h	48;"	d
+ID_NOISE	system.h	399;"	d
+ID_NOISE	system.h	55;"	d
+ID_PIXELS	system.h	390;"	d
+ID_PIXELS	system.h	46;"	d
+ID_PIXELSET	system.h	391;"	d
+ID_PIXELSET	system.h	47;"	d
+ID_REGION	system.h	383;"	d
+ID_REGION	system.h	39;"	d
+ID_STRING	system.h	387;"	d
+ID_STRING	system.h	43;"	d
+ID_STRINGS	system.h	395;"	d
+ID_STRINGS	system.h	51;"	d
+ID_TEMPERATURE	system.h	397;"	d
+ID_TEMPERATURE	system.h	53;"	d
+ID_WINDOW	system.h	385;"	d
+ID_WINDOW	system.h	41;"	d
+ID_WINDOWS	system.h	394;"	d
+ID_WINDOWS	system.h	50;"	d
+IP_ADDRESS_LENGTH	system.h	282;"	d
+IP_ADDRESS_LENGTH	system.h	626;"	d
+ISO6C_EPC	api.h	88;"	d
+ISO6C_SEC	api.h	87;"	d
+ISO6C_TID	api.h	89;"	d
+ISO6C_USR	api.h	90;"	d
+Index	system.h	/^	BYTE Index;$/;"	m	struct:DCFORMAT
+InitSocket	packet.c	/^int InitSocket()$/;"	f
+JB_EPC	api.h	78;"	d
+JB_SEC	api.h	79;"	d
+JB_TID	api.h	77;"	d
+JB_USR	api.h	80;"	d
+Key	packet.h	/^  DWORD  Key;$/;"	m	struct:PKG_HEADER_EX
+LEAF	system.h	/^typedef struct LEAF{$/;"	s
+LEDSHOWINFO	common_sz.h	/^}LEDSHOWINFO;$/;"	t	typeref:struct:led_show_info_s
+LED_DOUBLE	system.h	16;"	d
+LED_DOUBLE	system.h	360;"	d
+LED_MONO	system.h	15;"	d
+LED_MONO	system.h	359;"	d
+LED_SHOW_LIST	common_sz.h	/^}LED_SHOW_LIST,*PLED_SHOW_LIST;$/;"	t	typeref:struct:led_show_info_list_s
+LED_SHOW_MAX_NUM	common_sz.h	28;"	d
+LINKLIST_H_CBO2PBFV	linklist.h	2;"	d
+LISTENING	tcpcommon.h	/^	LISTENING$/;"	e	enum:con_status
+LISTNODE_ADD	linklist.h	58;"	d
+LISTNODE_DELETE	linklist.h	68;"	d
+LIST_LOOP	linklist.h	54;"	d
+MAX_ANTENNA	api.h	9;"	d
+MAX_DATA_LEN	api.h	54;"	d
+MAX_DATETIME_FORMAT	system.h	240;"	d
+MAX_DATETIME_FORMAT	system.h	584;"	d
+MAX_EPC_LEN	api.h	53;"	d
+MAX_ERR_SIZE	argument.h	90;"	d
+MAX_LOG_SIZE	log.c	10;"	d	file:
+MAX_OPERATE_INFO_NUM	common_sz.h	26;"	d
+MAX_SEND_INFO_NUM	common_sz.h	27;"	d
+MAX_TEMPCARLIST_NUM	common_sz.h	19;"	d
+MAX_TID_LEN	api.h	52;"	d
+MAX_UNDEAL_CARD_NUM	common_sz.h	25;"	d
+MAX_USER_SIZE	api.h	51;"	d
+MAX_WHITELIST_NUM	common_sz.h	18;"	d
+MConn	tcpcommon.h	/^} MConn;$/;"	t	typeref:struct:connection
+MESSAGE_H_BACSCDHL	message.h	2;"	d
+MHeader	message.h	/^} MHeader;$/;"	t	typeref:struct:msg_header
+MHeaderA	message.h	/^}MHeaderA;$/;"	t	typeref:struct:msg_headerA
+MHeaderB	message.h	/^}MHeaderB;$/;"	t	typeref:struct:msg_headerB
+MakeFontSetText	LedUtils.c	/^DWORD MakeFontSetText(BYTE *obuffer, BYTE* str, char* fontfile, DWORD fontcolor)$/;"	f
+MakeObject	LedUtils.c	/^void MakeObject(BYTE* buffer, long chapterindex, long regionindex, long leafindex, long objectindex)$/;"	f
+MakePixels	LedUtils.c	/^DWORD MakePixels(BYTE* obuffer, BYTE* ibuffer, long cx, long cy)$/;"	f
+MakeRegion	LedUtils.c	/^void MakeRegion(BYTE* buffer, long chapterindex, long regionindex, long left, long top, long width, long height)$/;"	f
+MakeRoot	LedUtils.c	/^void MakeRoot(BYTE* buffer)$/;"	f
+Mbyte	common.h	/^} Mbyte;$/;"	t	typeref:struct:mybyte
+NEW_BLANK_MESSAGE	message.h	41;"	d
+NEW_BLANK_MESSAGEA	message.h	47;"	d
+NEW_MESSAGE	message.h	42;"	d
+NEW_MESSAGEA	message.h	48;"	d
+NORCO_DEV	gpio.h	/^} NORCO_DEV;$/;"	t	typeref:enum:__anon6
+NORCO_DEV_ACTION	gpio.h	/^} NORCO_DEV_ACTION;$/;"	t	typeref:enum:__anon7
+NORCO_DEV_PARAM	gpio.h	/^} NORCO_DEV_PARAM;$/;"	t	typeref:struct:__anon8
+NORCO_GPIO	gpio.h	/^	NORCO_GPIO = 1010,$/;"	e	enum:__anon6
+NORCO_H	gpio.h	2;"	d
+NOSIGNAL	api.h	7;"	d
+NOSIGNAL	threads_sz.c	22;"	d	file:
+NO_BLOCKED	tcpcommon.h	14;"	d
+NULL	system.h	352;"	d
+NULL	system.h	8;"	d
+OBJECT	system.h	/^typedef struct OBJECT{$/;"	s
+OBJS	Makefile	/^OBJS =$(patsubst %.c, %.o, $(CFILE))$/;"	m
+OK	api.h	5;"	d
+OK	threads_sz.c	20;"	d	file:
+OLDPASSEDOBJ	common_sz.h	/^}OLDPASSEDOBJ,*POLDPASSEDOBJ;$/;"	t	typeref:struct:struct_old_passed_obj_s
+OPENDOORMETHODTYPE	common_sz.h	/^}OPENDOORMETHODTYPE;$/;"	t	typeref:enum:openDoorMethodType
+OPERATEINFO	common_sz.h	/^}OPERATEINFO,*POPERATEINFO;$/;"	t	typeref:struct:operate_info_s
+OPRATION_INFO_LEN	common_sz.h	22;"	d
+OpenDoor	threads_sz.c	/^bool OpenDoor(int operate_index,int openDoorMethodType,bool b_print_log)$/;"	f
+PACKAGE	config.h	115;"	d
+PACKAGE_BUGREPORT	config.h	118;"	d
+PACKAGE_NAME	config.h	121;"	d
+PACKAGE_STRING	config.h	124;"	d
+PACKAGE_TARNAME	config.h	127;"	d
+PACKAGE_URL	config.h	130;"	d
+PACKAGE_VERSION	config.h	133;"	d
+PARAM_DURTIME	api.h	/^	PARAM_DURTIME,\/\/ËØªÂëΩ‰ª§ÊåÅÁª≠ÁöÑÊó∂Èó¥$/;"	e	enum:__anon4
+PARAM_FREQMODE	api.h	/^	PARAM_FREQMODE, \/\/Ë∞ÉÈ¢ëËÆæÁΩÆ$/;"	e	enum:__anon4
+PARAM_PROTOCOL	api.h	/^	PARAM_PROTOCOL,\/\/ÂçèËÆÆ$/;"	e	enum:__anon4
+PARAM_READMODE	api.h	/^    PARAM_READMODE, \/\/ËØªÊ®°Âºè$/;"	e	enum:__anon4
+PARAM_RF_ANTENCODE	api.h	/^	PARAM_RF_ANTENCODE,\/\/ÂèçÂêëÈìæË∑ØÁºñÁ†ÅÊñπÂºè$/;"	e	enum:__anon4
+PARAM_RF_ANTFRATE	api.h	/^	PARAM_RF_ANTFRATE,\/\/ÂâçÂêëÈìæË∑ØÈÄüÁéá$/;"	e	enum:__anon4
+PARAM_RF_ANTMODULATE	api.h	/^	PARAM_RF_ANTMODULATE, \/\/ÂâçÂêëÈìæË∑ØË∞ÉÂà∂ÊñπÂºè$/;"	e	enum:__anon4
+PARAM_RF_ANTNUM	api.h	/^	PARAM_RF_ANTNUM, \/\/Â§©Á∫øÂè∑$/;"	e	enum:__anon4
+PARAM_RF_ANTPOWER	api.h	/^	PARAM_RF_ANTPOWER,\/\/ÂäüÁéá$/;"	e	enum:__anon4
+PARAM_RF_ANTRRATE	api.h	/^	PARAM_RF_ANTRRATE,\/\/ÂèçÂêëÈìæË∑ØÈÄüÁéá$/;"	e	enum:__anon4
+PBoardParam	system.h	/^}TBoardParam, *PBoardParam;$/;"	t	typeref:struct:BOARDPARAM
+PChapter	system.h	/^}TChapter, *PChapter;$/;"	t	typeref:struct:CHAPTER
+PCounter	system.h	/^typedef TCounter * PCounter;$/;"	t
+PCustomAction	system.h	/^}TCustomAction, *PCustomAction;$/;"	t	typeref:struct:CUSTOMACTION
+PDCFormat	system.h	/^}TDCFormat, *PDCFormat;$/;"	t	typeref:struct:DCFORMAT
+PDClock	system.h	/^typedef TDClock * PDClock;$/;"	t
+PFontSet	system.h	/^typedef TFontSet * PFontSet;$/;"	t
+PIXELS	system.h	/^typedef struct PIXELS{$/;"	s
+PIXELSET	system.h	/^typedef struct PIXELSET{$/;"	s
+PKC_ADJUST_TIME	packet.h	10;"	d
+PKC_BEGIN	packet.h	6;"	d
+PKC_DATA	packet.h	8;"	d
+PKC_END	packet.h	7;"	d
+PKC_GET_CHAPTER_COUNT	packet.h	17;"	d
+PKC_GET_CURRENT_CHAPTER	packet.h	18;"	d
+PKC_GET_CURRENT_LEAF	packet.h	21;"	d
+PKC_GET_LEAF_COUNT	packet.h	20;"	d
+PKC_GET_PARAM	packet.h	11;"	d
+PKC_GET_POWER	packet.h	13;"	d
+PKC_RESPOND	packet.h	9;"	d
+PKC_SET_BRIGHT	packet.h	15;"	d
+PKC_SET_CURRENT_CHAPTER	packet.h	19;"	d
+PKC_SET_CURRENT_LEAF	packet.h	22;"	d
+PKC_SET_PARAM	packet.h	12;"	d
+PKC_SET_POWER	packet.h	14;"	d
+PKG_HEADER	packet.h	/^typedef struct PKG_HEADER{$/;"	s
+PKG_HEADER_EX	packet.h	/^typedef struct PKG_HEADER_EX{$/;"	s
+PKG_RESPOND	packet.h	/^typedef struct PKG_RESPOND{$/;"	s
+PKP_FILLCH	packet.h	26;"	d
+PKP_LEADER	packet.h	24;"	d
+PKP_LENGTH	packet.h	27;"	d
+PKP_MAX_LENGTH	packet.h	28;"	d
+PKP_SUFFIX	packet.h	25;"	d
+PLAY_MODE_NORMAL	system.h	404;"	d
+PLAY_MODE_NORMAL	system.h	60;"	d
+PLAY_MODE_WAIT	system.h	405;"	d
+PLAY_MODE_WAIT	system.h	61;"	d
+PLED_SHOW_LIST	common_sz.h	/^}LED_SHOW_LIST,*PLED_SHOW_LIST;$/;"	t	typeref:struct:led_show_info_list_s
+PLateNum	socket_client.h	/^    char PLateNum[13];$/;"	m	struct:TPlateInfo_my
+PLeaf	system.h	/^}TLeaf, *PLeaf;$/;"	t	typeref:struct:LEAF
+POLDPASSEDOBJ	common_sz.h	/^}OLDPASSEDOBJ,*POLDPASSEDOBJ;$/;"	t	typeref:struct:struct_old_passed_obj_s
+POPERATEINFO	common_sz.h	/^}OPERATEINFO,*POPERATEINFO;$/;"	t	typeref:struct:operate_info_s
+POSITION_LEN	common_sz.h	24;"	d
+PObject	system.h	/^}TObject, *PObject;$/;"	t	typeref:struct:OBJECT
+PPKG_Header	packet.h	/^}TPKG_Header, *PPKG_Header;$/;"	t	typeref:struct:PKG_HEADER
+PPKG_HeaderEx	packet.h	/^}TPKG_HeaderEx, *PPKG_HeaderEx;$/;"	t	typeref:struct:PKG_HEADER_EX
+PPKG_Respond	packet.h	/^}TPKG_Respond, *PPKG_Respond;$/;"	t	typeref:struct:PKG_RESPOND
+PPixelSet	system.h	/^typedef TPixelSet * PPixelSet;$/;"	t
+PPixels	system.h	/^typedef TPixels * PPixels;$/;"	t
+PRGB	system.h	/^typedef TRGB * PRGB;$/;"	t
+PROTOCOL_GB	api.h	/^	PROTOCOL_GB                = 0x01,\/\/ÂõΩÊ†á$/;"	e	enum:__anon1
+PROTOCOL_GJB	api.h	/^	PROTOCOL_GJB               = 0x03,\/\/ÂÜõÊ†á$/;"	e	enum:__anon1
+PROTOCOL_HANGB	api.h	/^	PROTOCOL_HANGB             = 0x00,\/\/Ë°åÊ†á$/;"	e	enum:__anon1
+PROTOCOL_ISO6C	api.h	/^	PROTOCOL_ISO6C             = 0x02,\/\/6C$/;"	e	enum:__anon1
+PRect	system.h	/^}TRect, *PRect;$/;"	t	typeref:struct:_RECT
+PRegion	system.h	/^}TRegion, *PRegion;$/;"	t	typeref:struct:REGION
+PRoot	system.h	/^}TRoot, *PRoot;$/;"	t	typeref:struct:ROOT
+PSENDINFO	common_sz.h	/^}SENDINFO,*PSENDINFO;$/;"	t	typeref:struct:send_info_s
+PSHOWCAMERA	common_sz.h	/^}SHOWCAMERA,*PSHOWCAMERA;$/;"	t	typeref:struct:show_camera_s
+PString	system.h	/^typedef TString * PString;$/;"	t
+PTAGOBJ	common_sz.h	/^}TAGOBJ,*PTAGOBJ;$/;"	t	typeref:struct:struct_get_tags_s
+PTimeStamp	system.h	/^}TTimeStamp, *PTimeStamp;$/;"	t	typeref:struct:TIMESTAMP
+PWHITELIST	common_sz.h	/^}WHITELIST,*PWHITELIST;$/;"	t	typeref:struct:white_list_s
+PWindow	system.h	/^typedef TWindow * PWindow;$/;"	t
+PWindows	system.h	/^typedef TWindows * PWindows;$/;"	t
+Pack	crc.c	/^WORD Pack(BYTE *ibuf,BYTE *obuf,WORD size)$/;"	f
+PackEx	crc.c	/^WORD PackEx(BYTE *cbuf,WORD csize,BYTE *ibuf,BYTE *obuf,WORD size)$/;"	f
+Pixels_Day	LedUtils.c	/^BYTE Pixels_Day[]={$/;"	v
+Pixels_Jianhao	LedUtils.c	/^BYTE Pixels_Jianhao[]={$/;"	v
+Pixels_Maohao	LedUtils.c	/^BYTE Pixels_Maohao[]={$/;"	v
+Pixels_Month	LedUtils.c	/^BYTE Pixels_Month[]={$/;"	v
+Pixels_Number0	LedUtils.c	/^BYTE Pixels_Number0[]={$/;"	v
+Pixels_Number1	LedUtils.c	/^BYTE Pixels_Number1[]={$/;"	v
+Pixels_Number2	LedUtils.c	/^BYTE Pixels_Number2[]={$/;"	v
+Pixels_Number3	LedUtils.c	/^BYTE Pixels_Number3[]={$/;"	v
+Pixels_Number4	LedUtils.c	/^BYTE Pixels_Number4[]={$/;"	v
+Pixels_Number5	LedUtils.c	/^BYTE Pixels_Number5[]={$/;"	v
+Pixels_Number6	LedUtils.c	/^BYTE Pixels_Number6[]={$/;"	v
+Pixels_Number7	LedUtils.c	/^BYTE Pixels_Number7[]={$/;"	v
+Pixels_Number8	LedUtils.c	/^BYTE Pixels_Number8[]={$/;"	v
+Pixels_Number9	LedUtils.c	/^BYTE Pixels_Number9[]={$/;"	v
+Pixels_Space	LedUtils.c	/^BYTE Pixels_Space[]={$/;"	v
+Pixels_Year	LedUtils.c	/^BYTE Pixels_Year[]={$/;"	v
+PlateTyep	socket_client.h	/^    unsigned char PlateTyep;$/;"	m	struct:TPlateInfo_my
+READER_H_WKPVMJYQ	reader.h	2;"	d
+READMODE_HIGHSPEED	api.h	/^	READMODE_HIGHSPEED         = 0x00,\/\/È´òÈÄü$/;"	e	enum:__anon2
+READMODE_LOWSPEED	api.h	/^	READMODE_LOWSPEED          = 0x01,\/\/‰ΩéÈÄü$/;"	e	enum:__anon2
+REBOOT	command.h	27;"	d
+REBOOT_RESPONSE	command.h	28;"	d
+REGION	system.h	/^typedef struct REGION{$/;"	s
+RELAY	common_sz.h	/^    RELAY $/;"	e	enum:openDoorMethodType
+RESET	command.h	29;"	d
+RESET_RESPONSE	command.h	30;"	d
+RESPONSE_H_DS59TYX1	response.h	2;"	d
+RF_ARG_ARG_ERR	argument.h	77;"	d
+RF_ARG_ARG_FULL	argument.h	81;"	d
+RF_ARG_ARG_LEAK	argument.h	79;"	d
+RF_ARG_ARG_UNKNOWN	argument.h	83;"	d
+RF_ARG_DOMAIN_ERR	argument.h	78;"	d
+RF_ARG_DOMAIN_FULL	argument.h	82;"	d
+RF_ARG_DOMAIN_LEAK	argument.h	80;"	d
+RF_ARG_DOMAIN_UNKNOWN	argument.h	84;"	d
+RF_ARG_ERR	argument.h	66;"	d
+RF_ARG_FULL	argument.h	70;"	d
+RF_ARG_LEAK	argument.h	68;"	d
+RF_ARG_UNKNOWN	argument.h	72;"	d
+RF_DOAMIN_ILLEGAL	argument.h	86;"	d
+RF_DOMAIN_ERR	argument.h	67;"	d
+RF_DOMAIN_FULL	argument.h	71;"	d
+RF_DOMAIN_LEAK	argument.h	69;"	d
+RF_DOMAIN_UNKNOWN	argument.h	73;"	d
+RF_MSG_UNKNOWN	argument.h	74;"	d
+RF_READER_ERR	argument.h	88;"	d
+RF_SUCCESS	argument.h	65;"	d
+RF_VERSION_UNKNOWN	argument.h	75;"	d
+ROOT	system.h	/^typedef struct ROOT{$/;"	s
+ROOT_DOWNLOAD	system.h	23;"	d
+ROOT_DOWNLOAD	system.h	367;"	d
+ROOT_FONTSET	system.h	20;"	d
+ROOT_FONTSET	system.h	364;"	d
+ROOT_PLAY	system.h	22;"	d
+ROOT_PLAY	system.h	366;"	d
+ROOT_PLAY_CHAPTER	system.h	24;"	d
+ROOT_PLAY_CHAPTER	system.h	368;"	d
+ROOT_PLAY_LEAF	system.h	26;"	d
+ROOT_PLAY_LEAF	system.h	370;"	d
+ROOT_PLAY_OBJECT	system.h	27;"	d
+ROOT_PLAY_OBJECT	system.h	371;"	d
+ROOT_PLAY_REGION	system.h	25;"	d
+ROOT_PLAY_REGION	system.h	369;"	d
+ROOT_UPDATE	system.h	19;"	d
+ROOT_UPDATE	system.h	363;"	d
+RS485	common_sz.h	/^    RS485,$/;"	e	enum:openDoorMethodType
+ReadMode	api.h	/^}ReadMode;$/;"	t	typeref:enum:__anon2
+Reader	reader.h	/^typedef struct Reader$/;"	s
+Reader	reader.h	/^} Reader;$/;"	t	typeref:struct:Reader
+ReaderConfig	reader.h	/^struct ReaderConfig$/;"	s
+ReaderEvent	reader.h	/^struct ReaderEvent{$/;"	s
+ReaderParam	api.h	/^} ReaderParam;$/;"	t	typeref:enum:__anon4
+ReportTime	system.h	/^  WORD   ReportTime;						\/\/+12+4+6+2=136$/;"	m	struct:BOARDPARAM
+Reserved	system.h	/^  WORD        Reserved;$/;"	m	struct:STRING
+Reserved	system.h	/^  WORD  Reserved;$/;"	m	struct:CHAPTER
+Reserved	system.h	/^  WORD  Reserved;$/;"	m	struct:LEAF
+Reserved	system.h	/^  WORD  Reserved;$/;"	m	struct:ROOT
+Reserved1	system.h	/^  WORD  Reserved1;$/;"	m	struct:LEAF
+Reserved1	system.h	/^  WORD  Reserved1;$/;"	m	struct:REGION
+Reserved2	system.h	/^  WORD  Reserved2;$/;"	m	struct:LEAF
+Reserved2	system.h	/^  WORD  Reserved2;$/;"	m	struct:REGION
+Result	packet.h	/^  WORD         Result;$/;"	m	struct:PKG_RESPOND
+SENDINFO	common_sz.h	/^}SENDINFO,*PSENDINFO;$/;"	t	typeref:struct:send_info_s
+SERIAL_H_O3X4X8KD	serial.h	2;"	d
+SET_ACCESS_SPEC	command.h	14;"	d
+SET_ACCESS_SPEC_RESPONSE	command.h	15;"	d
+SET_CONFIG	command.h	21;"	d
+SET_CONFIG_RESPONSE	command.h	22;"	d
+SET_INVENTORY_SPEC	command.h	10;"	d
+SET_INVENTORY_SPEC_RESPONSE	command.h	11;"	d
+SET_REPORT_SPEC	command.h	32;"	d
+SET_REPORT_SPEC_RESPONSE	command.h	33;"	d
+SHOWCAMERA	common_sz.h	/^}SHOWCAMERA,*PSHOWCAMERA;$/;"	t	typeref:struct:show_camera_s
+SLEEP	utils.h	97;"	d
+SOURCE_DIR	Makefile	/^SOURCE_DIR = $(shell pwd)$/;"	m
+STDC_HEADERS	config.h	136;"	d
+STRING	system.h	/^typedef struct STRING{$/;"	s
+STRUCT_GATE_INFO	common_sz.h	/^}STRUCT_GATE_INFO;$/;"	t	typeref:struct:gate_info_s
+STRUCT_OPERATE_INFO	common_sz.h	/^}STRUCT_OPERATE_INFO;$/;"	t	typeref:struct:struct_operate_info_s
+SerialNo	packet.h	/^  DWORD  SerialNo;$/;"	m	struct:PKG_HEADER
+SerialNo	packet.h	/^  DWORD  SerialNo;$/;"	m	struct:PKG_HEADER_EX
+SocketRead	packet.c	/^int SocketRead(int s, char* buffer, DWORD size, char* ip, WORD* port)$/;"	f
+SocketWrite	packet.c	/^int SocketWrite(int s, char* buffer, DWORD size, char* ip, WORD port)$/;"	f
+TAGOBJ	common_sz.h	/^}TAGOBJ,*PTAGOBJ;$/;"	t	typeref:struct:struct_get_tags_s
+TAG_NUM_MAX	common_sz.h	16;"	d
+TAG_OLD_PASSED_MAX	common_sz.h	17;"	d
+TAG_REPORT	command.h	37;"	d
+TBoardParam	system.h	/^}TBoardParam, *PBoardParam;$/;"	t	typeref:struct:BOARDPARAM
+TCPCLIENT_H_XJERFOYS	tcpclient.h	2;"	d
+TCPCOMMON_H_GPTH3EYZ	tcpcommon.h	2;"	d
+TChapter	system.h	/^}TChapter, *PChapter;$/;"	t	typeref:struct:CHAPTER
+TCounter	system.h	/^}TCounter;$/;"	t	typeref:struct:COUNTER
+TCustomAction	system.h	/^}TCustomAction, *PCustomAction;$/;"	t	typeref:struct:CUSTOMACTION
+TDCFormat	system.h	/^}TDCFormat, *PDCFormat;$/;"	t	typeref:struct:DCFORMAT
+TDClock	system.h	/^}TDClock;$/;"	t	typeref:struct:DCLOCK
+TFontSet	system.h	/^}TFontSet;$/;"	t	typeref:struct:FONTSET
+TID	common_sz.h	/^    char TID[20];              $/;"	m	struct:struct_operate_info_s
+TID	common_sz.h	/^    char TID[TID_LEN];$/;"	m	struct:struct_old_passed_obj_s
+TID_LEN	common_sz.h	15;"	d
+TIMESTAMP	system.h	/^typedef struct TIMESTAMP{$/;"	s
+TIME_OUT_TIME	socket_client.c	6;"	d	file:
+TIME_STR_LEN	common_sz.h	23;"	d
+TLeaf	system.h	/^}TLeaf, *PLeaf;$/;"	t	typeref:struct:LEAF
+TObject	system.h	/^}TObject, *PObject;$/;"	t	typeref:struct:OBJECT
+TPKG_Header	packet.h	/^}TPKG_Header, *PPKG_Header;$/;"	t	typeref:struct:PKG_HEADER
+TPKG_HeaderEx	packet.h	/^}TPKG_HeaderEx, *PPKG_HeaderEx;$/;"	t	typeref:struct:PKG_HEADER_EX
+TPKG_Respond	packet.h	/^}TPKG_Respond, *PPKG_Respond;$/;"	t	typeref:struct:PKG_RESPOND
+TPLATE_INFO_MY	socket_client.h	/^}TPLATE_INFO_MY;$/;"	t	typeref:struct:TPlateInfo_my
+TPixelSet	system.h	/^}TPixelSet;$/;"	t	typeref:struct:PIXELSET
+TPixels	system.h	/^}TPixels;$/;"	t	typeref:struct:PIXELS
+TPlateInfo_my	socket_client.h	/^typedef struct TPlateInfo_my$/;"	s
+TRGB	system.h	/^}TRGB;$/;"	t	typeref:struct:_RGB
+TRUE	common.h	33;"	d
+TRUE	serial.c	46;"	d	file:
+TRect	system.h	/^}TRect, *PRect;$/;"	t	typeref:struct:_RECT
+TRegion	system.h	/^}TRegion, *PRegion;$/;"	t	typeref:struct:REGION
+TRoot	system.h	/^}TRoot, *PRoot;$/;"	t	typeref:struct:ROOT
+TString	system.h	/^}TString;$/;"	t	typeref:struct:STRING
+TTimeStamp	system.h	/^}TTimeStamp, *PTimeStamp;$/;"	t	typeref:struct:TIMESTAMP
+TWindow	system.h	/^}TWindow;$/;"	t	typeref:struct:WINDOW
+TWindows	system.h	/^}TWindows;$/;"	t	typeref:struct:WINDOWS
+TYPE_AccessSetting	argument.h	16;"	d
+TYPE_AccessSpec	argument.h	15;"	d
+TYPE_AntennaConfiguration	argument.h	20;"	d
+TYPE_AntennaEvent	argument.h	37;"	d
+TYPE_AntennaID	argument.h	27;"	d
+TYPE_ConnectionEvent	argument.h	38;"	d
+TYPE_Custom	argument.h	57;"	d
+TYPE_DeviceCapabilites	argument.h	5;"	d
+TYPE_EventReport	argument.h	33;"	d
+TYPE_EventReportContentSeletor	argument.h	32;"	d
+TYPE_EventReportSpec	argument.h	31;"	d
+TYPE_FiledError	argument.h	60;"	d
+TYPE_FirstSeenTime	argument.h	28;"	d
+TYPE_GPIEvent	argument.h	34;"	d
+TYPE_GPITrigger	argument.h	12;"	d
+TYPE_GPIValue	argument.h	21;"	d
+TYPE_GPOValue	argument.h	22;"	d
+TYPE_HeartbeatSpec	argument.h	39;"	d
+TYPE_InventorySetting	argument.h	9;"	d
+TYPE_InventorySpec	argument.h	8;"	d
+TYPE_InventorySpecEvent	argument.h	36;"	d
+TYPE_LastSeenTime	argument.h	29;"	d
+TYPE_ParameterError	argument.h	61;"	d
+TYPE_PeriodicTrigger	argument.h	11;"	d
+TYPE_RIPCapabilities	argument.h	6;"	d
+TYPE_RIPStatus	argument.h	59;"	d
+TYPE_ReaderConfiguration	argument.h	18;"	d
+TYPE_ReaderTime	argument.h	19;"	d
+TYPE_StartTrigger	argument.h	10;"	d
+TYPE_StopTrigger	argument.h	13;"	d
+TYPE_TagObservationTrigger	argument.h	14;"	d
+TYPE_TagReportBufferOverFlowEvent	argument.h	35;"	d
+TYPE_TagReportContentSelector	argument.h	25;"	d
+TYPE_TagReportData	argument.h	26;"	d
+TYPE_TagReportSpec	argument.h	24;"	d
+TYPE_TagSeenCount	argument.h	30;"	d
+TYPE_UHF_Erase	argument.h	48;"	d
+TYPE_UHF_EraseResult	argument.h	53;"	d
+TYPE_UHF_InventorySetting	argument.h	42;"	d
+TYPE_UHF_Kill	argument.h	50;"	d
+TYPE_UHF_KillResult	argument.h	55;"	d
+TYPE_UHF_Lock	argument.h	49;"	d
+TYPE_UHF_LockResult	argument.h	54;"	d
+TYPE_UHF_QuerySpec	argument.h	44;"	d
+TYPE_UHF_RIPCapabilities	argument.h	41;"	d
+TYPE_UHF_Read	argument.h	46;"	d
+TYPE_UHF_ReadResult	argument.h	51;"	d
+TYPE_UHF_SortSpec	argument.h	43;"	d
+TYPE_UHF_TagSpec	argument.h	45;"	d
+TYPE_UHF_Write	argument.h	47;"	d
+TYPE_UHF_WriteResult	argument.h	52;"	d
+ThreadCamera	threads_sz.c	/^void ThreadCamera()$/;"	f
+ThreadConnectWhitelist	threads_sz.c	/^void ThreadConnectWhitelist(void)$/;"	f
+ThreadInfoToServer	threads_sz.c	/^void ThreadInfoToServer(void)$/;"	f
+ThreadKillFork	threads_sz.c	/^void ThreadKillFork()$/;"	f
+ThreadLedShow	threads_sz.c	/^void ThreadLedShow(void* argument)$/;"	f
+ThreadMonitorCapDeal	threads_sz.c	/^void ThreadMonitorCapDeal(void)$/;"	f
+Time	socket_client.h	/^    unsigned int Time;$/;"	m	struct:TPlateInfo_my
+TimeSyncIP	system.h	/^  BYTE   TimeSyncIP[IP_ADDRESS_LENGTH];		\/\/+4=240$/;"	m	struct:BOARDPARAM
+UART0_Close	serial.c	/^void UART0_Close(int fd)$/;"	f
+UART0_Init	serial.c	/^int UART0_Init(int fd, int speed,int flow_ctrl,int databits,int stopbits,int parity)$/;"	f
+UART0_Open	serial.c	/^int UART0_Open(int fd,char* port)$/;"	f
+UART0_Recv	serial.c	/^int UART0_Recv(int fd, char *rcv_buf,int data_len)$/;"	f
+UART0_Send	serial.c	/^int UART0_Send(int fd, char *send_buf,int data_len)$/;"	f
+UART0_Set	serial.c	/^int UART0_Set(int fd,int speed,int flow_ctrl,int databits,int stopbits,int parity)$/;"	f
+USING	utils.h	54;"	d
+UTILS_H	utils.h	2;"	d
+VERSION	config.h	139;"	d
+WHITELIST	common_sz.h	/^}WHITELIST,*PWHITELIST;$/;"	t	typeref:struct:white_list_s
+WINDOW	system.h	/^typedef struct WINDOW{$/;"	s
+WINDOWS	system.h	/^typedef struct WINDOWS{$/;"	s
+WORD	system.h	/^typedef   unsigned short  WORD;$/;"	t
+_LOG_INCLUDE	log.h	2;"	d
+_PUBLIC_INCLUDE	common.h	2;"	d
+_RECT	system.h	/^typedef struct _RECT{$/;"	s
+_RGB	system.h	/^typedef struct _RGB{$/;"	s
+__MakeString__	LedUtils.h	2;"	d
+__ledapi__	ledapi.h	2;"	d
+__packet__	packet.h	2;"	d
+__system__	system.h	2;"	d
+__system__	system.h	346;"	d
+access_cmd	reader.h	/^	Mbyte access_cmd;$/;"	m	struct:Reader
+action	gpio.h	/^	NORCO_DEV_ACTION action;$/;"	m	struct:__anon8
+actionmode	system.h	/^  WORD  actionmode;      \/\/ø?ø?ø?ø?(ø?ø?\/ø?ø?)$/;"	m	struct:CUSTOMACTION
+add	system.c	/^int add(int a, int b)$/;"	f
+add_white_list	basic_func.c	/^bool add_white_list(const char * cur_item,int len)$/;"	f
+address	system.h	/^  DWORD  address;							\/\/+32+4+4=112$/;"	m	struct:BOARDPARAM
+adjusttime	LedUtils.c	/^int adjusttime(BYTE* obuffer)$/;"	f
+ant_num	common_sz.h	/^    char    ant_num;                \/\/ the number of ants using for this gate$/;"	m	struct:gate_info_s
+ant_num	common_sz.h	/^    char ant_num;      \/\/by myjalo$/;"	m	struct:struct_operate_info_s
+ant_num	common_sz.h	/^    char ant_num;$/;"	m	struct:struct_get_tags_s
+antenna	reader.h	/^	int antenna[MAX_ANTENNA];$/;"	m	struct:ReaderConfig
+antenna_config	reader.h	/^	struct AntennaConfig antenna_config[MAX_ANTENNA];$/;"	m	struct:ReaderConfig	typeref:struct:ReaderConfig::AntennaConfig
+antenna_id	api.h	/^	int antenna_id;$/;"	m	struct:tag
+ants	common_sz.h	/^    char    ants[4];                \/\/ the id of per ant$/;"	m	struct:gate_info_s
+area	api.h	/^	u8 area;$/;"	m	struct:Command
+arg	argument.h	/^	char arg[0];$/;"	m	struct:arg_header
+arg_header	argument.h	/^typedef struct arg_header{$/;"	s
+auto_reset_enabled	system.h	/^  BYTE   auto_reset_enabled;$/;"	m	struct:BOARDPARAM
+auto_reset_hour	system.h	/^  BYTE   auto_reset_hour;$/;"	m	struct:BOARDPARAM
+auto_reset_minute	system.h	/^  BYTE   auto_reset_minute;$/;"	m	struct:BOARDPARAM
+auto_reset_type	system.h	/^  BYTE   auto_reset_type;$/;"	m	struct:BOARDPARAM
+b	system.h	/^  BYTE   b;$/;"	m	struct:_RGB
+basetime	system.h	/^  TTimeStamp  basetime;$/;"	m	struct:COUNTER
+basetime	system.h	/^  TTimeStamp  basetime;$/;"	m	struct:DCLOCK
+be_enter	common_sz.h	/^    bool be_enter;                  $/;"	m	struct:struct_operate_info_s
+be_entry	common_sz.h	/^    bool    be_entry;$/;"	m	struct:led_show_info_s
+before_fork_kill	threads_sz.c	/^void before_fork_kill()$/;"	f
+bin_name	system.h	/^  char   bin_name[32];                      \/\/+32=208$/;"	m	struct:BOARDPARAM
+bits	system.h	/^  WORD   bits;          \/\/ø?ø?ø?ø?ø?$/;"	m	struct:PIXELS
+border	system.h	/^  BYTE  border;$/;"	m	struct:OBJECT
+bottom	system.h	/^  long bottom;$/;"	m	struct:_RECT
+brate	reader.h	/^	int brate;\/\/ÂèçÂêëÈìæË∑ØÈÄüÁéá$/;"	m	struct:AntennaConfig
+brightness	system.h	/^  BYTE   brightness;$/;"	m	struct:BOARDPARAM
+bswap64	utils.h	87;"	d
+buff	common.h	/^	u8* buff;$/;"	m	struct:mybyte
+callback	api.h	/^typedef int (*callback)(struct tag*, void *result);$/;"	t
+car_num	common_sz.h	/^    char    car_num[CAR_NUM_LEN];$/;"	m	struct:led_show_info_s
+car_num	common_sz.h	/^    char car_num[CAR_NUM_LEN];$/;"	m	struct:struct_operate_info_s
+card_type	common_sz.h	/^    char card_type[CAR_RIGHT_LEN];$/;"	m	struct:struct_operate_info_s
+chapter	LedUtils.c	/^PChapter chapter=NULL;$/;"	v
+chapterindex	system.h	/^  WORD  chapterindex;    \/\/ø?ø?ø?ø?ø?ø?ø?ø?ø?ø?ø?$/;"	m	struct:CUSTOMACTION
+check_right	operate_func.c	/^bool check_right(char * rights,char * car_right)$/;"	f
+checksum	message.h	/^	u32 checksum;$/;"	m	struct:msg_headerA
+checksum	message.h	/^	u32 checksum;$/;"	m	struct:msg_headerB
+client_camera	socket_client.c	/^bool client_camera(int sock)$/;"	f
+client_init_socket	socket_client.c	/^int client_init_socket()$/;"	f
+client_recv_whitelist	socket_client.c	/^bool client_recv_whitelist()$/;"	f
+client_send_operinfo	socket_client.c	/^bool client_send_operinfo()$/;"	f
+close_gpio	gpio.c	/^int close_gpio()$/;"	f
+close_log_file	log.c	/^void close_log_file(FILE *file)$/;"	f
+cmd1_type	reader.h	/^	int cmd1_type;$/;"	m	struct:Reader
+cmd2_type	reader.h	/^	int cmd2_type;$/;"	m	struct:Reader
+cmp	linklist.h	/^	int (*cmp)(void *val1, void *val2);$/;"	m	struct:list
+code_convert	ChangeChar.c	/^int code_convert(char *from_charset, char *to_charset, char *inbuf, int inlen, char *outbuf, int outlen)$/;"	f
+codec	reader.h	/^	int codec;\/\/ÁºñÁ†ÅÊñπÂºè$/;"	m	struct:AntennaConfig
+color	system.h	/^  DWORD       color;      \/\/ø?ø?ø?ø?$/;"	m	struct:STRING
+color	system.h	/^  WORD  color;           \/\/ø?ø?ø?ø?ø?ø?ø?ø?ø?ø?$/;"	m	struct:ROOT
+com_devices	serial.c	/^char com_devices[9][13] = { COM1, COM2, COM3, COM4, COM5, COM6, COM7, COM8, COM9};$/;"	v
+com_init	serial.c	/^int com_init(char * com_name)$/;"	f
+com_open_roadblock	serial.c	/^int com_open_roadblock(int fd,int gateNum)$/;"	f
+com_port	serial.c	/^int com_port = 1;$/;"	v
+com_roadblock	common_sz.h	/^    char    com_roadblock[20];      \/\/ the com port for linking roadblock$/;"	m	struct:gate_info_s
+com_roadblock_fd	common_sz.h	/^    int     com_roadblock_fd ;      \/\/ the handler of operate com port $/;"	m	struct:gate_info_s
+com_send_to_roadblock	serial.c	/^int com_send_to_roadblock(char * com_name)$/;"	f
+command_1	serial.c	22;"	d	file:
+command_10	serial.c	35;"	d	file:
+command_2	serial.c	23;"	d	file:
+command_3	serial.c	25;"	d	file:
+command_4	serial.c	26;"	d	file:
+command_5	serial.c	28;"	d	file:
+command_6	serial.c	29;"	d	file:
+command_7	serial.c	31;"	d	file:
+command_8	serial.c	32;"	d	file:
+command_9	serial.c	34;"	d	file:
+con_status	tcpcommon.h	/^enum con_status{$/;"	g
+config	reader.h	/^	struct ReaderConfig config;$/;"	m	struct:Reader	typeref:struct:Reader::ReaderConfig
+connection	tcpcommon.h	/^typedef struct connection$/;"	s
+count	common_sz.h	/^	int  count;$/;"	m	struct:struct_get_tags_s
+count	linklist.h	/^	unsigned int count;$/;"	m	struct:list
+count	system.h	/^  DWORD count;           \/\/ø?ø?ø?ø?ø?$/;"	m	struct:ROOT
+count	system.h	/^  WORD        count;      \/\/ø?ø?ø?ø?Windowø?ø?$/;"	m	struct:WINDOWS
+count	system.h	/^  WORD   count;         \/\/TPixelsø?ø?ø?ø?$/;"	m	struct:PIXELSET
+count	system.h	/^  WORD  count;          \/\/ø?ø?ø?ø?$/;"	m	struct:LEAF
+count	system.h	/^  WORD  count;          \/\/ø?ø?ø?ø?$/;"	m	struct:REGION
+count	system.h	/^  WORD  count;          \/\/ø?ø?ø?ø?ø?ø?$/;"	m	struct:CHAPTER
+create_pidfile	main.c	/^int create_pidfile(const char *file)$/;"	f
+cur_operate_num	common_sz.h	/^    int cur_operate_num;$/;"	m	struct:operate_info_s
+cur_send_info_num	common_sz.h	/^    int cur_send_info_num;$/;"	m	struct:send_info_s
+data	api.h	/^	u8 data[MAX_USER_SIZE][MAX_DATA_LEN];$/;"	m	struct:tag
+data	linklist.h	/^	void *data;$/;"	m	struct:listnode
+data	tcpcommon.h	/^	void *data; \/\/ remote infomation self defined$/;"	m	struct:connection
+date	system.h	/^  long date;$/;"	m	struct:TIMESTAMP
+dayoffset	system.h	/^  long        dayoffset;     \/\/ø?ø?ø?ø?$/;"	m	struct:DCLOCK
+dePack	crc.c	/^int dePack(BYTE *ibuf,BYTE *obuf,int size)$/;"	f
+del	linklist.h	/^	void (*del)(void *val);$/;"	m	struct:list
+del_white_list	basic_func.c	/^bool del_white_list(const char * cur_item,int len)$/;"	f
+devid	message.h	/^	u32 devid;$/;"	m	struct:msg_headerA
+devid	message.h	/^	u32 devid;$/;"	m	struct:msg_headerB
+disconnect_sec	system.h	/^  BYTE   disconnect_sec;$/;"	m	struct:BOARDPARAM
+dnsIP	system.h	/^  BYTE   dnsIP[IP_ADDRESS_LENGTH];$/;"	m	struct:BOARDPARAM
+dnsMAC	system.h	/^  BYTE   dnsMAC[ETHER_ADDRESS_LENGTH];$/;"	m	struct:BOARDPARAM
+dstAddr	packet.h	/^  BYTE   dstAddr;$/;"	m	struct:PKG_HEADER
+dstAddr	packet.h	/^  BYTE   dstAddr;$/;"	m	struct:PKG_HEADER_EX
+durtime	reader.h	/^	int durtime;\/\/ËØªÂëΩ‰ª§ÊåÅÁª≠ÁöÑÊó∂Èó¥  (ms)$/;"	m	struct:ReaderConfig
+edit_white_list	basic_func.c	/^bool edit_white_list(const char * cur_item,int len)$/;"	f
+enabled	reader.h	/^	int enabled;$/;"	m	struct:Reader
+epc	api.h	/^	u8 epc[MAX_EPC_LEN];$/;"	m	struct:tag
+f_error	common_sz.h	/^FILE *f_error;$/;"	v
+f_misc_running	common_sz.h	/^FILE *f_misc_running;$/;"	v
+f_passed_failed	common_sz.h	/^FILE *f_passed_failed;$/;"	v
+f_passed_success	common_sz.h	/^FILE *f_passed_success;$/;"	v
+f_sended_server	common_sz.h	/^FILE *f_sended_server;$/;"	v
+f_sync_whitelist	common_sz.h	/^FILE *f_sync_whitelist;$/;"	v
+f_sysinit	common_sz.h	/^FILE *f_sysinit;$/;"	v
+fd	tcpcommon.h	/^	int fd;$/;"	m	struct:connection
+file_name_len	message.h	/^	u32 file_name_len;$/;"	m	struct:msg_headerB
+file_read	basic_func.c	/^int file_read(char * path,char *buf)$/;"	f
+file_write_whitelist	basic_func.c	/^bool file_write_whitelist()$/;"	f
+filesize	log.c	/^long filesize(FILE *stream)$/;"	f
+first_seen_time	api.h	/^	u64 first_seen_time;$/;"	m	struct:tag
+flag	system.h	/^  DWORD  flag;$/;"	m	struct:BOARDPARAM
+flag	system.h	/^  WORD  flag;            \/\/ø?ø?$/;"	m	struct:ROOT
+flag_count	threads_sz.c	/^long int flag_count =0;$/;"	v
+fontset	system.h	/^  WORD        fontset;    \/\/ø?ø?ø?(ø?ø?ø?ø? 0=16ø?ø? 1=24ø?ø?)$/;"	m	struct:STRING
+format	system.h	/^  WORD        format;$/;"	m	struct:COUNTER
+formats	system.h	/^  TDCFormat   formats[MAX_DATETIME_FORMAT];  \/\/ø?ø?ø?ø?$/;"	m	struct:DCLOCK
+frate	reader.h	/^	int frate;\/\/ÂâçÂêëÈìæË∑ØÈÄüÁéá$/;"	m	struct:AntennaConfig
+frequence	reader.h	/^	int frequence;$/;"	m	struct:ReaderConfig
+frequency	system.h	/^  WORD   frequency;$/;"	m	struct:BOARDPARAM
+fromtime	system.h	/^  TTimeStamp  fromtime;$/;"	m	struct:DCLOCK
+fromtime	system.h	/^  TTimeStamp fromtime;  \/\/ø?ø?ø?ø?$/;"	m	struct:CHAPTER
+ftype	system.h	/^  WORD        ftype;$/;"	m	struct:COUNTER
+funp	utils.h	/^typedef int (*funp)(void* args);$/;"	t
+fv	socket_client.h	/^    double fv;$/;"	m	struct:TPlateInfo_my
+g	system.h	/^  BYTE   g;$/;"	m	struct:_RGB
+g_led_show_list	common_sz.h	/^PLED_SHOW_LIST g_led_show_list;$/;"	v
+g_old_passed_array	common_sz.h	/^POLDPASSEDOBJ g_old_passed_array;$/;"	v
+g_operate_info	common_sz.h	/^POPERATEINFO g_operate_info;$/;"	v
+g_send_info	common_sz.h	/^PSENDINFO g_send_info;$/;"	v
+g_show_camera	common_sz.h	/^PSHOWCAMERA g_show_camera;$/;"	v
+g_tag_flag	common_sz.h	/^char *g_tag_flag;$/;"	v
+g_tags_array	common_sz.h	/^PTAGOBJ g_tags_array;$/;"	v
+g_tags_array_count	common_sz.h	/^int     g_tags_array_count;$/;"	v
+g_white_list	common_sz.h	/^PWHITELIST g_white_list;$/;"	v
+gateMAC	system.h	/^  BYTE   gateMAC[ETHER_ADDRESS_LENGTH];$/;"	m	struct:BOARDPARAM
+gate_id	common_sz.h	/^    char    gate_id;                \/\/ the id of gate defined by server$/;"	m	struct:gate_info_s
+gate_id	common_sz.h	/^    int  gate_id;                   $/;"	m	struct:struct_operate_info_s
+gate_index	common_sz.h	/^    int  gate_index;                $/;"	m	struct:struct_operate_info_s
+gate_info_s	common_sz.h	/^typedef struct gate_info_s$/;"	s
+gate_rights	common_sz.h	/^    char    gate_rights[20];        \/\/ the rights which can entry$/;"	m	struct:gate_info_s
+gate_type	common_sz.h	/^    char    gate_type;              \/\/ 'i' or 'o'$/;"	m	struct:gate_info_s
+gates	common_sz.h	/^STRUCT_GATE_INFO gates[2];$/;"	v
+gb2312_unicode	ChangeChar.c	/^int gb2312_unicode(char *inbuf, int inlen, char *outbuf, int outlen)$/;"	f
+get_config_info	basic_func.c	/^bool get_config_info(char * buf,int len,char *sip,int *sport,char * rip,int *rport,int *rrate,char *path,int *c_id,int *g_num,STRUCT_GATE_INFO *g_info)$/;"	f
+get_gate_index	operate_func.c	/^int get_gate_index(int ant_id)$/;"	f
+get_gpio	gpio.c	/^int get_gpio(int no, int *val)$/;"	f
+get_index_by_tid	operate_func.c	/^int get_index_by_tid(char * tid)$/;"	f
+get_seats_num	basic_func.c	/^bool get_seats_num(const char * str_seats_info,int len,int *p_seat)$/;"	f
+get_white_list	main.c	/^bool get_white_list(void)$/;"	f
+get_white_list_index	basic_func.c	/^int get_white_list_index(const char * cur_tid)$/;"	f
+getboardparam	LedUtils.c	/^int getboardparam(BYTE* obuffer)$/;"	f
+getdata	linklist.h	28;"	d
+getpower	LedUtils.c	/^int getpower(BYTE* obuffer)$/;"	f
+gpio	gpio.h	/^	DEV_GPIO gpio;$/;"	m	struct:__anon8
+gpio_fd	gpio.c	/^static int gpio_fd;$/;"	v	file:
+head	linklist.h	/^	struct listnode *head;$/;"	m	struct:list	typeref:struct:list::listnode
+header	system.h	/^  TRoot header;          \/\/ø?ø?ø?ø?ø?$/;"	m	struct:CUSTOMACTION
+header_size	tcpcommon.h	/^	int header_size;\/\/ Â§¥ÈÉ®Â§ßÂ∞è$/;"	m	struct:connection
+height	system.h	/^  WORD   height;$/;"	m	struct:BOARDPARAM
+height	system.h	/^  long   height;        \/\/ø?ø?ø?ø?$/;"	m	struct:PIXELS
+high_door	ledapi.c	/^int high_door = 64;$/;"	v
+high_not_door	ledapi.c	/^int high_not_door = 48;$/;"	v
+hton64	utils.h	81;"	d
+hton64	utils.h	84;"	d
+id	message.h	/^	u16 id;$/;"	m	struct:msg_header
+id	reader.h	/^	int id;$/;"	m	struct:ReaderConfig
+id	system.h	/^  WORD        id;$/;"	m	struct:STRING
+id	system.h	/^  WORD        id;$/;"	m	struct:WINDOW
+id	system.h	/^  WORD   id;            \/\/ø?ø?ø?ø?$/;"	m	struct:PIXELS
+id	system.h	/^  WORD   id;            \/\/ø?ø?ø?ø?$/;"	m	struct:PIXELSET
+id	system.h	/^  WORD  id;              \/\/ø?ø?ø?ø?ø?$/;"	m	struct:ROOT
+id	system.h	/^  WORD  id;             \/\/ø?ø?ø?ø?$/;"	m	struct:FONTSET
+id	system.h	/^  WORD  id;             \/\/ø?ø?ø?ø?$/;"	m	struct:OBJECT
+id	system.h	/^  WORD  id;             \/\/ø?ø?ø?ø?(ø?ø?ø?ø?ø?ø?ø?ø?ø?ø?ø?ø?ø?ø?)$/;"	m	struct:LEAF
+id	system.h	/^  WORD  id;             \/\/ø?ø?ø?ø?ø?ø?ø?ø?ø?$/;"	m	struct:CHAPTER
+id	system.h	/^  WORD  id;             \/\/ø?ø?ø?ø?ø?ø?ø?ø?ø?$/;"	m	struct:REGION
+ident	system.h	/^  DWORD  ident;$/;"	m	struct:BOARDPARAM
+importflag	system.h	/^  BYTE   importflag;$/;"	m	struct:BOARDPARAM
+inMethod	system.h	/^  BYTE        inMethod;   \/\/ø?ø?ø?ø?$/;"	m	struct:STRING
+inMethod	system.h	/^  BYTE        inMethod;   \/\/ø?ø?ø?ø?$/;"	m	struct:WINDOW
+inSpeed	system.h	/^  WORD        inSpeed;    \/\/ø?ø?ø?ø?$/;"	m	struct:STRING
+inSpeed	system.h	/^  WORD        inSpeed;    \/\/ø?ø?ø?ø?$/;"	m	struct:WINDOW
+inductor_signal_keep_time	common_sz.h	/^int inductor_signal_keep_time;$/;"	v
+init_gpio	gpio.c	/^int init_gpio()$/;"	f
+initial	main.c	/^bool initial(void)$/;"	f
+inner_data	reader.h	/^	void *inner_data;$/;"	m	struct:Reader
+io_type	common_sz.h	/^    char io_type;                   $/;"	m	struct:struct_operate_info_s
+ip	reader.h	/^	char ip[50];$/;"	m	struct:ReaderConfig
+ip	system.h	/^  BYTE   ip[IP_ADDRESS_LENGTH];$/;"	m	struct:BOARDPARAM
+ipMask	system.h	/^  BYTE   ipMask[IP_ADDRESS_LENGTH];			\/\/+4+4=72$/;"	m	struct:BOARDPARAM
+is_working	reader.h	/^	int is_working; \/\/ËØªÂÜôÂô®ÊòØÂê¶Ê≠£Âú®Â∑•‰Ωú$/;"	m	struct:Reader
+jointcompute_id	common_sz.h	/^int jointcompute_id;$/;"	v
+key	system.h	/^  DWORD  key;$/;"	m	struct:BOARDPARAM
+kind	system.h	/^  WORD  kind;           \/\/ø?ø?ø?ø?ø?ø?0=ø?ø?ø?ø?ø?1=ø?ø?ø?ø?ø?ø?ø?ø?ø?ø?3=ø?ø?ø?ø?ø?ø?ø?ø?ø?ø?ø?ø?$/;"	m	struct:CHAPTER
+last_heart_time	threads_sz.c	/^long int last_heart_time = 0;$/;"	v
+last_msg_timestamp	tcpcommon.h	/^	u64 last_msg_timestamp; \/\/ last recvied message timestamp$/;"	m	struct:connection
+last_seen_time	api.h	/^	u64 last_seen_time;$/;"	m	struct:tag
+leaf	LedUtils.c	/^PLeaf leaf=NULL;$/;"	v
+leafindex	system.h	/^  WORD  leafindex;       \/\/ø?ø?ø?ø?ø?ø?ø?ø?ø?ø?ø?$/;"	m	struct:CUSTOMACTION
+led_info_camera_num	common_sz.h	/^    int led_info_camera_num;$/;"	m	struct:show_camera_s
+led_info_cur_num	common_sz.h	/^    int    led_info_cur_num;$/;"	m	struct:led_show_info_list_s
+led_ip	common_sz.h	/^    char    led_ip[15];             \/\/ the ip of led$/;"	m	struct:gate_info_s
+led_ip	common_sz.h	/^    char   led_ip[15];$/;"	m	struct:led_show_info_list_s
+led_ip	common_sz.h	/^    char   led_ip[15];$/;"	m	struct:show_camera_s
+led_port	common_sz.h	/^    int     led_port;               \/\/ the port of led$/;"	m	struct:gate_info_s
+led_port	common_sz.h	/^    int    led_port;$/;"	m	struct:led_show_info_list_s
+led_port	common_sz.h	/^    int    led_port;$/;"	m	struct:show_camera_s
+led_show_array	common_sz.h	/^    LEDSHOWINFO led_show_array[LED_SHOW_MAX_NUM];$/;"	m	struct:led_show_info_list_s
+led_show_camera	common_sz.h	/^    LEDSHOWINFO led_show_camera[LED_SHOW_MAX_NUM];$/;"	m	struct:show_camera_s
+led_show_info_list_s	common_sz.h	/^typedef struct led_show_info_list_s$/;"	s
+led_show_info_s	common_sz.h	/^typedef struct led_show_info_s$/;"	s
+left	system.h	/^  long   left;$/;"	m	struct:BOARDPARAM
+left	system.h	/^  long left;$/;"	m	struct:_RECT
+len	api.h	/^	u16 len;$/;"	m	struct:Command
+length	argument.h	/^	u16 length;$/;"	m	struct:arg_header
+length	common.h	/^	int length;$/;"	m	struct:mybyte
+length	message.h	/^	u16 length;$/;"	m	struct:msg_header
+length	message.h	/^	u16 length;$/;"	m	struct:msg_headerA
+length	message.h	/^	u16 length;$/;"	m	struct:msg_headerB
+length_offset	tcpcommon.h	/^	int length_offset; \/\/ ÈïøÂ∫¶Â≠óÊÆµË∑ùÊä•ÊñáÂ§¥ÁöÑÂÅèÁßª$/;"	m	struct:connection
+length_size	tcpcommon.h	/^	int length_size;\/\/ ÈïøÂ∫¶Â≠óÊÆµÁöÑÂ§ßÂ∞è$/;"	m	struct:connection
+light_sense	system.h	/^  BYTE   light_sense;$/;"	m	struct:BOARDPARAM
+light_sense_auto	system.h	/^  BYTE   light_sense_auto;$/;"	m	struct:BOARDPARAM
+light_sense_bright_val	system.h	/^  BYTE   light_sense_bright_val[8];         \/\/+28=236$/;"	m	struct:BOARDPARAM
+light_sense_reserved	system.h	/^  WORD   light_sense_reserved;$/;"	m	struct:BOARDPARAM
+light_sense_split_val	system.h	/^  WORD   light_sense_split_val[8];$/;"	m	struct:BOARDPARAM
+line_order	system.h	/^  WORD   line_order;$/;"	m	struct:BOARDPARAM
+list	linklist.h	/^struct list$/;"	s
+list	linklist.h	/^typedef struct list *list;$/;"	t	typeref:struct:list
+list_isempty	linklist.h	27;"	d
+listcount	linklist.h	26;"	d
+listhead	linklist.h	24;"	d
+listnode	linklist.h	/^struct listnode$/;"	s
+listnode	linklist.h	/^typedef struct listnode *listnode;$/;"	t	typeref:struct:listnode
+listtail	linklist.h	25;"	d
+log_file_size	common_sz.h	/^int log_file_size; \/\/defult value$/;"	v
+log_file_size	log.c	/^int log_file_size;$/;"	v
+logo	socket_client.h	/^    char logo[10];$/;"	m	struct:TPlateInfo_my
+mac	system.h	/^  BYTE   mac[ETHER_ADDRESS_LENGTH];$/;"	m	struct:BOARDPARAM
+main	main.c	/^int main(void)$/;"	f
+malloc_z	utils.h	72;"	d
+message	reader.h	/^	char message[100];$/;"	m	struct:ReaderEvent
+method	system.h	/^  BYTE        method;     \/\/ø?ø?ø?ø?$/;"	m	struct:WINDOWS
+mod_using	utils.h	63;"	d
+modulate	reader.h	/^	int modulate;\/\/Ë∞ÉÂà∂ÊñπÂºè$/;"	m	struct:AntennaConfig
+monthoffset	system.h	/^  long        monthoffset;   \/\/ø?ø?ø?ø?$/;"	m	struct:DCLOCK
+msg	message.h	/^	char msg[0];$/;"	m	struct:msg_header
+msg	message.h	/^	char msg[0];$/;"	m	struct:msg_headerA
+msg	message.h	/^	char msg[0];$/;"	m	struct:msg_headerB
+msg	tcpcommon.h	/^	Mbyte msg; \/\/ the message send or recv$/;"	m	struct:connection
+msg_header	message.h	/^typedef struct msg_header{$/;"	s
+msg_headerA	message.h	/^typedef struct msg_headerA{$/;"	s
+msg_headerB	message.h	/^typedef struct msg_headerB{$/;"	s
+msgid	message.h	/^	u32 msgid;$/;"	m	struct:msg_headerA
+mtx_print_log	log.c	/^pthread_mutex_t mtx_print_log = PTHREAD_MUTEX_INITIALIZER;$/;"	v
+mutex_led_show	common_sz.h	/^    pthread_mutex_t mutex_led_show;$/;"	m	struct:led_show_info_list_s
+mutex_led_show_camera	common_sz.h	/^    pthread_mutex_t mutex_led_show_camera;$/;"	m	struct:show_camera_s
+mutex_operate_info	common_sz.h	/^    pthread_mutex_t mutex_operate_info;$/;"	m	struct:operate_info_s
+mutex_send_info	common_sz.h	/^    pthread_mutex_t mutex_send_info;$/;"	m	struct:send_info_s
+mutex_white_list	common_sz.h	/^    pthread_mutex_t mutex_white_list;$/;"	m	struct:white_list_s
+mybyte	common.h	/^typedef	struct mybyte$/;"	s
+nCredit	socket_client.h	/^    unsigned int nCredit;$/;"	m	struct:TPlateInfo_my
+name	system.h	/^  BYTE   name[32];$/;"	m	struct:BOARDPARAM
+name	system.h	/^  BYTE  name[16];       \/\/ø?ø?ø?ø?ø?$/;"	m	struct:FONTSET
+newest_open_time	threads_sz.c	/^long int newest_open_time = 0;$/;"	v
+next	linklist.h	/^	struct listnode *next;$/;"	m	struct:listnode	typeref:struct:listnode::listnode
+nextnode	linklist.h	23;"	d
+no	system.h	/^  WORD  no;             \/\/ø?ø?ø?ø?(ø?ø?ø?ø?ø?ø?ø?ø?ø?ø?ø?ø?ø?ø?)$/;"	m	struct:CHAPTER
+no	system.h	/^  WORD  no;             \/\/ø?ø?ø?ø?ø?ø?(ø?ø?ø?ø?ø?ø?ø?ø?ø?ø?ø?ø?ø?ø?ø?ø?)$/;"	m	struct:REGION
+no	system.h	/^  WORD  no;$/;"	m	struct:LEAF
+nouse	socket_client.h	/^    unsigned char nouse[6];$/;"	m	struct:TPlateInfo_my
+ntoh64	utils.h	80;"	d
+ntoh64	utils.h	83;"	d
+object	system.h	/^  TObject     object;        \/\/ø?ø?ø?ø?ø?ø?ø?$/;"	m	struct:DCLOCK
+object	system.h	/^  TObject     object;     \/\/ø?ø?ø?ø?ø?ø?ø?$/;"	m	struct:WINDOWS
+object	system.h	/^  TObject     object;$/;"	m	struct:COUNTER
+objectindex	system.h	/^  WORD  objectindex;     \/\/ø?ø?ø?ø?ø?ø?ø?ø?ø?ø?ø?ø?ø?$/;"	m	struct:CUSTOMACTION
+oe_time	system.h	/^  WORD   oe_time;$/;"	m	struct:BOARDPARAM
+openDoorMethodType	common_sz.h	/^typedef enum openDoorMethodType$/;"	g
+open_command	serial.c	/^const char open_command[8] = command_2;$/;"	v
+open_log_file	log.c	/^FILE * open_log_file(char *path)$/;"	f
+open_switch	reader.h	/^	int open_switch;$/;"	m	struct:Reader
+operate_info	common_sz.h	/^    STRUCT_OPERATE_INFO operate_info[MAX_OPERATE_INFO_NUM];$/;"	m	struct:operate_info_s
+operate_info_s	common_sz.h	/^typedef struct operate_info_s$/;"	s
+operate_time	common_sz.h	/^    char operate_time[TIME_STR_LEN]; $/;"	m	struct:struct_operate_info_s
+option	gpio.h	/^	int option;$/;"	m	struct:__anon8
+outMethod	system.h	/^  BYTE        outMethod;  \/\/ø?ø?ø?ø?$/;"	m	struct:STRING
+outMethod	system.h	/^  BYTE        outMethod;  \/\/ø?ø?ø?ø?$/;"	m	struct:WINDOW
+outSpeed	system.h	/^  WORD        outSpeed;   \/\/ø?ø?ø?ø?$/;"	m	struct:STRING
+outSpeed	system.h	/^  WORD        outSpeed;   \/\/ø?ø?ø?ø?$/;"	m	struct:WINDOW
+over	system.h	/^  WORD  over;           \/\/ø?ø?ø?ø?ø?ø?ø?ø?(ø?modeø?ø?ø?ø?ø?ø?ø?ø?ø?ø?ø?ø?ø?ø?ø?ø?ø?ø?ø?ø?ø?ø?ø?ø?ø?ø?)$/;"	m	struct:REGION
+photoNUm	socket_client.h	/^    unsigned char photoNUm;$/;"	m	struct:TPlateInfo_my
+pkg_index	message.h	/^	u32 pkg_index;$/;"	m	struct:msg_headerB
+pkg_total	message.h	/^	u32 pkg_total;$/;"	m	struct:msg_headerB
+pkp_length	system.h	/^  DWORD  pkp_length;                        \/\/+32+4+4=176$/;"	m	struct:BOARDPARAM
+pkp_rx_timeo	system.h	/^  DWORD  pkp_rx_timeo;$/;"	m	struct:BOARDPARAM
+pkp_tx_repeat	system.h	/^  DWORD  pkp_tx_repeat;$/;"	m	struct:BOARDPARAM
+pkp_tx_timeo	system.h	/^  DWORD  pkp_tx_timeo;$/;"	m	struct:BOARDPARAM
+port	reader.h	/^	int port;$/;"	m	struct:ReaderConfig
+power	reader.h	/^	int power;\/\/ÂäüÁéá$/;"	m	struct:AntennaConfig
+prev	linklist.h	/^	struct listnode *prev;$/;"	m	struct:listnode	typeref:struct:listnode::listnode
+print_log	log.c	/^void print_log(FILE *file,const char *ms, ... )  $/;"	f
+priority	api.h	/^	u16 priority;$/;"	m	struct:tag
+protocol	reader.h	/^	int protocol;$/;"	m	struct:ReaderConfig
+r	system.h	/^  BYTE   r;$/;"	m	struct:_RGB
+readIntParam	basic_func.c	/^bool readIntParam(char* buf,int buf_len, char* key,int* value)$/;"	f
+readStringParam	basic_func.c	/^bool readStringParam(char* buf,int buf_len, char* key,char* value)$/;"	f
+read_cmd1	reader.h	/^	Command read_cmd1;$/;"	m	struct:Reader
+read_cmd2	reader.h	/^	Command read_cmd2;$/;"	m	struct:Reader
+read_pos	common_sz.h	/^    unsigned int read_pos;$/;"	m	struct:send_info_s
+reader	threads_sz.c	/^extern reader_t * reader = NULL;$/;"	v
+reader_id	api.h	/^	int reader_id;$/;"	m	struct:tag
+reader_ip	common_sz.h	/^char reader_ip[15];$/;"	v
+reader_port	common_sz.h	/^int reader_port;$/;"	v
+reader_rate	common_sz.h	/^int reader_rate;$/;"	v
+reader_t	api.h	/^typedef int reader_t;$/;"	t
+rect	system.h	/^  TRect rect;           \/\/ø?ø?ø?ø?ø?ø?$/;"	m	struct:OBJECT
+rect	system.h	/^  TRect rect;           \/\/ø?ø?ø?ø?ø?ø?ø?ø?$/;"	m	struct:REGION
+recv_timeout	tcpcommon.h	/^	int recv_timeout;$/;"	m	struct:connection
+refresh_freq	system.h	/^  WORD   refresh_freq;						\/\/+2+2+2+2+2+2=64;$/;"	m	struct:BOARDPARAM
+region	LedUtils.c	/^PRegion region=NULL;$/;"	v
+regionindex	system.h	/^  WORD  regionindex;     \/\/ø?ø?ø?ø?ø?ø?ø?ø?ø?ø?ø?ø?$/;"	m	struct:CUSTOMACTION
+repeat	system.h	/^  WORD  repeat;         \/\/ø?ø?ø?ø?ø?ø?$/;"	m	struct:CHAPTER
+reserved	system.h	/^  BYTE        reserved;$/;"	m	struct:STRING
+reserved	system.h	/^  BYTE        reserved;$/;"	m	struct:WINDOW
+reserved	system.h	/^  DWORD       reserved;$/;"	m	struct:COUNTER
+reserved	system.h	/^  WORD        reserved;$/;"	m	struct:DCLOCK
+reserved	system.h	/^  WORD  reserved;$/;"	m	struct:CUSTOMACTION
+reserved	tcpcommon.h	/^	void *reserved; \/\/ message cache$/;"	m	struct:connection
+result	threads_sz.c	/^list result;$/;"	v
+right	system.h	/^  long right;$/;"	m	struct:_RECT
+rom_size	system.h	/^  DWORD  rom_size;$/;"	m	struct:BOARDPARAM
+root	LedUtils.c	/^PRoot root=NULL;$/;"	v
+rootcount	system.h	/^  BYTE   rootcount;$/;"	m	struct:BOARDPARAM
+rssi	api.h	/^	int rssi;$/;"	m	struct:tag
+scan_mode	system.h	/^  WORD   scan_mode;$/;"	m	struct:BOARDPARAM
+send_info	common_sz.h	/^    STRUCT_OPERATE_INFO send_info[MAX_SEND_INFO_NUM];$/;"	m	struct:send_info_s
+send_info_s	common_sz.h	/^typedef struct send_info_s$/;"	s
+serial	system.h	/^  WORD  serial;         \/\/ø?ø?ø?ø?ø?ø?ø?ø?$/;"	m	struct:LEAF
+serverDomain	system.h	/^  BYTE   serverDomain[32];$/;"	m	struct:BOARDPARAM
+serverIP	system.h	/^  BYTE   serverIP[IP_ADDRESS_LENGTH];		\/\/+6+4+6+4=36$/;"	m	struct:BOARDPARAM
+server_ip	common_sz.h	/^char server_ip[15];$/;"	v
+server_port	common_sz.h	/^int server_port;$/;"	v
+server_port	system.h	/^  WORD   server_port;$/;"	m	struct:BOARDPARAM
+session	reader.h	/^	MConn session;$/;"	m	struct:Reader
+set_gpio	gpio.c	/^int set_gpio(int no, int val)$/;"	f
+setboardparam	LedUtils.c	/^int setboardparam(BYTE* obuffer, PBoardParam param)$/;"	f
+setbright	LedUtils.c	/^int setbright(BYTE* obuffer, int bright)$/;"	f
+setcurchapter	LedUtils.c	/^int setcurchapter(BYTE* obuffer, int index)$/;"	f
+setcurleaf	LedUtils.c	/^int setcurleaf(BYTE* obuffer, int index)$/;"	f
+setpower	LedUtils.c	/^int setpower(BYTE* obuffer, int power)$/;"	f
+shift_freq	system.h	/^  WORD   shift_freq;$/;"	m	struct:BOARDPARAM
+show_camera	ledapi.c	/^int show_camera(char *led_ip,int led_port,bool be_door,const char * pai,bool be_entry)$/;"	f
+show_camera_s	common_sz.h	/^typedef struct show_camera_s$/;"	s
+show_chepai	ledapi.c	/^int show_chepai(char *led_ip,int led_port,const char * pai,bool be_entry,bool be_clear)$/;"	f
+show_init	ledapi.c	/^int show_init(char *led_ip,int led_port,bool be_door)$/;"	f
+size	system.h	/^  DWORD       size;       \/\/ø?ø?ø?ø?$/;"	m	struct:STRING
+size	system.h	/^  DWORD       size;       \/\/ø?ø?ø?ø?$/;"	m	struct:WINDOW
+size	system.h	/^  DWORD  size;          \/\/ø?ø?ø?ø?$/;"	m	struct:PIXELS
+size	system.h	/^  DWORD  size;          \/\/ø?ø?ø?ø?ø?$/;"	m	struct:PIXELSET
+size	system.h	/^  DWORD size;            \/\/ø?ø?ø?ø?ø?ø?ø?ø?(ø?ø?ø?ø?ø?ø?ø?ø?ø?ø?ø?ø?ø?ø?ø?ø?ø?ø?)$/;"	m	struct:ROOT
+size	system.h	/^  DWORD size;           \/\/ø?ø?ø?ø?ø?$/;"	m	struct:FONTSET
+size	system.h	/^  DWORD size;           \/\/ø?ø?ø?ø?ø?$/;"	m	struct:OBJECT
+size	system.h	/^  DWORD size;           \/\/ø?ø?ø?ø?ø?ø?ø?ø?(ø?ø?ø?ø?ø?ø?ø?ø?ø?ø?ø?ø?ø?ø?ø?ø?ø?ø?)$/;"	m	struct:CHAPTER
+size	system.h	/^  DWORD size;           \/\/ø?ø?ø?ø?ø?ø?ø?ø?(ø?ø?ø?ø?ø?ø?ø?ø?ø?ø?ø?ø?ø?ø?ø?ø?ø?ø?)$/;"	m	struct:LEAF
+size	system.h	/^  DWORD size;           \/\/ø?ø?ø?ø?ø?ø?ø?ø?ø?ø?(ø?ø?ø?ø?ø?ø?ø?ø?ø?ø?ø?ø?ø?ø?ø?ø?ø?ø?)$/;"	m	struct:REGION
+size_door	ledapi.c	/^int size_door = 24;$/;"	v
+size_not_door	ledapi.c	/^int size_not_door = 16;$/;"	v
+speed	system.h	/^  BYTE        speed;      \/\/ø?ø?ø?ø?$/;"	m	struct:WINDOWS
+srcAddr	packet.h	/^  BYTE   srcAddr;$/;"	m	struct:PKG_HEADER
+srcAddr	packet.h	/^  BYTE   srcAddr;$/;"	m	struct:PKG_HEADER_EX
+start_addr	api.h	/^	u16 start_addr;$/;"	m	struct:Command
+start_cmd	reader.h	/^	Mbyte start_cmd;$/;"	m	struct:Reader
+status	tcpcommon.h	/^	int status;$/;"	m	struct:connection
+stopMethod	system.h	/^  BYTE        stopMethod; \/\/ø?ø?ø?ø?$/;"	m	struct:STRING
+stopMethod	system.h	/^  BYTE        stopMethod; \/\/ø?ø?ø?ø?$/;"	m	struct:WINDOW
+stopSpeed	system.h	/^  WORD        stopSpeed;  \/\/ø?ø?ø?ø?(ø?ø?ø?ø?ø?ø?ø?ø?ø?ø?ø?ø?ø?)$/;"	m	struct:STRING
+stopSpeed	system.h	/^  WORD        stopSpeed;  \/\/ø?ø?ø?ø?(ø?ø?ø?ø?ø?ø?ø?ø?ø?ø?ø?ø?ø?)$/;"	m	struct:WINDOW
+stop_cmd	reader.h	/^	Mbyte stop_cmd;$/;"	m	struct:Reader
+stop_command	serial.c	/^const char stop_command[8] = command_1;$/;"	v
+stoptime	system.h	/^  DWORD       stoptime;   \/\/ø?ø?ø?ø?$/;"	m	struct:STRING
+stoptime	system.h	/^  DWORD       stoptime;   \/\/ø?ø?ø?ø?$/;"	m	struct:WINDOW
+stopx	system.h	/^  long        stopx;      \/\/ø?ø?ø?ø?$/;"	m	struct:STRING
+stopx	system.h	/^  long        stopx;      \/\/ø?ø?ø?ø?$/;"	m	struct:WINDOW
+str_assign_value	basic_func.c	/^int str_assign_value(char * str_from,char * str_to,int len)$/;"	f
+str_equal	basic_func.c	/^bool str_equal(unsigned char * str_1,unsigned char * str_2,int len)$/;"	f
+str_get_sub_string	basic_func.c	/^bool str_get_sub_string(char * buf,char * des,int *len,char end_c)$/;"	f
+str_start_with	basic_func.c	/^bool str_start_with(unsigned char * substr,int substrlen,unsigned char * line,int linelen)$/;"	f
+struct_get_tags_s	common_sz.h	/^typedef struct struct_get_tags_s$/;"	s
+struct_old_passed_obj_s	common_sz.h	/^typedef struct struct_old_passed_obj_s$/;"	s
+struct_operate_info_s	common_sz.h	/^typedef struct struct_operate_info_s$/;"	s
+survive	system.h	/^  long  survive;         \/\/ø?ø?ø?ø?ø?ø?$/;"	m	struct:ROOT
+tag	api.h	/^struct tag{$/;"	s
+tag_count	api.h	/^	u16 tag_count;$/;"	m	struct:tag
+tag_handle_on_recevied	response.h	/^typedef int (*tag_handle_on_recevied)(struct tag* tag);$/;"	t
+tail	linklist.h	/^	struct listnode *tail;$/;"	m	struct:list	typeref:struct:list::listnode
+tid	api.h	/^	u8 tid[MAX_TID_LEN];$/;"	m	struct:tag
+tid	common_sz.h	/^    char tid[20];$/;"	m	struct:struct_get_tags_s
+time	common_sz.h	/^    long time;$/;"	m	struct:struct_old_passed_obj_s
+time	system.h	/^  DWORD time;           \/\/ø?ø?ø?ø?ø?ø?$/;"	m	struct:LEAF
+time	system.h	/^  DWORD time;$/;"	m	struct:CHAPTER
+time	system.h	/^  long time;$/;"	m	struct:TIMESTAMP
+time_of_update_list	common_sz.h	/^int time_of_update_list;$/;"	v
+timeoffset	system.h	/^  long        timeoffset;    \/\/ø?ø?ø?ø?ø?(ø?ø?)$/;"	m	struct:DCLOCK
+token	api.h	/^	u32 token;$/;"	m	struct:Command
+top	system.h	/^  long   top;								\/\/+4+4+4+4=52$/;"	m	struct:BOARDPARAM
+top	system.h	/^  long top;$/;"	m	struct:_RECT
+total_count	threads_sz.c	/^unsigned int total_count=0;$/;"	v
+totime	system.h	/^  TTimeStamp  totime;$/;"	m	struct:DCLOCK
+totime	system.h	/^  TTimeStamp totime;    \/\/ø?ø?ø?ø?$/;"	m	struct:CHAPTER
+transparent	system.h	/^  BYTE  transparent;    \/\/ø?ø?ø?ø?$/;"	m	struct:OBJECT
+type	argument.h	/^	u16 type;$/;"	m	struct:arg_header
+type	message.h	/^	char type;$/;"	m	struct:msg_header
+type	message.h	/^	char type;$/;"	m	struct:msg_headerA
+type	message.h	/^	char type;$/;"	m	struct:msg_headerB
+type	reader.h	/^	int type;$/;"	m	struct:ReaderConfig
+type	reader.h	/^	int type;$/;"	m	struct:ReaderEvent
+type	system.h	/^  WORD        type;$/;"	m	struct:DCLOCK
+type	system.h	/^  WORD   type;$/;"	m	struct:BOARDPARAM
+u16	common.h	/^typedef unsigned short u16;$/;"	t
+u32	common.h	/^typedef unsigned int u32;$/;"	t
+u64	common.h	/^typedef unsigned long long u64;$/;"	t
+u8	common.h	/^typedef unsigned char u8;$/;"	t
+ua_size	api.h	/^	int ua_size;$/;"	m	struct:tag
+uart	system.h	/^  DWORD  uart;								\/\/+2+2+2+2+4+4=16$/;"	m	struct:BOARDPARAM
+unicode_gb2312	ChangeChar.c	/^int unicode_gb2312(char *inbuf, int inlen, char *outbuf, int outlen)$/;"	f
+value1	reader.h	/^	int value1;$/;"	m	struct:ReaderEvent
+value2	reader.h	/^	int value2;$/;"	m	struct:ReaderEvent
+version	message.h	/^	char version;$/;"	m	struct:msg_header
+version	message.h	/^	char version;$/;"	m	struct:msg_headerA
+version	message.h	/^	char version;$/;"	m	struct:msg_headerB
+videoID	socket_client.h	/^    unsigned char videoID;$/;"	m	struct:TPlateInfo_my
+wait	system.h	/^  WORD  wait;           \/\/ø?ø?ø?ø?ø?ø?ø?ø?(=1ø?ø?; =0ø?ø?ø?ø?ø?)$/;"	m	struct:CHAPTER
+wait	system.h	/^  WORD  wait;           \/\/ø?ø?ø?ø?ø?ø?ø?ø?(=1ø?ø?; =0ø?ø?ø?ø?ø?)$/;"	m	struct:LEAF
+week	system.h	/^  WORD  week;           \/\/ø?ø?ø?ø?ø?ø?ø?ø?ø?$/;"	m	struct:CHAPTER
+white_list	common_sz.h	/^    unsigned char white_list[MAX_WHITELIST_NUM][TID_LEN+2+CAR_NUM_LEN];$/;"	m	struct:white_list_s
+white_list_num	common_sz.h	/^    int white_list_num;$/;"	m	struct:white_list_s
+white_list_path	common_sz.h	/^int white_list_path[100];$/;"	v
+white_list_s	common_sz.h	/^typedef struct white_list_s$/;"	s
+width	system.h	/^  WORD   width;$/;"	m	struct:BOARDPARAM
+width	system.h	/^  WORD  width;          \/\/ø?ø?ø?ø?$/;"	m	struct:FONTSET
+width	system.h	/^  long   width;         \/\/ø?ø?ø?ø?$/;"	m	struct:PIXELS
+width_door	ledapi.c	/^int width_door = 128;$/;"	v
+width_not_door	ledapi.c	/^int width_not_door = 96;$/;"	v
+wins	LedUtils.c	/^PWindows wins=NULL;$/;"	v
+workmode	reader.h	/^	int workmode;$/;"	m	struct:ReaderConfig
+write_cmd	reader.h	/^	Command write_cmd;$/;"	m	struct:Reader
+write_pos	common_sz.h	/^    unsigned int write_pos;$/;"	m	struct:send_info_s
+write_status	api.h	/^	int write_status;$/;"	m	struct:tag
+wzTyep	socket_client.h	/^    unsigned char wzTyep;$/;"	m	struct:TPlateInfo_my
+yearoffset	system.h	/^  long        yearoffset;    \/\/ø?ø?ø?ø?$/;"	m	struct:DCLOCK

@@ -18,12 +18,22 @@ bool check_right(char * rights,char * car_right)
 }
 
 // white_list
+/* --------------------------------------------------------------------------*/
+/**
+ * @功能  查询白名单
+ *
+ * @参数 tid  TID字符串
+ *
+ * @返回值 >=0 白名单索引  -1 未查找到 
+ */
+/* ----------------------------------------------------------------------------*/
 int get_index_by_tid(char * tid)
 {
     int index = -1,i = 0;
     for (i = 0;i < g_white_list->white_list_num; i++)
     {
-        if (str_equal(tid,g_white_list->white_list[i],TID_LEN))
+        //if (str_equal(tid,g_white_list->white_list[i],TID_LEN))
+        if (strncmp(tid,g_white_list->white_list[i],TID_LEN)==0)
         {
             index = i;
             break;

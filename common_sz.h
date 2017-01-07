@@ -14,7 +14,7 @@
 
 #define TID_LEN 16              // TID\u5b57\u8282\u6570
 #define TAG_NUM_MAX  100
-#define TAG_OLD_PASSED_MAX  10 //max history passed list 
+#define TAG_OLD_PASSED_MAX  1000 //max history passed list 
 #define MAX_WHITELIST_NUM 3000  // \u767d\u540d\u5355\u6700\u5927\u6570\u91cf
 #define MAX_TEMPCARLIST_NUM 500
 #define CAR_NUM_LEN 13          // \u8f66\u724c\u53f7\u5b57\u8282\u6570
@@ -51,12 +51,15 @@ typedef struct struct_get_tags_s
 {
     char tid[20];
     char ant_num;
+	int  count;
 }TAGOBJ,*PTAGOBJ;
 
 typedef struct struct_old_passed_obj_s
 {
-    char TID[TID_LEN];
-    long time;
+    char TID[20];
+	int  ant_num;
+    unsigned long long time;
+	int  used;
 }OLDPASSEDOBJ,*POLDPASSEDOBJ;
 
 // per gate info
@@ -134,8 +137,10 @@ PSHOWCAMERA g_show_camera;
 
 //for filter
 PTAGOBJ g_tags_array;
+int     g_tags_array_count;
 char *g_tag_flag;
 POLDPASSEDOBJ g_old_passed_array;
+//int           g_old_passed_array_count;
 PLED_SHOW_LIST g_led_show_list;
 
 

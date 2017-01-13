@@ -2,7 +2,7 @@
 
 C := gcc
 CFLAGS =  -I../lib -c -g -O2 -Wall
-EXEFLAGS = -L ./ -L/lib  -lreader -lpthread
+EXEFLAGS = -L ./ -L/lib  -lreader -lpthread -lsqlite3
 
 
 

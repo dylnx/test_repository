@@ -7,6 +7,7 @@
 #include "serial.h"
 #include "gpio.h"
 #include "cond_thread.h"
+#include "whitelist.h"
 #include "logfile.h"
 
 bool initial(void);
@@ -28,6 +29,9 @@ int main(void)
 
     //init gpio
     init_gpio();
+
+	// Init the whitelist 
+	WhiteListDatabaseInit();
 	
     // Init the pass record log file
     InitPassRecordLogFile();

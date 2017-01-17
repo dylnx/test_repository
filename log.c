@@ -1,16 +1,10 @@
-//#include <stdio.h>
-//#include <stdlib.h>
-//#include <stdarg.h>
-//#include <sys/types.h>
-//#include <syslog.h>
-//#include <time.h>
 #include "log.h"
 #include <unistd.h>
 #define DEFAULT_LOG_SIZE 20*1024*1024
 #define MAX_LOG_SIZE 50*1024*1024
 
 int log_file_size;
-pthread_mutex_t mtx_print_log = PTHREAD_MUTEX_INITIALIZER;
+//pthread_mutex_t mtx_print_log = PTHREAD_MUTEX_INITIALIZER;
 long filesize(FILE *stream)
 {
    long curpos,length;
@@ -26,27 +20,23 @@ long filesize(FILE *stream)
 FILE * open_log_file(char *path)
 {
     FILE *file;
-
-    char buffer[512] = {0};  
-/*
-    if(false == mtx_init_flag){ 
-        pthread_mutex_init(&mtx_print_log,NULL);
-        mtx_init_flag = true;
-        printf("pthread_mutex_init excute!!!!!!!!!!!!!\n");
+    if( NULL == path ){
+	return NULL;
     }
-*/
+    
     file = fopen(path,"a+");
     if( NULL == file ){
 	fclose(file);
 	return NULL;
     }
+
     return file;
 }
 
 void close_log_file(FILE *file)
 {	
     if(NULL != file){
-	fclose(file);
+      fclose(file);
     }
 }
 
@@ -83,10 +73,6 @@ void print_log(FILE *file,const char *ms, ... )
 	log_file_size = DEFAULT_LOG_SIZE;	
        
     if( cur_file_size > log_file_size ){
-
-        printf("******************************************\n");
-        printf("******************************************\n");
-        printf("******************************************\n");
 
         path = (unsigned char *)calloc(512,sizeof(unsigned char));
         usleep(5*1000);

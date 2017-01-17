@@ -5,6 +5,7 @@
 #include "tcpcommon.h"
 
 #define CONNECT_TIMEOUT 500 //ms 500ms is default value
+#define RECV_TIMEOUT 10000 //ms 10s is default value
 
 // 创建主动连接
 MConn create_connect(const char* ip, int port, int timeout);

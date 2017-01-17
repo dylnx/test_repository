@@ -11,27 +11,17 @@
 #include<fcntl.h>      
 #include<termios.h>    
 #include<errno.h>      
-
-
 #include <signal.h>
 #include <sys/types.h>
 #include <unistd.h>
 
-#define OK  0
-#define ERROR -1
-#define NOSIGNAL -2
-#define ANTNUMERROR -3
 
 list result;
 
 void before_fork_kill();
 
-extern reader_t * reader = NULL;
-
-long int newest_open_time = 0;
-long int last_heart_time = 0;
-unsigned int total_count=0;
-long int flag_count =0;
+unsigned long long  last_heart_time = 0;
+unsigned long long  last_signal_time = 0;
 
 int ConnectionReader();
 int CheckLandInduction(int *whitchInduction);
@@ -47,17 +37,20 @@ FunctionDescription:
 int ConnectionReader()
 {
 	int retVal=0;
-	time_t tt = 0;
-	struct tm *local = NULL;
+        struct   timeval    timeval;
 
 	while(1)
 	{
-		close_reader(reader);		
+                if( 0 != reader){
+		   close_reader(reader);		
+                   reader = 0;
+                }
+
 		usleep(100);
 
 		reader = new_reader(reader_ip,reader_port);
 
-		if(reader!=NULL){
+		if(0 != reader){
 			set_reader_param(reader,PARAM_PROTOCOL,PROTOCOL_ISO6C);
 			set_reader_param(reader,PARAM_READMODE,READMODE_LOWSPEED);
 			set_reader_param(reader,PARAM_FREQMODE,FREQ_DYN);
@@ -77,19 +70,20 @@ int ConnectionReader()
 				usleep(100*1000);
 				continue;
 			}else{
+				sleep(4);//等待射频模块启动中...
 				print_log(f_sysinit,"connected reader successfully!!!");
-				sleep(4);
-				tt = time(NULL);
-				local = localtime(&tt);
-				last_heart_time = local->tm_hour * 3600 + local->tm_min * 60 + local->tm_sec;
-				break;
+
+                                //连接成功后，初始last_heart)time时间，用于心跳判断条件
+                                gettimeofday(&timeval, NULL);
+                                last_heart_time = (unsigned long long)timeval.tv_sec;
+
+                                break;//连接一旦建立成功，即退出while循环
 			}
-		}
-		else{
+		}else{
 			print_log(f_sysinit,"new_reader() NULL\n!");
 			usleep(500*1000);
 			continue;
-		}
+		     }
 	} // end of while(.....
 
 	return OK;
@@ -97,155 +91,132 @@ int ConnectionReader()
 
 int CheckLandInduction(int *whitchInduction)
 {
-	int heart_ret=0,retVal=0;
-	time_t newest_tt = 0;
-	struct tm *newest_local = NULL;
-	long int cur_time = 0;
-	unsigned int gpio8Val,gpio10Val;
+	int heart_ret=0;
+        int retVal=0;
 
-	gpio8Val = 0;
-	gpio10Val= 0;
+	unsigned long long  cur_heart_time = 0;
+        unsigned long long  cur_signal_time = 0;
+
+        struct   timeval    timeval;
+
+	unsigned int gpio8Val  = 0;
+        unsigned int gpio10Val = 0;
+
 
 	//keep heart alive...
+
 	heart_ret = keep_heart(reader);
 	if( 0 == heart_ret ){
-		newest_tt = time(NULL);
-		newest_local = localtime(&newest_tt);
-		last_heart_time = newest_local->tm_hour * 3600 + newest_local->tm_min * 60 + newest_local->tm_sec;
+
+            //心跳正常记录心跳发生时间
+	    gettimeofday(&timeval, NULL);
+	    last_heart_time = (unsigned long long)timeval.tv_sec;
+
 	}else{
-		newest_tt = time(NULL);
-		newest_local = localtime(&newest_tt);
-		cur_time = newest_local->tm_hour * 3600 + newest_local->tm_min * 60 + newest_local->tm_sec;
-		if ( cur_time < last_heart_time )
-			cur_time += 24 * 3600;
-		int open_time = cur_time - last_heart_time;
-		if( open_time > 45){
-			// ConnectionReader();
-		}
+
+	        gettimeofday(&timeval, NULL);
+	        cur_heart_time = (unsigned long long)timeval.tv_sec;
+                //判断心跳是否超时(60秒)，超时则重连读写器
+                if( (cur_heart_time - last_heart_time) >60 ){
+                    //心跳超时处理
+                    /*
+		    print_log(f_error,"ERROR!!! heart timeout, reconnect the reader!!!\n!");
+	            ConnectionReader();
+		    */
+                }
 
 	}
-	get_gpio(GPIO8,&gpio8Val);
-	get_gpio(GPIO10,&gpio10Val);
 
+        //获取入口车道地感状态
+	get_gpio(GPIO8,&gpio8Val);
+
+        //获取出口车道地感状态
+	get_gpio(GPIO10,&gpio10Val);
+        
+        //如果任一车道地感有信号
 	if( 1== gpio8Val|| 1 == gpio10Val )
 	{
-		retVal = OK;	
+		retVal = SIGNAL;	
 		if( 1 == gpio8Val )
-			whitchInduction[0] = 1;//NO.1 induction have signal          
-		print_log(f_misc_running,"gpio8Val=%d\n!!!",gpio8Val);
+                      
+                   //记录入口车道地感为有信号状态
+		   whitchInduction[0] = 1;    
+		   print_log(f_misc_running,"gpio8Val=%d\n!!!",gpio8Val);
 
 		if( 1 == gpio10Val)
-			whitchInduction[1] = 2;//NO.2 induction have signal          
-		print_log(f_misc_running,"gpio10Val=%d\n!!!",gpio10Val);
+                   //记录出口车道地感为有信号状态
+		   whitchInduction[1] = 2;//NO.2 induction have signal          
+		   print_log(f_misc_running,"gpio10Val=%d\n!!!",gpio10Val);
 
 	}else{
 		retVal = NOSIGNAL;
 	}
 
 
-	if( OK == retVal )
+	if( SIGNAL == retVal )
 	{
-		// have signal, no error; may be 0 or 100 card,
-		newest_tt = time(NULL);
-		newest_local = localtime(&newest_tt);
-		newest_open_time = newest_local->tm_hour * 3600 + newest_local->tm_min * 60 + newest_local->tm_sec;
+	        gettimeofday(&timeval, NULL);
+	        last_signal_time = (unsigned long long)timeval.tv_sec;
 	}else if( NOSIGNAL == retVal )
 	{
-		newest_tt = time(NULL);
-		newest_local = localtime(&newest_tt);
-		cur_time = newest_local->tm_hour * 3600 + newest_local->tm_min * 60 + newest_local->tm_sec;
-		if (cur_time < newest_open_time)
-			cur_time += 24 * 3600;
-		int open_time = cur_time - newest_open_time;
+	        gettimeofday(&timeval, NULL);
+	        cur_signal_time = (unsigned long long)timeval.tv_sec;
 
-
-		if ( open_time > inductor_signal_keep_time )
+		if ( (cur_signal_time - last_signal_time) > inductor_signal_keep_time )
 		{
-			pthread_mutex_lock(&g_operate_info->mutex_operate_info);
-			memset(g_operate_info->operate_info,0,MAX_OPERATE_INFO_NUM * sizeof(STRUCT_OPERATE_INFO));
-			g_operate_info->cur_operate_num = 0;
-			pthread_mutex_unlock(&g_operate_info->mutex_operate_info);
-
-			//print_log("TIME OUT!!!CheckLandInduction() open_time > inductor_signal_keep_time!!\n!!!");
-			//printf("TIME OUT!!!CheckLandInduction() open_time > inductor_signal_keep_time!!\n!!!");
-
-			//after inductior_signal_keep_time seconds,let inductions reset to no singl status for next.
-			//printf("before 30 seconds, whitchInduction[0]=%d,whitchInduction[1]=%d\n",whitchInduction[0],whitchInduction[1]);
+                        //超过延读时间后清除入口车道地感状态
 			whitchInduction[0]=0;
-			whitchInduction[1]=0;
-			//printf("after 30 seconds, whitchInduction[0]=%d,whitchInduction[1]=%d\n",whitchInduction[0],whitchInduction[1]);
 
-			return NOSIGNAL;
-		}else{
+                        //超过延读时间后清除出口车道地感状态
+			whitchInduction[1]=0;
+
+		}else{//在延读时间范围内,地感视为有信号状态，并暂存相应车道地感状态
 			//printf("open_time < inductor_signal_keep_time!!open_time=%d\n",open_time);
-			return OK;
+                        retVal = SIGNAL;
 		}
 	}
-	return OK;
+	return retVal;
 }
 
 void ThreadMonitorCapDeal(void)
 {
 	int retVal = 0;
+        reader = NULL;
+
+        //定义并初始化车道地感信号变量
 	int whitchInduction[2] = {0,0};
 
 	ConnectionReader();
+
+
 	while(1)
 	{
-		retVal = CheckLandInduction(whitchInduction);
-		if( OK == retVal )
+	       retVal = CheckLandInduction(whitchInduction);
+                
+		if( SIGNAL == retVal )
 		{
 
 			retVal = GetTagsAndDeal(whitchInduction);
 			if( ERROR == retVal ){
 
-				//send_reboot1(reader);
-				ConnectionReader(reader);
+			    ConnectionReader();
 
-			}else if( OK == retVal ){
+			}else if( SUCCESS == retVal ){
 
-				usleep(200*1000);
+			       usleep(200*1000);
 
-			}else if( ANTNUMERROR == retVal ){
-
-				continue;
 			}
-		}else if( NOSIGNAL == retVal ){
 
-			//NO SIGNAL
+		}else if( NOSIGNAL == retVal ){
 			usleep(200000);
 			continue;
 		}else if( ERROR == retVal ){
-			ConnectionReader(reader);
+			ConnectionReader();
 		}
+
 	}//endof while(.....
 }
 
-int  GetRawArrayFlag(TAGOBJ rawTags[],int rawLen,char *flag)
-{
-	int i,j;
-	for( i=0; i<rawLen; i++ )
-	{
-		for( j=i+1; j<rawLen; j++ )
-		{
-			if(0 == flag[j])
-				continue;
-			if( !strncmp(g_tags_array[i].tid,g_tags_array[j].tid,TID_LEN) ){
-				flag[j]=0;
-			}else{
-				flag[j]=1;
-			}
-		}
-	}//end for for( i=0...
-
-	/*
-	   for(i=0;i<rawLen;i++)
-	   {
-	   printf("+g_tag_flag[%d]=%d\n",i,flag[i]);
-	   }
-	   */
-	return 0;
-}
 
 /* --------------------------------------------------------------------------*/
 /**
@@ -256,7 +227,6 @@ int  GetRawArrayFlag(TAGOBJ rawTags[],int rawLen,char *flag)
  * @返回值   true 车辆在6s内数据已发现  false 车辆在6s内数据没有发现
  */
 /* ----------------------------------------------------------------------------*/
-//bool FilterTags(STRUCT_OPERATE_INFO *opt_info,POLDPASSEDOBJ _old_passed_array)
 bool FilterTags(STRUCT_OPERATE_INFO *opt_info)
 {
 	unsigned long long cur_time = 0;
@@ -264,11 +234,7 @@ bool FilterTags(STRUCT_OPERATE_INFO *opt_info)
 	int    i = 0;
 	int    isFound = 0;
 	int    isTimeError =0;
-//	time_t tt = 0;
-//	struct tm *local = NULL;
 
-	//tt = time(NULL);
-	//local = localtime(&tt);
 	struct timeval    timeval;
 	gettimeofday(&timeval, NULL);
 	cur_time = (unsigned long long)timeval.tv_sec*1000000 + (unsigned long long)timeval.tv_usec;
@@ -348,6 +314,7 @@ bool FilterTags(STRUCT_OPERATE_INFO *opt_info)
 		{
 			g_old_passed_array[sel].used = 1;
 			strcpy(g_old_passed_array[sel].TID, opt_info->TID);
+                        g_old_passed_array[sel].ant_num = opt_info->ant_num;
 			g_old_passed_array[sel].time = cur_time;
 			return true;
 		}
@@ -491,50 +458,32 @@ int GetTagsAndDeal(int *whitchInduction)
 	int retVal = 0;
 	listnode node;
 	int cards_num = 0;
-	int raw_cnt;
 	int n_gate_index = 0xffff;
 	int induction = 0;
+        struct   timeval    timeval;
 
 	list result;
 	result = list_new();
-	retVal = start_read_without_signal(reader,result);
 
+        //记录读标签操作当前时间，用于心跳判断条件
+        gettimeofday(&timeval, NULL);
+        last_heart_time = (unsigned long long)timeval.tv_sec;
+
+	retVal = start_read_without_signal(reader,result);
 
 	memset(g_tags_array,0,sizeof(TAGOBJ) * TAG_NUM_MAX);   
 	g_tags_array_count = 0;
-	memset(g_tag_flag,1,sizeof(char) * TAG_NUM_MAX);   
-	if (retVal == ERROR)
+
+	if ( ERROR == retVal)
 	{
 		print_log(f_error,"start_read_without_signal() ERROR\n!");
 		return ERROR;
 	}
 
-	i=0; 
+
 	FOR_EACH(node, result)
 	{
-		struct tag* tag = (struct tag*)getdata(node);
-		/*  地感 对应天线的数据 */
-		//		if( 1 == whitchInduction[0] && 2 == whitchInduction[1] ){
-		//			//do nothing
-		//		}else{
-		//
-		//			if( 1 == whitchInduction[0]){
-		//				induction = whitchInduction[0]; 
-		//			}else if(2 == whitchInduction[1] ){
-		//				induction = whitchInduction[1]; 
-		//			}
-		//
-		//			if(0 != induction){
-		//
-		//				if(tag->antenna_id != induction){
-		//					strcpy(tag->tid,"");
-		//					free(tag);
-		//					continue;
-		//				}
-		//
-		//			}
-		//
-		//		}//end for if( 1 == whitchInduction[0...... 
+	        struct tag* tag = (struct tag*)getdata(node);
 
 		//判断标签数据有效性
 		if( tag->antenna_id <0 || tag->antenna_id > 4 || 
@@ -544,22 +493,27 @@ int GetTagsAndDeal(int *whitchInduction)
 			continue;
 		}
 
+	/*  地感 对应天线的数据 */
+  	       if( 1 == whitchInduction[0] && 2 == whitchInduction[1] ){
+			//do nothing
+		}else{
+		
+		  if( 1 == whitchInduction[0]){
+			induction = whitchInduction[0]; 
+		  }else if(2 == whitchInduction[1] ){
+			induction = whitchInduction[1]; 
+		  }
+	
+		  if(0 != induction){
+			if(tag->antenna_id != induction){
+				strcpy(tag->tid,"");
+				free(tag);
+				continue;
+		        }
+		   }
+		
+		}//end for if( 1 == whitchInduction[0...... 
 
-		//if(strcmp(tag->tid,""))
-		//{
-		//valid the ant
-		//	switch(tag->antenna_id)
-		//	{
-		//		case 1:
-		//		case 2:
-		//		case 3:
-		//		case 4:
-		//			break;
-		//		default:
-		//			print_log(f_misc_running,"ant id is error!\n");
-		//			free(tag);
-		//			continue;                    
-		//	}
 
 		// 过滤标签
 		int j;	
@@ -567,7 +521,7 @@ int GetTagsAndDeal(int *whitchInduction)
 		for( j=0; j<g_tags_array_count; j++)
 		{
 			if( g_tags_array[j].ant_num == tag->antenna_id && 
-					strcmp(g_tags_array[j].tid, tag->tid )==0 )
+				strcmp(g_tags_array[j].tid, tag->tid )==0 )
 			{
 				g_tags_array[j].count++;
 				isFound = 1;
@@ -575,29 +529,24 @@ int GetTagsAndDeal(int *whitchInduction)
 		}
 		if( isFound == 0 )
 		{
-			strcpy(g_tags_array[i].tid, tag->tid);
-			g_tags_array[i].ant_num = tag->antenna_id;
-			g_tags_array[i].count = 1;
+			strcpy(g_tags_array[g_tags_array_count].tid, tag->tid);
+			g_tags_array[g_tags_array_count].ant_num = tag->antenna_id;
+			g_tags_array[g_tags_array_count].count = 1;
 			g_tags_array_count++;
 			print_log(f_misc_running,"tag->antenna_id=%d\n!",tag->antenna_id);
 			print_log(f_misc_running,"tag->tid=%s\n!",tag->tid);
 		}
-		i++;	
 		free(tag);
 	}
 
 	list_delete(result);
-	//	raw_cnt = g_tags_array_count;
-	////////////////////////////////////////////////////////////////////////////////// 
 
-	//printf("raw_cnt = %d\n",raw_cnt);	
+	////////////////////////////以上是初步过滤标签完成////////////////////////////////////////////////// 
+
 	if( g_tags_array_count >= TAG_NUM_MAX )
 	{
 		g_tags_array_count = TAG_NUM_MAX;
 	}
-
-	//the first filter 
-	//	GetRawArrayFlag(g_tags_array,raw_cnt,g_tag_flag);
 
 
 	memset(g_operate_info->operate_info,0,MAX_OPERATE_INFO_NUM * sizeof(STRUCT_OPERATE_INFO));
@@ -607,13 +556,8 @@ int GetTagsAndDeal(int *whitchInduction)
 
 	for( i=0;i<g_tags_array_count;i++ )
 	{
-		//printf("g_tag_flag[%d]=%d\n",i,g_tag_flag[i]);
-		//	if( g_tag_flag[i] == 1 )
-		//		if( g_tag_array[i].count  )
-		//		{
-
 		pthread_mutex_lock(&g_white_list->mutex_white_list);
-		//int k = get_index_by_tid(g_operate_info->operate_info[g_operate_info->cur_operate_num].TID);
+
 		int k = get_index_by_tid(g_tags_array[i].tid);
 		pthread_mutex_unlock(&g_white_list->mutex_white_list);
 
@@ -624,37 +568,27 @@ int GetTagsAndDeal(int *whitchInduction)
 
 			strcpy( operate->TID, g_tags_array[i].tid);
 			operate->ant_num = g_tags_array[i].ant_num;
-			n_gate_index = get_gate_index(operate->ant_num);// * zhanghong 获取门号 不确定 *//
 
-			//str_assign_value(g_tags_array[i].tid,g_operate_info->operate_info[g_operate_info->cur_operate_num].TID,TID_LEN);   
-			//g_operate_info->operate_info[g_operate_info->cur_operate_num].ant_num = g_tags_array[i].ant_num;    
-			//n_gate_index = get_gate_index(g_operate_info->operate_info[g_operate_info->cur_operate_num].ant_num);
+			n_gate_index = get_gate_index(operate->ant_num);// * zhanghong 获取门号 不确定 *//
 			if( -1 == n_gate_index )
 			{
 				print_log(f_error,"gate_index is error!\n");
 				continue;
 			}
+
 			operate->gate_index = n_gate_index;
 			operate->gate_id = gates[n_gate_index].gate_id;
 			operate->io_type = gates[n_gate_index].gate_type;
 
-			//g_operate_info->operate_info[g_operate_info->cur_operate_num].gate_index = n_gate_index;
-			//g_operate_info->operate_info[g_operate_info->cur_operate_num].gate_id = gates[n_gate_index].gate_id;
-			//g_operate_info->operate_info[g_operate_info->cur_operate_num].io_type = gates[n_gate_index].gate_type;
 
 			pthread_mutex_lock(&g_white_list->mutex_white_list);
+
 			char * p = g_white_list->white_list[k];
 			strcpy(operate->car_num, p+TID_LEN+2);  
 			strncpy(operate->card_type, p+TID_LEN, 2);
-			//				str_assign_value(g_white_list->white_list[k]+TID_LEN+2,g_operate_info->operate_info[g_operate_info->cur_operate_num].car_num,CAR_NUM_LEN);
-			//				str_assign_value(g_white_list->white_list[k]+TID_LEN,g_operate_info->operate_info[g_operate_info->cur_operate_num].card_type,2);
+
 			pthread_mutex_unlock(&g_white_list->mutex_white_list);
 
-			//				if(g_operate_info->operate_info[g_operate_info->cur_operate_num].io_type == 'i'){
-			//					g_operate_info->operate_info[g_operate_info->cur_operate_num].be_enter = true;
-			//				}else if(g_operate_info->operate_info[g_operate_info->cur_operate_num].io_type == 'o'){
-			//					g_operate_info->operate_info[g_operate_info->cur_operate_num].be_enter = true;
-			//				}
 			if ( operate->io_type == 'i' || operate->io_type == 'o' )
 			{
 				operate->be_enter = true;
@@ -666,31 +600,26 @@ int GetTagsAndDeal(int *whitchInduction)
 		else// 未找到
 		{
 			print_log(f_passed_failed,"TID:%s is not in the whitelist!!!\n",g_tags_array[i].tid);
-			return OK;
+			continue;
+		       //return OK;//一个BUG，如果在这里直接return,会导致后面记
+                       //录有符合白名单的车未进行比对(丢弃），程序进入下一次清点标签。
 		}
 
 
-		//}//end for if( g_tag_flag[i] == 1..... 
-
 	}//end for for( i=0;i<g_tags_array_count;i++.....
-
-
-	//printf("cur_operate_num = %d\n",g_operate_info->cur_operate_num);         
 
 
 	bool can_open = false;
 	for( i=0;i<g_operate_info->cur_operate_num;i++)
 	{
-
-		//bool FilterTags(STRUCT_OPERATE_INFO *opt_info,POLDPASSEDOBJ _old_passed_array)
-		can_open = FilterTags(&g_operate_info->operate_info[i]);// g_old_passed_array
+		can_open = FilterTags(&g_operate_info->operate_info[i]);
 		if( can_open ){
 
 			//add to Led List array to show 
 			if( !AddTagsToLedList(i) ){
 				print_log(f_error,"Error:AddTagsToLedList() faild!!\n");
 			}
-			//bool OpenDoor(int operate_index,OPENDOORMETHODTYPE openDoorMethodType,bool b_print_log)
+
 			if( !OpenDoor(i,RELAY,true) ){
 				print_log(f_error,"Error:OpenDoor() faild!!\n");
 			}//end for if( !OpenDoor(.....
@@ -698,20 +627,15 @@ int GetTagsAndDeal(int *whitchInduction)
 		}//end for if( can_open )....
 	}//end for for( i=0;i<cur_opera.....
 
+	return SUCCESS;
+}
 
-	return OK;
-	}
 
-
-#if 1
 	void ThreadLedShow(void* argument)
 	{
 		int i;
 		int  arg = *(int*)argument;
 
-
-
-#if 1
 		// init led
 		//g_led_show_list[arg].led_info_cur_num = 0;
 		//memset(g_led_show_list[arg].led_show_array,0,LED_SHOW_MAX_NUM * sizeof(LEDSHOWINFO));
@@ -743,9 +667,7 @@ int GetTagsAndDeal(int *whitchInduction)
 
 			sleep (1);
 		}
-#endif
 	}
-#endif
 
 
 	void ThreadInfoToServer(void)

@@ -24,7 +24,7 @@
 #define POSITION_LEN 2          // \u5b57\u7b26\u4e32\u5b57\u8282\u6570
 #define MAX_UNDEAL_CARD_NUM 10  //
 #define MAX_OPERATE_INFO_NUM 10 //
-#define MAX_SEND_INFO_NUM 100   //
+#define MAX_SEND_INFO_NUM 10   //
 #define LED_SHOW_MAX_NUM 10     //
 
 #define GPIO8 8
@@ -82,6 +82,15 @@ typedef enum openDoorMethodType
     RELAY 
 }OPENDOORMETHODTYPE;
 
+typedef enum statType
+{
+    SUCCESS,
+    ERROR,
+    SIGNAL,
+    NOSIGNAL,
+    TAGNOTFOUNT
+}STATTYPE;
+
 // for led show
 typedef struct led_show_info_s
 {
@@ -134,6 +143,8 @@ typedef struct show_camera_s
     int led_info_camera_num;
 }SHOWCAMERA,*PSHOWCAMERA;
 PSHOWCAMERA g_show_camera;
+
+int reader;
 
 //for filter
 PTAGOBJ g_tags_array;

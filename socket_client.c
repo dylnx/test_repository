@@ -1,21 +1,22 @@
 #include "common_sz.h"
+#include "tcputil.h"
 #include "socket_client.h"
 #include "basic_func.h"
 #include "log.h"
 
 #define TIME_OUT_TIME 10
 
-bool client_send_operinfo()
+//获取当前通行记录发送缓冲区数据量
+unsigned int get_sendbuf_count()
 {
-    int conn_ret;
-    unsigned int send_count;
     unsigned int read_pos;
     unsigned int write_pos;
+    unsigned int send_count;
 
     pthread_mutex_lock(&g_send_info->mutex_send_info);
+
     write_pos = g_send_info->write_pos;
     read_pos  = g_send_info->read_pos;
-    pthread_mutex_unlock(&g_send_info->mutex_send_info);
 
     if( write_pos >= read_pos){
         send_count = write_pos - read_pos;
@@ -23,10 +24,21 @@ bool client_send_operinfo()
         send_count = MAX_SEND_INFO_NUM - read_pos + write_pos;
     }
 
-    if(send_count <= 0){
-      return false;
-    }
+    pthread_mutex_unlock(&g_send_info->mutex_send_info);
 
+    if(send_count <= 0){
+       return 0;
+    }
+}
+
+bool client_send_operinfo()
+{
+    int conn_ret;
+    int s_count = 0; 
+    s_count = get_sendbuf_count();
+    if( 0 == s_count) return false; //当前无通行数据
+
+/*  不完善的代码
     int sock = socket(AF_INET,SOCK_STREAM,0);
     struct sockaddr_in service_addr;
     memset(&service_addr,0,sizeof(service_addr));
@@ -41,6 +53,24 @@ bool client_send_operinfo()
         print_log(f_sended_server,"client:thread_client:cann't connect server!!!\n");
         return false;
     }
+*/
+
+   /*
+	server_ip:从配制文件获取IP的全局变量
+	server_port:从配制文件获取PORT的全局变量
+        5000:建立连接超时时间
+
+   */
+   int sock = ConnectTcpServerNonBlock(server_ip,server_port,5000); 
+   if( -1 == sock ){
+        print_log(f_sended_server,"client cann't connect server!!!\n");
+	return false;
+	
+   }else if( -2 == sock ){
+        print_log(f_sended_server,"client connect server timeout!!!\n");
+	return false;
+   }
+
 
     // send info to service
     char send_buf[400];
@@ -52,7 +82,17 @@ bool client_send_operinfo()
 
 
     pthread_mutex_lock(&g_send_info->mutex_send_info);
-    for(i = 0; i < send_count; i++)
+
+    s_count = get_sendbuf_count();
+    if( 0 == s_count){
+       //一定要解锁
+       pthread_mutex_unlock(&g_send_info->mutex_send_info);
+
+       //当前无通行数据要发送
+       return false;     
+     }
+
+    for(i = 0; i < s_count; i++)
     {
         send_buf[i*39+1] = '$';
         send_buf[i*39+2] = g_send_info->send_info[g_send_info->read_pos].gate_id/10 + '0';
@@ -66,7 +106,7 @@ bool client_send_operinfo()
     }
     pthread_mutex_unlock(&g_send_info->mutex_send_info);
 
-    if( send_count > 0 )
+    if( s_count > 0 )
     {
        ret_num = send(sock,send_buf,396,MSG_WAITALL);
        if(ret_num>0){
@@ -81,7 +121,10 @@ bool client_send_operinfo()
     send_buf[0] = '4';
     ret_num = send(sock,send_buf,1,MSG_WAITALL);
     usleep(50000);
-    close(sock);
+
+    //有疑问，因为不确定当前协议发送
+    //缓冲中的数据是否已发完，这时关闭可能会丢数据
+    close(sock);    
     return true;
 }
 

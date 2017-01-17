@@ -1,10 +1,11 @@
 #include "pass_record.h"
 /*
 功能：将通行记录发送到后台服务端，并标记发送成功或失败状态
-参数：通行记录指针
+参数：sr 通行记录指针
+      flag 旧数据标志  1
 返回值：
 */
-int send_pass_record(struct SPassRecordLog *sr)
+int send_pass_record(struct SPassRecordLog *sr, int flag)
 {
         struct SPassRecordLog m_sr;
 	//参数校验
@@ -50,7 +51,7 @@ int send_pass_record(struct SPassRecordLog *sr)
 	int m_sret = 0;
 	m_sret = TcpSendData(sockfd,m_sbuff,m_len,10);
 	if( m_len!=m_sret ){
-		InsertPassPassRecordLog1(&m_sr);
+		InsertPassRecordLog1(&m_sr);
 		DisconnectTcpServer(sockfd);	
 		free(m_sbuff);
 
@@ -65,25 +66,29 @@ int send_pass_record(struct SPassRecordLog *sr)
 	m_rret = TcpRecvData(sockfd,m_rbuff,4,10000);	
 	if( 4 !=m_rret )
 	{
-		InsertPassPassRecordLog1(&m_sr);
-		DisconnectTcpServer(sockfd);	
-		free(m_sbuff);
 		print_log(f_sended_server,"ERROR:recv data failed,recv count less 4 Bytes!!!\n");
-		return -1;
+		goto send_failed;
 	}
 	if( m_rbuff[3]=='0')
 	{
-		InsertPassPassRecordLog1(&m_sr);
-		DisconnectTcpServer(sockfd);	
-		free(m_sbuff);
-		print_log(f_sended_server,"ERROR:server reponse no ok!!!\n");
-		return -1;
+		print_log(f_sended_server,"ERROR: response code 0!!!\n");
+		goto send_failed;
 	}
 	m_sr.m_Flag =0;
-	InsertPassPassRecordLog1(&m_sr);
+	if( flag == 0 )
+	{
+		InsertPassRecordLog1(&m_sr);
+	}
 	DisconnectTcpServer(sockfd);	
 	free(m_sbuff);
 	print_log(f_sended_server,"OK:send data successfully!!!\n");
 	return 0;
-
+send_failed:
+	if( flag == 0 )
+	{
+		InsertPassRecordLog1(&m_sr);
+	}
+	DisconnectTcpServer(sockfd);	
+	free(m_sbuff);
+	return -1;
 }

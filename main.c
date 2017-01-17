@@ -6,11 +6,16 @@
 #include "threads_sz.h"
 #include "serial.h"
 #include "gpio.h"
+#include "cond_thread.h"
+#include "logfile.h"
 
 bool initial(void);
 bool get_white_list(void);
 bool get_tempcar_list(void);
 int create_pidfile(const char *file);
+
+struct CondThread *g_PassRecordLogWriteFileThread;
+struct CondThread *g_PassRecordSendThread;
 
 int main(void)
 {
@@ -23,6 +28,16 @@ int main(void)
 
     //init gpio
     init_gpio();
+	
+    // Init the pass record log file
+    InitPassRecordLogFile();
+    g_PassRecordLogWriteFileThread = CreateCondThread(
+		PassRecordLogHandle);
+    ThreadRun(g_PassRecordLogWriteFileThread);
+
+    g_PassRecordSendThread = CreateCondThread(
+		PassRecordSendHandle);
+    ThreadRun(g_PassRecordSendThread);
 
     //init log
     f_sysinit = open_log_file("./log/sysinit.log");

@@ -5,6 +5,7 @@
 #include "ledapi.h"
 #include "gpio.h"
 #include "serial.h"
+#include "pass_record.h"
 #include<unistd.h>     
 #include<sys/types.h>
 #include<sys/stat.h>
@@ -413,20 +414,40 @@ bool OpenDoor(int operate_index,int openDoorMethodType,bool b_print_log)
 				set_gpio(14,0);
 			}//end for if( operate_info[.....
 
+			// 组装struct SPassRecordLog
+			STRUCT_OPERATE_INFO *op = &g_operate_info->operate_info[operate_index];
+			struct SPassRecordLog   log;
+			memset(&log, 0x00, sizeof(log));
+			memcpy(log.m_Tid, op->TID, 16);
+			time_t tt = time(NULL);
+			struct tm *local = localtime(&tt);
+			sprintf(log.m_Timestamp,"%04d/%02d/%02d %02d:%02d:%02d",  \
+					local->tm_year+1900,local->tm_mon+1,local->tm_mday,local->tm_hour, \
+					local->tm_min,local->tm_sec);
+			log.m_Channel = op->gate_id;
+			log.m_Direction = (op->io_type=='i')?0:1;
+			log.m_PassResult = 1;
+			
+			// fill the TimeStamp
+			unsigned long long nowtimestamp;
+			struct timeval  nowtime;
+			gettimeofday(&nowtime, NULL);
+			nowtimestamp = (unsigned long long)(nowtime.tv_sec*1000000L)
+						+ (unsigned long long)(nowtime.tv_usec);
+			log.m_Meta.m_TimeStamp[0] =  (nowtimestamp>>32);
+			log.m_Meta.m_TimeStamp[1] =  nowtimestamp&0xFFFFF;
+			
+			InsertPassRecordLog2(&log);// 发送数据
 
-			g_send_info->send_info[g_send_info->write_pos].gate_id  = g_operate_info->operate_info[operate_index].gate_id;
+			/*g_send_info->send_info[g_send_info->write_pos].gate_id  = g_operate_info->operate_info[operate_index].gate_id;
 			g_send_info->send_info[g_send_info->write_pos].be_enter = g_operate_info->operate_info[operate_index].be_enter;
 			memcpy(g_send_info->send_info[g_send_info->write_pos].TID,g_operate_info->operate_info[operate_index].TID,TID_LEN);
 
 
-			time_t tt = time(NULL);
-			struct tm *local = localtime(&tt);
-			sprintf(g_send_info->send_info[g_send_info->write_pos].operate_time,"%04d/%02d/%02d %02d:%02d:%02d",  \
-					local->tm_year+1900,local->tm_mon+1,local->tm_mday,local->tm_hour, \
-					local->tm_min,local->tm_sec);
 
 			g_send_info->write_pos++;
 			g_send_info->write_pos %= MAX_SEND_INFO_NUM;
+			*/
 
 			break;
 		default:

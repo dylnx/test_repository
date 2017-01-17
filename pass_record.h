@@ -21,6 +21,7 @@ struct SPassRecordLog
 	int          m_PassResult;//通行结果
 	int          m_Flag;//用于记录发送状态，1为发送成功，0为发送失败
 };
+int send_pass_record(struct SPassRecordLog *sr, int flag);
 
 #endif
 

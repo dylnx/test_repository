@@ -144,7 +144,7 @@ bool client_recv_whitelist1()
 	int         fd;
 	char        *recv_buff;
 	int          recv_buff_len;
-	ret = CreateTcpServerNonBlock(server_ip, server_port, 5000);
+	ret = ConnectTcpServerNonBlock(server_ip, server_port, 5000);
 	if( ret<=0 )
 	{
 		printf("Connect to Server[%s:%d] Failed\n", server_ip, server_port);

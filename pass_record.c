@@ -3,7 +3,7 @@
 功能：将通行记录发送到后台服务端，并标记发送成功或失败状态
 参数：sr 通行记录指针
       flag 旧数据标志  1
-返回值：
+返回值： -1 : 发送失败   0: 发送成功
 */
 int send_pass_record(struct SPassRecordLog *sr, int flag)
 {
@@ -18,22 +18,21 @@ int send_pass_record(struct SPassRecordLog *sr, int flag)
 
 	//尝试与服务器建立连接
 	int sockfd = ConnectTcpServerNonBlock(server_ip,server_port,5000);
-	if( sockfd >= 0 ){
-		print_log(f_sended_server,"ERROR:connected  server successfully!!!\n");
-		return sockfd;
-	}else if( -1 == sockfd ){
+	if( -1 == sockfd ){
 		print_log(f_sended_server,"ERROR:cann't connect server!!!\n");
 		return -1;
 	}else if( -2 == sockfd ){
 		print_log(f_sended_server,"ERROR:connect server timeout!!!\n");
 		return -1;
 	}
+	print_log(f_sended_server,"ERROR:connected  server successfully!!!\n");
 	
 	//申请临时缓冲区
 	unsigned char m_sbuff = (unsigned char*)calloc(1,4096);
 	unsigned char m_len;
 	if( NULL == m_sbuff ){
 		print_log(f_sended_server,"ERROR:calloc m_sbuff is NULL!!!\n");
+		DisconnectTcpServer(sockfd);	
 		return -1;
 	}
 
@@ -51,14 +50,11 @@ int send_pass_record(struct SPassRecordLog *sr, int flag)
 	int m_sret = 0;
 	m_sret = TcpSendData(sockfd,m_sbuff,m_len,10);
 	if( m_len!=m_sret ){
-		InsertPassRecordLog1(&m_sr);
 		DisconnectTcpServer(sockfd);	
-		free(m_sbuff);
-
 		print_log(f_sended_server,"ERROR:send data failed!!!\n");
-
 		return -1;
 	}
+	free(m_sbuff);
 
 	//接收server应签
 	unsigned char m_rbuff[6] = {0};
@@ -67,28 +63,16 @@ int send_pass_record(struct SPassRecordLog *sr, int flag)
 	if( 4 !=m_rret )
 	{
 		print_log(f_sended_server,"ERROR:recv data failed,recv count less 4 Bytes!!!\n");
-		goto send_failed;
+		DisconnectTcpServer(sockfd);	
+		return -1;
 	}
 	if( m_rbuff[3]=='0')
 	{
 		print_log(f_sended_server,"ERROR: response code 0!!!\n");
-		goto send_failed;
-	}
-	m_sr.m_Flag =0;
-	if( flag == 0 )
-	{
-		InsertPassRecordLog1(&m_sr);
+		DisconnectTcpServer(sockfd);	
+		return -1;
 	}
 	DisconnectTcpServer(sockfd);	
-	free(m_sbuff);
 	print_log(f_sended_server,"OK:send data successfully!!!\n");
 	return 0;
-send_failed:
-	if( flag == 0 )
-	{
-		InsertPassRecordLog1(&m_sr);
-	}
-	DisconnectTcpServer(sockfd);	
-	free(m_sbuff);
-	return -1;
 }

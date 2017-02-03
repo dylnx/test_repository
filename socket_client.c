@@ -83,7 +83,6 @@ bool client_send_operinfo()
 
 
     pthread_mutex_lock(&g_send_info->mutex_send_info);
-
     s_count = get_sendbuf_count();
     if( 0 == s_count){
        //一定要解锁

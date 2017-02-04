@@ -1,20 +1,22 @@
-#include "threads_sz.h"
-#include "serial.h"
-#include "operate_func.h"
+#include <unistd.h>     
+#include <sys/types.h>
+#include <sys/stat.h>
+#include <fcntl.h>      
+#include <termios.h>    
+#include <errno.h>      
+#include <signal.h>
+#include <sys/types.h>
+#include <unistd.h>
+#include <pthread.h>
+
+#include "common_sz.h"
 #include "api.h"
 #include "ledapi.h"
 #include "gpio.h"
 #include "serial.h"
+#include "operate_func.h"
 #include "pass_record.h"
-#include<unistd.h>     
-#include<sys/types.h>
-#include<sys/stat.h>
-#include<fcntl.h>      
-#include<termios.h>    
-#include<errno.h>      
-#include <signal.h>
-#include <sys/types.h>
-#include <unistd.h>
+
 
 
 list result;
@@ -28,13 +30,8 @@ int ConnectionReader();
 int CheckLandInduction(int *whitchInduction);
 int GetTagsAndDeal(int *whitchInduction);
 
-/***************ConnectionReader*****************
-FunctionName:ConnectionReader
-Parameter:Null
-Author:myjalo
-FunctionDescription:
 
- *************************************************/
+
 int ConnectionReader()
 {
 	int retVal=0;

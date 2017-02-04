@@ -3,7 +3,7 @@
 #include <signal.h>
 #include "common_sz.h"
 #include "basic_func.h"
-#include "threads_sz.h"
+#include "controler.h"
 #include "serial.h"
 #include "gpio.h"
 #include "cond_thread.h"
@@ -24,14 +24,14 @@ int main(void)
     void * ret;
 
     daemon(1,1);
-   // create_pidfile("ReadTags.pid");
+    //create_pidfile("ReadTags.pid");
     signal(SIGPIPE,SIG_IGN);
 
     //init gpio
     init_gpio();
 
-	// Init the whitelist 
-	WhiteListDatabaseInit();
+    // Init the whitelist 
+    WhiteListDatabaseInit();
 	
     // Init the pass record log file
     InitPassRecordLogFile();

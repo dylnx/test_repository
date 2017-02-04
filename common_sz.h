@@ -12,20 +12,20 @@
 #include <time.h>
 #include "log.h"
 
-#define TID_LEN 16              // TID\u5b57\u8282\u6570
+#define TID_LEN 16              
 #define TAG_NUM_MAX  100
 #define TAG_OLD_PASSED_MAX  1000 //max history passed list 
-#define MAX_WHITELIST_NUM 3000  // \u767d\u540d\u5355\u6700\u5927\u6570\u91cf
+#define MAX_WHITELIST_NUM 3000  
 #define MAX_TEMPCARLIST_NUM 500
-#define CAR_NUM_LEN 13          // \u8f66\u724c\u53f7\u5b57\u8282\u6570
-#define CAR_RIGHT_LEN  2        // \u8f66\u5361\u901a\u884c\u7c7b\u522b\u6807\u8bc6\u7b26\u7684\u5b57\u8282\u6570
-#define OPRATION_INFO_LEN 40    // \u6bcf\u6761\u4e1a\u52a1\u8bb0\u5f55\u5b57\u8282\u6570
-#define TIME_STR_LEN 20         // \u65f6\u95f4\u5b57\u7b26\u4e32\u5b57\u8282\u6570
-#define POSITION_LEN 2          // \u5b57\u7b26\u4e32\u5b57\u8282\u6570
-#define MAX_UNDEAL_CARD_NUM 10  //
-#define MAX_OPERATE_INFO_NUM 10 //
-#define MAX_SEND_INFO_NUM 10   //
-#define LED_SHOW_MAX_NUM 10     //
+#define CAR_NUM_LEN 13          
+#define CAR_RIGHT_LEN  2        
+#define OPRATION_INFO_LEN 40 
+#define TIME_STR_LEN 20         
+#define POSITION_LEN 2          
+#define MAX_UNDEAL_CARD_NUM 10  
+#define MAX_OPERATE_INFO_NUM 10 
+#define MAX_SEND_INFO_NUM 10   
+#define LED_SHOW_MAX_NUM 10     
 
 #define GPIO8 8
 #define GPIO10 10
@@ -40,7 +40,7 @@ typedef struct struct_operate_info_s
     char car_num[CAR_NUM_LEN];
     char card_type[CAR_RIGHT_LEN];
     char operate_time[TIME_STR_LEN]; 
-    char ant_num;      //by myjalo
+    char ant_num;      
     int  gate_id;                   
     int  gate_index;                
     char io_type;                   
@@ -51,15 +51,15 @@ typedef struct struct_get_tags_s
 {
     char tid[20];
     char ant_num;
-	int  count;
+    int  count;
 }TAGOBJ,*PTAGOBJ;
 
 typedef struct struct_old_passed_obj_s
 {
     char TID[20];
-	int  ant_num;
+    int  ant_num;
     unsigned long long time;
-	int  used;
+    int  used;
 }OLDPASSEDOBJ,*POLDPASSEDOBJ;
 
 // per gate info
@@ -151,7 +151,6 @@ PTAGOBJ g_tags_array;
 int     g_tags_array_count;
 char *g_tag_flag;
 POLDPASSEDOBJ g_old_passed_array;
-//int           g_old_passed_array_count;
 PLED_SHOW_LIST g_led_show_list;
 
 

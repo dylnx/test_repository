@@ -49,37 +49,41 @@ int RefreshWLDatabase(char *data, int count)
 	int     priv;
 	char    license[20];
 	char    *sql_cmd;
+	int     sql_prefix_len = 0;
 	int     sql_cmd_len =0;
 	int     split_count = 200;// 每次插入200条
 	sql_cmd = (char*)malloc(200*40+30);
+	sprintf(sql_cmd, "delete from whitelist");
+	ret = db_query(g_whitelist, sql_cmd);
+	printf("Table Clear %d\n", ret);
+	sql_prefix_len = sprintf(sql_cmd, "insert into whitelist values ");
 	for(i=0;i<count;i++)
 	{
 		ptr = data+(wl_item_size*i);
 		if( i!=count-1) 
-			ptr[30] = 0;
+			ptr[wl_item_size] = 0;
 		memset(tid, 0x00, 20);
 		memset(license, 0x00, 20);
 		memset(priv_u, 0x00, 5);
-		memset(sql_cmd, 0x00, 1024);
 
-		memcpy(tid, ptr+2, 18);
-		memcpy(priv_u, ptr+18, 2);
+		memcpy(tid, ptr+2, 16);
+		memcpy(priv_u, ptr+16, 2);
 		priv = atoi(priv_u);
 		strcpy(license, ptr+20);
 		
-		sql_cmd_len += sprintf(sql_cmd+sql_cmd_len, "('%s',%d, '%s'),", 
+		sql_cmd_len += sprintf(sql_cmd+sql_prefix_len+sql_cmd_len, "('%s',%d, '%s'),", 
 			tid,
 			priv,
 			license);
 
-		if( i%200 == 0 )
+		if( i%200 == 0 && i!=0 )
 		{
-			sql_cmd[sql_cmd_len-1] = 0;
-			printf("%s\n", sql_cmd);
+			sql_cmd[sql_prefix_len+sql_cmd_len-1] = 0;
+			//printf("%s\n", sql_cmd);
 			ret = db_query(g_whitelist, sql_cmd);
 			if( ret==0 )
 			{
-				printf("sql update success\n");
+//				printf("sql update 200 success\n");
 			}
 			else
 			{
@@ -88,18 +92,19 @@ int RefreshWLDatabase(char *data, int count)
 			}
 			memset(sql_cmd, 0x00, 200*40+30);
 			sql_cmd_len =0;
+			sql_prefix_len = sprintf(sql_cmd, "insert into whitelist values ");
 			continue;
 		}
 	}
-	// 如果有剩余的不足200条，继续插入
-	if( i%200!=0 )
+	// 如果有剩余的不足2000条，继续插入
+	if( i%200!=0 && i!=0 )
 	{
-		sql_cmd[sql_cmd_len-1] = 0;
-		printf("%s\n", sql_cmd);
+		sql_cmd[sql_prefix_len+sql_cmd_len-1] = 0;
+//		printf("%s\n", sql_cmd);
 		ret = db_query(g_whitelist, sql_cmd);
 		if( ret==0 )
 		{
-			printf("sql update success\n");
+//			printf("sql update %d success\n", i%200);
 		}
 		else
 		{
@@ -122,6 +127,9 @@ int CheckWhiteList(char tid[16])
 	if( ret==0 )
 	{
 		struct sqlresult * temp = result.result;
+		if( result.total == 1 ) return 0;
+		else  return -1;
+		/*
 		while(temp)
 		{
 			struct sqlresult *h = temp;
@@ -133,9 +141,12 @@ int CheckWhiteList(char tid[16])
 			printf("\n");
 			temp=temp->next;
 		}
+		*/
 	}
 	else
 	{
 		printf("sql exec failed\n");
+		return -1;
 	}
+	return -1;
 }

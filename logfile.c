@@ -703,7 +703,6 @@ void InsertPassRecordLog2(struct SPassRecordLog *pPassRecordLog)
 	temp = (struct SPassRecordLog *)malloc(sizeof(struct SPassRecordLog));
 	memcpy(temp, pPassRecordLog, sizeof(struct SPassRecordLog));
 	// 触发读标签
-	printf("Record generated....\n");
 	TriggerThread(g_PassRecordSendThread, 0, temp);
 }
 
@@ -725,7 +724,16 @@ void PassRecordSendHandle(void *args)
 	printf("The PassRecord is sending.... [%d]:%s\n",
 			temp->m_Channel, temp->m_Tid);
 	// TODO
-	send_pass_record(temp, 0);
+	int ret = send_pass_record(temp, 0);
+	if( ret == 0 )
+	{
+		temp->m_Flag = 0;
+	}
+	else
+	{
+		temp->m_Flag = 1;
+	}
+	InsertPassRecordLog1(temp);
 	free(temp);
 }
 

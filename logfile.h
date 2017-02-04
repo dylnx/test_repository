@@ -1,6 +1,6 @@
 #ifndef LOGFILE_H_AR69HGX7
 #define LOGFILE_H_AR69HGX7
-
+#include <pthread.h>
 #define MAX_TIMESTAMP_LEN 20
 
 /*

@@ -64,7 +64,8 @@ int main(void)
     }
 
     //memset(g_tags_array,0,sizeof(TAG_OBJ) * TAG_NUM_MAX);
-    //sleep 50ums
+
+    //sleep 50ms
     usleep(50*1000);
 
     g_tag_flag = (char *)calloc(TAG_NUM_MAX,sizeof(char));
@@ -86,7 +87,7 @@ int main(void)
         return 1;//exit the program
     }
     //memset(g_old_passed_array,0,sizeof(OLDPASSEDOBJ) * TAG_OLD_PASSED_MAX);
-    //sleep 50ums
+    //sleep 50ms
     usleep(50*1000);
 
 
@@ -127,7 +128,7 @@ int main(void)
         print_log(f_sysinit,"ERROR!!!pthread_mutex_init g_white_list->mutex_white_list");
     }
     //memset(g_white_list,0,sizeof(WHITELIST));
-    //sleep 50ums
+    //sleep 50ms
     usleep(50*1000);
 
 
@@ -144,7 +145,7 @@ int main(void)
         print_log(f_sysinit,"ERROR!!!pthread_mutex_init g_operate_info->mutex_operate_info");
     }
     //memset(g_operate_info,0,sizeof(OPERATEINFO));
-    //sleep 50ums
+    //sleep 50ms
     usleep(50*1000);
 
     //glloc send info buffer and init it
@@ -160,7 +161,7 @@ int main(void)
         print_log(f_sysinit,"ERROR!!!pthread_mutex_init g_send_info->mutex_send_info");
     }
     //memset(g_send_info,0,sizeof(SENDINFO));
-    //sleep 50ums
+    //sleep 50ms
     usleep(50*1000);
 
 
@@ -177,7 +178,7 @@ int main(void)
         print_log(f_sysinit,"ERROR!!!pthread_mutex_init g_show_camera->mutex_led_show_camera");
     }
     //memset(g_show_camera,0,sizeof(SHOWCAMERA));
-    //sleep 50ums
+    //sleep 50ms
     usleep(50*1000);
 
 
@@ -214,7 +215,7 @@ int main(void)
     }
 #endif
 
-    //sleep 500ums
+    //sleep 500ms
     usleep(500*1000);
 
 #if 1 
@@ -226,7 +227,7 @@ int main(void)
     }
 #endif
 
-    //sleep 500ums
+    //sleep 500ms
     usleep(500*1000);
 
     s = pthread_create(&thread_connect_whitelist,NULL,(void *)&ThreadConnectWhitelist,NULL);
@@ -236,7 +237,7 @@ int main(void)
  	exit(EXIT_FAILURE);		
     }
 
-    //sleep 500ums
+    //sleep 500ms
     usleep(500*1000);
 
     s = pthread_create(&thread_info_to_server,NULL,(void *)&ThreadInfoToServer,NULL);
@@ -246,7 +247,7 @@ int main(void)
  	exit(EXIT_FAILURE);		
     }
 
-    //sleep 500ums
+    //sleep 500ms
     usleep(500*1000);
 
 #if 0
@@ -255,7 +256,7 @@ int main(void)
  	exit(EXIT_FAILURE);		
     }
 
-    //sleep 500ums
+    //sleep 500ms
     usleep(500*1000);
 #endif
 
@@ -265,7 +266,7 @@ int main(void)
  	exit(EXIT_FAILURE);		
     }
 
-    //sleep 500ums
+    //sleep 500ms
     usleep(500*1000);
 	
     s = pthread_create(&thread_kill_fork,NULL,(void *)&ThreadKillFork,NULL);
@@ -274,7 +275,7 @@ int main(void)
  	exit(EXIT_FAILURE);		
     }
 
-    //sleep 500ums
+    //sleep 500ms
     usleep(500*1000);
 
     pthread_join(thread_control,&ret);

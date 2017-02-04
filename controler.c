@@ -7,7 +7,6 @@
 #include <signal.h>
 #include <sys/types.h>
 #include <unistd.h>
-#include <pthread.h>
 
 #include "common_sz.h"
 #include "api.h"
@@ -436,16 +435,7 @@ bool OpenDoor(int operate_index,int openDoorMethodType,bool b_print_log)
 			
 			InsertPassRecordLog2(&log);// 发送数据
 
-			/*g_send_info->send_info[g_send_info->write_pos].gate_id  = g_operate_info->operate_info[operate_index].gate_id;
-			g_send_info->send_info[g_send_info->write_pos].be_enter = g_operate_info->operate_info[operate_index].be_enter;
-			memcpy(g_send_info->send_info[g_send_info->write_pos].TID,g_operate_info->operate_info[operate_index].TID,TID_LEN);
-
-
-
-			g_send_info->write_pos++;
-			g_send_info->write_pos %= MAX_SEND_INFO_NUM;
-			*/
-
+			
 			break;
 		default:
 			return false;
@@ -703,8 +693,7 @@ int GetTagsAndDeal(int *whitchInduction)
 		while (1)
 		{
 			sleep(time_of_update_list);
-			client_recv_whitelist();
-			// client_recv_tempcarlist();
+			client_recv_whitelist1();
 		}
 	}
 

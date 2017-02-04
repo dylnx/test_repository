@@ -39,29 +39,12 @@ bool client_send_operinfo()
     s_count = get_sendbuf_count();
     if( 0 == s_count) return false; //当前无通行数据
 
-/*  不完善的代码
-    int sock = socket(AF_INET,SOCK_STREAM,0);
-    struct sockaddr_in service_addr;
-    memset(&service_addr,0,sizeof(service_addr));
-    service_addr.sin_family = AF_INET;
-    service_addr.sin_port = htons(server_port);
-    inet_pton(AF_INET,server_ip,&service_addr.sin_addr);
-    conn_ret = connect(sock,(struct sockaddr*)&service_addr,sizeof(service_addr));
-    if(conn_ret == -1)
-    {
-        close(sock);
-        printf("client:thread_client:cann't connect service!\n");
-        print_log(f_sended_server,"client:thread_client:cann't connect server!!!\n");
-        return false;
-    }
-*/
 
-   /*
+   /****************************************************************
 	server_ip:从配制文件获取IP的全局变量
 	server_port:从配制文件获取PORT的全局变量
         5000:建立连接超时时间
-
-   */
+   ****************************************************************/
    int sock = ConnectTcpServerNonBlock(server_ip,server_port,5000); 
    if( -1 == sock ){
         print_log(f_sended_server,"client cann't connect server!!!\n");

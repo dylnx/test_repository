@@ -7,7 +7,7 @@
 
 #define TIME_OUT_TIME 10
 
-//获取当前通行记录发送缓冲区数据量
+//获取当前通行记录发送缓冲区数据量,因采用断链续传，该函数不再使用
 unsigned int get_sendbuf_count()
 {
     unsigned int read_pos;
@@ -55,7 +55,6 @@ bool client_send_operinfo()
 	return false;
    }
 
-
     // send info to service
     char send_buf[400];
     int i = 0,k = 0,copy_num = 0;
@@ -63,7 +62,6 @@ bool client_send_operinfo()
     memset(send_buf,0,400);
     send_buf[0] = '1';
    
-
 
     pthread_mutex_lock(&g_send_info->mutex_send_info);
     s_count = get_sendbuf_count();

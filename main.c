@@ -30,10 +30,10 @@ int main(void)
     //init gpio
     init_gpio();
 
-    // Init the whitelist 
+    //初始化白名单数据库功能 
     WhiteListDatabaseInit();
 	
-    // Init the pass record log file
+    //初始化通行记录断链缓存功能 
     InitPassRecordLogFile();
     g_PassRecordLogWriteFileThread = CreateCondThread(
 		PassRecordLogHandle);

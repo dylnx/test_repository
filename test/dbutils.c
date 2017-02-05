@@ -6,11 +6,26 @@
 
 int free_result(struct query_result * query_result)
 {
-	struct sqlresult * temp = query_result->result;
+        struct sqlresult * temp = query_result->result;
+	//释放每行元素
 	while(temp)
 	{
 		struct sqlresult * f = temp;
+		int i=0;
+		for( ; i<f->colnum;i++)
+		{
+			free(f->colname[i]);
+			free(f->data[i]);
+		}
+		free(f->colname);
+		free(f->data);
 		temp = temp->next;
+	}
+	//释放每行头结点
+	while(temp)
+	{
+		struct sqlresult *f =temp;
+		temp=temp->next;
 		free(f);
 	}
 	free(query_result);
@@ -180,8 +195,12 @@ int main(int argc,char *argv[])
 {
     int ret;
     struct sDB * sdb;
+    struct query_result *result;
     char query_cmd[] ="select * from whitelist";
     //  char query_cmd[] ="delete from whitelist";
+
+    result = (struct query_result *)calloc(1,sizeof(struct query_result));
+
     sdb = db_open("whitelist.db",NULL);	
     if(NULL == sdb)
     {	
@@ -194,6 +213,31 @@ int main(int argc,char *argv[])
     {
 	printf("query successfully!!!\n");	
     }
+    
+    ret = db_query_call(sdb, query_cmd, result)
+    if( ret==0 )
+    {
+	struct sqlresult * temp = result.result;
+#if 0
+	if( result.total == 1 ) return 0;
+	else  return -1;
+#endif
+	
+	while(temp)
+	{
+		struct sqlresult *h = temp;
+		int i ;
+		for(i=0;i<h->colnum;i++)
+		{
+			printf("%s = %s\n", h->colname[i], h->data[i]? h->data[i] : "NULL");
+		}
+		printf("\n");
+		temp=temp->next;
+	}
+	
+    }
+
+    free_result(result);
 
     return 0;
 }

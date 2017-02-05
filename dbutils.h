@@ -15,14 +15,14 @@ struct sDB
 	const char *table_init_query;
 	sqlite3    *db;
 };
-
+//一条记录
 struct sqlresult{
 	int colnum;
 	char **colname;
 	char **data;
 	struct sqlresult * next;
 };
-
+//记录结果集
 struct query_result{
 	int total;
 	struct sqlresult* result;

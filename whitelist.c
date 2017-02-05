@@ -59,6 +59,10 @@ int RefreshWLDatabase(char *data, int count)
 	sql_prefix_len = sprintf(sql_cmd, "insert into whitelist values ");
 	for(i=0;i<count;i++)
 	{
+//		char temp_str[100];
+//		memset(temp_str, 0x00, 100);
+//		strcpy(temp_str, ptr+33*count);
+//		printf(": %s\n",  temp_str);
 		ptr = data+(wl_item_size*i);
 		if( i!=count-1) 
 			ptr[wl_item_size] = 0;
@@ -67,7 +71,7 @@ int RefreshWLDatabase(char *data, int count)
 		memset(priv_u, 0x00, 5);
 
 		memcpy(tid, ptr+2, 16);
-		memcpy(priv_u, ptr+16, 2);
+		memcpy(priv_u, ptr+18, 2);
 		priv = atoi(priv_u);
 		strcpy(license, ptr+20);
 		

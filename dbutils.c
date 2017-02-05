@@ -175,5 +175,26 @@ int db_query_call(struct sDB *sDB, const char* query_cmd, struct query_result *q
 	return (0);
 }
 
+#if 0
+int main(int argc,char *argv[])
+{
+    int ret;
+    struct sDB * sdb;
+    char query_cmd[] ="select * from whitelist";
+    //  char query_cmd[] ="delete from whitelist";
+    sdb = db_open("whitelist.db",NULL);	
+    if(NULL == sdb)
+    {	
+       printf("whitelist is not exit!!!\n");
+	return -1;
+    } 
+    
+    ret = db_query(sdb,query_cmd);
+    if( 0 == ret)
+    {
+	printf("query successfully!!!\n");	
+    }
 
-
+    return 0;
+}
+#endif

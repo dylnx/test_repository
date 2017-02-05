@@ -724,7 +724,7 @@ void PassRecordSendHandle(void *args)
 	printf("The PassRecord is sending.... [%d]:%s\n",
 			temp->m_Channel, temp->m_Tid);
 	// TODO
-	int ret; //= send_pass_record(temp, 0);
+	int ret = send_pass_record(temp, 0);
 	if( ret == 0 )
 	{
 		temp->m_Flag = 0;

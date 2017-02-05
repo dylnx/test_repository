@@ -120,19 +120,32 @@ int RefreshWLDatabase(char *data, int count)
 }
 
 
-int CheckWhiteList(char tid[16])
+int CheckWhiteList(char tid[16],char *carnum)
 {
 	char sql_cmd[1024];
 	struct query_result     result;
 	int                     ret;
+	if(NULL == carnum){
+		return -1;
+	}
 	sprintf(sql_cmd, "select * from whitelist where tid='%s'", tid);
 
 	ret = db_query_call(g_whitelist, sql_cmd, &result);
 	if( ret==0 )
 	{
 		struct sqlresult * temp = result.result;
-		if( result.total == 1 ) return 0;
-		else  return -1;
+		if( result.total == 1 ){
+		    ret = strncmp(temp->colname[2],"license",7);//col name for car number
+
+		    if(0 == ret){
+			strcpy(carnum,temp->data[2]);//car number	
+		        return 0;
+		    }
+			
+	         }else{
+                    return -1;
+		 }
+
 		/*
 		while(temp)
 		{

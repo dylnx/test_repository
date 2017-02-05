@@ -565,17 +565,25 @@ int GetTagsAndDeal(int *whitchInduction)
 
 	for( i=0;i<g_tags_array_count;i++ )
 	{
+#if 0
 		pthread_mutex_lock(&g_white_list->mutex_white_list);
 
 		int k = get_index_by_tid(g_tags_array[i].tid);
 		pthread_mutex_unlock(&g_white_list->mutex_white_list);
+#endif
+	       char carnum[20] = {0};
+	       int ret_cwl=0;
+               ret_cwl =  CheckWhiteList(g_tags_array[i].tid,carnum);
 
-		if(k != -1)//找到
+		if( -1 != ret_cwl )//找到
 		{
 			opIndex = g_operate_info->cur_operate_num;
 			operate = &(g_operate_info->operate_info[opIndex]);
-
+			//拷贝TID
 			strcpy( operate->TID, g_tags_array[i].tid);
+			//拷贝车牌号
+			strcpy( operate->car_num, carnum);
+			//拷贝天线号
 			operate->ant_num = g_tags_array[i].ant_num;
 
 			n_gate_index = get_gate_index(operate->ant_num);// * zhanghong 获取门号 不确定 *//
@@ -589,7 +597,7 @@ int GetTagsAndDeal(int *whitchInduction)
 			operate->gate_id = gates[n_gate_index].gate_id;
 			operate->io_type = gates[n_gate_index].gate_type;
 
-
+#if 0
 			pthread_mutex_lock(&g_white_list->mutex_white_list);
 
 			char * p = g_white_list->white_list[k];
@@ -597,6 +605,7 @@ int GetTagsAndDeal(int *whitchInduction)
 			strncpy(operate->card_type, p+TID_LEN, 2);
 
 			pthread_mutex_unlock(&g_white_list->mutex_white_list);
+#endif
 
 			if ( operate->io_type == 'i' || operate->io_type == 'o' )
 			{

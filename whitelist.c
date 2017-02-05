@@ -8,7 +8,6 @@ const char  g_wldb_file[] = "whitelist.db";
 
 struct sDB * g_whitelist;
 
-
 int WhiteListDatabaseInit()
 {
 	g_whitelist = db_open(g_wldb_file, NULL);

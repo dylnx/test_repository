@@ -16,6 +16,7 @@ int WhiteListDatabaseInit()
 		printf("%s not exist\n", g_wldb_file);
 		return -1;
 	}
+
 	//
 	//create table whitelist 
 	//( 

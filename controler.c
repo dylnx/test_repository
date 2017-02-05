@@ -15,6 +15,7 @@
 #include "serial.h"
 #include "operate_func.h"
 #include "pass_record.h"
+#include "whitelist.h"
 
 
 
@@ -609,8 +610,6 @@ int GetTagsAndDeal(int *whitchInduction)
 		{
 			print_log(f_passed_failed,"TID:%s is not in the whitelist!!!\n",g_tags_array[i].tid);
 			continue;
-		       //return OK;//一个BUG，如果在这里直接return,会导致后面记
-                       //录有符合白名单的车未进行比对(丢弃），程序进入下一次清点标签。
 		}
 
 

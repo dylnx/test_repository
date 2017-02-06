@@ -45,7 +45,7 @@ int InitLogFile(struct LogFile *logFile)
 	}
 
 	//申请用于发送断链续传通行记录缓冲区
-        *fakedata = (struct SPassRecordLog*)calloc(1,sizeof(struct SPassRecordLog)*RESEND_RECORD_NUM);
+        fakedata = (struct SPassRecordLog *)calloc(1,sizeof(struct SPassRecordLog)*RESEND_RECORD_NUM);
 	if( NULL == fakedata )
 	{
 		printf("fakedata is NULL!!!\n");

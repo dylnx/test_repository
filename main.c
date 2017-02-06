@@ -60,11 +60,7 @@ int main(void)
         print_log(f_sysinit,"Error: malloc g_tags_array  faild!!");
         return 1;
     }
-
     //memset(g_tags_array,0,sizeof(TAG_OBJ) * TAG_NUM_MAX);
-
-    //sleep 50ms
-    usleep(50*1000);
 
     g_old_passed_array = (POLDPASSEDOBJ)calloc(1,sizeof(OLDPASSEDOBJ)* TAG_OLD_PASSED_MAX);
     if( NULL == g_old_passed_array )
@@ -74,8 +70,6 @@ int main(void)
         return 1;//exit the program
     }
     //memset(g_old_passed_array,0,sizeof(OLDPASSEDOBJ) * TAG_OLD_PASSED_MAX);
-    //sleep 50ms
-    usleep(50*1000);
 
 
     g_led_show_list = (PLED_SHOW_LIST)calloc(2, sizeof(LED_SHOW_LIST));
@@ -98,9 +92,6 @@ int main(void)
        g_led_show_list[i].led_port = gates[i].led_port; 
        
     }
-    //sleep 50ums
-    usleep(50*1000);
-
 
 
     //alloc operate info  buffer and init it
@@ -114,10 +105,8 @@ int main(void)
     ret_createmtx = pthread_mutex_init(&g_operate_info->mutex_operate_info,NULL); 
     if( 0 != ret_createmtx){
         print_log(f_sysinit,"ERROR!!!pthread_mutex_init g_operate_info->mutex_operate_info");
+        return 1;//exit the program
     }
-    //memset(g_operate_info,0,sizeof(OPERATEINFO));
-    //sleep 50ms
-    usleep(50*1000);
 
 
     //读config.ini文件中的配制数据信息
@@ -142,7 +131,7 @@ int main(void)
 
     //create some thread
     pthread_t thread_control,thread_led0,thread_led1,thread_request_whitelist,	\
-    thread_kill_fork,thread_camera;
+    thread_resend_passrecord,thread_kill_fork,thread_camera;
 
 #if 1 
     thread_arg = 0;
@@ -151,10 +140,9 @@ int main(void)
     {
 	print_log(f_sysinit,"pthread_create showLed0 thread faild!!");
     }
+    usleep(500*1000);
 #endif
 
-    //sleep 500ms
-    usleep(500*1000);
 
 #if 1 
     thread_arg = 1;
@@ -163,10 +151,9 @@ int main(void)
     {
 	print_log(f_sysinit,"pthread_create showLed1 thread faild!!");
     }
+    usleep(500*1000);
 #endif
 
-    //sleep 500ms
-    usleep(500*1000);
 
     s = pthread_create(&thread_request_whitelist,NULL,(void *)&ThreadRequestWhitelist,NULL);
     if(s != 0)
@@ -174,17 +161,20 @@ int main(void)
 	print_log(f_sysinit,"pthread_create thread_request_whitelist faild!!");
  	exit(EXIT_FAILURE);		
     }
-
-    //sleep 500ms
     usleep(500*1000);
+    
+    s = pthread_create(&thread_resend_passrecord,NULL,(void *)&ThreadResendPassrecord,NULL);
+    if(s !=0)
+    {
+	print_log(f_sysinit,"pthread_create thread_resend_passrecord faild!!");
+ 	exit(EXIT_FAILURE);		
+    }
 
     s =	pthread_create(&thread_control,NULL,(void *)&ThreadMonitorCapDeal,NULL);
     if( 0 != s ){
 	print_log(f_sysinit,"pthread_create Control thread faild!!");
  	exit(EXIT_FAILURE);		
     }
-
-    //sleep 500ms
     usleep(500*1000);
 	
     s = pthread_create(&thread_kill_fork,NULL,(void *)&ThreadKillFork,NULL);
@@ -192,8 +182,6 @@ int main(void)
 	print_log(f_sysinit,"pthread_create faild!!");
  	exit(EXIT_FAILURE);		
     }
-
-    //sleep 500ms
     usleep(500*1000);
 
     pthread_join(thread_control,&ret);

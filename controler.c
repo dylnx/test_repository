@@ -705,10 +705,31 @@ int GetTagsAndDeal(int *whitchInduction)
 void ThreadRequestWhitelist(void)
 {
 	// extern int time_of_update_list;
-	while (1)
+	while(1)
 	{
 		sleep(time_of_update_list);
 		client_recv_whitelist();
+	}
+}
+
+void ThreadResendPassrecord(void)
+{
+	int ret;
+
+	while(1)
+	{
+		//默认10分轮询一次通行记录文件
+		sleep( 10 * 60 );
+
+		//每次轮询，默认将最近"5 * 24"小时的记录发送到服务
+	        ret = ResendCachePassRecordLimitByDate( 5 * 24 );
+		if( 0 == ret )
+		{
+			print_log(f_sended_server,"resend passrecord successfully!!!");
+		}else{
+			print_log(f_sended_server,"resend passrecord failed!!!");
+
+		}
 	}
 }
 

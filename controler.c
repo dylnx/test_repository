@@ -235,7 +235,7 @@ bool FilterTags(STRUCT_OPERATE_INFO *opt_info)
 
 	struct timeval    timeval;
 	gettimeofday(&timeval, NULL);
-	cur_time = (unsigned long long)timeval.tv_sec*1000000 + (unsigned long long)timeval.tv_usec;
+	cur_time = (unsigned long long)timeval.tv_sec * 1000000L + (unsigned long long)timeval.tv_usec;
 	
 	// 当前时间 为 当日自00:00:00 以来的秒数
 	//cur_time = local->tm_hour * 3600 + local->tm_min *60 + local->tm_sec;
@@ -429,10 +429,10 @@ bool OpenDoor(int operate_index,int openDoorMethodType,bool b_print_log)
 			unsigned long long nowtimestamp;
 			struct timeval  nowtime;
 			gettimeofday(&nowtime, NULL);
-			nowtimestamp = (unsigned long long)(nowtime.tv_sec*1000000L)
-						+ (unsigned long long)(nowtime.tv_usec);
+			nowtimestamp = (unsigned long long)nowtime.tv_sec * 1000000L
+						+ (unsigned long long)nowtime.tv_usec;
 			log.m_Meta.m_TimeStamp[0] =  (nowtimestamp>>32);
-			log.m_Meta.m_TimeStamp[1] =  nowtimestamp&0xFFFFF;
+			log.m_Meta.m_TimeStamp[1] =  nowtimestamp & 0xFFFFFFFF;
 			
 			InsertPassRecordLog2(&log);// 发送数据
 

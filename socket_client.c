@@ -116,7 +116,7 @@ bool client_send_operinfo()
  * @返回值   -1 : 失败  0: 成功
  */
 /* ----------------------------------------------------------------------------*/
-bool client_recv_whitelist1()
+int client_recv_whitelist1()
 {
 	int         send_timeout = 5;
 	int         recv_timeout = 10;
@@ -155,7 +155,8 @@ bool client_recv_whitelist1()
 	}
 	int     item_count = atoi(msg_head);
 	int     item_size = 4+TID_LEN+CAR_NUM_LEN;
-	recv_buff = (char*)malloc(item_count*item_size);
+	printf("WL ITEM %d\n", item_count);
+	recv_buff = (char*)calloc(item_count*item_size,1);
 	int  i =0;
 	for(;i<item_count;i++)
 	{
@@ -165,6 +166,7 @@ bool client_recv_whitelist1()
 			printf("recv wl item[%d] failure\n", i);
 			break;
 		}
+//		printf("recv wl item[%d] %s success\n", i, recv_buff+i*item_size);
 	}
 	if( i!=item_count )
 	{
@@ -175,8 +177,14 @@ bool client_recv_whitelist1()
 	printf("wl item %d recevied\n", item_count);
 	
 	// save the whiltelist
+	struct timeval  timeval;
+	gettimeofday(&timeval, NULL);
+	unsigned long long starttime,endtime = 0;
+	starttime = (unsigned long long)timeval.tv_sec * 1000000L + (unsigned long long)timeval.tv_usec;
 	ret = RefreshWLDatabase(recv_buff, item_count);
-	printf("Update WL Ret %d\n", ret);
+	gettimeofday(&timeval, NULL);
+	endtime = (unsigned long long)timeval.tv_sec *1000000L + (unsigned long long)timeval.tv_usec;
+	printf("Update WL Ret %d Time %d us\n", ret, endtime-starttime);
 	
 	free(recv_buff);
 	char   response_cmd[] = "2001";
@@ -195,8 +203,7 @@ error:
 	return -1;
 }
 
-
-
+//老式代码
 bool client_recv_whitelist()
 {
     int conn_ret;
@@ -348,7 +355,7 @@ int client_init_socket()
 
 bool client_camera(int sock)
 {
-//    int len_date = 4 + 4 + sizeof(TPLATE_INFO_MY);
+//  int len_date = 4 + 4 + sizeof(TPLATE_INFO_MY);
     int len_heart = 4 + 4 + 16;
 
     int len_max_pack = 300;

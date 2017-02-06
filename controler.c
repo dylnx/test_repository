@@ -13,7 +13,6 @@
 #include "ledapi.h"
 #include "gpio.h"
 #include "serial.h"
-#include "operate_func.h"
 #include "pass_record.h"
 #include "whitelist.h"
 
@@ -461,6 +460,21 @@ bool OpenDoor(int operate_index,int openDoorMethodType,bool b_print_log)
 	return true;
 }
 
+//通过天线号获以对应车道资源数组索引下标
+int get_gate_index(int ant_id)
+{
+   if(ant_id > 4 || ant_id <= 0)
+	return -1;
+  //printf("gate0.ant=%d,gate1.ant=%d\n",gates[0].ants[0],gates[1].ants[0]);
+   if(ant_id == gates[0].ants[0])
+	return 0;
+
+   if(ant_id == gates[1].ants[0])
+	return 1;
+
+    return -1;
+}
+
 int GetTagsAndDeal(int *whitchInduction)
 {
 	int k,i;
@@ -686,110 +700,61 @@ int GetTagsAndDeal(int *whitchInduction)
 	}
 
 
-	void ThreadInfoToServer(void)
+
+void ThreadRequestWhitelist(void)
+{
+	// extern int time_of_update_list;
+	while (1)
 	{
-		while (1)
-		{
-			sleep(3);
-			client_send_operinfo();
-		}
+		sleep(time_of_update_list);
+		client_recv_whitelist1();
 	}
+}
 
-	void ThreadConnectWhitelist(void)
+// for kill fork
+void ThreadKillFork()
+{
+	struct sigaction act;
+	int sig = SIGTERM;
+	pid_t pid = getpid();
+	printf("main:waiting for sig kill forc pid = %d!\n",pid);
+	sigemptyset(&act.sa_mask);
+	act.sa_sigaction = before_fork_kill;
+	act.sa_flags = SA_SIGINFO;
+	if (sigaction(sig,&act,NULL)<0)
 	{
-		// extern int time_of_update_list;
-		while (1)
-		{
-			sleep(time_of_update_list);
-			client_recv_whitelist1();
-		}
+		printf("install sigal error!\n");
 	}
+}
 
-	// for kill fork
-	void ThreadKillFork()
-	{
-		struct sigaction act;
-		int sig = SIGTERM;
-		pid_t pid = getpid();
-		printf("main:waiting for sig kill forc pid = %d!\n",pid);
-		sigemptyset(&act.sa_mask);
-		act.sa_sigaction = before_fork_kill;
-		act.sa_flags = SA_SIGINFO;
-		if (sigaction(sig,&act,NULL)<0)
-		{
-			printf("install sigal error!\n");
-		}
-	}
+void before_fork_kill()
+{
+	if (reader != 0)
+		close_reader(reader);
+	print_log(f_sysinit,"succes close_reader before kill fork!");
+	printf("fork be killed!close reader tcp!\n");
 
-	void before_fork_kill()
-	{
-		if (reader != 0)
-			close_reader(reader);
-		print_log(f_sysinit,"succes close_reader before kill fork!");
-		printf("fork be killed!close reader tcp!\n");
+	if( NULL != f_sysinit )
+		close_log_file(f_sysinit);
 
-		if( NULL != f_sysinit )
-			close_log_file(f_sysinit);
+	if( NULL != f_misc_running )
+		close_log_file(f_misc_running);
 
-		if( NULL != f_misc_running )
-			close_log_file(f_misc_running);
+	if( NULL != f_error )
+		close_log_file(f_error);
 
-		if( NULL != f_error )
-			close_log_file(f_error);
+	if( NULL != f_passed_success )
+		close_log_file(f_passed_success);
 
-		if( NULL != f_passed_success )
-			close_log_file(f_passed_success);
+	if( NULL != f_passed_failed )
+		close_log_file(f_passed_failed);
 
-		if( NULL != f_passed_failed )
-			close_log_file(f_passed_failed);
+	if( NULL != f_sended_server )
+		close_log_file(f_sended_server);
 
-		if( NULL != f_sended_server )
-			close_log_file(f_sended_server);
+	if( NULL != f_sync_whitelist )
+		close_log_file(f_sync_whitelist);
 
-		if( NULL != f_sync_whitelist )
-			close_log_file(f_sync_whitelist);
+	exit(0);
+}
 
-		exit(0);
-	}
-
-	void ThreadCamera()
-	{
-		extern int jointcompute_id;
-		if (jointcompute_id != 11)
-			return;
-
-		long int time_begin = 0, time_current = 0;
-		time_t newest_tt = time(NULL);
-		struct tm *newest_local = localtime(&newest_tt);
-		newest_tt = time(NULL);
-		newest_local = localtime(&newest_tt);
-		time_begin = newest_local->tm_hour * 3600 + newest_local->tm_min * 60 + newest_local->tm_sec;
-		time_current = time_begin;
-
-		bool bRet = false;
-		int sock = -1;
-		while(1)
-		{
-			newest_tt = time(NULL);
-			newest_local = localtime(&newest_tt);
-			if(sock == -1)
-			{
-				sock = client_init_socket();
-				continue;
-			}
-			bRet = client_camera(sock);
-			if (bRet)
-				time_begin = newest_local->tm_hour * 3600 + newest_local->tm_min * 60 + newest_local->tm_sec;
-			else
-			{
-				time_current = newest_local->tm_hour * 3600 + newest_local->tm_min * 60 + newest_local->tm_sec;
-				if (time_current < time_begin)
-					time_current += 24 * 3600;
-				if (time_current - time_begin > 20)
-				{
-					close(sock);
-					sock = -1;
-				}
-			}
-		}
-	}

@@ -11,8 +11,6 @@
 #include "logfile.h"
 
 bool initial(void);
-bool get_white_list(void);
-bool get_tempcar_list(void);
 int create_pidfile(const char *file);
 
 struct CondThread *g_PassRecordLogWriteFileThread;
@@ -68,17 +66,6 @@ int main(void)
     //sleep 50ms
     usleep(50*1000);
 
-    g_tag_flag = (char *)calloc(TAG_NUM_MAX,sizeof(char));
-    if(NULL == g_tag_flag)
-    {
-        printf("Error: malloc g_tag_flag  faild!!\n");
-        print_log(f_sysinit,"Error: malloc g_tag_flag  faild!!");
-        return 1;
-    }
-    //memset(g_tag_flag,1,sizeof(char)*TAG_NUM_MAX);
-    //sleep 50ums
-    usleep(50*1000);
-
     g_old_passed_array = (POLDPASSEDOBJ)calloc(1,sizeof(OLDPASSEDOBJ)* TAG_OLD_PASSED_MAX);
     if( NULL == g_old_passed_array )
     {
@@ -115,22 +102,6 @@ int main(void)
     usleep(50*1000);
 
 
-    //alloc white list buffer and init it
-    g_white_list = (PWHITELIST)calloc(1,sizeof(WHITELIST));
-    if( NULL == g_white_list )
-    {
-        printf("Error: calloc g_white_list  faild!!\n");
-        print_log(f_sysinit,"Error: calloc g_white_list  faild!!\n");
-        return 1;//exit the program
-    }
-    ret_createmtx = pthread_mutex_init(&g_white_list->mutex_white_list,NULL); 
-    if( 0 != ret_createmtx){
-        print_log(f_sysinit,"ERROR!!!pthread_mutex_init g_white_list->mutex_white_list");
-    }
-    //memset(g_white_list,0,sizeof(WHITELIST));
-    //sleep 50ms
-    usleep(50*1000);
-
 
     //alloc operate info  buffer and init it
     g_operate_info = (POPERATEINFO)calloc(1,sizeof(OPERATEINFO));
@@ -148,41 +119,8 @@ int main(void)
     //sleep 50ms
     usleep(50*1000);
 
-    //glloc send info buffer and init it
-    g_send_info = (PSENDINFO)calloc(1,sizeof(SENDINFO));
-    if( NULL == g_send_info )
-    {
-        printf("Error: calloc g_send_info  faild!!\n");
-        print_log(f_sysinit,"Error: calloc g_send_info  faild!!\n");
-        return 1;//exit the program
-    }
-    ret_createmtx = pthread_mutex_init(&g_send_info->mutex_send_info,NULL); 
-    if( 0 != ret_createmtx){
-        print_log(f_sysinit,"ERROR!!!pthread_mutex_init g_send_info->mutex_send_info");
-    }
-    //memset(g_send_info,0,sizeof(SENDINFO));
-    //sleep 50ms
-    usleep(50*1000);
 
-
-    //alloc show camera  buffer and init it
-    g_show_camera = (PSHOWCAMERA)calloc(1,sizeof(SHOWCAMERA));
-    if( NULL == g_show_camera )
-    {
-        printf("Error: calloc g_show_camera  faild!!\n");
-        print_log(f_sysinit,"Error: calloc g_show_camera  faild!!\n");
-        return 1;//exit the program
-    }
-    ret_createmtx = pthread_mutex_init(&g_show_camera->mutex_led_show_camera,NULL); 
-    if( 0 != ret_createmtx){
-        print_log(f_sysinit,"ERROR!!!pthread_mutex_init g_show_camera->mutex_led_show_camera");
-    }
-    //memset(g_show_camera,0,sizeof(SHOWCAMERA));
-    //sleep 50ms
-    usleep(50*1000);
-
-
-    // read config file; get white list
+    //读config.ini文件中的配制数据信息
     bool bRet = initial();
     if (!bRet)
     {
@@ -203,8 +141,8 @@ int main(void)
 #endif
 
     //create some thread
-    pthread_t thread_control,thread_led0,thread_led1,thread_connect_whitelist,	\
-    thread_info_to_server,thread_kill_fork,thread_camera;
+    pthread_t thread_control,thread_led0,thread_led1,thread_request_whitelist,	\
+    thread_kill_fork,thread_camera;
 
 #if 1 
     thread_arg = 0;
@@ -230,35 +168,15 @@ int main(void)
     //sleep 500ms
     usleep(500*1000);
 
-    s = pthread_create(&thread_connect_whitelist,NULL,(void *)&ThreadConnectWhitelist,NULL);
+    s = pthread_create(&thread_request_whitelist,NULL,(void *)&ThreadRequestWhitelist,NULL);
     if(s != 0)
     {
-	print_log(f_sysinit,"pthread_create thread_connect_whitelist faild!!");
+	print_log(f_sysinit,"pthread_create thread_request_whitelist faild!!");
  	exit(EXIT_FAILURE);		
     }
 
     //sleep 500ms
     usleep(500*1000);
-
-    s = pthread_create(&thread_info_to_server,NULL,(void *)&ThreadInfoToServer,NULL);
-    if(s != 0)
-    {
-	print_log(f_sysinit,"pthread_create thread_info_to_server faild!!");
- 	exit(EXIT_FAILURE);		
-    }
-
-    //sleep 500ms
-    usleep(500*1000);
-
-#if 0
-    s = pthread_create(&thread_camera,NULL,(void *)&ThreadCamera,NULL);
-    if( 0 != s ){
- 	exit(EXIT_FAILURE);		
-    }
-
-    //sleep 500ms
-    usleep(500*1000);
-#endif
 
     s =	pthread_create(&thread_control,NULL,(void *)&ThreadMonitorCapDeal,NULL);
     if( 0 != s ){
@@ -329,11 +247,13 @@ bool initial(void)
         // log
         return false;
     }
+/*
     if (!readStringParam(buffer,buf_len, "white_list_path",white_list_path))
     {
         // log
         return false;
     }
+*/
     if (!readIntParam(buffer,buf_len, "time_of_update_list",&time_of_update_list))
     {
         // log
@@ -379,69 +299,10 @@ bool initial(void)
 	printf("gates[%d].ant=%d\n",i,gates[i].ants[0]);
     }
 
-    if (!get_white_list())
-    {
-        printf("get white list error!\n");
-        return false;
-    }
-
+   
     return true;
 }
 
-bool get_white_list(void)
-{
-  // extern char white_list_path[100];
-  // extern unsigned char white_list[MAX_WHITELIST_NUM][TID_LEN+2+CAR_NUM_LEN];
-  // extern pthread_mutex_t mutex_white_list;
-  // extern int white_list_num;
-
-    char buf[MAX_WHITELIST_NUM*(TID_LEN+2+CAR_NUM_LEN+5)];
-
-  //  pthread_mutex_init(&mutex_white_list,NULL);
-
-    pthread_mutex_lock(&g_white_list->mutex_white_list);
-    int len = file_read(white_list_path,buf);
-    int i = 0,k = 0;
-    g_white_list->white_list_num = 0;
-    //memset(g_white_list->white_list,0,MAX_WHITELIST_NUM*(TID_LEN+2+CAR_NUM_LEN));
-    for (i = 0;i < len;i++)
-    {
-        if (buf[i] == '\n' || buf[i] == '\r')
-            k = i+1;
-        if (buf[i] == '\n')
-            g_white_list->white_list_num++;
-        if (buf[i] != '\n' && buf[i] != '\r')
-        {
-            g_white_list->white_list[g_white_list->white_list_num][i-k] = buf[i]; //"i-k" is set  second index exampe be first [0]
-        }
-    }
-    // no tail
-    if (buf[len-1] != '\n')
-        g_white_list->white_list_num++;
-    // delete tail
-    while (g_white_list->white_list[g_white_list->white_list_num-1][0] == 0 && g_white_list->white_list_num > 0)
-        g_white_list->white_list_num -- ;
-
-    // delete mid   //let the last date fill to white_list[i] that if (white_list[i][0] == 0),and loop such steps.
-
-    for(i = 0; i < g_white_list->white_list_num; i++)
-    {
-        if(g_white_list->white_list[i][0] == 0)
-        {
-            while (g_white_list->white_list[g_white_list->white_list_num-1][0] == 0)
-                g_white_list->white_list_num--;
-            if(i < g_white_list->white_list_num)
-            {
-                str_assign_value(g_white_list->white_list[g_white_list->white_list_num-1],g_white_list->white_list[i],TID_LEN+2+CAR_NUM_LEN);
-                g_white_list->white_list_num--;
-            }
-        }
-    }
-    printf("main:white list num %d!\n",g_white_list->white_list_num);
-    pthread_mutex_unlock(&g_white_list->mutex_white_list);
-
-    return true;
-}
 int create_pidfile(const char *file)
 {
     if( file == NULL) {

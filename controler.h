@@ -3,7 +3,6 @@
 
 void ThreadMonitorCapDeal(void);
 void ThreadLedShow(void* argument);
-void ThreadInfoToServer(void);
-void ThreadConnectWhitelist(void);
+void ThreadRequestWhitelist(void);
 void ThreadCamera();
 void ThreadKillFork();

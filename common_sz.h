@@ -15,17 +15,12 @@
 #define TID_LEN 16              
 #define TAG_NUM_MAX  100
 #define TAG_OLD_PASSED_MAX  1000 //max history passed list 
-#define MAX_WHITELIST_NUM 3000  
-#define MAX_TEMPCARLIST_NUM 500
 #define CAR_NUM_LEN 13          
 #define CAR_RIGHT_LEN  2        
 #define OPRATION_INFO_LEN 40 
-#define TIME_STR_LEN 20         
-#define POSITION_LEN 2          
-#define MAX_UNDEAL_CARD_NUM 10  
-#define MAX_OPERATE_INFO_NUM 10 
-#define MAX_SEND_INFO_NUM 10   
+#define MAX_OPERATE_INFO_NUM 100 
 #define LED_SHOW_MAX_NUM 10     
+#define TIME_STR_LEN 20
 
 #define GPIO8 8
 #define GPIO10 10
@@ -108,14 +103,6 @@ typedef struct led_show_info_list_s
 }LED_SHOW_LIST,*PLED_SHOW_LIST;
 
 
-typedef struct white_list_s
-{
-    pthread_mutex_t mutex_white_list;
-    unsigned char white_list[MAX_WHITELIST_NUM][TID_LEN+2+CAR_NUM_LEN];
-    int white_list_num;
-}WHITELIST,*PWHITELIST;
-PWHITELIST g_white_list;
-
 typedef struct operate_info_s
 {
     pthread_mutex_t mutex_operate_info;
@@ -124,32 +111,13 @@ typedef struct operate_info_s
 }OPERATEINFO,*POPERATEINFO;
 POPERATEINFO g_operate_info;
 
-typedef struct send_info_s
-{
-    pthread_mutex_t mutex_send_info;
-    STRUCT_OPERATE_INFO send_info[MAX_SEND_INFO_NUM];
-    int cur_send_info_num;
-    unsigned int read_pos;
-    unsigned int write_pos;
-}SENDINFO,*PSENDINFO;
-PSENDINFO g_send_info;
 
-typedef struct show_camera_s
-{
-    pthread_mutex_t mutex_led_show_camera;
-    LEDSHOWINFO led_show_camera[LED_SHOW_MAX_NUM];
-    char   led_ip[15];
-    int    led_port;
-    int led_info_camera_num;
-}SHOWCAMERA,*PSHOWCAMERA;
-PSHOWCAMERA g_show_camera;
 
 int reader;
 
 //for filter
 PTAGOBJ g_tags_array;
 int     g_tags_array_count;
-char *g_tag_flag;
 POLDPASSEDOBJ g_old_passed_array;
 PLED_SHOW_LIST g_led_show_list;
 
@@ -160,7 +128,6 @@ char reader_ip[15];
 int server_port;
 int reader_port;
 int reader_rate;
-int white_list_path[100];
 int jointcompute_id;
 int time_of_update_list;
 int inductor_signal_keep_time;

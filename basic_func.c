@@ -1,41 +1,5 @@
 #include "basic_func.h"
 
-bool file_write_whitelist()
-{
-    printf ("write into white_list.txt\n ");
-    int len = TID_LEN + 2 + CAR_NUM_LEN;
-
-    FILE *outfile = fopen(white_list_path,"wb");
-    if (outfile == NULL){
-       fclose(outfile);
-       return false;
-    }
-
-    char cpy_white_list[MAX_WHITELIST_NUM][TID_LEN+2+CAR_NUM_LEN];
-    int cpy_list_num;
-    pthread_mutex_lock(&g_white_list->mutex_white_list);
-    cpy_list_num = g_white_list->white_list_num;
-    memcpy(cpy_white_list,g_white_list->white_list,MAX_WHITELIST_NUM*(TID_LEN+2+CAR_NUM_LEN));
-    pthread_mutex_unlock(&g_white_list->mutex_white_list);
-
-    int i = 0;
-    char temp_c[2];
-    char temp_s[len + 2];
-    char * p_str;
-    for (i=0;i<cpy_list_num;i++)
-    {
-        p_str = (char *) cpy_white_list[i];
-        len = strlen(p_str);
-        str_assign_value(p_str,temp_s,len);
-        temp_s[len] = '\n';
-        temp_s[len+1] = '\r';
-        temp_s[len+2] = 0;
-        fputs(temp_s,outfile);
-    }
-    fclose(outfile);
-    return true;
-}
-
 int file_read(char * path,char *buf)
 {
     FILE *infile;
@@ -279,6 +243,7 @@ int str_assign_value(char * str_from,char * str_to,int len)
         str_to[i] = '\0';
     return copy_len;
 }
+
 bool str_get_sub_string(char * buf,char * des,int *len,char end_c)
 {
     *len = 0;
@@ -294,83 +259,5 @@ bool str_get_sub_string(char * buf,char * des,int *len,char end_c)
     return true;
 }
 
-bool get_seats_num(const char * str_seats_info,int len,int *p_seat)
-{
-    //$10:0100$20:0100$30:0100$40:0100
-    if (len != 32 || str_seats_info[0] != '$' || str_seats_info[8] != '$'
-        || str_seats_info[16] != '$' || str_seats_info[24] != '$'
-        || str_seats_info[3] != ':' || str_seats_info[11] != ':'
-        || str_seats_info[19] != ':' || str_seats_info[27] != ':')
-        return false;
-    int i = 0;
-    char num[4];
-    for (i=0;i<len/8;i++){
-//        str_assign_value(str_seats_info[i*8+4],num,4);
-//        p_seat[str_seats_info[i*8+1]/10 - 1] = atoi(num);
 
-    }
-    return true;
-}
 
-int get_white_list_index(const char * cur_tid)
-{
-    int ii = 0;
-    char *pbuf = NULL;
-    for (ii = 0;ii < g_white_list->white_list_num;ii ++)
-    {
-        pbuf = &g_white_list->white_list[ii];
-        if(str_equal(pbuf,cur_tid,TID_LEN))
-            return ii;
-    }
-
-    return -1;
-}
-
-bool add_white_list(const char * cur_item,int len)
-{
-    int i;
-    if (g_white_list->white_list_num == MAX_WHITELIST_NUM)
-        return false;
-    for( i=0;i<g_white_list->white_list_num;i++){
-	if( !strncmp(cur_item,g_white_list->white_list[i],TID_LEN)){
-	    return false;
-        }
-    }
-
-    str_assign_value(cur_item,g_white_list->white_list[g_white_list->white_list_num],len);
-    g_white_list->white_list_num ++;
-    return true;
-}
-bool del_white_list(const char * cur_item,int len)
-{
-    if (g_white_list->white_list_num <= 0)
-    {
-        printf("no tid in white list!\n");
-        return false;
-    }
-    int index = get_white_list_index(cur_item);
-    if (index == -1)
-    {
-        printf("can`t find this tid in white list!\n");
-        return false;
-    }
-    str_assign_value(g_white_list->white_list[g_white_list->white_list_num-1],g_white_list->white_list[index],len);
-    g_white_list->white_list_num --;
-    return true;
-}
-bool edit_white_list(const char * cur_item,int len)
-{
-    if (g_white_list->white_list_num <= 0)
-    {
-        printf("no tid in white list!\n");
-        return false;
-    }
-    int index = get_white_list_index(cur_item);
-    if (index == -1)
-    {
-        printf("can`t find this tid in white list!\n");
-        return false;
-    }
-    str_assign_value(cur_item,g_white_list->white_list[index],len);
-    return true;
-}

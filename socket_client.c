@@ -32,7 +32,7 @@ int client_recv_whitelist()
 	}
 	fd = ret;
 
-    extern int jointcompute_id;
+    	extern int jointcompute_id;
 	int   request_id  = jointcompute_id;
 	// request the whitelist
 	char request_cmd[] = "2000000";

@@ -184,6 +184,11 @@ int db_query_call(struct sDB *sDB, const char* query_cmd, struct query_result *q
 	int rc = sqlite3_exec(sDB->db, query_cmd , callback_save_result, query_result, &zErrMsg);
 	if( rc!=SQLITE_OK ){
 		fprintf(stderr, "SQL error: %s\n", zErrMsg);
+
+		//释放申请的资源
+                free_result(query_result);
+
+		//释放申请的资源
 		sqlite3_free(zErrMsg);
 		return (-1);
 	}

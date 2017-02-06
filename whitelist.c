@@ -8,12 +8,23 @@ const char  g_wldb_file[] = "whitelist.db";
 
 struct sDB * g_whitelist;
 
+static pthread_mutex_t whitelist_mtx;
+
 int WhiteListDatabaseInit()
 {
+       int mtx = 0;
+
+       mtx = pthread_mutex_init(&whitelist_mtx,NULL); 
+       if( 0 != mtx){
+            print_log(f_sysinit,"ERROR!!!pthread_mutex_init whilte list database mutex!!!");
+	    return -1;
+       }
+
 	g_whitelist = db_open(g_wldb_file, NULL);
 	if( g_whitelist==NULL )
 	{
-		printf("%s not exist\n", g_wldb_file);
+		printf("%s not exist!!!\n", g_wldb_file);
+                print_log(f_sysinit,"ERROR!!! %s not exist!!!\n",g_wldb_file);
 		return -1;
 	}
 
@@ -54,6 +65,8 @@ int RefreshWLDatabase(char *data, int count)
 	int     split_count = 200;// 每次插入200条
 	sql_cmd = (char*)malloc(200*40+30);
 	sprintf(sql_cmd, "delete from whitelist");
+
+	pthread_mutex_lock(&whitelist_mtx);
 	ret = db_query(g_whitelist, sql_cmd);
 	printf("Table Clear %d\n", ret);
 	sql_prefix_len = sprintf(sql_cmd, "insert into whitelist values ");
@@ -92,6 +105,9 @@ int RefreshWLDatabase(char *data, int count)
 			else
 			{
 				printf("sql update failed\n");
+				pthread_mutex_unlock(&whitelist_mtx);
+				free(sql_cmd);
+
 				return -1;
 			}
 			memset(sql_cmd, 0x00, 200*40+30);
@@ -113,9 +129,15 @@ int RefreshWLDatabase(char *data, int count)
 		else
 		{
 			printf("sql update failed\n");
+			pthread_mutex_unlock(&whitelist_mtx);
+			free(sql_cmd);
+
 			return -1;
 		}
 	}
+
+	free(sql_cmd);
+	pthread_mutex_unlock(&whitelist_mtx);
 	return 0;
 }
 
@@ -123,27 +145,33 @@ int RefreshWLDatabase(char *data, int count)
 int CheckWhiteList(char tid[16],char *carnum)
 {
 	char sql_cmd[1024];
-	struct query_result     result;
+	struct query_result     *result;
 	int                     ret;
 	if(NULL == carnum){
 		return -1;
 	}
+ 	
 	sprintf(sql_cmd, "select * from whitelist where tid='%s'", tid);
 
+	pthread_mutex_lock(&whitelist_mtx);
 	ret = db_query_call(g_whitelist, sql_cmd, &result);
 	if( ret==0 )
 	{
-		struct sqlresult * temp = result.result;
-		if( result.total == 1 ){
+		struct sqlresult * temp = result->result;
+		if( result->total == 1 ){
 		    ret = strncmp(temp->colname[2],"license",7);//col name for car number
 
 		    if(0 == ret){
 			strcpy(carnum,temp->data[2]);//car number	
+			//释放结果集资源
+                	free_result(result);
+		        pthread_mutex_unlock(&whitelist_mtx);
+			
 		        return 0;
 		    }
 			
 	         }else{
-                    return -1;
+
 		 }
 
 		/*
@@ -163,7 +191,17 @@ int CheckWhiteList(char tid[16],char *carnum)
 	else
 	{
 		printf("sql exec failed\n");
+		//释放结果集资源
+                free_result(result);
+		pthread_mutex_unlock(&whitelist_mtx);
+
 		return -1;
 	}
+
+	pthread_mutex_unlock(&whitelist_mtx);
+
+	//释放结果集资源
+         free_result(result);
+
 	return -1;
 }

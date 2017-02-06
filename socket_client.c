@@ -16,7 +16,7 @@
  * @返回值   -1 : 失败  0: 成功
  */
 /* ----------------------------------------------------------------------------*/
-int client_recv_whitelist1()
+int client_recv_whitelist()
 {
 	int         send_timeout = 5;
 	int         recv_timeout = 10;
@@ -81,7 +81,10 @@ int client_recv_whitelist1()
 	gettimeofday(&timeval, NULL);
 	unsigned long long starttime,endtime = 0;
 	starttime = (unsigned long long)timeval.tv_sec * 1000000L + (unsigned long long)timeval.tv_usec;
+
+        //同步全部白名单
 	ret = RefreshWLDatabase(recv_buff, item_count);
+
 	gettimeofday(&timeval, NULL);
 	endtime = (unsigned long long)timeval.tv_sec *1000000L + (unsigned long long)timeval.tv_usec;
 	printf("Update WL Ret %d Time %d us\n", ret, endtime-starttime);

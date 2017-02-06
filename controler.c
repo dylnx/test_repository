@@ -15,6 +15,7 @@
 #include "serial.h"
 #include "pass_record.h"
 #include "whitelist.h"
+#include "socket_client.h"
 
 
 
@@ -707,7 +708,7 @@ void ThreadRequestWhitelist(void)
 	while (1)
 	{
 		sleep(time_of_update_list);
-		client_recv_whitelist1();
+		client_recv_whitelist();
 	}
 }
 

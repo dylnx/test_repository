@@ -195,7 +195,7 @@ int db_query_call(struct sDB *sDB, const char* query_cmd, struct query_result *q
 	return (0);
 }
 
-#if 0
+#if 1
 int main(int argc,char *argv[])
 {
     int ret;
@@ -219,10 +219,10 @@ int main(int argc,char *argv[])
 	printf("query successfully!!!\n");	
     }
     
-    ret = db_query_call(sdb, query_cmd, result)
+    ret = db_query_call(sdb, query_cmd, result);
     if( ret==0 )
     {
-	struct sqlresult * temp = result.result;
+	struct sqlresult * temp = result->result;
 #if 0
 	if( result.total == 1 ) return 0;
 	else  return -1;

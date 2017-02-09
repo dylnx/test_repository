@@ -195,7 +195,7 @@ int db_query_call(struct sDB *sDB, const char* query_cmd, struct query_result *q
 	return (0);
 }
 
-#if 1
+#if 0
 int main(int argc,char *argv[])
 {
     int ret;

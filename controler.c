@@ -189,8 +189,9 @@ void ThreadMonitorCapDeal(void)
 
 	while(1)
 	{
-	       retVal = CheckLandInduction(whitchInduction);
-                
+	   //retVal = CheckLandInduction(whitchInduction);
+             retVal = SIGNAL;    
+
 		if( SIGNAL == retVal )
 		{
 

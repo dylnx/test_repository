@@ -190,6 +190,7 @@ void ThreadMonitorCapDeal(void)
 	while(1)
 	{
 	       retVal = CheckLandInduction(whitchInduction);
+               retVal = SIGNAL;
                 
 		if( SIGNAL == retVal )
 		{
@@ -588,7 +589,8 @@ int GetTagsAndDeal(int *whitchInduction)
 #endif
 	       char carnum[20] = {0};
 	       int ret_cwl=0;
-               ret_cwl =  CheckWhiteList(g_tags_array[i].tid,carnum);
+
+               ret_cwl =  CheckWhiteList(&g_tags_array[i].tid,carnum);
 
 		if( -1 != ret_cwl )//找到
 		{

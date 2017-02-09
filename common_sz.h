@@ -27,7 +27,6 @@
 #define GPIO12 12
 #define GPIO14 14
 
-
 typedef struct struct_operate_info_s
 {
     char TID[20];              

@@ -129,6 +129,8 @@ int reader_rate;
 int jointcompute_id;
 int time_of_update_list;
 int inductor_signal_keep_time;
+int passrecord_resend_loop_time;
+int passrecord_resend_limit_time;
 int log_file_size; //defult value
 
 //gate info

@@ -154,7 +154,7 @@ int main(void)
     usleep(500*1000);
 #endif
 
-#if 0
+
     s = pthread_create(&thread_request_whitelist,NULL,(void *)&ThreadRequestWhitelist,NULL);
     if(s != 0)
     {
@@ -169,7 +169,7 @@ int main(void)
 	print_log(f_sysinit,"pthread_create thread_resend_passrecord faild!!");
  	exit(EXIT_FAILURE);		
     }
-#endif
+
 
     s =	pthread_create(&thread_control,NULL,(void *)&ThreadMonitorCapDeal,NULL);
     if( 0 != s ){
@@ -231,6 +231,19 @@ bool initial(void)
         // log
         return false;
     }
+
+    if (!readIntParam(buffer,buf_len, "passrecord_resend_loop_time",&passrecord_resend_loop_time))
+    {
+        // log
+        return false;
+    }
+
+    if (!readIntParam(buffer,buf_len, "passrecord_resend_limit_time",&passrecord_resend_limit_time))
+    {
+        // log
+        return false;
+    }
+
     if (!readIntParam(buffer,buf_len, "dev_id",&jointcompute_id))
     {
         // log

@@ -231,6 +231,19 @@ bool initial(void)
         // log
         return false;
     }
+
+    if (!readIntParam(buffer,buf_len, "passrecord_resend_loop_time",&passrecord_resend_loop_time))
+    {
+        // log
+        return false;
+    }
+
+    if (!readIntParam(buffer,buf_len, "passrecord_resend_limit_time",&passrecord_resend_limit_time))
+    {
+        // log
+        return false;
+    }
+
     if (!readIntParam(buffer,buf_len, "dev_id",&jointcompute_id))
     {
         // log

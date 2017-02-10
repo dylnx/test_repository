@@ -584,10 +584,8 @@ int GetTagsAndDeal(int *whitchInduction)
 	       char carnum[20] = {0};
 	       int ret_cwl=0;
 
-printf("!!!!!!!!!!!!!!!!!!!!before CheckWhiteList!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!\n");
                ret_cwl =  CheckWhiteList(&g_tags_array[i].tid,carnum);
 
-printf("!!!!!!!!!!!!!!!!!!!!after CheckWhiteList!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!\n");
 		if( -1 != ret_cwl )//找到
 		{
 			opIndex = g_operate_info->cur_operate_num;
@@ -709,17 +707,17 @@ void ThreadResendPassrecord(void)
 	int ret;
 	while(1)
 	{
-		//默认1分轮询一次通行记录文件
-		sleep( 60 );
+		sleep( passrecord_resend_loop_time );
 
-		//每次轮询，默认将最近"5 * 24"小时的记录发送到服务
-	        ret = ResendCachePassRecordLimitByDate( 5 * 24 );
+		//每次轮询，将最近passrecord_resend_loop_time小时的记录发送到服务
+	        ret = ResendCachePassRecordLimitByDate( passrecord_resend_limit_time );
 		if( 0 == ret )
 		{
 			print_log(f_sended_server,"resend passrecord successfully!!!");
 		}else{
 			print_log(f_sended_server,"resend passrecord failed!!!");
 		}
+                
 	}
 }
 

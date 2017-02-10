@@ -690,19 +690,23 @@ printf("!!!!!!!!!!!!!!!!!!!!after CheckWhiteList!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
 void ThreadRequestWhitelist(void)
 {
-	// extern int time_of_update_list;
+        int ret;
 	while(1)
 	{
 		sleep(time_of_update_list);
-		client_recv_whitelist();
-		print_log(f_sync_whitelist,"request and updated the white list!!!");
+		ret = client_recv_whitelist();
+                if( 0 == ret )
+                {
+		        print_log(f_sync_whitelist,"update the white list successfully!!!");
+                }else{
+		        print_log(f_sync_whitelist,"update the white list failed!!!");
+                }
 	}
 }
 
 void ThreadResendPassrecord(void)
 {
 	int ret;
-
 	while(1)
 	{
 		//默认1分轮询一次通行记录文件
@@ -715,7 +719,6 @@ void ThreadResendPassrecord(void)
 			print_log(f_sended_server,"resend passrecord successfully!!!");
 		}else{
 			print_log(f_sended_server,"resend passrecord failed!!!");
-
 		}
 	}
 }

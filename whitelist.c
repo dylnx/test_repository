@@ -150,11 +150,18 @@ int CheckWhiteList(const char *tid,char *carnum)
 	if(NULL == carnum){
 		return -1;
 	}
+        
+        result = (struct query_result *)calloc(1,sizeof(struct query_result));
+        if( NULL == result )
+        {
+            printf("calloc result is NULL!!!\n");
+            return -1;
+        }
  	
 	sprintf(sql_cmd, "select * from whitelist where tid='%s'", tid);
-printf("$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$\n");
 	pthread_mutex_lock(&whitelist_mtx);
-	ret = db_query_call(g_whitelist, sql_cmd, &result);
+	ret = db_query_call(g_whitelist, sql_cmd, result);
+
 	if( ret==0 )
 	{
 		struct sqlresult * temp = result->result;
@@ -196,7 +203,8 @@ printf("$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$\n");
 		pthread_mutex_unlock(&whitelist_mtx);
 
 		return -1;
-	}
+
+	}//end of if( ret == 0......
 
 	pthread_mutex_unlock(&whitelist_mtx);
 

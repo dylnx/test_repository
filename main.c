@@ -21,7 +21,7 @@ int main(void)
     int i,s = 0,thread_arg,ret_createmtx = 0;
     void * ret;
 
-    daemon(1,1);
+//    daemon(1,1);
     //create_pidfile("ReadTags.pid");
     signal(SIGPIPE,SIG_IGN);
 

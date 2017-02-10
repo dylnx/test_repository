@@ -1,7 +1,7 @@
 #wrote by hexp
 
 C := gcc
-CFLAGS =  -I../lib -c -g -O2 -Wall
+CFLAGS =  -I../lib -g  -Wall
 EXEFLAGS = -L ./ -L/lib  -lreader -lpthread -lsqlite3 -ldl
 
 
@@ -14,11 +14,11 @@ APPReadTags = ReadTags
 
 $(APPReadTags):$(OBJS)
 	rm -f $(APPReadTags)
-	$(C)   -o  $@  $^ $(EXEFLAGS)
+	$(C) $(CFLAGS) -o  $@  $^ $(EXEFLAGS)
 
 
 %.o : %.c
-	$(C) $(CFLAGS) $< -o $@
+	$(C) $(CFLAGS) -c $< -o $@
 
 .PHONY : clean
 

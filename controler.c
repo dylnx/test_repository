@@ -189,9 +189,8 @@ void ThreadMonitorCapDeal(void)
 
 	while(1)
 	{
-	   //retVal = CheckLandInduction(whitchInduction);
-             retVal = SIGNAL;    
-
+	       retVal = CheckLandInduction(whitchInduction);
+                
 		if( SIGNAL == retVal )
 		{
 
@@ -581,16 +580,13 @@ int GetTagsAndDeal(int *whitchInduction)
 
 	for( i=0;i<g_tags_array_count;i++ )
 	{
-#if 0
-		pthread_mutex_lock(&g_white_list->mutex_white_list);
-
-		int k = get_index_by_tid(g_tags_array[i].tid);
-		pthread_mutex_unlock(&g_white_list->mutex_white_list);
-#endif
 	       char carnum[20] = {0};
 	       int ret_cwl=0;
-               ret_cwl =  CheckWhiteList(g_tags_array[i].tid,carnum);
 
+printf("!!!!!!!!!!!!!!!!!!!!before CheckWhiteList!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!\n");
+               ret_cwl =  CheckWhiteList(&g_tags_array[i].tid,carnum);
+
+printf("!!!!!!!!!!!!!!!!!!!!after CheckWhiteList!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!\n");
 		if( -1 != ret_cwl )//找到
 		{
 			opIndex = g_operate_info->cur_operate_num;
@@ -613,22 +609,11 @@ int GetTagsAndDeal(int *whitchInduction)
 			operate->gate_id = gates[n_gate_index].gate_id;
 			operate->io_type = gates[n_gate_index].gate_type;
 
-#if 0
-			pthread_mutex_lock(&g_white_list->mutex_white_list);
-
-			char * p = g_white_list->white_list[k];
-			strcpy(operate->car_num, p+TID_LEN+2);  
-			strncpy(operate->card_type, p+TID_LEN, 2);
-
-			pthread_mutex_unlock(&g_white_list->mutex_white_list);
-#endif
-
 			if ( operate->io_type == 'i' || operate->io_type == 'o' )
 			{
 				operate->be_enter = true;
 			}
 			g_operate_info->cur_operate_num++;
-
 
 		}
 		else// 未找到
@@ -639,7 +624,6 @@ int GetTagsAndDeal(int *whitchInduction)
 
 
 	}//end for for( i=0;i<g_tags_array_count;i++.....
-
 
 	bool can_open = false;
 	for( i=0;i<g_operate_info->cur_operate_num;i++)
@@ -663,43 +647,43 @@ int GetTagsAndDeal(int *whitchInduction)
 }
 
 
-	void ThreadLedShow(void* argument)
-	{
-		int i;
-		int  arg = *(int*)argument;
+ void ThreadLedShow(void* argument)
+ {
+         int i;
+         int  arg = *(int*)argument;
 
-		// init led
-		//g_led_show_list[arg].led_info_cur_num = 0;
-		//memset(g_led_show_list[arg].led_show_array,0,LED_SHOW_MAX_NUM * sizeof(LEDSHOWINFO));
+         // init led
+         //g_led_show_list[arg].led_info_cur_num = 0;
+         //memset(g_led_show_list[arg].led_show_array,0,LED_SHOW_MAX_NUM * sizeof(LEDSHOWINFO));
 
-		// only one led
-		LEDSHOWINFO cp_one_led_show_oper;
-		while (1)
-		{
-			/////////////////////////////// show chepai ///////////////////////////////
+         // only one led
+         LEDSHOWINFO cp_one_led_show_oper;
+         while (1)
+         {
+                 /////////////////////////////// show chepai ///////////////////////////////
 
-			// copy from led_show_oper
-			pthread_mutex_lock(&g_led_show_list[arg].mutex_led_show);
-			if (g_led_show_list[arg].led_info_cur_num > 0)
-			{
-				memcpy(&cp_one_led_show_oper,&(g_led_show_list[arg].led_show_array[0]),sizeof(LEDSHOWINFO));
+                 // copy from led_show_oper
+                 pthread_mutex_lock(&g_led_show_list[arg].mutex_led_show);
+                 if (g_led_show_list[arg].led_info_cur_num > 0)
+                 {
+                         memcpy(&cp_one_led_show_oper,&(g_led_show_list[arg].led_show_array[0]),sizeof(LEDSHOWINFO));
 
-				show_chepai(g_led_show_list->led_ip,g_led_show_list->led_port,cp_one_led_show_oper.car_num, \
-						cp_one_led_show_oper.be_entry,false);
+                         show_chepai(g_led_show_list->led_ip,g_led_show_list->led_port,cp_one_led_show_oper.car_num, \
+                                         cp_one_led_show_oper.be_entry,false);
 
-				for (i = 0; i < g_led_show_list[arg].led_info_cur_num; i++)
-					memcpy(&(g_led_show_list[arg].led_show_array[i]),&(g_led_show_list[arg].led_show_array[i+1]),sizeof(LEDSHOWINFO));
+                         for (i = 0; i < g_led_show_list[arg].led_info_cur_num; i++)
+                                 memcpy(&(g_led_show_list[arg].led_show_array[i]),&(g_led_show_list[arg].led_show_array[i+1]),sizeof(LEDSHOWINFO));
 
-				memset(&g_led_show_list[arg].led_show_array[g_led_show_list[arg].led_info_cur_num-1],0,sizeof(LEDSHOWINFO));
-				g_led_show_list[arg].led_info_cur_num -= 1;
+                         memset(&g_led_show_list[arg].led_show_array[g_led_show_list[arg].led_info_cur_num-1],0,sizeof(LEDSHOWINFO));
+                         g_led_show_list[arg].led_info_cur_num -= 1;
 
-			}
+                 }
 
-			pthread_mutex_unlock(&g_led_show_list[arg].mutex_led_show);
+                 pthread_mutex_unlock(&g_led_show_list[arg].mutex_led_show);
 
-			sleep (1);
-		}
-	}
+                 sleep (1);
+         }
+ }
 
 
 

@@ -96,7 +96,7 @@ int RefreshWLDatabase(char *data, int count)
 		if( i%200 == 0 && i!=0 )
 		{
 			sql_cmd[sql_prefix_len+sql_cmd_len-1] = 0;
-			//printf("%s\n", sql_cmd);
+		//	printf("%s\n", sql_cmd);
 			ret = db_query(g_whitelist, sql_cmd);
 			if( ret==0 )
 			{

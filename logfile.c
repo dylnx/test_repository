@@ -953,7 +953,7 @@ int ResendCachePassRecordLimitByDate(int expire_hour)
 	{
 		int j;
 		unsigned int temp2[2];
-		for(j=0;j<i;i++)
+		for(j=0;j<i;j++)
 		{
 			seqNo[0] = fakedata[j].m_Meta.m_SeqNo[0];
 			seqNo[1] = fakedata[j].m_Meta.m_SeqNo[1];

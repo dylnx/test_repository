@@ -695,6 +695,7 @@ void ThreadRequestWhitelist(void)
 	{
 		sleep(time_of_update_list);
 		client_recv_whitelist();
+		print_log(f_sync_whitelist,"request and updated the white list!!!");
 	}
 }
 
@@ -704,8 +705,8 @@ void ThreadResendPassrecord(void)
 
 	while(1)
 	{
-		//默认10分轮询一次通行记录文件
-		sleep( 10 * 60 );
+		//默认1分轮询一次通行记录文件
+		sleep( 60 );
 
 		//每次轮询，默认将最近"5 * 24"小时的记录发送到服务
 	        ret = ResendCachePassRecordLimitByDate( 5 * 24 );

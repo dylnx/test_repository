@@ -37,8 +37,6 @@ int main(void)
     f_sync_whitelist = open_log_file("./log/syncwhitelist.log");
     print_log(f_sysinit,"Program Started!!!");    
 
-    //初始化GPIO
-    init_gpio();
 
     //初始化白名单数据库功能 
     WhiteListDatabaseInit();
@@ -119,17 +117,25 @@ int main(void)
         return -1;
     }
 
-#if 1
-    for(i=0;i<2;i++)
+    if(!strcmp(door_open_method,"RELAY"))
     {
-       	gates[i].com_roadblock_fd = com_init(gates[i].com_roadblock);
-	//printf("com%d fd=%d\n",i,gates[i].com_roadblock_fd);
-       	if(gates[i].com_roadblock_fd==0){
-            print_log(f_sysinit,"ERROR!!!Dev:%s init failed!!!\n",gates[i].com_roadblock);
-        }
-            usleep(100*1000);
+	 //初始化GPIO
+	 init_gpio();
     }
-#endif
+
+
+    if(!strcmp(door_open_method,"RS485"))
+    {
+	    for(i=0;i<2;i++)
+	    {
+		gates[i].com_roadblock_fd = com_init(gates[i].com_roadblock);
+		//printf("com%d fd=%d\n",i,gates[i].com_roadblock_fd);
+		if(gates[i].com_roadblock_fd==0){
+		    print_log(f_sysinit,"ERROR!!!Dev:%s init failed!!!\n",gates[i].com_roadblock);
+		}
+		    usleep(100*1000);
+	    }
+    }
 
     //create some thread
     pthread_t thread_control,thread_led0,thread_led1,thread_request_whitelist,	\
@@ -234,7 +240,7 @@ bool initial(void)
         return false;
     }
 
-    if (!readIntParam(buffer,buf_len, "passrecord_resend_loop_time",&passrecord_resend_loop_time))
+    if (!readIntParam(buffer,buf_len, "passrecord_resend_inteval",&passrecord_resend_inteval))
     {
         // log
         return false;
@@ -246,23 +252,31 @@ bool initial(void)
         return false;
     }
 
-    if (!readIntParam(buffer,buf_len, "dev_id",&jointcompute_id))
+    if (!readIntParam(buffer,buf_len, "request_whitelist_inteval",&request_whitelist_inteval))
     {
         // log
         return false;
     }
-/*
-    if (!readStringParam(buffer,buf_len, "white_list_path",white_list_path))
+
+    if (!readStringParam(buffer,buf_len, "working_way",working_way))
     {
         // log
         return false;
     }
-*/
-    if (!readIntParam(buffer,buf_len, "time_of_update_list",&time_of_update_list))
+
+    if (!readStringParam(buffer,buf_len, "door_open_method",door_open_method))
     {
         // log
         return false;
     }
+
+    if (!readIntParam(buffer,buf_len, "dev_id",&dev_id))
+    {
+        // log
+        return false;
+    }
+
+
     
    if (!readIntParam(buffer,buf_len, "log_file_size",&log_file_size))
     {
@@ -277,30 +291,31 @@ bool initial(void)
     for (i=0;i<2;i++)//two gates,one for enter,anther for leave.
     {
         char ss[3];
+
         sprintf(key_name,"%s_%d_%s","gate_info",i,"type");
         readStringParam(buffer,buf_len, key_name,ss);
         gates[i].gate_type = ss[0];
+
         sprintf(key_name,"%s_%d_%s","gate_info",i,"id");
         readIntParam(buffer,buf_len, key_name,&gates[i].gate_id);
+
         sprintf(key_name,"%s_%d_%s","gate_info",i,"roadblock");
         readStringParam(buffer,buf_len, key_name,gates[i].com_roadblock);
 
-	printf(" gates[%d].com_roadblock=%s\n",i,gates[i].com_roadblock);
-
-        //sprintf(key_name,"%s_%d_%s","gate_info",i,"inductor");
-        //readStringParam(buffer,buf_len, key_name,gates[i].com_inductor);
-
         sprintf(key_name,"%s_%d_%s","gate_info",i,"led_ip");
         readStringParam(buffer,buf_len, key_name,gates[i].led_ip);
+
         sprintf(key_name,"%s_%d_%s","gate_info",i,"led_port");
         readIntParam(buffer,buf_len, key_name,&gates[i].led_port);
+
         sprintf(key_name,"%s_%d_%s","gate_info",i,"right");
         readStringParam(buffer,buf_len, key_name,gates[i].gate_rights);
+
         sprintf(key_name,"%s_%d","ant_num",i);
         readIntParam(buffer,buf_len, key_name,&gates[i].ant_num);
+
         sprintf(key_name,"%s_%d","gate_ant",i);
         readIntParam(buffer,buf_len, key_name,&gates[i].ants[0]);
-	printf("gates[%d].ant=%d\n",i,gates[i].ants[0]);
     }
 
    

@@ -17,7 +17,7 @@ int init_gpio()
 	gpio_fd = open(GPIO_NODE, O_WRONLY);
 	if (gpio_fd < 0)
 	{
-		printf("open error \n");
+		printf("open gpio error \n");
 		return -1;
 	}
 	return 0;

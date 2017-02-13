@@ -189,7 +189,13 @@ void ThreadMonitorCapDeal(void)
 
 	while(1)
 	{
-	       retVal = CheckLandInduction(whitchInduction);
+	       if(!strcmp(working_way,"INDUCTION"))
+	       {
+	       	   retVal = CheckLandInduction(whitchInduction);
+	       }else{
+		   //working_way="POLL"	,系统采用轮询工作方式
+                   retVal = SIGNAL; 
+	       }
                 
 		if( SIGNAL == retVal )
 		{
@@ -424,7 +430,7 @@ bool OpenDoor(int operate_index,int openDoorMethodType,bool b_print_log)
 			time_t tt = time(NULL);
 			struct tm *local = localtime(&tt);
 			sprintf(log.m_Timestamp,"%04d/%02d/%02d %02d:%02d:%02d",  \
-					local->tm_year+1900,local->tm_mon+1,local->tm_mday,local->tm_hour, \
+				local->tm_year+1900,local->tm_mon+1,local->tm_mday,local->tm_hour, \
 					local->tm_min,local->tm_sec);
 			log.m_Channel = op->gate_id;
 			log.m_Direction = (op->io_type=='i')?0:1;
@@ -689,7 +695,7 @@ void ThreadRequestWhitelist(void)
         int ret;
 	while(1)
 	{
-		sleep(time_of_update_list);
+		sleep(request_whitelist_inteval);
 		ret = client_recv_whitelist();
                 if( 0 == ret )
                 {
@@ -705,7 +711,7 @@ void ThreadResendPassrecord(void)
 	int ret;
 	while(1)
 	{
-		sleep( passrecord_resend_loop_time );
+		sleep( passrecord_resend_inteval );
 
 		//每次轮询，将最近passrecord_resend_loop_time小时的记录发送到服务
 	        ret = ResendCachePassRecordLimitByDate( passrecord_resend_limit_time );

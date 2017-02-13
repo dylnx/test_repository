@@ -122,17 +122,20 @@ POLDPASSEDOBJ g_old_passed_array;
 PLED_SHOW_LIST g_led_show_list;
 
 
-//config desc
+//用于保存从config.ini读取的配制数据
 char server_ip[15];
 char reader_ip[15];
 int server_port;
 int reader_port;
 int reader_rate;
-int jointcompute_id;
-int time_of_update_list;
+int request_whitelist_inteval;
 int inductor_signal_keep_time;
-int passrecord_resend_loop_time;
+int passrecord_resend_inteval;
 int passrecord_resend_limit_time;
+int dev_id;
+char working_way[20];
+char door_open_method[20];
+
 int log_file_size; //defult value
 
 //gate info

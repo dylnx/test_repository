@@ -214,6 +214,8 @@ bool initial(void)
         // log
         return false;
     }
+    print_log(f_sysinit,"server_ip=%s",server_ip);    
+
     if (!readIntParam(buffer,buf_len, "server_port",&server_port))
     {
         // log
@@ -262,6 +264,21 @@ bool initial(void)
     {
         // log
         return false;
+    }
+
+    if(!strcmp(working_way,"INDUCTION"))
+    {
+      if(!readStringParam(buffer,buf_len, "inteval_induction",		&get_tags_inteval)){
+		// log
+		return false;
+	}
+    }else{//working_way="POLL",系统采用轮询工作方式
+
+	if(!readStringParam(buffer,buf_len, "inteval_poll",
+	&get_tags_inteval)){
+		// log
+		return false;
+	}   
     }
 
     if (!readStringParam(buffer,buf_len, "door_open_method",door_open_method))

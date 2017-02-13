@@ -192,8 +192,8 @@ void ThreadMonitorCapDeal(void)
 	       if(!strcmp(working_way,"INDUCTION"))
 	       {
 	       	   retVal = CheckLandInduction(whitchInduction);
-	       }else{
-		   //working_way="POLL"	,系统采用轮询工作方式
+	       }else{//working_way="POLL",系统采用轮询工作方式
+		   
                    retVal = SIGNAL; 
 	       }
                 
@@ -207,7 +207,13 @@ void ThreadMonitorCapDeal(void)
 
 			}else if( SUCCESS == retVal ){
 
-			       usleep(200*1000);
+				if(!strcmp(working_way,"INDUCTION"))
+			       {
+			         usleep(get_tags_inteval*1000);
+			       }else{//working_way="POLL",系统采用轮询工作方式
+				   
+			         usleep(get_tags_inteval*1000);
+			       }		
 
 			}
 

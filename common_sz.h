@@ -134,6 +134,7 @@ int passrecord_resend_inteval;
 int passrecord_resend_limit_time;
 int dev_id;
 char working_way[20];
+int  get_tags_inteval;
 char door_open_method[20];
 
 int log_file_size; //defult value

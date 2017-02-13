@@ -601,7 +601,7 @@ int GetTagsAndDeal(int *whitchInduction)
 			//拷贝天线号
 			operate->ant_num = g_tags_array[i].ant_num;
 
-			n_gate_index = get_gate_index(operate->ant_num);// * zhanghong 获取门号 不确定 *//
+			n_gate_index = get_gate_index(operate->ant_num);//获取门号
 			if( -1 == n_gate_index )
 			{
 				print_log(f_error,"gate_index is error!\n");

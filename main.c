@@ -277,30 +277,31 @@ bool initial(void)
     for (i=0;i<2;i++)//two gates,one for enter,anther for leave.
     {
         char ss[3];
+
         sprintf(key_name,"%s_%d_%s","gate_info",i,"type");
         readStringParam(buffer,buf_len, key_name,ss);
         gates[i].gate_type = ss[0];
+
         sprintf(key_name,"%s_%d_%s","gate_info",i,"id");
         readIntParam(buffer,buf_len, key_name,&gates[i].gate_id);
+
         sprintf(key_name,"%s_%d_%s","gate_info",i,"roadblock");
         readStringParam(buffer,buf_len, key_name,gates[i].com_roadblock);
 
-	printf(" gates[%d].com_roadblock=%s\n",i,gates[i].com_roadblock);
-
-        //sprintf(key_name,"%s_%d_%s","gate_info",i,"inductor");
-        //readStringParam(buffer,buf_len, key_name,gates[i].com_inductor);
-
         sprintf(key_name,"%s_%d_%s","gate_info",i,"led_ip");
         readStringParam(buffer,buf_len, key_name,gates[i].led_ip);
+
         sprintf(key_name,"%s_%d_%s","gate_info",i,"led_port");
         readIntParam(buffer,buf_len, key_name,&gates[i].led_port);
+
         sprintf(key_name,"%s_%d_%s","gate_info",i,"right");
         readStringParam(buffer,buf_len, key_name,gates[i].gate_rights);
+
         sprintf(key_name,"%s_%d","ant_num",i);
         readIntParam(buffer,buf_len, key_name,&gates[i].ant_num);
+
         sprintf(key_name,"%s_%d","gate_ant",i);
         readIntParam(buffer,buf_len, key_name,&gates[i].ants[0]);
-	printf("gates[%d].ant=%d\n",i,gates[i].ants[0]);
     }
 
    

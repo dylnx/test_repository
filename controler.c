@@ -324,7 +324,7 @@ bool AddTagsToLedList(int operate_index)
 {
 	bool be_old = false;
 	int j,n_gate_index;
-	//memset(g_operate_info->operate_info,0,MAX_OPERATE_INFO_NUM * sizeof(STRUCT_OPERATE_INFO));
+	int cur_num;
 
 	if( operate_index<0 || operate_index >= MAX_OPERATE_INFO_NUM){
 		return false; 
@@ -339,13 +339,18 @@ bool AddTagsToLedList(int operate_index)
 		default:
 			return false;
 	}
-	if(g_led_show_list[n_gate_index].led_info_cur_num < LED_SHOW_MAX_NUM)
+
+	cur_num = g_led_show_list[n_gate_index].led_info_cur_num;
+
+	if(cur_num < LED_SHOW_MAX_NUM)
 	{
 		pthread_mutex_lock(&g_led_show_list[n_gate_index].mutex_led_show);
 
-		for(j=0;j<g_led_show_list[n_gate_index].led_info_cur_num;j++)
+		for(j=0;j<cur_num;j++)
 		{
-			if(str_equal(g_operate_info->operate_info[operate_index].car_num,g_led_show_list[n_gate_index].led_show_array[j].car_num,CAR_NUM_LEN))
+			
+			if(str_equal(g_operate_info->operate_info[operate_index].car_num,
+				g_led_show_list[n_gate_index].led_show_array[j].car_num,CAR_NUM_LEN))
 			{
 				be_old = true;
 				break;
@@ -354,27 +359,27 @@ bool AddTagsToLedList(int operate_index)
 
 		if(!be_old)
 		{
-			g_led_show_list[n_gate_index].led_show_array[g_led_show_list[n_gate_index].led_info_cur_num].be_entry = \
-																													g_operate_info->operate_info[operate_index].be_enter;
+			g_led_show_list[n_gate_index].led_show_array[cur_num].be_entry = 
+				g_operate_info->operate_info[operate_index].be_enter;
 			str_assign_value(g_operate_info->operate_info[operate_index].car_num, \
-					g_led_show_list[n_gate_index].led_show_array[g_led_show_list[n_gate_index].led_info_cur_num].car_num, \
-					CAR_NUM_LEN);
+			g_led_show_list[n_gate_index].led_show_array[cur_num].car_num,CAR_NUM_LEN);
+
 			/*
 			   str_assign_value(gates[n_gate_index].led_ip, \
-			   led_show_list_ptr[n_gate_index].led_show_oper[led_show_list_ptr[n_gate_index].led_info_cur_num].led_ip, \
-			   15);
-
-			   led_show_list_ptr[n_gate_index].led_show_oper[led_show_list_ptr[n_gate_index].led_info_cur_num].led_port = gates[n_gate_index].led_port;
-			   */
+			   led_show_list_ptr[n_gate_index].led_show_oper[cur_num].led_ip,15);
+				  
+			   led_show_list_ptr[n_gate_index].led_show_oper[cur_num].led_port = gates[n_gate_index].led_port;
+			*/
 
 			g_led_show_list[n_gate_index].led_info_cur_num++;
-		}
+
+  		}
 
 		pthread_mutex_unlock(&g_led_show_list[n_gate_index].mutex_led_show);
 
-	}//end for if(led_show_list_ptr.......
+  }//end for if(led_show_list_ptr.......
 
-	return true;
+  return true;
 }
 
 bool OpenDoor(int operate_index,int openDoorMethodType,bool b_print_log)
@@ -650,24 +655,18 @@ int GetTagsAndDeal(int *whitchInduction)
          int i;
          int  arg = *(int*)argument;
 
-         // init led
-         //g_led_show_list[arg].led_info_cur_num = 0;
-         //memset(g_led_show_list[arg].led_show_array,0,LED_SHOW_MAX_NUM * sizeof(LEDSHOWINFO));
-
-         // only one led
+         //only one led
          LEDSHOWINFO cp_one_led_show_oper;
          while (1)
          {
-                 /////////////////////////////// show chepai ///////////////////////////////
-
                  // copy from led_show_oper
                  pthread_mutex_lock(&g_led_show_list[arg].mutex_led_show);
                  if (g_led_show_list[arg].led_info_cur_num > 0)
                  {
-                         memcpy(&cp_one_led_show_oper,&(g_led_show_list[arg].led_show_array[0]),sizeof(LEDSHOWINFO));
+                         memcpy(&cp_one_led_show_oper,&(g_led_show_list[arg]),sizeof(LEDSHOWINFO));
 
                          show_chepai(g_led_show_list->led_ip,g_led_show_list->led_port,cp_one_led_show_oper.car_num, \
-                                         cp_one_led_show_oper.be_entry,false);
+                                         cp_one_led_show_oper.be_entry);
 
                          for (i = 0; i < g_led_show_list[arg].led_info_cur_num; i++)
                                  memcpy(&(g_led_show_list[arg].led_show_array[i]),&(g_led_show_list[arg].led_show_array[i+1]),sizeof(LEDSHOWINFO));

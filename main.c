@@ -21,27 +21,13 @@ int main(void)
     int i,s = 0,thread_arg,ret_createmtx = 0;
     void * ret;
 
+    //将当前进程后台化
     daemon(1,1);
     //create_pidfile("ReadTags.pid");
     signal(SIGPIPE,SIG_IGN);
 
-    //init gpio
-    init_gpio();
 
-    //初始化白名单数据库功能 
-    WhiteListDatabaseInit();
-	
-    //初始化通行记录断链缓存功能 
-    InitPassRecordLogFile();
-    g_PassRecordLogWriteFileThread = CreateCondThread(
-		PassRecordLogHandle);
-    ThreadRun(g_PassRecordLogWriteFileThread);
-
-    g_PassRecordSendThread = CreateCondThread(
-		PassRecordSendHandle);
-    ThreadRun(g_PassRecordSendThread);
-
-    //init log
+    //初始化全局日志
     f_sysinit = open_log_file("./log/sysinit.log");
     f_misc_running = open_log_file("./log/miscrunning.log");
     f_error = open_log_file("./log/timeouterror.log");
@@ -49,8 +35,27 @@ int main(void)
     f_passed_failed = open_log_file("./log/passedfailed.log");
     f_sended_server = open_log_file("./log/sendedserver.log");
     f_sync_whitelist = open_log_file("./log/syncwhitelist.log");
-
     print_log(f_sysinit,"Program Started!!!");    
+
+    //初始化GPIO
+    init_gpio();
+
+    //初始化白名单数据库功能 
+    WhiteListDatabaseInit();
+	
+    //创建通行记录断链续传线程
+    InitPassRecordLogFile();
+    g_PassRecordLogWriteFileThread = CreateCondThread(
+				PassRecordLogHandle);
+    ThreadRun(g_PassRecordLogWriteFileThread);
+
+    //创建通行记录实时上传线程
+    g_PassRecordSendThread = CreateCondThread(
+				PassRecordSendHandle);
+    ThreadRun(g_PassRecordSendThread);
+
+
+    
 
 
     g_tags_array = (PTAGOBJ)calloc(TAG_NUM_MAX,sizeof(TAGOBJ));
@@ -60,7 +65,6 @@ int main(void)
         print_log(f_sysinit,"Error: malloc g_tags_array  faild!!");
         return 1;
     }
-    //memset(g_tags_array,0,sizeof(TAG_OBJ) * TAG_NUM_MAX);
 
     g_old_passed_array = (POLDPASSEDOBJ)calloc(1,sizeof(OLDPASSEDOBJ)* TAG_OLD_PASSED_MAX);
     if( NULL == g_old_passed_array )
@@ -69,16 +73,14 @@ int main(void)
         print_log(f_sysinit,"Error: calloc g_old_passed_array  faild!!\n");
         return 1;//exit the program
     }
-    //memset(g_old_passed_array,0,sizeof(OLDPASSEDOBJ) * TAG_OLD_PASSED_MAX);
 
-
+    //申请LED资源
     g_led_show_list = (PLED_SHOW_LIST)calloc(2, sizeof(LED_SHOW_LIST));
     if( NULL == g_led_show_list )
     {
         printf("Error: calloc g_led_show_list  faild!!\n");
         print_log(f_sysinit,"Error: calloc g_led_show_list  faild!!\n");
     }
-    //memset(g_led_show_list,0,sizeof(LED_SHOW_LIST) * 2);
 
     //two gates,two led
     for( i = 0;i<2;i++ ){

@@ -19,7 +19,7 @@
 #define CAR_RIGHT_LEN  2        
 #define OPRATION_INFO_LEN 40 
 #define MAX_OPERATE_INFO_NUM 100 
-#define LED_SHOW_MAX_NUM 10     
+#define LED_SHOW_MAX_NUM 100     
 #define TIME_STR_LEN 20
 
 #define GPIO8 8
@@ -117,6 +117,8 @@ int reader;
 PTAGOBJ g_tags_array;
 int     g_tags_array_count;
 POLDPASSEDOBJ g_old_passed_array;
+
+//for led show
 PLED_SHOW_LIST g_led_show_list;
 
 

@@ -22,6 +22,8 @@ int InitSocket()
         printf("Create socket failed!");
         return -1;
     }
+
+//短连接最好不要绑定固定PORT
 #if 0
     memset(&addr,0,sizeof(struct sockaddr_in));
     addr.sin_family = AF_INET;

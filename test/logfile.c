@@ -7,11 +7,13 @@
 #include "pass_record.h"
 #include "logfile.h"
 
+#define RESEND_RECORD_NUM 9999 
+
 struct LogFile g_PassRecordLogInfo;
 extern struct CondThread *g_PassRecordLogWriteFileThread;
 extern struct CondThread *g_PassRecordSendThread;
 
-
+static	struct SPassRecordLog *fakedata;
 
 /*
 功能：
@@ -22,7 +24,7 @@ extern struct CondThread *g_PassRecordSendThread;
 */
 int InitLogFile(struct LogFile *logFile)
 {
-	FILE			*fp;
+	FILE		*fp;
 	unsigned int	ii, mm, nn;
 	unsigned int	cnt;
 	struct SLog  	*pLog;
@@ -32,13 +34,23 @@ int InitLogFile(struct LogFile *logFile)
 	unsigned int	maxStamp[2];
 	unsigned int	first, last;
 	unsigned char  	*pLogBuffer;
-    unsigned int    LogBufferLen;
+    	unsigned int    LogBufferLen;
 	
 	LogBufferLen = logFile->m_Meta.m_RecordSize * logFile->m_Meta.m_BufRecord;
 	
 	pLogBuffer = malloc(LogBufferLen);
-	if ( pLogBuffer==NULL )
-		return -2;
+	if( pLogBuffer==NULL )
+	{
+		return -1;
+	}
+
+	//申请用于发送断链续传通行记录缓冲区
+        fakedata = (struct SPassRecordLog *)calloc(1,sizeof(struct SPassRecordLog)*RESEND_RECORD_NUM);
+	if( NULL == fakedata )
+	{
+		printf("fakedata is NULL!!!\n");
+		return -1;	
+	}
 
 	maxSeq[0]=0;
 	maxSeq[1]=0;
@@ -846,11 +858,12 @@ int GetPassRecordLogByStamp(unsigned int timeStamp[], struct SPassRecordLog *pPa
 
 // 新增： 上线后，将缓存的数据重新发送
 //  expire_hour  至多缓存发送n小时的数据, 为0时不发送数据， -1时发送所有的数据
+//返回值：为0操作成功，为-1操作失败，请检查
 int ResendCachePassRecordLimitByDate(int expire_hour)
 {
 	if ( expire_hour == 0 )
 	{
-		return 0;
+		return -1;
 	}
 	struct tm   queryTime;
 	time_t      now;
@@ -868,10 +881,11 @@ int ResendCachePassRecordLimitByDate(int expire_hour)
 	seconds *= 1000000;
 	startStamp[0] = seconds>>32;
 	startStamp[1] = seconds&0xffffffff;
-	unsigned int minStamp[2];
-	unsigned int maxStamp[2];
+	unsigned int minStamp[2]={0,0};
+	unsigned int maxStamp[2]={0,0};
 	int          ret;
 
+	
 	struct SPassRecordLog log;
 	ret = GetPassRecordLogByStamp( startStamp, &log, minStamp, maxStamp);
 	if ( ret < 0 )
@@ -881,6 +895,11 @@ int ResendCachePassRecordLimitByDate(int expire_hour)
 	}
 	if ( ret == 0 )// no record
 	{
+		if( minStamp[0] == 0 && minStamp[1] == 0 )
+		{
+			printf("File Empty!!!\n");
+			return -1;
+		}
 		if ( Compare64( startStamp, minStamp ) <= 0 ) // startStamp < minStamp 
 		{
 			startStamp[0] = minStamp[0];
@@ -893,35 +912,59 @@ int ResendCachePassRecordLimitByDate(int expire_hour)
 	unsigned int  minNo[2];
 	unsigned int  maxNo[2];
 	int           isFirst=1;// 首次发送的标签
-	unsigned long long myseq;
 
 	seqNo[0] = log.m_Meta.m_SeqNo[0];
 	seqNo[1] = log.m_Meta.m_SeqNo[1];
+
+	int i = 0;
+	unsigned int subval[2] ={0,0};
+
+	//初始化log结构体
+	memset( &log,0,sizeof(struct SPassRecordLog) );
+
 	ret = GetPassRecordLogBySeqNo( seqNo, &log, minNo, maxNo);
-	while(  Compare64(seqNo, maxNo ) <= 0 ) // seqNo <= maxNo 
+
+	//计算起点序号到最大序号差值，即要处理的记录条数
+//	Substract64(maxNo,seqNo,subval); 
+	
+	while(  (Compare64(seqNo, maxNo ) <= 0) && i < 9999 )//subval[1] <= RESEND_RECORD_NUM) // seqNo <= maxNo 
 	{
 		unsigned int temp[2];
 		ret = GetPassRecordLogBySeqNo(seqNo, &log, temp, temp);
-		if ( log.m_Flag == 1 )
+		if( log.m_Flag == 1 )
 		{
-			ret = send_pass_record(temp, 1);
-			if ( ret == 0 )
-			{
-				log.m_Flag = 0;
-				SetPassRecordLogBySeqNo(seqNo, &log, temp, temp);
-			}
-			else
-			{
-			}
+			//将根据序号查找到的记录拷贝到发送缓冲区
+			memcpy( &fakedata[i], &log, sizeof(log) );
+			i++;
 		}
 		else
 		{
-		//	printf("%llu Already send, skip\n", ((unsigned long long)seqNo[1]<<32) + seqNo[1]);
+		   	//printf("%llu Already send, skip\n", ((unsigned long long)seqNo[1]<<32) + seqNo[1]);
 		}
 		Add32(seqNo, 1, temp);
 		seqNo[0] = temp[0];
 		seqNo[1] = temp[1];
 	}
-	//  最后一条记录编号和发送的次数
+
+	//批量发送	
+	int ret_send;
+	ret_send = send_pass_record1(fakedata,i,1);
+	if( 0 == ret_send )
+	{
+		int j;
+		unsigned int temp2[2];
+		for(j=0;j<i;j++)
+		{
+			seqNo[0] = fakedata[j].m_Meta.m_SeqNo[0];
+			seqNo[1] = fakedata[j].m_Meta.m_SeqNo[1];
+			fakedata[j].m_Flag = 0;
+			SetPassRecordLogBySeqNo(seqNo, &fakedata[j], temp2, temp2);
+		}
+
+
+	}else{
+		return -1;
+	}
+
 	return 0;
 }

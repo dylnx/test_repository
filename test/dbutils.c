@@ -36,7 +36,8 @@ static int callback_save_result(void *callresult, int argc, char **argv, char **
 
 	struct query_result * query_result = (struct query_result*) callresult;
 	query_result->total++;
-	struct sqlresult * result  = (struct sqlresult*)malloc(sizeof(struct sqlresult));
+	struct sqlresult * result  = (struct sqlresult*)calloc(1, sizeof(struct sqlresult));
+        
 	
 	if( query_result->tail == NULL)
 	{
@@ -178,12 +179,12 @@ int db_query(struct sDB *sDB, const char* query_cmd)
 /* ----------------------------------------------------------------------------*/
 int db_query_call(struct sDB *sDB, const char* query_cmd, struct query_result *query_result)
 {
-	if ( sDB == NULL || query_cmd == NULL || 
-			query_result == NULL ) return -1;
+	if ( sDB == NULL || query_cmd == NULL || query_result == NULL )
+	     return -1;
 	char *zErrMsg = 0;
 	int rc = sqlite3_exec(sDB->db, query_cmd , callback_save_result, query_result, &zErrMsg);
-	if( rc!=SQLITE_OK ){
-		fprintf(stderr, "SQL error: %s\n", zErrMsg);
+	if( rc != SQLITE_OK ){
+    fprintf(stderr, "SQL error: %s\n", zErrMsg);
 
 		//释放申请的资源
                 free_result(query_result);
@@ -219,10 +220,10 @@ int main(int argc,char *argv[])
 	printf("query successfully!!!\n");	
     }
     
-    ret = db_query_call(sdb, query_cmd, result)
+    ret = db_query_call(sdb, query_cmd, result);
     if( ret==0 )
     {
-	struct sqlresult * temp = result.result;
+	struct sqlresult * temp = result->result;
 #if 0
 	if( result.total == 1 ) return 0;
 	else  return -1;

@@ -60,6 +60,8 @@ typedef struct gate_info_s
 {
     char    gate_type;              // 'i' or 'o'
     char    gate_id;                // the id of gate defined by server
+    int     inductor_gpio;
+    int     relay_gpio;
     char    com_roadblock[20];      // the com port for linking roadblock
     int     com_roadblock_fd ;      // the handler of operate com port 
     char    led_ip[15];             // the ip of led

@@ -362,6 +362,14 @@ bool initial(void)
         sprintf(key_name,"%s_%d_%s","gate_info",i,"id");
         readIntParam(buffer,buf_len, key_name,&gates[i].gate_id);
     	print_log(f_sysinit,"gate_info_%d_id=%d",i,gates[i].gate_id);    
+	
+	sprintf(key_name,"%s_%d_%s","gate_info",i,"inductor_gpio");
+        readIntParam(buffer,buf_len, key_name,&gates[i].inductor_gpio);
+    	print_log(f_sysinit,"gate_info_%d_inductor_gpio=%d",i,gates[i].inductor_gpio);    
+
+	sprintf(key_name,"%s_%d_%s","gate_info",i,"relay_gpio");
+        readIntParam(buffer,buf_len, key_name,&gates[i].relay_gpio);
+    	print_log(f_sysinit,"gate_info_%d_relay_gpio=%d",i,gates[i].relay_gpio);    
 
         sprintf(key_name,"%s_%d_%s","gate_info",i,"roadblock");
         readStringParam(buffer,buf_len, key_name,gates[i].com_roadblock);

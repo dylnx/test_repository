@@ -117,11 +117,7 @@ int CheckLandInduction(int *whitchInduction)
                 //判断心跳是否超时(60秒)，超时则重连读写器
                 if( (cur_heart_time - last_heart_time) >60 ){
                     //心跳超时处理
-                    /*
-		    print_log(f_error,"ERROR!!! heart timeout, reconnect the reader!!!\n!");
-	            ConnectionReader();
-		    */
-                }
+                  }
 
 	}
 

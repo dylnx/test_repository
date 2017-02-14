@@ -336,7 +336,14 @@ int com_init(char * com_name)
     return fd;
 }
 
-int com_open_roadblock(int fd,int gateNum)
+/*
+功能：抬杆
+参数：
+	fd:串口设备文件描述符
+	roadBlockCnt:值1为一个闸机，值2为两个闸机
+返回值：成功返回0,失败返回-1
+*/
+int com_open_roadblock(int fd,int roadBlockCnt)
 {                        
     int err;                           
     int len;
@@ -344,20 +351,18 @@ int com_open_roadblock(int fd,int gateNum)
     char send_buf[100] = {0};
     if(NULL ==fd)
 	return -1;
-    if(0 !=gateNum && 1 !=gateNum)
-	return -1;
 
         send_buf[0]=0xaa;
-    if(0 == gateNum)
+    if(1 == roadBlockCnt)
     {
-        send_buf[1]=0x02;
-	send_buf[2]=0x02;
-    }else if(1==gateNum){
+        send_buf[1] = 0x01;
+	send_buf[2] = 0x01;
+    }else if(2==roadBlockCnt){
         send_buf[1] = 0x02;
         send_buf[2] = 0x02;
     }
-        send_buf[3]=0x33;
-        send_buf[4]=0x33;
+        send_buf[3] = 0x33;
+        send_buf[4] = 0x33;
 
     len = UART0_Send(fd,send_buf,5);
     if(len == 5)

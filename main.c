@@ -278,6 +278,13 @@ bool initial(void)
     }
     print_log(f_sysinit,"request_whitelist_inteval=%d",request_whitelist_inteval);    
 
+    if (!readIntParam(buffer,buf_len, "road_block_count",&g_road_block_count))
+    {
+        // log
+        return false;
+    }
+    print_log(f_sysinit,"road_block_count=%d",g_road_block_count);  
+
     if (!readIntParam(buffer,buf_len, "gate_num",&gate_num))
     {
         // log

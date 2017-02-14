@@ -133,6 +133,7 @@ int inductor_signal_keep_time;
 int passrecord_resend_inteval;
 int passrecord_resend_limit_time;
 int dev_id;
+int g_road_block_count;
 int gate_num;
 char working_way[20];
 int  get_tags_inteval;

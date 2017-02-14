@@ -413,7 +413,7 @@ bool OpenDoor(int operate_index,int openDoorMethodType,bool b_print_log)
 		case RS485:
 
 			gate_index = g_operate_info->operate_info[operate_index].gate_index;
-			com_open_roadblock(gates[gate_index].com_roadblock_fd,gate_index);
+			com_open_roadblock(gates[gate_index].com_roadblock_fd,g_road_block_count);
 
 			break;
 		case RELAY:

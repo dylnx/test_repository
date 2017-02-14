@@ -122,31 +122,37 @@ int CheckLandInduction(int *whitchInduction)
 	}
 
 	int i;
+	//gpioVal[0]值为入口GPIO,默认GPIO8，gpioVal[1]值为入口GPIO,默认GPIO10
+	int gpioVal[2]={0,0};
+
 	for(i=0;i<gate_num;i++)
 	{
+	#if 0
 		//获取入口车道地感状态
 		get_gpio(GPIO8,&gpio8Val);
 
 		//获取出口车道地感状态
 		get_gpio(GPIO10,&gpio10Val);
+	#endif
+		get_gpio(gates[i].inductor_gpio,gpioVal[i]);
 
 
 	}
         
         //如果任一车道地感有信号
-	if( 1== gpio8Val|| 1 == gpio10Val )
+	if( 1== gpioVal[0] || 1 == gpioVal[1] )
 	{
 		retVal = SIGNAL;	
-		if( 1 == gpio8Val )
+		if( 1 == gpioVal[0] )
                       
                    //记录入口车道地感为有信号状态
 		   whitchInduction[0] = 1;    
-		   print_log(f_misc_running,"gpio8Val=%d\n!!!",gpio8Val);
+		   print_log(f_misc_running,"Enter GPIO=%d\n!!!",gpioVal[0]);
 
-		if( 1 == gpio10Val)
+		if( 1 == gpioVal[1])
                    //记录出口车道地感为有信号状态
 		   whitchInduction[1] = 2;//NO.2 induction have signal          
-		   print_log(f_misc_running,"gpio10Val=%d\n!!!",gpio10Val);
+		   print_log(f_misc_running,"LEAVE GPIO=%d\n!!!",gpioVal[1]);
 
 	}else{
 		retVal = NOSIGNAL;

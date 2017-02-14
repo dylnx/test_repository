@@ -478,17 +478,24 @@ bool OpenDoor(int operate_index,int openDoorMethodType,bool b_print_log)
 	return true;
 }
 
-//通过天线号获以对应车道资源数组索引下标
+/*
+功能：将读到的标签进校验,该标签是否在配制文件中
+参数：读到标签tid值 
+返回值：匹配成功返回天线号，匹配失败返回-1
+*/
 int get_gate_index(int ant_id)
 {
+   int i,j,ant_num;
    if(ant_id > 4 || ant_id <= 0)
 	return -1;
-  //printf("gate0.ant=%d,gate1.ant=%d\n",gates[0].ants[0],gates[1].ants[0]);
-   if(ant_id == gates[0].ants[0])
-	return 0;
-
-   if(ant_id == gates[1].ants[0])
-	return 1;
+   for(i=0;i<gate_num;i++)
+   {
+	ant_num = gates[i].ant_num;
+	for(j=0;i<ant_num;j++){
+	  if(ant_id == gates[i].ants[j]) 
+		return gates[i].ants[j];
+	} 
+   }
 
     return -1;
 }
@@ -561,7 +568,7 @@ int GetTagsAndDeal(int *whitchInduction)
 		int isFound=0;
 		for( j=0; j<g_tags_array_count; j++)
 		{
-			if( g_tags_array[j].ant_num == tag->antenna_id && 
+			if( g_tags_array[j].ant == tag->antenna_id && 
 				strcmp(g_tags_array[j].tid, tag->tid )==0 )
 			{
 				g_tags_array[j].count++;
@@ -571,7 +578,7 @@ int GetTagsAndDeal(int *whitchInduction)
 		if( isFound == 0 )
 		{
 			strcpy(g_tags_array[g_tags_array_count].tid, tag->tid);
-			g_tags_array[g_tags_array_count].ant_num = tag->antenna_id;
+			g_tags_array[g_tags_array_count].ant = tag->antenna_id;
 			g_tags_array[g_tags_array_count].count = 1;
 			g_tags_array_count++;
 			print_log(f_misc_running,"tag->antenna_id=%d\n!",tag->antenna_id);
@@ -611,7 +618,7 @@ int GetTagsAndDeal(int *whitchInduction)
 			//拷贝车牌号
 			strcpy( operate->car_num, carnum);
 			//拷贝天线号
-			operate->ant_num = g_tags_array[i].ant_num;
+			operate->ant_num = g_tags_array[i].ant;
 
 			n_gate_index = get_gate_index(operate->ant_num);//获取门号
 			if( -1 == n_gate_index )

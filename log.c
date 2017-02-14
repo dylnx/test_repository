@@ -3,7 +3,7 @@
 #define DEFAULT_LOG_SIZE 20*1024*1024
 #define MAX_LOG_SIZE 50*1024*1024
 
-int log_file_size;
+extern int log_size;
 //pthread_mutex_t mtx_print_log = PTHREAD_MUTEX_INITIALIZER;
 long filesize(FILE *stream)
 {
@@ -69,10 +69,10 @@ void print_log(FILE *file,const char *ms, ... )
        
     cur_file_size = filesize(file);
 
-    if( log_file_size <= 0 || log_file_size > MAX_LOG_SIZE )
-	log_file_size = DEFAULT_LOG_SIZE;	
+    if( log_size <= 0 || log_size > MAX_LOG_SIZE )
+	log_size = DEFAULT_LOG_SIZE;	
        
-    if( cur_file_size > log_file_size ){
+    if( cur_file_size > log_size ){
 
         path = (unsigned char *)calloc(512,sizeof(unsigned char));
         usleep(5*1000);

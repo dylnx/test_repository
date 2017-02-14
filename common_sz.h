@@ -43,7 +43,7 @@ typedef struct struct_operate_info_s
 typedef struct struct_get_tags_s
 {
     char tid[20];
-    char ant_num;
+    char ant;
     int  count;
 }TAGOBJ,*PTAGOBJ;
 
@@ -66,7 +66,7 @@ typedef struct gate_info_s
     int     led_port;               // the port of led
     char    gate_rights[20];        // the rights which can entry
     char    ant_num;                // the number of ants using for this gate
-    char    ants[4];                // the id of per ant
+    char    ants[8];                // the id of per ant
 }STRUCT_GATE_INFO;
 
 typedef enum openDoorMethodType
@@ -133,11 +133,12 @@ int inductor_signal_keep_time;
 int passrecord_resend_inteval;
 int passrecord_resend_limit_time;
 int dev_id;
+int gate_num;
 char working_way[20];
 int  get_tags_inteval;
 char door_open_method[20];
 
-int log_file_size; //defult value
+int log_size; //defult value
 
 //gate info
 STRUCT_GATE_INFO gates[2];

@@ -22,7 +22,7 @@ int main(void)
     void * ret;
 
     //将当前进程后台化
-    daemon(1,1);
+    //daemon(1,1);
     //create_pidfile("ReadTags.pid");
     signal(SIGPIPE,SIG_IGN);
 
@@ -36,6 +36,14 @@ int main(void)
     f_sended_server = open_log_file("./log/sendedserver.log");
     f_sync_whitelist = open_log_file("./log/syncwhitelist.log");
     print_log(f_sysinit,"Program Started!!!");    
+
+    //读config.ini文件中的配制数据信息
+    bool bRet = initial();
+    if (!bRet)
+    {
+        printf("init error!\n");
+        return -1;
+    }
 
 
     //初始化白名单数据库功能 
@@ -81,7 +89,7 @@ int main(void)
     }
 
     //two gates,two led
-    for( i = 0;i<2;i++ ){
+    for( i = 0;i<gate_num;i++ ){
        ret_createmtx = pthread_mutex_init(&g_led_show_list[i].mutex_led_show,NULL); 
        if( 0 != ret_createmtx){
             print_log(f_sysinit,"ERROR!!!pthread_mutex_init g_led_show_list[%d].mutex_led_show",i);
@@ -109,13 +117,7 @@ int main(void)
     }
 
 
-    //读config.ini文件中的配制数据信息
-    bool bRet = initial();
-    if (!bRet)
-    {
-        printf("init error!\n");
-        return -1;
-    }
+    
 
     if(!strcmp(door_open_method,"RELAY"))
     {
@@ -126,7 +128,7 @@ int main(void)
 
     if(!strcmp(door_open_method,"RS485"))
     {
-	    for(i=0;i<2;i++)
+	    for(i=0;i<gate_num;i++)
 	    {
 		gates[i].com_roadblock_fd = com_init(gates[i].com_roadblock);
 		//printf("com%d fd=%d\n",i,gates[i].com_roadblock_fd);
@@ -209,76 +211,106 @@ bool initial(void)
     int buf_len = file_read(filename,buffer);
 
     char value[400];
+    //读取服务器IP
     if (!readStringParam(buffer,buf_len, "server_ip",server_ip))
     {
-        // log
-        return false;
+    	print_log(f_sysinit,"read server_ip failed! exit the program!!!\n");    
+ 	exit(EXIT_FAILURE);		
     }
     print_log(f_sysinit,"server_ip=%s",server_ip);    
 
+    //读取服务器PORT
     if (!readIntParam(buffer,buf_len, "server_port",&server_port))
     {
-        // log
-        return false;
+    	print_log(f_sysinit,"read server_port failed! exit the program!!!\n");    
+ 	exit(EXIT_FAILURE);		
     }
+    print_log(f_sysinit,"server_port=%d",server_port);    
+
+    //读取读写器IP
     if (!readStringParam(buffer,buf_len, "reader_ip",reader_ip))
     {
-        // log
-        return false;
+    	print_log(f_sysinit,"read reader_ip failed! exit the program!!!\n");    
+ 	exit(EXIT_FAILURE);		
     }
+    print_log(f_sysinit,"reader_ip=%s",reader_ip);    
+
+    //读取读写器PORT
     if (!readIntParam(buffer,buf_len, "reader_port",&reader_port))
     {
-        // log
-        return false;
+    	print_log(f_sysinit,"read reader_port failed! exit the program!!!\n");    
+ 	exit(EXIT_FAILURE);		
     }
+    print_log(f_sysinit,"reader_port=%d",reader_port);    
+
     if (!readIntParam(buffer,buf_len, "reader_rate",&reader_rate))
     {
         // log
         return false;
     }
+    print_log(f_sysinit,"reader_rate=%d",reader_rate);    
+
     if (!readIntParam(buffer,buf_len, "inductor_signal_keep_time",&inductor_signal_keep_time))
     {
         // log
         return false;
     }
+    print_log(f_sysinit,"inductor_signal_keep_time=%d",inductor_signal_keep_time);    
 
     if (!readIntParam(buffer,buf_len, "passrecord_resend_inteval",&passrecord_resend_inteval))
     {
         // log
         return false;
     }
+    print_log(f_sysinit,"passrecord_resend_inteval=%d",passrecord_resend_inteval);    
 
     if (!readIntParam(buffer,buf_len, "passrecord_resend_limit_time",&passrecord_resend_limit_time))
     {
         // log
         return false;
     }
+    print_log(f_sysinit,"passrecord_resend_limit_time=%d",passrecord_resend_limit_time);    
 
     if (!readIntParam(buffer,buf_len, "request_whitelist_inteval",&request_whitelist_inteval))
     {
         // log
         return false;
     }
+    print_log(f_sysinit,"request_whitelist_inteval=%d",request_whitelist_inteval);    
+
+    if (!readIntParam(buffer,buf_len, "gate_num",&gate_num))
+    {
+        // log
+        return false;
+    }
+    print_log(f_sysinit,"gate_num=%d",gate_num);    
+
+
+
 
     if (!readStringParam(buffer,buf_len, "working_way",working_way))
     {
         // log
         return false;
     }
+    print_log(f_sysinit,"working_way=%s",working_way);    
 
     if(!strcmp(working_way,"INDUCTION"))
     {
-      if(!readStringParam(buffer,buf_len, "inteval_induction",		&get_tags_inteval)){
+      if(!readIntParam(buffer,buf_len, "inteval_induction",
+	&get_tags_inteval)){
 		// log
 		return false;
 	}
+    	print_log(f_sysinit,"get_tags_inteval=%d",get_tags_inteval);    
     }else{//working_way="POLL",系统采用轮询工作方式
 
-	if(!readStringParam(buffer,buf_len, "inteval_poll",
+	if(!readIntParam(buffer,buf_len, "inteval_poll",
 	&get_tags_inteval)){
 		// log
 		return false;
 	}   
+    	print_log(f_sysinit,"get_tags_inteval=%d",get_tags_inteval);    
     }
 
     if (!readStringParam(buffer,buf_len, "door_open_method",door_open_method))
@@ -286,53 +318,67 @@ bool initial(void)
         // log
         return false;
     }
+    print_log(f_sysinit,"door_open_method=%s",door_open_method);    
+
+    if (!readIntParam(buffer,buf_len, "log_file_size",&log_size))
+    {
+        // log
+        return false;
+    }
+    log_size *= 1024 *1024;//read from config.ini 
+
 
     if (!readIntParam(buffer,buf_len, "dev_id",&dev_id))
     {
         // log
         return false;
     }
+    print_log(f_sysinit,"dev_id=%d\n",dev_id);    
 
 
     
-   if (!readIntParam(buffer,buf_len, "log_file_size",&log_file_size))
-    {
-        // log
-        return false;
-    }
-    log_file_size *= 1024 *1024;//read from config.ini 
-    
+      
 
     int i = 0;
     char key_name[30];
-    for (i=0;i<2;i++)//two gates,one for enter,anther for leave.
+    for (i=0;i<gate_num;i++)//two gates,one for enter,anther for leave.
     {
         char ss[3];
+
+    	print_log(f_sysinit,"************gate[%d] spec paramaters*************\n",i);    
 
         sprintf(key_name,"%s_%d_%s","gate_info",i,"type");
         readStringParam(buffer,buf_len, key_name,ss);
         gates[i].gate_type = ss[0];
+    	print_log(f_sysinit,"gate_info_%d_type=%c",i,gates[i].gate_type);    
 
         sprintf(key_name,"%s_%d_%s","gate_info",i,"id");
         readIntParam(buffer,buf_len, key_name,&gates[i].gate_id);
+    	print_log(f_sysinit,"gate_info_%d_id=%d",i,gates[i].gate_id);    
 
         sprintf(key_name,"%s_%d_%s","gate_info",i,"roadblock");
         readStringParam(buffer,buf_len, key_name,gates[i].com_roadblock);
+    	print_log(f_sysinit,"gate_info_%d_roadblock=%s",i,gates[i].com_roadblock);    
 
         sprintf(key_name,"%s_%d_%s","gate_info",i,"led_ip");
         readStringParam(buffer,buf_len, key_name,gates[i].led_ip);
+    	print_log(f_sysinit,"gate_info_%d_led_ip=%s",i,gates[i].led_ip);    
 
         sprintf(key_name,"%s_%d_%s","gate_info",i,"led_port");
         readIntParam(buffer,buf_len, key_name,&gates[i].led_port);
+    	print_log(f_sysinit,"gate_info_%d_led_port=%d",i,gates[i].led_port);    
 
         sprintf(key_name,"%s_%d_%s","gate_info",i,"right");
         readStringParam(buffer,buf_len, key_name,gates[i].gate_rights);
+    	print_log(f_sysinit,"gate_info_%d_right=%s",i,gates[i].gate_rights);    
 
         sprintf(key_name,"%s_%d","ant_num",i);
         readIntParam(buffer,buf_len, key_name,&gates[i].ant_num);
+    	print_log(f_sysinit,"gate_info_%d_antnum=%d",i,gates[i].ant_num);    
 
         sprintf(key_name,"%s_%d","gate_ant",i);
-        readIntParam(buffer,buf_len, key_name,&gates[i].ants[0]);
+        readStringParam(buffer,buf_len, key_name,gates[i].ants);
+    	print_log(f_sysinit,"gate_ant_%d=%s\n\n",i,gates[i].ants);    
     }
 
    

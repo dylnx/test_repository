@@ -133,6 +133,8 @@ int CheckLandInduction(int *whitchInduction)
 
 		//获取出口车道地感状态
 		get_gpio(GPIO10,&gpio10Val);
+
+
 	}
         
         //如果任一车道地感有信号

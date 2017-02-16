@@ -924,8 +924,6 @@ int ResendCachePassRecordLimitByDate(int expire_hour)
 
 	ret = GetPassRecordLogBySeqNo( seqNo, &log, minNo, maxNo);
 
-	//计算起点序号到最大序号差值，即要处理的记录条数
-//	Substract64(maxNo,seqNo,subval); 
 	
 	while(  (Compare64(seqNo, maxNo ) <= 0) && i < 9999 )//subval[1] <= RESEND_RECORD_NUM) // seqNo <= maxNo 
 	{

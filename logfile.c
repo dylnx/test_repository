@@ -856,15 +856,21 @@ int GetPassRecordLogByStamp(unsigned int timeStamp[], struct SPassRecordLog *pPa
 	return ret;
 }
 
-// 新增： 上线后，将缓存的数据重新发送
-//  expire_hour  至多缓存发送n小时的数据, 为0时不发送数据， -1时发送所有的数据
-//返回值：为0操作成功，为-1操作失败，请检查
-int ResendCachePassRecordLimitByDate(int expire_hour)
+//功  能：上线后，将缓存的数据重新发送
+//参  数: expire_hour  
+//        至多缓存发送n小时的数据, 为0时不发送数据， -1时发送所有的数据
+//返回值：详见PK_STATUS定义
+PK_STATUS ResendCachePassRecordLimitByDate(int expire_hour,unsigned int *sended_cnt)
 {
-	if ( expire_hour == 0 )
+	if(0 == expire_hour)
 	{
-		return -1;
+	    return PK_BAD_PARAMETER_1;
 	}
+	if(NULL == sended_cnt)
+	{
+	    return PK_BAD_PARAMETER_2;
+	}
+
 	struct tm   queryTime;
 	time_t      now;
 	time_t      querytime;
@@ -891,14 +897,14 @@ int ResendCachePassRecordLimitByDate(int expire_hour)
 	if ( ret < 0 )
 	{
 		printf("File Error\n");
-		return -1;
+		return PK_FILE_ERROR;
 	}
 	if ( ret == 0 )// no record
 	{
 		if( minStamp[0] == 0 && minStamp[1] == 0 )
 		{
 			printf("File Empty!!!\n");
-			return -1;
+			return PK_FILE_EMPTY;
 		}
 		if ( Compare64( startStamp, minStamp ) <= 0 ) // startStamp < minStamp 
 		{
@@ -923,6 +929,10 @@ int ResendCachePassRecordLimitByDate(int expire_hour)
 	memset( &log,0,sizeof(struct SPassRecordLog) );
 
 	ret = GetPassRecordLogBySeqNo( seqNo, &log, minNo, maxNo);
+	if(-1 == ret)
+	{
+		return PK_FILE_ERROR;
+	}
 
 	
 	while(  (Compare64(seqNo, maxNo ) <= 0) && i < 9999 )//subval[1] <= RESEND_RECORD_NUM) // seqNo <= maxNo 
@@ -951,18 +961,22 @@ int ResendCachePassRecordLimitByDate(int expire_hour)
 	{
 		int j;
 		unsigned int temp2[2];
-		for(j=0;j<i;j++)
+	        if(i>0)
 		{
-			seqNo[0] = fakedata[j].m_Meta.m_SeqNo[0];
-			seqNo[1] = fakedata[j].m_Meta.m_SeqNo[1];
-			fakedata[j].m_Flag = 0;
-			SetPassRecordLogBySeqNo(seqNo, &fakedata[j], temp2, temp2);
+			for(j=0;j<i;j++)
+			{
+				seqNo[0] = fakedata[j].m_Meta.m_SeqNo[0];
+				seqNo[1] = fakedata[j].m_Meta.m_SeqNo[1];
+				fakedata[j].m_Flag = 0;
+				SetPassRecordLogBySeqNo(seqNo, &fakedata[j], temp2, temp2);
+			}
+			*sended_cnt = i;	
 		}
 
 
 	}else{
-		return -1;
+		return PK_SEND_ERROR;
 	}
 
-	return 0;
+	return PK_SUCCESS;
 }

@@ -11,6 +11,7 @@
 #include <string.h>
 #include <time.h>
 #include "log.h"
+#include "pk_errno.h"
 
 #define TID_LEN 16              
 #define TAG_NUM_MAX  100
@@ -154,7 +155,6 @@ FILE *f_passed_success;
 FILE *f_passed_failed;
 FILE *f_sended_server;
 FILE *f_sync_whitelist;
-
 
 
 #endif

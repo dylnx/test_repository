@@ -9,8 +9,7 @@
 *  GLOBALS:    pk_errstring
 *
 ******************************************************************************/
-
-#include "pk_errno.h"
+#include "common_sz.h"
 
 
 char * PKErrorMsg(PK_STATUS ErrorCode)

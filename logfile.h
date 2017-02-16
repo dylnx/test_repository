@@ -1,26 +1,8 @@
 #ifndef LOGFILE_H_AR69HGX7
 #define LOGFILE_H_AR69HGX7
 #include <pthread.h>
+#include "common_sz.h"
 #define MAX_TIMESTAMP_LEN 20
-
-/*
-struct SLog
-{
-	unsigned int        m_SeqNo[2];
-	unsigned int        m_TimeStamp[2];
-};
-
-struct SPassRecordLog
-{
-	struct SLog    m_Meta;
-	char           m_Tid[20];
-	char           m_TimeStamp[20];
-	int            m_Channel; // 通行点位
-	int            m_Direction;// 通行方向
-	int            m_PassResult;//通行结果
-	int            m_Flag;
-};
-*/
 
 
 struct LogFileMeta
@@ -75,6 +57,6 @@ int GetPassRecordLogByStamp(unsigned int timeStamp[], struct SPassRecordLog *pPa
 		unsigned int minStamp[], unsigned int maxStamp[]);
 
 
-int ResendCachePassRecordLimitByDate(int expire_hour);
+PK_STATUS ResendCachePassRecordLimitByDate(int expire_hour,unsigned int *sended_cnt);
 
 #endif /* end of include guard: LOGFILE_H_AR69HGX7 */

@@ -710,7 +710,7 @@ int GetTagsAndDeal(int *whitchInduction)
  }
 
 
-
+//白名单请求线程
 void ThreadRequestWhitelist(void)
 {
         int ret;
@@ -727,22 +727,30 @@ void ThreadRequestWhitelist(void)
 	}
 }
 
+//断链续传线程函数
 void ThreadResendPassrecord(void)
 {
 	int ret;
+	int sended_count = 0;
 	while(1)
 	{
 		sleep( passrecord_resend_inteval );
 
 		//每次轮询，将最近passrecord_resend_loop_time小时的记录发送到服务
-	        ret = ResendCachePassRecordLimitByDate( passrecord_resend_limit_time );
-		if( 0 == ret )
+	        ret = ResendCachePassRecordLimitByDate( passrecord_resend_limit_time ,&sended_count);
+		switch(ret)
 		{
-			print_log(f_sended_server,"resend passrecord successfully!!!");
-		}else{
-			print_log(f_sended_server,"resend passrecord failed!!!");
+		     case PK_SUCCESS:
+			//将发送成功的记录条数写入日志
+			print_log(f_sended_server,"resend %d passrecord!!!",sended_count);
+			break;
+		     default:
+		        //发送失败，将原因写入日志	
+			print_log(f_sended_server,"error:resend passrecord failed %s",PKErrorMsg(ret));
+			break;		
 		}
-                
+
+	                
 	}
 }
 

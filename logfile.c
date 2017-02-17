@@ -738,7 +738,7 @@ void PassRecordSendHandle(void *args)
 			//temp->m_Channel, temp->m_Tid);
 	// TODO
 	int ret = send_pass_record(temp, 0);
-	if( ret == 0 )
+	if( ret == PK_SUCCESS )
 	{
 		temp->m_Flag = 0;
 	}

@@ -324,14 +324,14 @@ bool initial(void)
         // log
         return false;
     }
-    print_log(f_sysinit,"dev_id=%d\n",dev_id);    
+    print_log(f_sysinit,"dev_id=%d",dev_id);    
 
     if (!readStringParam(buffer,buf_len, "exist_led",exist_led))
     {
         // log
         return false;
     }
-    print_log(f_sysinit,"exist_led=%s",exist_led);
+    print_log(f_sysinit,"exist_led=%s\n",exist_led);
 
     
       

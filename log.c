@@ -4,7 +4,7 @@
 #define MAX_LOG_SIZE 50*1024*1024
 
 extern int log_size;
-//pthread_mutex_t mtx_print_log = PTHREAD_MUTEX_INITIALIZER;
+pthread_mutex_t mtx_print_log = PTHREAD_MUTEX_INITIALIZER;
 long filesize(FILE *stream)
 {
    long curpos,length;
@@ -57,7 +57,7 @@ void print_log(FILE *file,const char *ms, ... )
   
     if( NULL == file)
         return;
-
+    pthread_mutex_lock(&mtx_print_log);
     time_t now;  
     time(&now);  
     struct tm *local;  
@@ -117,6 +117,7 @@ void print_log(FILE *file,const char *ms, ... )
                 wzLog);  
     fwrite(buffer,1,strlen(buffer),file);  
     fflush(file);
+    pthread_mutex_unlock(&mtx_print_log);
 
     return ;  
 }  

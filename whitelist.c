@@ -29,7 +29,7 @@ int ClientRecvWhiteList()
 	ret = ConnectTcpServerNonBlock(server_ip, server_port, 5000);
 	if( ret<=0 )
 	{
-		printf("Connect to Server[%s:%d] Failed\n", server_ip, server_port);
+		print_log(f_sync_whitelist,"Connect to Server[%s:%d] Failed\n", server_ip, server_port);
 		return -1;
 	}
 	fd = ret;

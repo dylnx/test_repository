@@ -48,8 +48,11 @@ int ClearPassRecordLog();
 void InsertPassRecordLog1(struct SPassRecordLog *pPassRecordLog);
 void InsertPassRecordLog2(struct SPassRecordLog *pPassRecordLog);
 int WriteBackPassRecordLog(struct SPassRecordLog *pPassRecordLog);
+
 void PassRecordLogHandle(void *args);
 void PassRecordSendHandle(void *args);
+void LedRecordSendHandle(void * args);
+
 int InsertPassRecordLogFile(struct SPassRecordLog *pPassRecordLog);
 int GetPassRecordLogBySeqNo(unsigned int seqNo[], struct SPassRecordLog *pPassRecordLog,
 		unsigned int minNo[], unsigned int maxno[]);
@@ -58,5 +61,6 @@ int GetPassRecordLogByStamp(unsigned int timeStamp[], struct SPassRecordLog *pPa
 
 
 PK_STATUS ResendCachePassRecordLimitByDate(int expire_hour,unsigned int *sended_cnt);
+
 
 #endif /* end of include guard: LOGFILE_H_AR69HGX7 */

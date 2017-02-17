@@ -65,7 +65,7 @@ typedef struct gate_info_s
     int     relay_gpio;
     char    com_roadblock[20];      // the com port for linking roadblock
     int     com_roadblock_fd ;      // the handler of operate com port 
-    char    led_ip[15];             // the ip of led
+    char    led_ip[20];             // the ip of led
     int     led_port;               // the port of led
     char    gate_rights[20];        // the rights which can entry
     char    ant_num;                // the number of ants using for this gate
@@ -87,21 +87,14 @@ typedef enum statType
     TAGNOTFOUNT
 }STATTYPE;
 
-// for led show
-typedef struct led_show_info_s
+//LED显示信息
+struct led_send_info
 {
-    char    car_num[CAR_NUM_LEN];
+    char    ip[20];
+    char    car_num[20];
+    int     port;
     bool    be_entry;
-}LEDSHOWINFO;
-
-typedef struct led_show_info_list_s
-{
-    pthread_mutex_t mutex_led_show;
-    LEDSHOWINFO led_show_array[LED_SHOW_MAX_NUM];
-    char   led_ip[15];
-    int    led_port;
-    int    led_info_cur_num;
-}LED_SHOW_LIST,*PLED_SHOW_LIST;
+};
 
 
 typedef struct operate_info_s
@@ -121,8 +114,6 @@ PTAGOBJ g_tags_array;
 int     g_tags_array_count;
 POLDPASSEDOBJ g_old_passed_array;
 
-//for led show
-PLED_SHOW_LIST g_led_show_list;
 
 
 //用于保存从config.ini读取的配制数据

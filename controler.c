@@ -346,58 +346,29 @@ bool AddTagsToLedList(int operate_index)
 	int j,n_gate_index;
 	int cur_num;
 
+        //定义用于发送LED显示信息结构体变量
+	struct led_send_info lsi;
+
+	//参数校验
 	if( operate_index<0 || operate_index >= MAX_OPERATE_INFO_NUM){
 		return false; 
 	}
 
+	//初始化lsi结构体变量
+	memset(&lsi,0,sizeof(lsi));
+
 	n_gate_index = g_operate_info->operate_info[operate_index].gate_index;
-	switch(n_gate_index)
-	{
-		case 0:
-		case 1:
-			break;
-		default:
-			return false;
-	}
+        if(n_gate_index < 0 || n_gate_index >= gate_num)
+	    return false;
 
-	cur_num = g_led_show_list[n_gate_index].led_info_cur_num;
+	strcpy(lsi.ip,gates[n_gate_index].led_ip);
+	lsi.port = gates[n_gate_index].led_port;
+	strcpy(lsi.car_num,g_operate_info->operate_info[operate_index].car_num);
+        lsi.be_entry = g_operate_info->operate_info[operate_index].be_enter;
 
-	if(cur_num < LED_SHOW_MAX_NUM)
-	{
-		pthread_mutex_lock(&g_led_show_list[n_gate_index].mutex_led_show);
+        //插入一条LED记录日志到内存标签日志队列会触发发送LED记录操作
+        InsertPassRecordLog2(&lsi);
 
-		for(j=0;j<cur_num;j++)
-		{
-			
-			if(str_equal(g_operate_info->operate_info[operate_index].car_num,
-				g_led_show_list[n_gate_index].led_show_array[j].car_num,CAR_NUM_LEN))
-			{
-				be_old = true;
-				break;
-			}
-		}
-
-		if(!be_old)
-		{
-			g_led_show_list[n_gate_index].led_show_array[cur_num].be_entry = 
-				g_operate_info->operate_info[operate_index].be_enter;
-			str_assign_value(g_operate_info->operate_info[operate_index].car_num, \
-			g_led_show_list[n_gate_index].led_show_array[cur_num].car_num,CAR_NUM_LEN);
-
-			/*
-			   str_assign_value(gates[n_gate_index].led_ip, \
-			   led_show_list_ptr[n_gate_index].led_show_oper[cur_num].led_ip,15);
-				  
-			   led_show_list_ptr[n_gate_index].led_show_oper[cur_num].led_port = gates[n_gate_index].led_port;
-			*/
-
-			g_led_show_list[n_gate_index].led_info_cur_num++;
-
-  		}
-
-		pthread_mutex_unlock(&g_led_show_list[n_gate_index].mutex_led_show);
-
-  }//end for if(led_show_list_ptr.......
 
   return true;
 }
@@ -458,9 +429,9 @@ bool OpenDoor(int operate_index,int openDoorMethodType,bool b_print_log)
 						+ (unsigned long long)nowtime.tv_usec;
 			log.m_Meta.m_TimeStamp[0] =  (nowtimestamp>>32);
 			log.m_Meta.m_TimeStamp[1] =  nowtimestamp & 0xFFFFFFFF;
-			
-			InsertPassRecordLog2(&log);// 发送数据
 
+		        //插入一条通行记录日志到内存标签日志队列会触发发送通行记录
+			InsertPassRecordLog2(&log);
 			
 			break;
 		default:
@@ -675,39 +646,6 @@ int GetTagsAndDeal(int *whitchInduction)
 
 	return SUCCESS;
 }
-
-
- void ThreadLedShow(void* argument)
- {
-         int i;
-         int  arg = *(int*)argument;
-
-         //only one led
-         LEDSHOWINFO cp_one_led_show_oper;
-         while (1)
-         {
-                 // copy from led_show_oper
-                 pthread_mutex_lock(&g_led_show_list[arg].mutex_led_show);
-                 if (g_led_show_list[arg].led_info_cur_num > 0)
-                 {
-                         memcpy(&cp_one_led_show_oper,&(g_led_show_list[arg]),sizeof(LEDSHOWINFO));
-
-                         show_chepai(g_led_show_list->led_ip,g_led_show_list->led_port,cp_one_led_show_oper.car_num, \
-                                         cp_one_led_show_oper.be_entry);
-
-                         for (i = 0; i < g_led_show_list[arg].led_info_cur_num; i++)
-                                 memcpy(&(g_led_show_list[arg].led_show_array[i]),&(g_led_show_list[arg].led_show_array[i+1]),sizeof(LEDSHOWINFO));
-
-                         memset(&g_led_show_list[arg].led_show_array[g_led_show_list[arg].led_info_cur_num-1],0,sizeof(LEDSHOWINFO));
-                         g_led_show_list[arg].led_info_cur_num -= 1;
-
-                 }
-
-                 pthread_mutex_unlock(&g_led_show_list[arg].mutex_led_show);
-
-                 sleep (1);
-         }
- }
 
 
 //白名单请求线程

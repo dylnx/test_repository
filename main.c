@@ -15,6 +15,7 @@ int create_pidfile(const char *file);
 
 struct CondThread *g_PassRecordLogWriteFileThread;
 struct CondThread *g_PassRecordSendThread;
+struct CondThread *g_LedRecordSendThread;
 
 int main(void)
 {
@@ -46,19 +47,38 @@ int main(void)
     }
 
 
+    /******************************************************************/
     //初始化白名单数据库功能 
     WhiteListDatabaseInit();
+    /******************************************************************/
 	
-    //创建通行记录断链续传线程
+
+    /******************************************************************/
+    //创建通行记录写日志线程,将内存队列中的通行记录,写入断链续传日志,
+    //PassRecordLogHandle函数负责上述功能.
     InitPassRecordLogFile();
     g_PassRecordLogWriteFileThread = CreateCondThread(
 				PassRecordLogHandle);
     ThreadRun(g_PassRecordLogWriteFileThread);
+    /*****************************************************************/
 
-    //创建通行记录实时上传线程
+
+    /*****************************************************************/
+    //创建通行记录实时上传线程,并将当前通行记录,包括发送成功或失败(成功
+    //标记0，失败标记1）写入队列后通知写日志线程,
+    //PassRecordSendHandle函数负责上述功能.
     g_PassRecordSendThread = CreateCondThread(
 				PassRecordSendHandle);
     ThreadRun(g_PassRecordSendThread);
+    /*****************************************************************/
+
+
+    /*****************************************************************/
+    g_LedRecordSendThread = CreateCondThread(
+				LedRecordSendHandle);
+    ThreadRun(g_LedRecordSendThread);
+
+    /*****************************************************************/
 
 
     
@@ -78,27 +98,6 @@ int main(void)
         printf("Error: calloc g_old_passed_array  faild!!\n");
         print_log(f_sysinit,"Error: calloc g_old_passed_array  faild!!\n");
         return 1;//exit the program
-    }
-
-    //申请LED资源
-    g_led_show_list = (PLED_SHOW_LIST)calloc(2, sizeof(LED_SHOW_LIST));
-    if( NULL == g_led_show_list )
-    {
-        printf("Error: calloc g_led_show_list  faild!!\n");
-        print_log(f_sysinit,"Error: calloc g_led_show_list  faild!!\n");
-    }
-
-    //two gates,two led
-    for( i = 0;i<gate_num;i++ ){
-       ret_createmtx = pthread_mutex_init(&g_led_show_list[i].mutex_led_show,NULL); 
-       if( 0 != ret_createmtx){
-            print_log(f_sysinit,"ERROR!!!pthread_mutex_init g_led_show_list[%d].mutex_led_show",i);
-       }
-       str_assign_value(gates[i].led_ip, \
-       g_led_show_list[i].led_ip,15); 
-
-       g_led_show_list[i].led_port = gates[i].led_port; 
-       
     }
 
 
@@ -140,29 +139,8 @@ int main(void)
     }
 
     //create some thread
-    pthread_t thread_control,thread_led0,thread_led1,thread_request_whitelist,	\
+    pthread_t thread_control,thread_request_whitelist,	\
     thread_resend_passrecord,thread_kill_fork,thread_camera;
-
-#if 1 
-    thread_arg = 0;
-    s = pthread_create(&thread_led0,NULL,(void *)&ThreadLedShow,&thread_arg);
-    if(s != 0)
-    {
-	print_log(f_sysinit,"pthread_create showLed0 thread faild!!");
-    }
-    usleep(500*1000);
-#endif
-
-
-#if 1 
-    thread_arg = 1;
-    s = pthread_create(&thread_led1,NULL,(void *)&ThreadLedShow,&thread_arg);
-    if(s != 0)
-    {
-	print_log(f_sysinit,"pthread_create showLed1 thread faild!!");
-    }
-    usleep(500*1000);
-#endif
 
 
     s = pthread_create(&thread_request_whitelist,NULL,(void *)&ThreadRequestWhitelist,NULL);

@@ -6,6 +6,7 @@
 #include "cond_thread.h"
 #include "pass_record.h"
 #include "logfile.h"
+#include "ledapi.h"
 
 #define RESEND_RECORD_NUM 9999 
 
@@ -703,7 +704,7 @@ void PassRecordLogHandle(void *args)
 /*
 功能：
 	插入一条通行记录日志到内存标签日志队列
-	会触发发送通信记录
+	会触发发送通行记录
 参数：
 	pPassRecrodLog：通行记录
 返回：
@@ -748,6 +749,15 @@ void PassRecordSendHandle(void *args)
 	InsertPassRecordLog1(temp);
 	free(temp);
 }
+
+void LedRecordSendHandle(void *args)
+{
+	if ( args == NULL ) return ;
+	struct _cond_thread_msg *msg = args;
+	struct led_send_info *led_obj = msg->data;
+	show_chepai(led_obj->ip,led_obj->port,led_obj->car_num,led_obj->be_entry);
+}
+
 
 /*
 功能：

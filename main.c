@@ -42,7 +42,7 @@ int main(void)
     bool bRet = initial();
     if (!bRet)
     {
-        printf("init error!\n");
+    	print_log(f_sysinit,"init error,Program exit!!");    
         return -1;
     }
 
@@ -55,7 +55,6 @@ int main(void)
 
     /******************************************************************/
     //创建通行记录写日志线程,将内存队列中的通行记录,写入断链续传日志,
-    //PassRecordLogHandle函数负责上述功能.
     InitPassRecordLogFile();
     g_PassRecordLogWriteFileThread = CreateCondThread(
 				PassRecordLogHandle);
@@ -67,7 +66,6 @@ int main(void)
     /*****************************************************************/
     //创建通行记录实时上传线程,并将当前通行记录,包括发送成功或失败(成功
     //标记0，失败标记1）写入队列后通知写日志线程,
-    //PassRecordSendHandle函数负责上述功能.
     g_PassRecordSendThread = CreateCondThread(
 				PassRecordSendHandle);
     ThreadRun(g_PassRecordSendThread);
@@ -195,7 +193,12 @@ bool initial(void)
     // get config info
     char* filename = "config.ini";
     int intValue;
-    char buffer[4096];
+    char *buffer;
+    buffer = (char *)calloc(1,8192);
+    if(buffer == NULL){
+    	print_log(f_sysinit,"initial():buffer is NULL!!!\n");    
+	return false;	
+    }
     int buf_len = file_read(filename,buffer);
 
     char value[400];

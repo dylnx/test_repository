@@ -15,7 +15,6 @@
 #include "serial.h"
 #include "pass_record.h"
 #include "whitelist.h"
-#include "socket_client.h"
 
 
 
@@ -655,7 +654,7 @@ void ThreadRequestWhitelist(void)
 	while(1)
 	{
 		sleep(request_whitelist_inteval);
-		ret = client_recv_whitelist();
+		ret = ClientRecvWhiteList();
                 if( 0 == ret )
                 {
 		        print_log(f_sync_whitelist,"update the white list successfully!!!");

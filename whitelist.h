@@ -3,6 +3,7 @@
 
 
 int WhiteListDatabaseInit();
+int ClientRecvWhiteList();
 int RefreshWLDatabase(char *data, int count);
 int CheckWhiteList(const char *tid,char *carnum);
 

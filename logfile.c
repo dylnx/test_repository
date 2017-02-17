@@ -734,8 +734,8 @@ void PassRecordSendHandle(void *args)
 	struct _cond_thread_msg *msg = args;
 	struct SPassRecordLog *temp = msg->data;
 	// send the result
-	printf("The PassRecord is sending.... [%d]:%s\n",
-			temp->m_Channel, temp->m_Tid);
+	//printf("The PassRecord is sending.... [%d]:%s\n",
+			//temp->m_Channel, temp->m_Tid);
 	// TODO
 	int ret = send_pass_record(temp, 0);
 	if( ret == 0 )
@@ -906,14 +906,12 @@ PK_STATUS ResendCachePassRecordLimitByDate(int expire_hour,unsigned int *sended_
 	ret = GetPassRecordLogByStamp( startStamp, &log, minStamp, maxStamp);
 	if ( ret < 0 )
 	{
-		printf("File Error\n");
 		return PK_FILE_ERROR;
 	}
 	if ( ret == 0 )// no record
 	{
 		if( minStamp[0] == 0 && minStamp[1] == 0 )
 		{
-			printf("File Empty!!!\n");
 			return PK_FILE_EMPTY;
 		}
 		if ( Compare64( startStamp, minStamp ) <= 0 ) // startStamp < minStamp 
@@ -967,7 +965,7 @@ PK_STATUS ResendCachePassRecordLimitByDate(int expire_hour,unsigned int *sended_
 	//批量发送	
 	int ret_send;
 	ret_send = send_pass_record1(fakedata,i,1);
-	if( 0 == ret_send )
+	if( PK_SUCCESS == ret_send )
 	{
 		int j;
 		unsigned int temp2[2];
@@ -985,7 +983,7 @@ PK_STATUS ResendCachePassRecordLimitByDate(int expire_hour,unsigned int *sended_
 
 
 	}else{
-		return PK_SEND_ERROR;
+		return ret_send;
 	}
 
 	return PK_SUCCESS;

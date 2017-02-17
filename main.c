@@ -60,6 +60,7 @@ int main(void)
     g_PassRecordLogWriteFileThread = CreateCondThread(
 				PassRecordLogHandle);
     ThreadRun(g_PassRecordLogWriteFileThread);
+    print_log(f_sysinit,"ThreadPassPrecordLogHandle is running......");    
     /*****************************************************************/
 
 
@@ -70,6 +71,7 @@ int main(void)
     g_PassRecordSendThread = CreateCondThread(
 				PassRecordSendHandle);
     ThreadRun(g_PassRecordSendThread);
+    print_log(f_sysinit,"ThreadPassPrecordSendHandle is running......");    
     /*****************************************************************/
 
 
@@ -81,6 +83,7 @@ int main(void)
 	    g_LedRecordSendThread = CreateCondThread(
 					LedRecordSendHandle);
 	    ThreadRun(g_LedRecordSendThread);
+    	    print_log(f_sysinit,"ThreadLedRecordSendHandle is running......");    
 
     }
     /*****************************************************************/
@@ -163,6 +166,7 @@ int main(void)
 	print_log(f_sysinit,"pthread_create thread_resend_passrecord faild!!");
  	exit(EXIT_FAILURE);		
     }
+    usleep(500*1000);
 
 
     s =	pthread_create(&thread_control,NULL,(void *)&ThreadMonitorCapDeal,NULL);

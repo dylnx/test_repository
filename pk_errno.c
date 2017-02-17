@@ -12,8 +12,6 @@
 -------------------------------------------------------------------------------
 
 ==============================================================================*/
-
-
 #ifdef __cplusplus
 extern "C" {
 #endif /* __cplusplus */
@@ -33,8 +31,12 @@ const char *pk_errlist[] =
     /*  10:PK_BAD_PARAMETER_6       */  "Function Parameter 6 is either NULL or invalid",
     /*  11:PK_BAD_PARAMETER_7       */  "Function Parameter 7 is either NULL or invalid",
     /*  12:PK_BAD_PARAMETER_8       */  "Function Parameter 8 is either NULL or invalid",
-    /*  13:PK_SEND_ERROR            */  "send operation failed",
-    /*  14:PK_MAX_ERROR_CODE        */  "Invalid error code"
+    /*  13:PK_CONNECT_FAILED,       */  "cann't connect server", 
+    /*  14:PK_CONNECT_TIMEOUT,      */  "connect server timeout",
+    /*  15:Pk_LOW_MEMORY,           */  "A memory alloction failed",
+    /*  16:PK_SEND_FAILED,          */  "send data failed",
+    /*  17:PK_RECV_FAILED,          */  "receive data failed",
+    /*  18:PK_MAX_ERROR_CODE        */  "Invalid error code"
     };
 
 const int pk_nerr = sizeof(pk_errlist) / sizeof(char*);

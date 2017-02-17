@@ -191,6 +191,8 @@ void ThreadMonitorCapDeal(void)
         //定义并初始化车道地感信号变量
 	int whitchInduction[2] = {0,0};
 
+        print_log(f_sysinit,"ThreadMoniterCapDeal is running......\n");    
+
 	ConnectionReader();
 
 
@@ -651,6 +653,9 @@ int GetTagsAndDeal(int *whitchInduction)
 void ThreadRequestWhitelist(void)
 {
         int ret;
+
+        print_log(f_sysinit,"ThreadRequestWhitelist is running......");    
+
 	while(1)
 	{
 		sleep(request_whitelist_inteval);
@@ -668,6 +673,9 @@ void ThreadRequestWhitelist(void)
 void ThreadResendPassrecord(void)
 {
 	int ret;
+
+        print_log(f_sysinit,"ThreadResendPassrecord is running......");    
+
 	int sended_count = 0;
 	while(1)
 	{
@@ -683,7 +691,7 @@ void ThreadResendPassrecord(void)
 			break;
 		     default:
 		        //发送失败，将原因写入日志	
-			print_log(f_sended_server,"error:resend passrecord failed %s",PKErrorMsg(ret));
+			print_log(f_sended_server,"error:resend passrecord failed->%s",PKErrorMsg(ret));
 			break;		
 		}
 

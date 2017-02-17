@@ -62,7 +62,6 @@ int RefreshWLDatabase(char *data, int count)
 	char    *sql_cmd;
 	int     sql_prefix_len = 0;
 	int     sql_cmd_len =0;
-	int     split_count = 200;// 每次插入200条
 	sql_cmd = (char*)malloc(200*40+30);
 	sprintf(sql_cmd, "delete from whitelist");
 
@@ -72,10 +71,6 @@ int RefreshWLDatabase(char *data, int count)
 	sql_prefix_len = sprintf(sql_cmd, "insert into whitelist values ");
 	for(i=0;i<count;i++)
 	{
-//		char temp_str[100];
-//		memset(temp_str, 0x00, 100);
-//		strcpy(temp_str, ptr+33*count);
-//		printf(": %s\n",  temp_str);
 		ptr = data+(wl_item_size*i);
 		if( i!=count-1) 
 			ptr[wl_item_size] = 0;

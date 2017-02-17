@@ -56,7 +56,6 @@ int main(void)
     /******************************************************************/
     //创建通行记录写日志线程,将内存队列中的通行记录,写入断链续传日志,
     //PassRecordLogHandle函数负责上述功能.
-
     InitPassRecordLogFile();
     g_PassRecordLogWriteFileThread = CreateCondThread(
 				PassRecordLogHandle);
@@ -68,7 +67,6 @@ int main(void)
     //创建通行记录实时上传线程,并将当前通行记录,包括发送成功或失败(成功
     //标记0，失败标记1）写入队列后通知写日志线程,
     //PassRecordSendHandle函数负责上述功能.
-
     g_PassRecordSendThread = CreateCondThread(
 				PassRecordSendHandle);
     ThreadRun(g_PassRecordSendThread);
@@ -78,12 +76,15 @@ int main(void)
     /*****************************************************************/
     //创建LED显示线程，与上面方式同样是采用条件变量队列方式.
     //LedRecordSendHandle函数负责显示到屏幕.
+    if(!strcmp(exist_led,"YES"))
+    {
+	    g_LedRecordSendThread = CreateCondThread(
+					LedRecordSendHandle);
+	    ThreadRun(g_LedRecordSendThread);
 
-    g_LedRecordSendThread = CreateCondThread(
-				LedRecordSendHandle);
-    ThreadRun(g_LedRecordSendThread);
-
+    }
     /*****************************************************************/
+
 
 
     
@@ -325,6 +326,12 @@ bool initial(void)
     }
     print_log(f_sysinit,"dev_id=%d\n",dev_id);    
 
+    if (!readStringParam(buffer,buf_len, "exist_led",exist_led))
+    {
+        // log
+        return false;
+    }
+    print_log(f_sysinit,"exist_led=%s",exist_led);
 
     
       

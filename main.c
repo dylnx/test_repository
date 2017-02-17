@@ -23,7 +23,7 @@ int main(void)
     void * ret;
 
     //将当前进程后台化
-    //daemon(1,1);
+    daemon(1,1);
     //create_pidfile("ReadTags.pid");
     signal(SIGPIPE,SIG_IGN);
 
@@ -383,7 +383,7 @@ bool initial(void)
 
         sprintf(key_name,"%s_%d","gate_ant",i);
         readStringParam(buffer,buf_len, key_name,gates[i].ants);
-    	print_log(f_sysinit,"gate_ant_%d=%s\n\n",i,gates[i].ants);    
+    	print_log(f_sysinit,"gate_ant_%d=%s\n",i,gates[i].ants);    
     }
 
    

@@ -68,7 +68,7 @@ int ConnectionReader()
 				continue;
 			}else{
 				sleep(4);//等待射频模块启动中...
-				print_log(f_sysinit,"connected reader successfully!!!");
+				print_log(f_sysinit,"connected reader successfully!!!\n");
 
                                 //连接成功后，初始last_heart)time时间，用于心跳判断条件
                                 gettimeofday(&timeval, NULL);

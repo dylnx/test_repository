@@ -200,6 +200,11 @@ bool initial(void)
 	return false;	
     }
     int buf_len = file_read(filename,buffer);
+    if(buf_len == -1){
+    	print_log(f_sysinit,"initial()->file_read() error!!!\n");    
+	return false;	
+    }
+   
 
     char value[400];
     //读取服务器IP

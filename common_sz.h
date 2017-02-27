@@ -136,6 +136,8 @@ char door_open_method[20];
 
 int log_size; //defult value
 
+int g_ants_element;
+
 //gate info
 STRUCT_GATE_INFO gates[2];
 

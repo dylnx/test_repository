@@ -2,6 +2,7 @@
 #include <unistd.h>
 #include <signal.h>
 #include "common_sz.h"
+#include "api.h"
 #include "basic_func.h"
 #include "controler.h"
 #include "serial.h"
@@ -345,7 +346,7 @@ bool initial(void)
     
       
 
-    int i = 0;
+    int i,j;
     char key_name[30];
     for (i=0;i<gate_num;i++)//two gates,one for enter,anther for leave.
     {
@@ -394,6 +395,24 @@ bool initial(void)
         readStringParam(buffer,buf_len, key_name,gates[i].ants);
     	print_log(f_sysinit,"gate_ant_%d=%s\n",i,gates[i].ants);    
     }
+	g_ants_element = 0;
+        for(i=0;i<gate_num;i++)
+	{
+    		print_log(f_sysinit,"gates[%d].ant_num = %d\n",i,gates[i].ant_num);    
+        	for(j=0;j<gates[i].ant_num;j++)
+		{
+			gates[i].ants[j] =gates[i].ants[j]-'0';
+			if(gates[i].ants[j] == 1){ g_ants_element |= ANTENNA_1;}
+			if(gates[i].ants[j] == 2){ g_ants_element |= ANTENNA_2;}
+			if(gates[i].ants[j] == 3){ g_ants_element |= ANTENNA_3;}
+			if(gates[i].ants[j] == 4){ g_ants_element |= ANTENNA_4;}
+			 
+			
+    			print_log(f_sysinit,"gates[%d].ants[%d] = %d\n",i,j,gates[i].ants[j]);    
+		}
+		
+	}
+        print_log(f_sysinit,"g_ants_element=%08x\n",g_ants_element); 
 
    
     return true;

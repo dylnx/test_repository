@@ -51,9 +51,15 @@ int ConnectionReader()
 			set_reader_param(reader,PARAM_PROTOCOL,PROTOCOL_ISO6C);
 			set_reader_param(reader,PARAM_READMODE,READMODE_LOWSPEED);
 			set_reader_param(reader,PARAM_FREQMODE,FREQ_DYN);
+			//设置返回功能，暂不用，因为动态库中设有默认值
 			//set_reader_param(reader,PARAM_RF_ANTRRATE,10);
 
-			set_reader_param(reader,PARAM_RF_ANTNUM,ANTENNA_1 | ANTENNA_2);
+			//旧式不灵活的硬纺码
+			//set_reader_param(reader,PARAM_RF_ANTNUM,ANTENNA_1 | ANTENNA_2);
+
+			//g_nats_element是在main.c中初始化过的全局变量
+			set_reader_param(reader,PARAM_RF_ANTNUM,g_ants_element);
+
 			set_reader_param(reader,PARAM_RF_ANTPOWER,reader_rate);
 			set_reader_param(reader,PARAM_DURTIME,200);
 
@@ -455,7 +461,7 @@ bool OpenDoor(int operate_index,int openDoorMethodType,bool b_print_log)
 /*
 功能：将读到的标签进校验,该标签是否在配制文件中
 参数：读到标签tid值 
-返回值：匹配成功返回天线号，匹配失败返回-1
+返回值：匹配成功返回gate index，匹配失败返回-1
 */
 int get_gate_index(int ant_id)
 {
@@ -467,7 +473,9 @@ int get_gate_index(int ant_id)
 	ant_num = gates[i].ant_num;
 	for(j=0;i<ant_num;j++){
 	  if(ant_id == gates[i].ants[j]) 
-		return gates[i].ants[j];
+		//return gates[i].ants[j];
+                //返回gate index
+		return i;
 	} 
    }
 
@@ -481,7 +489,7 @@ int GetTagsAndDeal(int *whitchInduction)
 	listnode node;
 	int cards_num = 0;
 	int n_gate_index = 0xffff;
-	int induction = 0;
+	int m_gate_index = 0xffff;
         struct   timeval    timeval;
 
 	list result;
@@ -520,20 +528,30 @@ int GetTagsAndDeal(int *whitchInduction)
 			//do nothing
 		}else{
 		
-		  if( 1 == whitchInduction[0]){
-			induction = whitchInduction[0]; 
-		  }else if(2 == whitchInduction[1] ){
-			induction = whitchInduction[1]; 
-		  }
-	
-		  if(0 != induction){
-			if(tag->antenna_id != induction){
-				strcpy(tag->tid,"");
-				free(tag);
-				continue;
-		        }
+		   if( 1 == whitchInduction[0]){
+			m_gate_index = whitchInduction[0]-1; 
+		   }else if(2 == whitchInduction[1] ){
+			m_gate_index = whitchInduction[1]-1; 
 		   }
-		
+               	
+		   bool isValid = FALSE;
+
+		   for(i=0;i<gates[m_gate_index].ant_num;i++)
+		   {
+			if(tag->antenna_id == gates[m_gate_index].ants[i]){
+			        isValid=TRUE;//只要有一次相等，则证明该标签是当前实际车道对应天线(可以有多个天线)所读到的	
+		        	break; 	
+			}
+		   }
+		   //存在误读情况，该标签不是当前车道对应天线所读到的标签，弃之。
+		   if(!isValid)
+		   {
+			strcpy(tag->tid,"");
+			free(tag);
+			continue;//继续处理集合中的下一个标签
+		   }
+
+		  
 		}//end for if( 1 == whitchInduction[0...... 
 
 
@@ -632,7 +650,7 @@ int GetTagsAndDeal(int *whitchInduction)
 				print_log(f_error,"Error:AddTagsToLedList() faild!!\n");
 			}
 
-			if( !OpenDoor(i,RELAY,true) ){
+			if( !OpenDoor(i,door_open_method,true) ){
 				print_log(f_error,"Error:OpenDoor() faild!!\n");
 			}//end for if( !OpenDoor(.....
 

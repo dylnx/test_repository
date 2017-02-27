@@ -152,12 +152,12 @@ int CheckLandInduction(int *whitchInduction)
                       
                    //记录入口车道地感为有信号状态
 		   whitchInduction[0] = 1;    
-		   print_log(f_misc_running,"Enter GPIO=%d\n!!!",gpioVal[0]);
+		   print_log(f_misc_running,"Enter GPIO=%d\n",gpioVal[0]);
 
 		if( 1 == gpioVal[1])
                    //记录出口车道地感为有信号状态
 		   whitchInduction[1] = 2;//NO.2 induction have signal          
-		   print_log(f_misc_running,"LEAVE GPIO=%d\n!!!",gpioVal[1]);
+		   print_log(f_misc_running,"LEAVE GPIO=%d\n",gpioVal[1]);
 
 	}else{
 		retVal = NOSIGNAL;
@@ -472,11 +472,11 @@ int get_gate_index(int ant_id)
    for(i=0;i<gate_num;i++)
    {
 	ant_num = gates[i].ant_num;
-	for(j=0;i<ant_num;j++){
-	  if(ant_id == gates[i].ants[j]) 
-		//return gates[i].ants[j];
+	for(j=0;j<ant_num;j++){
+	  if(ant_id == gates[i].ants[j]){ 
                 //返回gate index
 		return i;
+	  }
 	} 
    }
 

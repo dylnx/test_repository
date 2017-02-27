@@ -650,9 +650,16 @@ int GetTagsAndDeal(int *whitchInduction)
 				print_log(f_error,"Error:AddTagsToLedList() faild!!\n");
 			}
 
-			if( !OpenDoor(i,door_open_method,true) ){
-				print_log(f_error,"Error:OpenDoor() faild!!\n");
-			}//end for if( !OpenDoor(.....
+                        if(!strcmp(door_open_method,"RS485"))
+			{
+				if( !OpenDoor(i,RS485,true) ){
+					print_log(f_error,"Error:RS485->OpenDoor() faild!!\n");
+				}
+			}else if(!strcmp(door_open_method,"RELAY")){
+				if( !OpenDoor(i,RELAY,true) ){
+					print_log(f_error,"Error:RELAY->OpenDoor() faild!!\n");
+				}
+			}
 
 		}//end for if( can_open )....
 	}//end for for( i=0;i<cur_opera.....

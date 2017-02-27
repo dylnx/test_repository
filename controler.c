@@ -205,6 +205,8 @@ void ThreadMonitorCapDeal(void)
 		   
                    retVal = SIGNAL; 
 	       }
+	       //get_tags_inteval值取决于系统采用的工作方式，详见config.ini
+	       usleep(get_tags_inteval*1000);
                 
 		if( SIGNAL == retVal )
 		{
@@ -215,15 +217,7 @@ void ThreadMonitorCapDeal(void)
 			    ConnectionReader();
 
 			}else if( SUCCESS == retVal ){
-
-				if(!strcmp(working_way,"INDUCTION"))
-			       {
-			         usleep(get_tags_inteval*1000);
-			       }else{//working_way="POLL",系统采用轮询工作方式
-				   
-			         usleep(get_tags_inteval*1000);
-			       }		
-
+                            //进入下一周期循环
 			}
 
 		}else if( NOSIGNAL == retVal ){

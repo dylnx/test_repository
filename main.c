@@ -124,12 +124,9 @@ int main(void)
 
 
     
-
-    if(!strcmp(door_open_method,"RELAY"))
-    {
-	 //初始化GPIO
-	 init_gpio();
-    }
+    //初始化GPIO
+    init_gpio();
+   
 
 
     if(!strcmp(door_open_method,"RS485"))

@@ -46,9 +46,9 @@ void print_log(FILE *file,const char *ms, ... )
     char wzLog[512] = {0};  
     char buffer[512] = {0};  
 
-    unsigned char *path =  NULL;
-    unsigned char *rawname = NULL;
-    unsigned char *bakname = NULL;
+    unsigned char path[512];
+    unsigned char rawname[512];
+    unsigned char bakname[512];
 
     va_list args;  
     va_start(args, ms);  
@@ -57,15 +57,16 @@ void print_log(FILE *file,const char *ms, ... )
   
     if( NULL == file)
         return;
-    pthread_mutex_lock(&mtx_print_log);
+
     time_t now;  
     time(&now);  
     struct tm *local;  
     local = localtime(&now);  
 
-    //printf("%04d-%02d-%02d %02d:%02d:%02d %s\n", local->tm_year+1900, local->tm_mon+1,  
-    //       local->tm_mday, local->tm_hour, local->tm_min, local->tm_sec,  
-    //       wzLog);  
+    memset(path,0,sizeof(path));
+    memset(rawname,0,sizeof(rawname));
+    memset(bakname,0,sizeof(bakname));
+
        
     cur_file_size = filesize(file);
 
@@ -74,12 +75,6 @@ void print_log(FILE *file,const char *ms, ... )
        
     if( cur_file_size > log_size ){
 
-        path = (unsigned char *)calloc(512,sizeof(unsigned char));
-        usleep(5*1000);
-        rawname = (unsigned char *)calloc(512,sizeof(unsigned char));
-        usleep(5*1000);
-        bakname = (unsigned char *)calloc(512,sizeof(unsigned char));
-        usleep(5*1000);
 
         int fd = fileno(file);
         sprintf(path,"/proc/self/fd/%d",fd);
@@ -91,7 +86,6 @@ void print_log(FILE *file,const char *ms, ... )
         strcpy(bakname,rawname);
         strcat(bakname,".bak");
         rename(rawname,bakname);
-        usleep(5*1000);
 
        //create new log file	
        	file = open_log_file(rawname);
@@ -101,15 +95,6 @@ void print_log(FILE *file,const char *ms, ... )
        	   //do noting,still use the old file handle;
        	}
 
-        //free temp buffers
-        free(path);
-        usleep(5*1000);
-
-        free(rawname);
-        usleep(5*1000);
-
-        free(bakname);
-        usleep(5*1000);
     }
      
     sprintf(buffer,"%04d-%02d-%02d %02d:%02d:%02d %s\n", local->tm_year+1900, local->tm_mon+1,  
@@ -117,7 +102,6 @@ void print_log(FILE *file,const char *ms, ... )
                 wzLog);  
     fwrite(buffer,1,strlen(buffer),file);  
     fflush(file);
-    pthread_mutex_unlock(&mtx_print_log);
 
     return ;  
 }  

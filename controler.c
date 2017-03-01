@@ -73,7 +73,7 @@ int ConnectionReader()
 				usleep(100*1000);
 				continue;
 			}else{
-				sleep(4);//等待射频模块启动中...
+				sleep(6);//等待射频模块启动中...
 				print_log(f_sysinit,"connected reader successfully!!!\n");
 
                                 //连接成功后，初始last_heart)time时间，用于心跳判断条件
@@ -84,7 +84,7 @@ int ConnectionReader()
 			}
 		}else{
 			print_log(f_sysinit,"new_reader() NULL\n!");
-			usleep(500*1000);
+			sleep(6);
 			continue;
 		     }
 	} // end of while(.....

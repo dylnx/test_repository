@@ -155,7 +155,8 @@ int main(void)
  	exit(EXIT_FAILURE);		
     }
     usleep(500*1000);
-    
+
+#if 0    
     s = pthread_create(&thread_resend_passrecord,NULL,(void *)&ThreadResendPassrecord,NULL);
     if(s !=0)
     {
@@ -163,6 +164,7 @@ int main(void)
  	exit(EXIT_FAILURE);		
     }
     usleep(500*1000);
+#endif
 
 
     s =	pthread_create(&thread_control,NULL,(void *)&ThreadMonitorCapDeal,NULL);

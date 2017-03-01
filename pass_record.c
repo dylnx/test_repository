@@ -137,11 +137,8 @@ PK_STATUS send_pass_record1(struct SPassRecordLog *sr, int count, int flag)
 		m_sret = TcpSendData(sockfd,m_sbuff,m_len,10000);
 		if( m_len!=m_sret ){
 			DisconnectTcpServer(sockfd);	
-			print_log(f_sended_server,"ERROR:resend %d'th data failed!!!\n", send_count);
 			return PK_SEND_FAILED;
-		}else{
-			print_log(f_sended_server,"resend %d'th data successfully!!\n", send_count);
-		}	
+		}
 		send_count++;
 	}
 	

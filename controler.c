@@ -43,7 +43,7 @@ int ConnectionReader()
                    reader = 0;
                 }
 
-		usleep(100);
+		sleep(6);//必须睡眠几秒钟，原因是硬件底板固件程序与射频固件程序启动不同步
 
 		reader = new_reader(reader_ip,reader_port);
 
@@ -54,7 +54,7 @@ int ConnectionReader()
 			//设置返回功能，暂不用，因为动态库中设有默认值
 			//set_reader_param(reader,PARAM_RF_ANTRRATE,10);
 
-			//旧式不灵活的硬纺码
+			//旧式不灵活的硬编码
 			//set_reader_param(reader,PARAM_RF_ANTNUM,ANTENNA_1 | ANTENNA_2);
 
 			//g_nats_element是在main.c中初始化过的全局变量
@@ -73,7 +73,6 @@ int ConnectionReader()
 				usleep(100*1000);
 				continue;
 			}else{
-				sleep(6);//等待射频模块启动中...
 				print_log(f_sysinit,"connected reader successfully!!!\n");
 
                                 //连接成功后，初始last_heart)time时间，用于心跳判断条件
@@ -84,7 +83,6 @@ int ConnectionReader()
 			}
 		}else{
 			print_log(f_sysinit,"new_reader() NULL\n!");
-			sleep(6);
 			continue;
 		     }
 	} // end of while(.....

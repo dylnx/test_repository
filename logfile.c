@@ -13,6 +13,8 @@
 struct LogFile g_PassRecordLogInfo;
 extern struct CondThread *g_PassRecordLogWriteFileThread;
 extern struct CondThread *g_PassRecordSendThread;
+extern struct CondThread *g_LedRecordSendThread;
+
 
 static	struct SPassRecordLog *fakedata;
 
@@ -753,9 +755,27 @@ void PassRecordSendHandle(void *args)
 void LedRecordSendHandle(void *args)
 {
 	if ( args == NULL ) return ;
-	struct _cond_thread_msg *msg = args;
-	struct led_send_info *led_obj = msg->data;
+	struct _cond_thread_msg *msg = (struct _cond_thread_msg *)args;
+	struct led_send_info *led_obj = (struct led_send_info *)msg->data;
 	show_chepai(led_obj->ip,led_obj->port,led_obj->car_num,led_obj->be_entry);
+}
+
+/*
+功能：
+	插入一条LED显示对象到LED显示日志队列
+	会触发显示LED线程执行显示行为
+参数：
+	pPassRecrodLog：通行记录
+返回：
+*/
+void InsertLedObjToLedQueue(struct led_send_info *pled_sed_info)
+{
+	struct 	led_send_info	*temp;
+	
+	temp = (struct led_send_info *)malloc(sizeof(struct led_send_info));
+	memcpy(temp, pled_sed_info, sizeof(struct led_send_info));
+	// 触发读标签
+	TriggerThread(g_LedRecordSendThread, 0, temp);
 }
 
 

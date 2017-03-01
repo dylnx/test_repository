@@ -47,6 +47,7 @@ int InitPassRecordLogFile();
 int ClearPassRecordLog();
 void InsertPassRecordLog1(struct SPassRecordLog *pPassRecordLog);
 void InsertPassRecordLog2(struct SPassRecordLog *pPassRecordLog);
+void InsertLedObjToLedQueue(struct led_send_info *pled_sed_info);
 int WriteBackPassRecordLog(struct SPassRecordLog *pPassRecordLog);
 
 void PassRecordLogHandle(void *args);

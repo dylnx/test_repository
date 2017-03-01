@@ -368,7 +368,7 @@ bool AddTagsToLedList(int operate_index)
         lsi.be_entry = g_operate_info->operate_info[operate_index].be_enter;
 
         //插入一条LED记录日志到内存标签日志队列会触发发送LED记录操作
-        InsertPassRecordLog2(&lsi);
+        InsertLedObjToLedQueue(&lsi);
 
 
   return true;

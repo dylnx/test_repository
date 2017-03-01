@@ -137,11 +137,12 @@ PK_STATUS send_pass_record1(struct SPassRecordLog *sr, int count, int flag)
 		m_sret = TcpSendData(sockfd,m_sbuff,m_len,10000);
 		if( m_len!=m_sret ){
 			DisconnectTcpServer(sockfd);	
-			print_log(f_sended_server,"ERROR:send %d'th data failed!!!\n", send_count);
+			print_log(f_sended_server,"ERROR:resend %d'th data failed!!!\n", send_count);
 			return PK_SEND_FAILED;
+		}else{
+			print_log(f_sended_server,"resend %d'th data successfully!!\n", send_count);
 		}	
 		send_count++;
-		print_log(f_sended_server,"[%d] send success\n", send_count);
 	}
 	
 	free(m_sbuff);
@@ -151,7 +152,7 @@ PK_STATUS send_pass_record1(struct SPassRecordLog *sr, int count, int flag)
 	m_rret = TcpRecvData(sockfd,m_rbuff,4,10000);	
 	if( 4 !=m_rret )
 	{
-		print_log(f_sended_server,"ERROR:recv data failed,recv count less 4 Bytes!!!\n");
+		print_log(f_sended_server,"ERROR:(resend)recv data failed,recv count less 4 Bytes!!!\n");
 		DisconnectTcpServer(sockfd);	
 		return PK_RECV_FAILED;
 	}

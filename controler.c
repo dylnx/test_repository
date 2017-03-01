@@ -189,9 +189,7 @@ int CheckLandInduction(int *whitchInduction)
 	return retVal;
 }
 
-void ThreadMonitorCapDeal(void)
-{
-	int retVal = 0;
+void ThreadMonitorCapDeal(void) { int retVal = 0;
         reader = NULL;
 
         //定义并初始化车道地感信号变量
@@ -526,36 +524,41 @@ int GetTagsAndDeal(int *whitchInduction)
 			continue;
 		}
 
-	/*  地感 对应天线的数据 */
-  	       if( 1 == whitchInduction[0] && 2 == whitchInduction[1] ){
-			//do nothing
+	       if(!strcmp(working_way,"INDUCTION"))
+	       {
+		/*  地感 对应天线的数据 */
+		       if( 1 == whitchInduction[0] && 2 == whitchInduction[1] ){
+				//do nothing
+			}else{
+			
+			   if( 1 == whitchInduction[0]){
+				m_gate_index = whitchInduction[0]-1; 
+			   }else if(2 == whitchInduction[1] ){
+				m_gate_index = whitchInduction[1]-1; 
+			   }
+			
+			   bool isValid = FALSE;
+
+			   for(i=0;i<gates[m_gate_index].ant_num;i++)
+			   {
+				if(tag->antenna_id == gates[m_gate_index].ants[i]){
+					isValid=TRUE;//只要有一次相等，则证明该标签是当前实际车道对应天线(可以有多个天线)所读到的	
+					break; 	
+				}
+			   }
+			   //存在误读情况，该标签不是当前车道对应天线所读到的标签，弃之。
+			   if(!isValid)
+			   {
+				strcpy(tag->tid,"");
+				free(tag);
+				continue;//继续处理集合中的下一个标签
+			   }
+
+			  
+			}//end for if( 1 == whitchInduction[0...... 
 		}else{
-		
-		   if( 1 == whitchInduction[0]){
-			m_gate_index = whitchInduction[0]-1; 
-		   }else if(2 == whitchInduction[1] ){
-			m_gate_index = whitchInduction[1]-1; 
-		   }
-               	
-		   bool isValid = FALSE;
-
-		   for(i=0;i<gates[m_gate_index].ant_num;i++)
-		   {
-			if(tag->antenna_id == gates[m_gate_index].ants[i]){
-			        isValid=TRUE;//只要有一次相等，则证明该标签是当前实际车道对应天线(可以有多个天线)所读到的	
-		        	break; 	
-			}
-		   }
-		   //存在误读情况，该标签不是当前车道对应天线所读到的标签，弃之。
-		   if(!isValid)
-		   {
-			strcpy(tag->tid,"");
-			free(tag);
-			continue;//继续处理集合中的下一个标签
-		   }
-
-		  
-		}//end for if( 1 == whitchInduction[0...... 
+		     //系统采用轮询工作方式(即:所有天线常开状态)，所以不用考虑天线误读标签问题	
+		}
 
 
 		// 过滤标签

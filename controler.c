@@ -43,7 +43,7 @@ int ConnectionReader()
                    reader = 0;
                 }
 
-		sleep(6);//必须睡眠几秒钟，原因是硬件底板固件程序与射频固件程序启动不同步
+		sleep(8);//必须睡眠几秒钟，原因是硬件底板固件程序与射频固件程序启动不同步
 
 		reader = new_reader(reader_ip,reader_port);
 
@@ -505,7 +505,7 @@ int GetTagsAndDeal(int *whitchInduction)
 
 	if ( ERROR == retVal)
 	{
-		print_log(f_error,"start_read_without_signal() ERROR\n!");
+		print_log(f_error,"start_read_without_signal() ERROR!!!\n");
 		return ERROR;
 	}
 

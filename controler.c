@@ -189,6 +189,8 @@ int CheckLandInduction(int *whitchInduction)
 
 void ThreadMonitorCapDeal(void) { int retVal = 0;
         reader = NULL;
+        struct   timeval    timeval;
+	unsigned long long cur_t;
 
         //定义并初始化车道地感信号变量
 	int whitchInduction[2] = {0,0};
@@ -196,6 +198,11 @@ void ThreadMonitorCapDeal(void) { int retVal = 0;
         print_log(f_sysinit,"ThreadMoniterCapDeal is running......\n");    
 
 	ConnectionReader();
+
+	 //初始心跳最后一次心跳时间
+        gettimeofday(&timeval, NULL);
+        last_signal_time = (unsigned long long)timeval.tv_sec;
+
 
 
 	while(1)
@@ -212,14 +219,24 @@ void ThreadMonitorCapDeal(void) { int retVal = 0;
                 
 		if( SIGNAL == retVal )
 		{
+		        gettimeofday(&timeval, NULL);
+		        cur_t = (unsigned long long)timeval.tv_sec;
 
 			retVal = GetTagsAndDeal(whitchInduction);
 			if( ERROR == retVal ){
 
+
+		   	    print_log(f_error,"from last heartTime to now have %d seconds passed!\n", \
+			    cur_t - last_heart_time);
+
 			    ConnectionReader();
 
 			}else if( SUCCESS == retVal ){
-                            //进入下一周期循环
+			   //只要读标签成功，则重置心跳计时为当前时间
+			   last_heart_time = cur_t;	
+
+                           //进入下一周期循环
+				
 			}
 
 		}else if( NOSIGNAL == retVal ){
@@ -489,15 +506,11 @@ int GetTagsAndDeal(int *whitchInduction)
 	int cards_num = 0;
 	int n_gate_index = 0xffff;
 	int m_gate_index = 0xffff;
-        struct   timeval    timeval;
 
 	list result;
 	result = list_new();
 
-        //记录读标签操作当前时间，用于心跳判断条件
-        gettimeofday(&timeval, NULL);
-        last_heart_time = (unsigned long long)timeval.tv_sec;
-
+       
 	retVal = start_read_without_signal(reader,result);
 
 	memset(g_tags_array,0,sizeof(TAGOBJ) * TAG_NUM_MAX);   

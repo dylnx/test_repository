@@ -2,7 +2,7 @@
 #include <unistd.h>
 #define DEFAULT_LOG_SIZE 20*1024*1024
 #define MAX_LOG_SIZE 50*1024*1024
-
+//add .....
 extern int log_size;
 pthread_mutex_t mtx_print_log = PTHREAD_MUTEX_INITIALIZER;
 long filesize(FILE *stream)

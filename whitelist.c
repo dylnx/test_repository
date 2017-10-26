@@ -29,7 +29,7 @@ int ClientRecvWhiteList()
 	ret = ConnectTcpServerNonBlock(server_ip, server_port, 5000);
 	if( ret<=0 )
 	{
-		print_log(f_sync_whitelist,"Connect to Server[%s:%d] Failed\n", server_ip, server_port);
+		print_log(&f_sync_whitelist,"Connect to Server[%s:%d] Failed\n", server_ip, server_port);
 		return -1;
 	}
 	fd = ret;
@@ -116,7 +116,7 @@ int WhiteListDatabaseInit()
 
        mtx = pthread_mutex_init(&whitelist_mtx,NULL); 
        if( 0 != mtx){
-            print_log(f_sysinit,"ERROR!!!pthread_mutex_init whilte list database mutex!!!");
+            print_log(&f_sysinit,"ERROR!!!pthread_mutex_init whilte list database mutex!!!");
 	    return -1;
        }
 
@@ -124,7 +124,7 @@ int WhiteListDatabaseInit()
 	if( g_whitelist==NULL )
 	{
 		printf("%s not exist!!!\n", g_wldb_file);
-                print_log(f_sysinit,"ERROR!!! %s not exist!!!\n",g_wldb_file);
+                print_log(&f_sysinit,"ERROR!!! %s not exist!!!\n",g_wldb_file);
 		return -1;
 	}
 

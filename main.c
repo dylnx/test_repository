@@ -37,13 +37,13 @@ int main(void)
     f_passed_failed = open_log_file("./log/passedfailed.log");
     f_sended_server = open_log_file("./log/sendedserver.log");
     f_sync_whitelist = open_log_file("./log/syncwhitelist.log");
-    print_log(f_sysinit,"Program Started!!!");    
+    print_log(&f_sysinit,"Program Started!!!");    
 
     //读config.ini文件中的配制数据信息
     bool bRet = initial();
     if (!bRet)
     {
-    	print_log(f_sysinit,"init error,Program exit!!");    
+    	print_log(&f_sysinit,"init error,Program exit!!");    
         return -1;
     }
 
@@ -60,7 +60,7 @@ int main(void)
     g_PassRecordLogWriteFileThread = CreateCondThread(
 				PassRecordLogHandle);
     ThreadRun(g_PassRecordLogWriteFileThread);
-    print_log(f_sysinit,"ThreadPassPrecordLogHandle is running......");    
+    print_log(&f_sysinit,"ThreadPassPrecordLogHandle is running......");    
     /*****************************************************************/
 
 
@@ -70,7 +70,7 @@ int main(void)
     g_PassRecordSendThread = CreateCondThread(
 				PassRecordSendHandle);
     ThreadRun(g_PassRecordSendThread);
-    print_log(f_sysinit,"ThreadPassPrecordSendHandle is running......");    
+    print_log(&f_sysinit,"ThreadPassPrecordSendHandle is running......");    
     /*****************************************************************/
 
 
@@ -82,7 +82,7 @@ int main(void)
 	    g_LedRecordSendThread = CreateCondThread(
 					LedRecordSendHandle);
 	    ThreadRun(g_LedRecordSendThread);
-    	    print_log(f_sysinit,"ThreadLedRecordSendHandle is running......");    
+    	    print_log(&f_sysinit,"ThreadLedRecordSendHandle is running......");    
 
     }
     /*****************************************************************/
@@ -96,7 +96,7 @@ int main(void)
     if(NULL == g_tags_array)
     {
         printf("Error: malloc g_tags_array  faild!!\n");
-        print_log(f_sysinit,"Error: malloc g_tags_array  faild!!");
+        print_log(&f_sysinit,"Error: malloc g_tags_array  faild!!");
         return 1;
     }
 
@@ -104,7 +104,7 @@ int main(void)
     if( NULL == g_old_passed_array )
     {
         printf("Error: calloc g_old_passed_array  faild!!\n");
-        print_log(f_sysinit,"Error: calloc g_old_passed_array  faild!!\n");
+        print_log(&f_sysinit,"Error: calloc g_old_passed_array  faild!!\n");
         return 1;//exit the program
     }
 
@@ -114,12 +114,12 @@ int main(void)
     if( NULL == g_operate_info )
     {
         printf("Error: calloc g_operate_info  faild!!\n");
-        print_log(f_sysinit,"Error: calloc g_operate_info  faild!!\n");
+        print_log(&f_sysinit,"Error: calloc g_operate_info  faild!!\n");
         return 1;//exit the program
     }
     ret_createmtx = pthread_mutex_init(&g_operate_info->mutex_operate_info,NULL); 
     if( 0 != ret_createmtx){
-        print_log(f_sysinit,"ERROR!!!pthread_mutex_init g_operate_info->mutex_operate_info");
+        print_log(&f_sysinit,"ERROR!!!pthread_mutex_init g_operate_info->mutex_operate_info");
         return 1;//exit the program
     }
 
@@ -137,7 +137,7 @@ int main(void)
 		gates[i].com_roadblock_fd = com_init(gates[i].com_roadblock);
 		//printf("com%d fd=%d\n",i,gates[i].com_roadblock_fd);
 		if(gates[i].com_roadblock_fd==0){
-		    print_log(f_sysinit,"ERROR!!!Dev:%s init failed!!!\n",gates[i].com_roadblock);
+		    print_log(&f_sysinit,"ERROR!!!Dev:%s init failed!!!\n",gates[i].com_roadblock);
 		}
 		    usleep(100*1000);
 	    }
@@ -151,7 +151,7 @@ int main(void)
     s = pthread_create(&thread_request_whitelist,NULL,(void *)&ThreadRequestWhitelist,NULL);
     if(s != 0)
     {
-	print_log(f_sysinit,"pthread_create thread_request_whitelist faild!!");
+	print_log(&f_sysinit,"pthread_create thread_request_whitelist faild!!");
  	exit(EXIT_FAILURE);		
     }
     usleep(500*1000);
@@ -160,7 +160,7 @@ int main(void)
     s = pthread_create(&thread_resend_passrecord,NULL,(void *)&ThreadResendPassrecord,NULL);
     if(s !=0)
     {
-	print_log(f_sysinit,"pthread_create thread_resend_passrecord faild!!");
+	print_log(&f_sysinit,"pthread_create thread_resend_passrecord faild!!");
  	exit(EXIT_FAILURE);		
     }
     usleep(500*1000);
@@ -169,20 +169,20 @@ int main(void)
 
     s =	pthread_create(&thread_control,NULL,(void *)&ThreadMonitorCapDeal,NULL);
     if( 0 != s ){
-	print_log(f_sysinit,"pthread_create Control thread faild!!");
+	print_log(&f_sysinit,"pthread_create Control thread faild!!");
  	exit(EXIT_FAILURE);		
     }
     usleep(500*1000);
 	
     s = pthread_create(&thread_kill_fork,NULL,(void *)&ThreadKillFork,NULL);
     if( 0 != s ){
-	print_log(f_sysinit,"pthread_create faild!!");
+	print_log(&f_sysinit,"pthread_create faild!!");
  	exit(EXIT_FAILURE);		
     }
     usleep(500*1000);
 
     pthread_join(thread_control,&ret);
-    print_log(f_sysinit,"Program Exit!!!");
+    print_log(&f_sysinit,"Program Exit!!!");
 	
     printf("exit!\n");
     return 1;
@@ -196,12 +196,12 @@ bool initial(void)
     char *buffer;
     buffer = (char *)calloc(1,8192);
     if(buffer == NULL){
-    	print_log(f_sysinit,"initial():buffer is NULL!!!\n");    
+    	print_log(&f_sysinit,"initial():buffer is NULL!!!\n");    
 	return false;	
     }
     int buf_len = file_read(filename,buffer);
     if(buf_len == -1){
-    	print_log(f_sysinit,"initial()->file_read() error!!!\n");    
+    	print_log(&f_sysinit,"initial()->file_read() error!!!\n");    
 	return false;	
     }
    
@@ -210,83 +210,83 @@ bool initial(void)
     //读取服务器IP
     if (!readStringParam(buffer,buf_len, "server_ip",server_ip))
     {
-    	print_log(f_sysinit,"read server_ip failed! exit the program!!!\n");    
+    	print_log(&f_sysinit,"read server_ip failed! exit the program!!!\n");    
  	exit(EXIT_FAILURE);		
     }
-    print_log(f_sysinit,"server_ip=%s",server_ip);    
+    print_log(&f_sysinit,"server_ip=%s",server_ip);    
 
     //读取服务器PORT
     if (!readIntParam(buffer,buf_len, "server_port",&server_port))
     {
-    	print_log(f_sysinit,"read server_port failed! exit the program!!!\n");    
+    	print_log(&f_sysinit,"read server_port failed! exit the program!!!\n");    
  	exit(EXIT_FAILURE);		
     }
-    print_log(f_sysinit,"server_port=%d",server_port);    
+    print_log(&f_sysinit,"server_port=%d",server_port);    
 
     //读取读写器IP
     if (!readStringParam(buffer,buf_len, "reader_ip",reader_ip))
     {
-    	print_log(f_sysinit,"read reader_ip failed! exit the program!!!\n");    
+    	print_log(&f_sysinit,"read reader_ip failed! exit the program!!!\n");    
  	exit(EXIT_FAILURE);		
     }
-    print_log(f_sysinit,"reader_ip=%s",reader_ip);    
+    print_log(&f_sysinit,"reader_ip=%s",reader_ip);    
 
     //读取读写器PORT
     if (!readIntParam(buffer,buf_len, "reader_port",&reader_port))
     {
-    	print_log(f_sysinit,"read reader_port failed! exit the program!!!\n");    
+    	print_log(&f_sysinit,"read reader_port failed! exit the program!!!\n");    
  	exit(EXIT_FAILURE);		
     }
-    print_log(f_sysinit,"reader_port=%d",reader_port);    
+    print_log(&f_sysinit,"reader_port=%d",reader_port);    
 
     if (!readIntParam(buffer,buf_len, "reader_rate",&reader_rate))
     {
         // log
         return false;
     }
-    print_log(f_sysinit,"reader_rate=%d",reader_rate);    
+    print_log(&f_sysinit,"reader_rate=%d",reader_rate);    
 
     if (!readIntParam(buffer,buf_len, "inductor_signal_keep_time",&inductor_signal_keep_time))
     {
         // log
         return false;
     }
-    print_log(f_sysinit,"inductor_signal_keep_time=%d",inductor_signal_keep_time);    
+    print_log(&f_sysinit,"inductor_signal_keep_time=%d",inductor_signal_keep_time);    
 
     if (!readIntParam(buffer,buf_len, "passrecord_resend_inteval",&passrecord_resend_inteval))
     {
         // log
         return false;
     }
-    print_log(f_sysinit,"passrecord_resend_inteval=%d",passrecord_resend_inteval);    
+    print_log(&f_sysinit,"passrecord_resend_inteval=%d",passrecord_resend_inteval);    
 
     if (!readIntParam(buffer,buf_len, "passrecord_resend_limit_time",&passrecord_resend_limit_time))
     {
         // log
         return false;
     }
-    print_log(f_sysinit,"passrecord_resend_limit_time=%d",passrecord_resend_limit_time);    
+    print_log(&f_sysinit,"passrecord_resend_limit_time=%d",passrecord_resend_limit_time);    
 
     if (!readIntParam(buffer,buf_len, "request_whitelist_inteval",&request_whitelist_inteval))
     {
         // log
         return false;
     }
-    print_log(f_sysinit,"request_whitelist_inteval=%d",request_whitelist_inteval);    
+    print_log(&f_sysinit,"request_whitelist_inteval=%d",request_whitelist_inteval);    
 
     if (!readIntParam(buffer,buf_len, "road_block_count",&g_road_block_count))
     {
         // log
         return false;
     }
-    print_log(f_sysinit,"road_block_count=%d",g_road_block_count);  
+    print_log(&f_sysinit,"road_block_count=%d",g_road_block_count);  
 
     if (!readIntParam(buffer,buf_len, "gate_num",&gate_num))
     {
         // log
         return false;
     }
-    print_log(f_sysinit,"gate_num=%d",gate_num);    
+    print_log(&f_sysinit,"gate_num=%d",gate_num);    
 
 
 
@@ -296,7 +296,7 @@ bool initial(void)
         // log
         return false;
     }
-    print_log(f_sysinit,"working_way=%s",working_way);    
+    print_log(&f_sysinit,"working_way=%s",working_way);    
 
     if(!strcmp(working_way,"INDUCTION"))
     {
@@ -305,7 +305,7 @@ bool initial(void)
 		// log
 		return false;
 	}
-    	print_log(f_sysinit,"get_tags_inteval=%d",get_tags_inteval);    
+    	print_log(&f_sysinit,"get_tags_inteval=%d",get_tags_inteval);    
     }else{//working_way="POLL",系统采用轮询工作方式
 
 	if(!readIntParam(buffer,buf_len, "inteval_poll",
@@ -313,7 +313,7 @@ bool initial(void)
 		// log
 		return false;
 	}   
-    	print_log(f_sysinit,"get_tags_inteval=%d",get_tags_inteval);    
+    	print_log(&f_sysinit,"get_tags_inteval=%d",get_tags_inteval);    
     }
 
     if (!readStringParam(buffer,buf_len, "door_open_method",door_open_method))
@@ -321,7 +321,7 @@ bool initial(void)
         // log
         return false;
     }
-    print_log(f_sysinit,"door_open_method=%s",door_open_method);    
+    print_log(&f_sysinit,"door_open_method=%s",door_open_method);    
 
     if (!readIntParam(buffer,buf_len, "log_file_size",&log_size))
     {
@@ -336,14 +336,14 @@ bool initial(void)
         // log
         return false;
     }
-    print_log(f_sysinit,"dev_id=%d",dev_id);    
+    print_log(&f_sysinit,"dev_id=%d",dev_id);    
 
     if (!readStringParam(buffer,buf_len, "exist_led",exist_led))
     {
         // log
         return false;
     }
-    print_log(f_sysinit,"exist_led=%s\n",exist_led);
+    print_log(&f_sysinit,"exist_led=%s\n",exist_led);
 
     
       
@@ -354,53 +354,53 @@ bool initial(void)
     {
         char ss[3];
 
-    	print_log(f_sysinit,"************gate[%d] spec paramaters*************\n",i);    
+    	print_log(&f_sysinit,"************gate[%d] spec paramaters*************\n",i);    
 
         sprintf(key_name,"%s_%d_%s","gate_info",i,"type");
         readStringParam(buffer,buf_len, key_name,ss);
         gates[i].gate_type = ss[0];
-    	print_log(f_sysinit,"gate_info_%d_type=%c",i,gates[i].gate_type);    
+    	print_log(&f_sysinit,"gate_info_%d_type=%c",i,gates[i].gate_type);    
 
         sprintf(key_name,"%s_%d_%s","gate_info",i,"id");
         readIntParam(buffer,buf_len, key_name,&gates[i].gate_id);
-    	print_log(f_sysinit,"gate_info_%d_id=%d",i,gates[i].gate_id);    
+    	print_log(&f_sysinit,"gate_info_%d_id=%d",i,gates[i].gate_id);    
 	
 	sprintf(key_name,"%s_%d_%s","gate_info",i,"inductor_gpio");
         readIntParam(buffer,buf_len, key_name,&gates[i].inductor_gpio);
-    	print_log(f_sysinit,"gate_info_%d_inductor_gpio=%d",i,gates[i].inductor_gpio);    
+    	print_log(&f_sysinit,"gate_info_%d_inductor_gpio=%d",i,gates[i].inductor_gpio);    
 
 	sprintf(key_name,"%s_%d_%s","gate_info",i,"relay_gpio");
         readIntParam(buffer,buf_len, key_name,&gates[i].relay_gpio);
-    	print_log(f_sysinit,"gate_info_%d_relay_gpio=%d",i,gates[i].relay_gpio);    
+    	print_log(&f_sysinit,"gate_info_%d_relay_gpio=%d",i,gates[i].relay_gpio);    
 
         sprintf(key_name,"%s_%d_%s","gate_info",i,"roadblock");
         readStringParam(buffer,buf_len, key_name,gates[i].com_roadblock);
-    	print_log(f_sysinit,"gate_info_%d_roadblock=%s",i,gates[i].com_roadblock);    
+    	print_log(&f_sysinit,"gate_info_%d_roadblock=%s",i,gates[i].com_roadblock);    
 
         sprintf(key_name,"%s_%d_%s","gate_info",i,"led_ip");
         readStringParam(buffer,buf_len, key_name,gates[i].led_ip);
-    	print_log(f_sysinit,"gate_info_%d_led_ip=%s",i,gates[i].led_ip);    
+    	print_log(&f_sysinit,"gate_info_%d_led_ip=%s",i,gates[i].led_ip);    
 
         sprintf(key_name,"%s_%d_%s","gate_info",i,"led_port");
         readIntParam(buffer,buf_len, key_name,&gates[i].led_port);
-    	print_log(f_sysinit,"gate_info_%d_led_port=%d",i,gates[i].led_port);    
+    	print_log(&f_sysinit,"gate_info_%d_led_port=%d",i,gates[i].led_port);    
 
         sprintf(key_name,"%s_%d_%s","gate_info",i,"right");
         readStringParam(buffer,buf_len, key_name,gates[i].gate_rights);
-    	print_log(f_sysinit,"gate_info_%d_right=%s",i,gates[i].gate_rights);    
+    	print_log(&f_sysinit,"gate_info_%d_right=%s",i,gates[i].gate_rights);    
 
         sprintf(key_name,"%s_%d","ant_num",i);
         readIntParam(buffer,buf_len, key_name,&gates[i].ant_num);
-    	print_log(f_sysinit,"gate_info_%d_antnum=%d",i,gates[i].ant_num);    
+    	print_log(&f_sysinit,"gate_info_%d_antnum=%d",i,gates[i].ant_num);    
 
         sprintf(key_name,"%s_%d","gate_ant",i);
         readStringParam(buffer,buf_len, key_name,gates[i].ants);
-    	print_log(f_sysinit,"gate_ant_%d=%s\n",i,gates[i].ants);    
+    	print_log(&f_sysinit,"gate_ant_%d=%s\n",i,gates[i].ants);    
     }
 	g_ants_element = 0;
         for(i=0;i<gate_num;i++)
 	{
-    		print_log(f_sysinit,"gates[%d].ant_num = %d\n",i,gates[i].ant_num);    
+    		print_log(&f_sysinit,"gates[%d].ant_num = %d\n",i,gates[i].ant_num);    
         	for(j=0;j<gates[i].ant_num;j++)
 		{
 			gates[i].ants[j] =gates[i].ants[j]-'0';
@@ -410,11 +410,11 @@ bool initial(void)
 			if(gates[i].ants[j] == 4){ g_ants_element |= ANTENNA_4;}
 			 
 			
-    			print_log(f_sysinit,"gates[%d].ants[%d] = %d\n",i,j,gates[i].ants[j]);    
+    			print_log(&f_sysinit,"gates[%d].ants[%d] = %d\n",i,j,gates[i].ants[j]);    
 		}
 		
 	}
-        print_log(f_sysinit,"g_ants_element=%08x\n",g_ants_element); 
+        print_log(&f_sysinit,"g_ants_element=%08x\n",g_ants_element); 
 
    
     return true;

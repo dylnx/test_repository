@@ -1,0 +1,1053 @@
+!_TAG_FILE_FORMAT	2	/extended format; --format=1 will not append ;" to lines/
+!_TAG_FILE_SORTED	1	/0=unsorted, 1=sorted, 2=foldcase/
+!_TAG_PROGRAM_AUTHOR	Darren Hiebert	/dhiebert@users.sourceforge.net/
+!_TAG_PROGRAM_NAME	Exuberant Ctags	//
+!_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
+!_TAG_PROGRAM_VERSION	5.9~svn20110310	//
+ACLOCAL	Makefile	/^ACLOCAL = ${SHELL} \/root\/workspace\/ParkingLot_source_signl\/test\/missing aclocal-1.14$/;"	m
+ACLOCAL_M4	Makefile	/^ACLOCAL_M4 = $(top_srcdir)\/aclocal.m4$/;"	m
+AMTAR	Makefile	/^AMTAR = $${TAR-tar}$/;"	m
+AM_DEFAULT_VERBOSITY	Makefile	/^AM_DEFAULT_VERBOSITY = 1$/;"	m
+AM_RECURSIVE_TARGETS	Makefile	/^AM_RECURSIVE_TARGETS = cscope$/;"	m
+AM_V_AR	Makefile	/^AM_V_AR = $(am__v_AR_$(V))$/;"	m
+AM_V_CC	Makefile	/^AM_V_CC = $(am__v_CC_$(V))$/;"	m
+AM_V_CCLD	Makefile	/^AM_V_CCLD = $(am__v_CCLD_$(V))$/;"	m
+AM_V_GEN	Makefile	/^AM_V_GEN = $(am__v_GEN_$(V))$/;"	m
+AM_V_P	Makefile	/^AM_V_P = $(am__v_P_$(V))$/;"	m
+AM_V_at	Makefile	/^AM_V_at = $(am__v_at_$(V))$/;"	m
+AR	Makefile	/^AR = ar$/;"	m
+ARFLAGS	Makefile	/^ARFLAGS = cru$/;"	m
+AUTOCONF	Makefile	/^AUTOCONF = ${SHELL} \/root\/workspace\/ParkingLot_source_signl\/test\/missing autoconf$/;"	m
+AUTOHEADER	Makefile	/^AUTOHEADER = ${SHELL} \/root\/workspace\/ParkingLot_source_signl\/test\/missing autoheader$/;"	m
+AUTOMAKE	Makefile	/^AUTOMAKE = ${SHELL} \/root\/workspace\/ParkingLot_source_signl\/test\/missing automake-1.14$/;"	m
+AWK	Makefile	/^AWK = mawk$/;"	m
+AcceptClient	tcputil.c	/^int AcceptClient(int fd)$/;"	f
+Add32	bigint.c	/^int Add32(unsigned int a[], unsigned int b, unsigned int c[])$/;"	f
+Add64	bigint.c	/^int Add64(unsigned int a[], unsigned int b[], unsigned int c[])$/;"	f
+BITINT_H_GTLHXPMZ	bigint.h	2;"	d
+BLOCKED	tcputil.h	6;"	d
+BindLocalAddress	tcputil.c	/^int BindLocalAddress(int fd, char ip[], int port)$/;"	f
+CAR_NUM_LEN	common_sz.h	19;"	d
+CAR_RIGHT_LEN	common_sz.h	20;"	d
+CC	Makefile	/^CC = gcc$/;"	m
+CCDEPMODE	Makefile	/^CCDEPMODE = depmode=gcc3$/;"	m
+CCLD	Makefile	/^CCLD = $(CC)$/;"	m
+CFLAGS	Makefile	/^CFLAGS = -g -O2$/;"	m
+COMMON_SZ_DEFIN	common_sz.h	2;"	d
+COMPILE	Makefile	/^COMPILE = $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) \\$/;"	m
+COND_THREAD_H_7KPRUOCM	cond_thread.h	2;"	d
+CONFIG_CLEAN_FILES	Makefile	/^CONFIG_CLEAN_FILES =$/;"	m
+CONFIG_CLEAN_VPATH_FILES	Makefile	/^CONFIG_CLEAN_VPATH_FILES =$/;"	m
+CONFIG_HEADER	Makefile	/^CONFIG_HEADER = config.h$/;"	m
+CPP	Makefile	/^CPP = gcc -E$/;"	m
+CPPFLAGS	Makefile	/^CPPFLAGS = $/;"	m
+CSCOPE	Makefile	/^CSCOPE = cscope$/;"	m
+CTAGS	Makefile	/^CTAGS = ctags$/;"	m
+CYGPATH_W	Makefile	/^CYGPATH_W = echo$/;"	m
+CheckSocketFlag	tcputil.c	/^int CheckSocketFlag(int fd, int ms)$/;"	f
+CheckWhiteList	whitelist.c	/^int CheckWhiteList(char tid[16])$/;"	f
+ClearLog	logfile.c	/^int ClearLog(struct LogFile *logFile)$/;"	f
+ClearPassRecordLog	logfile.c	/^int ClearPassRecordLog()$/;"	f
+Compare64	bigint.c	/^int Compare64(unsigned int data1[], unsigned int data2[])$/;"	f
+CondThread	cond_thread.h	/^struct CondThread$/;"	s
+ConnectNetwork	tcputil.c	/^int ConnectNetwork()$/;"	f
+ConnectTcpServer	tcputil.c	/^int ConnectTcpServer(char ip[], int port)$/;"	f
+ConnectTcpServerNonBlock	tcputil.c	/^int ConnectTcpServerNonBlock(char ip[], int port, int timeout)$/;"	f
+ConnectTcpServerWithLocalIP	tcputil.c	/^int ConnectTcpServerWithLocalIP(char ip[], int port, char localip[], int localport)$/;"	f
+CreateCondThread	cond_thread.c	/^struct CondThread *CreateCondThread(thread_callback func)$/;"	f
+CreateTcpServer	tcputil.c	/^int CreateTcpServer(int port)$/;"	f
+CreateTcpServerWithLocalIP	tcputil.c	/^int CreateTcpServerWithLocalIP(char localip[], int port)$/;"	f
+DBUTILS_H_UAKYGYV2	dbutils.h	2;"	d
+DEFAULT_INCLUDES	Makefile	/^DEFAULT_INCLUDES = -I.$/;"	m
+DEFS	Makefile	/^DEFS = -DHAVE_CONFIG_H$/;"	m
+DEPDIR	Makefile	/^DEPDIR = .deps$/;"	m
+DISTFILES	Makefile	/^DISTFILES = $(DIST_COMMON) $(DIST_SOURCES) $(TEXINFOS) $(EXTRA_DIST)$/;"	m
+DIST_ARCHIVES	Makefile	/^DIST_ARCHIVES = $(distdir).tar.gz$/;"	m
+DIST_COMMON	Makefile	/^DIST_COMMON = $(srcdir)\/Makefile.in $(srcdir)\/Makefile.am \\$/;"	m
+DIST_SOURCES	Makefile	/^DIST_SOURCES = $(libtool_a_SOURCES) $(testsuit_SOURCES)$/;"	m
+DIST_TARGETS	Makefile	/^DIST_TARGETS = dist-gzip$/;"	m
+DisconnectNetwork	tcputil.c	/^int DisconnectNetwork()$/;"	f
+DisconnectTcpServer	tcputil.c	/^int DisconnectTcpServer(int serverSocket)$/;"	f
+Divide32	bigint.c	/^int Divide32(unsigned int a[], unsigned int b, unsigned int c[], unsigned int d[])$/;"	f
+ECHO_C	Makefile	/^ECHO_C = $/;"	m
+ECHO_N	Makefile	/^ECHO_N = -n$/;"	m
+ECHO_T	Makefile	/^ECHO_T = $/;"	m
+EGREP	Makefile	/^EGREP = \/bin\/grep -E$/;"	m
+ERROR	common_sz.h	/^    ERROR,$/;"	e	enum:statType
+ETAGS	Makefile	/^ETAGS = etags$/;"	m
+EXEEXT	Makefile	/^EXEEXT = $/;"	m
+GPIO10	common_sz.h	30;"	d
+GPIO12	common_sz.h	31;"	d
+GPIO14	common_sz.h	32;"	d
+GPIO8	common_sz.h	29;"	d
+GREP	Makefile	/^GREP = \/bin\/grep$/;"	m
+GZIP_ENV	Makefile	/^GZIP_ENV = --best$/;"	m
+GetLogBySeqNo	logfile.c	/^int GetLogBySeqNo(struct LogFile *logFile, unsigned int seqNo[], struct SLog *pLog, $/;"	f
+GetLogByStamp	logfile.c	/^int GetLogByStamp(struct LogFile *logFile, unsigned int timeStamp[], struct SLog *pLog, $/;"	f
+GetPassRecordLogBySeqNo	logfile.c	/^int GetPassRecordLogBySeqNo(unsigned int seqNo[], struct SPassRecordLog *pPassRecordLog, $/;"	f
+GetPassRecordLogByStamp	logfile.c	/^int GetPassRecordLogByStamp(unsigned int timeStamp[], struct SPassRecordLog *pPassRecordLog, $/;"	f
+GetPeerIp	tcputil.c	/^int GetPeerIp(int fd, char *ip, int *len)$/;"	f
+HAVE_ALARM	config.h	5;"	d
+HAVE_ARPA_INET_H	config.h	8;"	d
+HAVE_FCNTL_H	config.h	11;"	d
+HAVE_INTTYPES_H	config.h	14;"	d
+HAVE_MALLOC	config.h	18;"	d
+HAVE_MEMORY_H	config.h	21;"	d
+HAVE_MEMSET	config.h	24;"	d
+HAVE_NETINET_IN_H	config.h	27;"	d
+HAVE_SELECT	config.h	30;"	d
+HAVE_SOCKET	config.h	33;"	d
+HAVE_STDINT_H	config.h	36;"	d
+HAVE_STDLIB_H	config.h	39;"	d
+HAVE_STRERROR	config.h	42;"	d
+HAVE_STRINGS_H	config.h	45;"	d
+HAVE_STRING_H	config.h	48;"	d
+HAVE_SYS_SOCKET_H	config.h	51;"	d
+HAVE_SYS_STAT_H	config.h	54;"	d
+HAVE_SYS_TIME_H	config.h	57;"	d
+HAVE_SYS_TYPES_H	config.h	60;"	d
+HAVE_UNISTD_H	config.h	63;"	d
+HAVE__BOOL	config.h	66;"	d
+INSTALL	Makefile	/^INSTALL = \/usr\/bin\/install -c$/;"	m
+INSTALL_DATA	Makefile	/^INSTALL_DATA = ${INSTALL} -m 644$/;"	m
+INSTALL_HEADER	Makefile	/^INSTALL_HEADER = $(INSTALL_DATA)$/;"	m
+INSTALL_PROGRAM	Makefile	/^INSTALL_PROGRAM = ${INSTALL}$/;"	m
+INSTALL_SCRIPT	Makefile	/^INSTALL_SCRIPT = ${INSTALL}$/;"	m
+INSTALL_STRIP_PROGRAM	Makefile	/^INSTALL_STRIP_PROGRAM = $(install_sh) -c -s$/;"	m
+InitLogFile	logfile.c	/^int InitLogFile(struct LogFile *logFile)$/;"	f
+InitPassRecordLogFile	logfile.c	/^int InitPassRecordLogFile()$/;"	f
+InsertLogFile	logfile.c	/^int InsertLogFile(struct LogFile *logFile, struct SLog *pLog)$/;"	f
+InsertPassRecordLog1	logfile.c	/^void InsertPassRecordLog1(struct SPassRecordLog *pPassRecordLog)$/;"	f
+InsertPassRecordLog2	logfile.c	/^void InsertPassRecordLog2(struct SPassRecordLog *pPassRecordLog)$/;"	f
+InsertPassRecordLogFile	logfile.c	/^int InsertPassRecordLogFile(struct SPassRecordLog *pPassRecordLog)$/;"	f
+LDFLAGS	Makefile	/^LDFLAGS = $/;"	m
+LEDSHOWINFO	common_sz.h	/^}LEDSHOWINFO;$/;"	t	typeref:struct:led_show_info_s
+LED_SHOW_LIST	common_sz.h	/^}LED_SHOW_LIST,*PLED_SHOW_LIST;$/;"	t	typeref:struct:led_show_info_list_s
+LED_SHOW_MAX_NUM	common_sz.h	27;"	d
+LIBOBJS	Makefile	/^LIBOBJS = $/;"	m
+LIBRARIES	Makefile	/^LIBRARIES = $(noinst_LIBRARIES)$/;"	m
+LIBS	Makefile	/^LIBS = -lsqlite3 -lpthread $/;"	m
+LINK	Makefile	/^LINK = $(CCLD) $(AM_CFLAGS) $(CFLAGS) $(AM_LDFLAGS) $(LDFLAGS) -o $@$/;"	m
+LOGFILE_H_AR69HGX7	logfile.h	2;"	d
+LTLIBOBJS	Makefile	/^LTLIBOBJS = $/;"	m
+LogFile	logfile.h	/^struct LogFile$/;"	s
+LogFileMeta	logfile.h	/^struct LogFileMeta$/;"	s
+MAKEINFO	Makefile	/^MAKEINFO = ${SHELL} \/root\/workspace\/ParkingLot_source_signl\/test\/missing makeinfo$/;"	m
+MAX_FILE_NAME_LEN	dbutils.h	5;"	d
+MAX_OPERATE_INFO_NUM	common_sz.h	25;"	d
+MAX_QUERY_LEN	dbutils.h	8;"	d
+MAX_RECORD_LOG_BUF	logfile.h	57;"	d
+MAX_RECORD_LOG_FILE_REC	logfile.h	53;"	d
+MAX_SEND_INFO_NUM	common_sz.h	26;"	d
+MAX_TABLES	dbutils.h	6;"	d
+MAX_TABLE_NAME_LEN	dbutils.h	7;"	d
+MAX_TEMPCARLIST_NUM	common_sz.h	18;"	d
+MAX_TIMESTAMP_LEN	logfile.h	4;"	d
+MAX_UNDEAL_CARD_NUM	common_sz.h	24;"	d
+MAX_WHITELIST_NUM	common_sz.h	17;"	d
+MIN_RECORD_LOG_FILE_REC	logfile.h	55;"	d
+MKDIR_P	Makefile	/^MKDIR_P = \/bin\/mkdir -p$/;"	m
+Multiply32	bigint.c	/^int Multiply32(unsigned int a[], unsigned int b, unsigned int c[])$/;"	f
+NORMAL_INSTALL	Makefile	/^NORMAL_INSTALL = :$/;"	m
+NORMAL_UNINSTALL	Makefile	/^NORMAL_UNINSTALL = :$/;"	m
+NOSIGNAL	common_sz.h	/^    NOSIGNAL,$/;"	e	enum:statType
+NO_BLOCKED	tcputil.h	5;"	d
+OBJEXT	Makefile	/^OBJEXT = o$/;"	m
+OLDPASSEDOBJ	common_sz.h	/^}OLDPASSEDOBJ,*POLDPASSEDOBJ;$/;"	t	typeref:struct:struct_old_passed_obj_s
+OPENDOORMETHODTYPE	common_sz.h	/^}OPENDOORMETHODTYPE;$/;"	t	typeref:enum:openDoorMethodType
+OPERATEINFO	common_sz.h	/^}OPERATEINFO,*POPERATEINFO;$/;"	t	typeref:struct:operate_info_s
+OPRATION_INFO_LEN	common_sz.h	21;"	d
+PACKAGE	Makefile	/^PACKAGE = testsuit$/;"	m
+PACKAGE	config.h	69;"	d
+PACKAGE_BUGREPORT	Makefile	/^PACKAGE_BUGREPORT = catchgreen@163.com$/;"	m
+PACKAGE_BUGREPORT	config.h	72;"	d
+PACKAGE_NAME	Makefile	/^PACKAGE_NAME = testsuit$/;"	m
+PACKAGE_NAME	config.h	75;"	d
+PACKAGE_STRING	Makefile	/^PACKAGE_STRING = testsuit 0.0.1$/;"	m
+PACKAGE_STRING	config.h	78;"	d
+PACKAGE_TARNAME	Makefile	/^PACKAGE_TARNAME = testsuit$/;"	m
+PACKAGE_TARNAME	config.h	81;"	d
+PACKAGE_URL	Makefile	/^PACKAGE_URL = $/;"	m
+PACKAGE_URL	config.h	84;"	d
+PACKAGE_VERSION	Makefile	/^PACKAGE_VERSION = 0.0.1$/;"	m
+PACKAGE_VERSION	config.h	87;"	d
+PATH_SEPARATOR	Makefile	/^PATH_SEPARATOR = :$/;"	m
+PLED_SHOW_LIST	common_sz.h	/^}LED_SHOW_LIST,*PLED_SHOW_LIST;$/;"	t	typeref:struct:led_show_info_list_s
+POLDPASSEDOBJ	common_sz.h	/^}OLDPASSEDOBJ,*POLDPASSEDOBJ;$/;"	t	typeref:struct:struct_old_passed_obj_s
+POPERATEINFO	common_sz.h	/^}OPERATEINFO,*POPERATEINFO;$/;"	t	typeref:struct:operate_info_s
+POSITION_LEN	common_sz.h	23;"	d
+POST_INSTALL	Makefile	/^POST_INSTALL = :$/;"	m
+POST_UNINSTALL	Makefile	/^POST_UNINSTALL = :$/;"	m
+PRE_INSTALL	Makefile	/^PRE_INSTALL = :$/;"	m
+PRE_UNINSTALL	Makefile	/^PRE_UNINSTALL = :$/;"	m
+PROGRAMS	Makefile	/^PROGRAMS = $(bin_PROGRAMS)$/;"	m
+PSENDINFO	common_sz.h	/^}SENDINFO,*PSENDINFO;$/;"	t	typeref:struct:send_info_s
+PSHOWCAMERA	common_sz.h	/^}SHOWCAMERA,*PSHOWCAMERA;$/;"	t	typeref:struct:show_camera_s
+PTAGOBJ	common_sz.h	/^}TAGOBJ,*PTAGOBJ;$/;"	t	typeref:struct:struct_get_tags_s
+PWHITELIST	common_sz.h	/^}WHITELIST,*PWHITELIST;$/;"	t	typeref:struct:white_list_s
+PassRecordLogHandle	logfile.c	/^void PassRecordLogHandle(void *args)$/;"	f
+PassRecordSendHandle	logfile.c	/^void PassRecordSendHandle(void *args)$/;"	f
+RANLIB	Makefile	/^RANLIB = ranlib$/;"	m
+RECORD_FILE_NAME	logfile.h	59;"	d
+RELAY	common_sz.h	/^    RELAY $/;"	e	enum:openDoorMethodType
+RS485	common_sz.h	/^    RS485,$/;"	e	enum:openDoorMethodType
+RefreshWLDatabase	whitelist.c	/^int RefreshWLDatabase(char *data, int count)$/;"	f
+ResendCachePassRecordLimitByDate	logfile.c	/^int ResendCachePassRecordLimitByDate(int expire_hour)$/;"	f
+SENDINFO	common_sz.h	/^}SENDINFO,*PSENDINFO;$/;"	t	typeref:struct:send_info_s
+SET_MAKE	Makefile	/^SET_MAKE = $/;"	m
+SHELL	Makefile	/^SHELL = \/bin\/bash$/;"	m
+SHOWCAMERA	common_sz.h	/^}SHOWCAMERA,*PSHOWCAMERA;$/;"	t	typeref:struct:show_camera_s
+SIGNAL	common_sz.h	/^    SIGNAL,$/;"	e	enum:statType
+SLog	pass_record.h	/^struct SLog$/;"	s
+SOURCES	Makefile	/^SOURCES = $(libtool_a_SOURCES) $(testsuit_SOURCES)$/;"	m
+SPassRecordLog	pass_record.h	/^struct SPassRecordLog$/;"	s
+SQLITE3_TEXT	sqlite3.h	3724;"	d
+SQLITE_ABORT	sqlite3.h	405;"	d
+SQLITE_ABORT_ROLLBACK	sqlite3.h	495;"	d
+SQLITE_ACCESS_EXISTS	sqlite3.h	1200;"	d
+SQLITE_ACCESS_READ	sqlite3.h	1202;"	d
+SQLITE_ACCESS_READWRITE	sqlite3.h	1201;"	d
+SQLITE_ALTER_TABLE	sqlite3.h	2561;"	d
+SQLITE_ANALYZE	sqlite3.h	2563;"	d
+SQLITE_ANY	sqlite3.h	4091;"	d
+SQLITE_API	sqlite3.h	53;"	d
+SQLITE_ATTACH	sqlite3.h	2559;"	d
+SQLITE_AUTH	sqlite3.h	424;"	d
+SQLITE_BLOB	sqlite3.h	3717;"	d
+SQLITE_BUSY	sqlite3.h	406;"	d
+SQLITE_BUSY_RECOVERY	sqlite3.h	484;"	d
+SQLITE_BUSY_SNAPSHOT	sqlite3.h	485;"	d
+SQLITE_CANTOPEN	sqlite3.h	415;"	d
+SQLITE_CANTOPEN_CONVPATH	sqlite3.h	489;"	d
+SQLITE_CANTOPEN_FULLPATH	sqlite3.h	488;"	d
+SQLITE_CANTOPEN_ISDIR	sqlite3.h	487;"	d
+SQLITE_CANTOPEN_NOTEMPDIR	sqlite3.h	486;"	d
+SQLITE_CHECKPOINT_FULL	sqlite3.h	7222;"	d
+SQLITE_CHECKPOINT_PASSIVE	sqlite3.h	7221;"	d
+SQLITE_CHECKPOINT_RESTART	sqlite3.h	7223;"	d
+SQLITE_CONFIG_COVERING_INDEX_SCAN	sqlite3.h	1743;"	d
+SQLITE_CONFIG_GETMALLOC	sqlite3.h	1728;"	d
+SQLITE_CONFIG_GETMUTEX	sqlite3.h	1734;"	d
+SQLITE_CONFIG_GETPCACHE	sqlite3.h	1738;"	d
+SQLITE_CONFIG_GETPCACHE2	sqlite3.h	1742;"	d
+SQLITE_CONFIG_HEAP	sqlite3.h	1731;"	d
+SQLITE_CONFIG_LOG	sqlite3.h	1739;"	d
+SQLITE_CONFIG_LOOKASIDE	sqlite3.h	1736;"	d
+SQLITE_CONFIG_MALLOC	sqlite3.h	1727;"	d
+SQLITE_CONFIG_MEMSTATUS	sqlite3.h	1732;"	d
+SQLITE_CONFIG_MMAP_SIZE	sqlite3.h	1745;"	d
+SQLITE_CONFIG_MULTITHREAD	sqlite3.h	1725;"	d
+SQLITE_CONFIG_MUTEX	sqlite3.h	1733;"	d
+SQLITE_CONFIG_PAGECACHE	sqlite3.h	1730;"	d
+SQLITE_CONFIG_PCACHE	sqlite3.h	1737;"	d
+SQLITE_CONFIG_PCACHE2	sqlite3.h	1741;"	d
+SQLITE_CONFIG_SCRATCH	sqlite3.h	1729;"	d
+SQLITE_CONFIG_SERIALIZED	sqlite3.h	1726;"	d
+SQLITE_CONFIG_SINGLETHREAD	sqlite3.h	1724;"	d
+SQLITE_CONFIG_SQLLOG	sqlite3.h	1744;"	d
+SQLITE_CONFIG_URI	sqlite3.h	1740;"	d
+SQLITE_CONFIG_WIN32_HEAPSIZE	sqlite3.h	1746;"	d
+SQLITE_CONSTRAINT	sqlite3.h	420;"	d
+SQLITE_CONSTRAINT_CHECK	sqlite3.h	496;"	d
+SQLITE_CONSTRAINT_COMMITHOOK	sqlite3.h	497;"	d
+SQLITE_CONSTRAINT_FOREIGNKEY	sqlite3.h	498;"	d
+SQLITE_CONSTRAINT_FUNCTION	sqlite3.h	499;"	d
+SQLITE_CONSTRAINT_NOTNULL	sqlite3.h	500;"	d
+SQLITE_CONSTRAINT_PRIMARYKEY	sqlite3.h	501;"	d
+SQLITE_CONSTRAINT_ROWID	sqlite3.h	505;"	d
+SQLITE_CONSTRAINT_TRIGGER	sqlite3.h	502;"	d
+SQLITE_CONSTRAINT_UNIQUE	sqlite3.h	503;"	d
+SQLITE_CONSTRAINT_VTAB	sqlite3.h	504;"	d
+SQLITE_COPY	sqlite3.h	2568;"	d
+SQLITE_CORRUPT	sqlite3.h	412;"	d
+SQLITE_CORRUPT_VTAB	sqlite3.h	490;"	d
+SQLITE_CREATE_INDEX	sqlite3.h	2536;"	d
+SQLITE_CREATE_TABLE	sqlite3.h	2537;"	d
+SQLITE_CREATE_TEMP_INDEX	sqlite3.h	2538;"	d
+SQLITE_CREATE_TEMP_TABLE	sqlite3.h	2539;"	d
+SQLITE_CREATE_TEMP_TRIGGER	sqlite3.h	2540;"	d
+SQLITE_CREATE_TEMP_VIEW	sqlite3.h	2541;"	d
+SQLITE_CREATE_TRIGGER	sqlite3.h	2542;"	d
+SQLITE_CREATE_VIEW	sqlite3.h	2543;"	d
+SQLITE_CREATE_VTABLE	sqlite3.h	2564;"	d
+SQLITE_DBCONFIG_ENABLE_FKEY	sqlite3.h	1807;"	d
+SQLITE_DBCONFIG_ENABLE_TRIGGER	sqlite3.h	1808;"	d
+SQLITE_DBCONFIG_LOOKASIDE	sqlite3.h	1806;"	d
+SQLITE_DBSTATUS_CACHE_HIT	sqlite3.h	6373;"	d
+SQLITE_DBSTATUS_CACHE_MISS	sqlite3.h	6374;"	d
+SQLITE_DBSTATUS_CACHE_USED	sqlite3.h	6367;"	d
+SQLITE_DBSTATUS_CACHE_WRITE	sqlite3.h	6375;"	d
+SQLITE_DBSTATUS_DEFERRED_FKS	sqlite3.h	6376;"	d
+SQLITE_DBSTATUS_LOOKASIDE_HIT	sqlite3.h	6370;"	d
+SQLITE_DBSTATUS_LOOKASIDE_MISS_FULL	sqlite3.h	6372;"	d
+SQLITE_DBSTATUS_LOOKASIDE_MISS_SIZE	sqlite3.h	6371;"	d
+SQLITE_DBSTATUS_LOOKASIDE_USED	sqlite3.h	6366;"	d
+SQLITE_DBSTATUS_MAX	sqlite3.h	6377;"	d
+SQLITE_DBSTATUS_SCHEMA_USED	sqlite3.h	6368;"	d
+SQLITE_DBSTATUS_STMT_USED	sqlite3.h	6369;"	d
+SQLITE_DELETE	sqlite3.h	2544;"	d
+SQLITE_DENY	sqlite3.h	2513;"	d
+SQLITE_DEPRECATED	sqlite3.h	70;"	d
+SQLITE_DETACH	sqlite3.h	2560;"	d
+SQLITE_DETERMINISTIC	sqlite3.h	4102;"	d
+SQLITE_DONE	sqlite3.h	431;"	d
+SQLITE_DROP_INDEX	sqlite3.h	2545;"	d
+SQLITE_DROP_TABLE	sqlite3.h	2546;"	d
+SQLITE_DROP_TEMP_INDEX	sqlite3.h	2547;"	d
+SQLITE_DROP_TEMP_TABLE	sqlite3.h	2548;"	d
+SQLITE_DROP_TEMP_TRIGGER	sqlite3.h	2549;"	d
+SQLITE_DROP_TEMP_VIEW	sqlite3.h	2550;"	d
+SQLITE_DROP_TRIGGER	sqlite3.h	2551;"	d
+SQLITE_DROP_VIEW	sqlite3.h	2552;"	d
+SQLITE_DROP_VTABLE	sqlite3.h	2565;"	d
+SQLITE_EMPTY	sqlite3.h	417;"	d
+SQLITE_ERROR	sqlite3.h	402;"	d
+SQLITE_EXPERIMENTAL	sqlite3.h	71;"	d
+SQLITE_EXTERN	sqlite3.h	49;"	d
+SQLITE_FAIL	sqlite3.h	7307;"	d
+SQLITE_FCNTL_BUSYHANDLER	sqlite3.h	962;"	d
+SQLITE_FCNTL_CHUNK_SIZE	sqlite3.h	953;"	d
+SQLITE_FCNTL_COMMIT_PHASETWO	sqlite3.h	968;"	d
+SQLITE_FCNTL_FILE_POINTER	sqlite3.h	954;"	d
+SQLITE_FCNTL_HAS_MOVED	sqlite3.h	966;"	d
+SQLITE_FCNTL_LOCKSTATE	sqlite3.h	948;"	d
+SQLITE_FCNTL_MMAP_SIZE	sqlite3.h	964;"	d
+SQLITE_FCNTL_OVERWRITE	sqlite3.h	958;"	d
+SQLITE_FCNTL_PERSIST_WAL	sqlite3.h	957;"	d
+SQLITE_FCNTL_POWERSAFE_OVERWRITE	sqlite3.h	960;"	d
+SQLITE_FCNTL_PRAGMA	sqlite3.h	961;"	d
+SQLITE_FCNTL_SIZE_HINT	sqlite3.h	952;"	d
+SQLITE_FCNTL_SYNC	sqlite3.h	967;"	d
+SQLITE_FCNTL_SYNC_OMITTED	sqlite3.h	955;"	d
+SQLITE_FCNTL_TEMPFILENAME	sqlite3.h	963;"	d
+SQLITE_FCNTL_TRACE	sqlite3.h	965;"	d
+SQLITE_FCNTL_VFSNAME	sqlite3.h	959;"	d
+SQLITE_FCNTL_WIN32_AV_RETRY	sqlite3.h	956;"	d
+SQLITE_FLOAT	sqlite3.h	3716;"	d
+SQLITE_FORMAT	sqlite3.h	425;"	d
+SQLITE_FULL	sqlite3.h	414;"	d
+SQLITE_FUNCTION	sqlite3.h	2566;"	d
+SQLITE_GET_LOCKPROXYFILE	sqlite3.h	949;"	d
+SQLITE_IGNORE	sqlite3.h	2514;"	d
+SQLITE_INDEX_CONSTRAINT_EQ	sqlite3.h	5405;"	d
+SQLITE_INDEX_CONSTRAINT_GE	sqlite3.h	5409;"	d
+SQLITE_INDEX_CONSTRAINT_GT	sqlite3.h	5406;"	d
+SQLITE_INDEX_CONSTRAINT_LE	sqlite3.h	5407;"	d
+SQLITE_INDEX_CONSTRAINT_LT	sqlite3.h	5408;"	d
+SQLITE_INDEX_CONSTRAINT_MATCH	sqlite3.h	5410;"	d
+SQLITE_INSERT	sqlite3.h	2553;"	d
+SQLITE_INTEGER	sqlite3.h	3715;"	d
+SQLITE_INTERNAL	sqlite3.h	403;"	d
+SQLITE_INTERRUPT	sqlite3.h	410;"	d
+SQLITE_IOCAP_ATOMIC	sqlite3.h	565;"	d
+SQLITE_IOCAP_ATOMIC16K	sqlite3.h	571;"	d
+SQLITE_IOCAP_ATOMIC1K	sqlite3.h	567;"	d
+SQLITE_IOCAP_ATOMIC2K	sqlite3.h	568;"	d
+SQLITE_IOCAP_ATOMIC32K	sqlite3.h	572;"	d
+SQLITE_IOCAP_ATOMIC4K	sqlite3.h	569;"	d
+SQLITE_IOCAP_ATOMIC512	sqlite3.h	566;"	d
+SQLITE_IOCAP_ATOMIC64K	sqlite3.h	573;"	d
+SQLITE_IOCAP_ATOMIC8K	sqlite3.h	570;"	d
+SQLITE_IOCAP_POWERSAFE_OVERWRITE	sqlite3.h	577;"	d
+SQLITE_IOCAP_SAFE_APPEND	sqlite3.h	574;"	d
+SQLITE_IOCAP_SEQUENTIAL	sqlite3.h	575;"	d
+SQLITE_IOCAP_UNDELETABLE_WHEN_OPEN	sqlite3.h	576;"	d
+SQLITE_IOERR	sqlite3.h	411;"	d
+SQLITE_IOERR_ACCESS	sqlite3.h	469;"	d
+SQLITE_IOERR_BLOCKED	sqlite3.h	467;"	d
+SQLITE_IOERR_CHECKRESERVEDLOCK	sqlite3.h	470;"	d
+SQLITE_IOERR_CLOSE	sqlite3.h	472;"	d
+SQLITE_IOERR_CONVPATH	sqlite3.h	482;"	d
+SQLITE_IOERR_DELETE	sqlite3.h	466;"	d
+SQLITE_IOERR_DELETE_NOENT	sqlite3.h	479;"	d
+SQLITE_IOERR_DIR_CLOSE	sqlite3.h	473;"	d
+SQLITE_IOERR_DIR_FSYNC	sqlite3.h	461;"	d
+SQLITE_IOERR_FSTAT	sqlite3.h	463;"	d
+SQLITE_IOERR_FSYNC	sqlite3.h	460;"	d
+SQLITE_IOERR_GETTEMPPATH	sqlite3.h	481;"	d
+SQLITE_IOERR_LOCK	sqlite3.h	471;"	d
+SQLITE_IOERR_MMAP	sqlite3.h	480;"	d
+SQLITE_IOERR_NOMEM	sqlite3.h	468;"	d
+SQLITE_IOERR_RDLOCK	sqlite3.h	465;"	d
+SQLITE_IOERR_READ	sqlite3.h	457;"	d
+SQLITE_IOERR_SEEK	sqlite3.h	478;"	d
+SQLITE_IOERR_SHMLOCK	sqlite3.h	476;"	d
+SQLITE_IOERR_SHMMAP	sqlite3.h	477;"	d
+SQLITE_IOERR_SHMOPEN	sqlite3.h	474;"	d
+SQLITE_IOERR_SHMSIZE	sqlite3.h	475;"	d
+SQLITE_IOERR_SHORT_READ	sqlite3.h	458;"	d
+SQLITE_IOERR_TRUNCATE	sqlite3.h	462;"	d
+SQLITE_IOERR_UNLOCK	sqlite3.h	464;"	d
+SQLITE_IOERR_WRITE	sqlite3.h	459;"	d
+SQLITE_LAST_ERRNO	sqlite3.h	951;"	d
+SQLITE_LIMIT_ATTACHED	sqlite3.h	3067;"	d
+SQLITE_LIMIT_COLUMN	sqlite3.h	3062;"	d
+SQLITE_LIMIT_COMPOUND_SELECT	sqlite3.h	3064;"	d
+SQLITE_LIMIT_EXPR_DEPTH	sqlite3.h	3063;"	d
+SQLITE_LIMIT_FUNCTION_ARG	sqlite3.h	3066;"	d
+SQLITE_LIMIT_LENGTH	sqlite3.h	3060;"	d
+SQLITE_LIMIT_LIKE_PATTERN_LENGTH	sqlite3.h	3068;"	d
+SQLITE_LIMIT_SQL_LENGTH	sqlite3.h	3061;"	d
+SQLITE_LIMIT_TRIGGER_DEPTH	sqlite3.h	3070;"	d
+SQLITE_LIMIT_VARIABLE_NUMBER	sqlite3.h	3069;"	d
+SQLITE_LIMIT_VDBE_OP	sqlite3.h	3065;"	d
+SQLITE_LOCKED	sqlite3.h	407;"	d
+SQLITE_LOCKED_SHAREDCACHE	sqlite3.h	483;"	d
+SQLITE_LOCK_EXCLUSIVE	sqlite3.h	590;"	d
+SQLITE_LOCK_NONE	sqlite3.h	586;"	d
+SQLITE_LOCK_PENDING	sqlite3.h	589;"	d
+SQLITE_LOCK_RESERVED	sqlite3.h	588;"	d
+SQLITE_LOCK_SHARED	sqlite3.h	587;"	d
+SQLITE_MISMATCH	sqlite3.h	421;"	d
+SQLITE_MISUSE	sqlite3.h	422;"	d
+SQLITE_MUTEX_FAST	sqlite3.h	6022;"	d
+SQLITE_MUTEX_RECURSIVE	sqlite3.h	6023;"	d
+SQLITE_MUTEX_STATIC_LRU	sqlite3.h	6029;"	d
+SQLITE_MUTEX_STATIC_LRU2	sqlite3.h	6030;"	d
+SQLITE_MUTEX_STATIC_MASTER	sqlite3.h	6024;"	d
+SQLITE_MUTEX_STATIC_MEM	sqlite3.h	6025;"	d
+SQLITE_MUTEX_STATIC_MEM2	sqlite3.h	6026;"	d
+SQLITE_MUTEX_STATIC_OPEN	sqlite3.h	6027;"	d
+SQLITE_MUTEX_STATIC_PMEM	sqlite3.h	6031;"	d
+SQLITE_MUTEX_STATIC_PRNG	sqlite3.h	6028;"	d
+SQLITE_NOLFS	sqlite3.h	423;"	d
+SQLITE_NOMEM	sqlite3.h	408;"	d
+SQLITE_NOTADB	sqlite3.h	427;"	d
+SQLITE_NOTFOUND	sqlite3.h	413;"	d
+SQLITE_NOTICE	sqlite3.h	428;"	d
+SQLITE_NOTICE_RECOVER_ROLLBACK	sqlite3.h	507;"	d
+SQLITE_NOTICE_RECOVER_WAL	sqlite3.h	506;"	d
+SQLITE_NULL	sqlite3.h	3718;"	d
+SQLITE_OK	sqlite3.h	400;"	d
+SQLITE_OPEN_AUTOPROXY	sqlite3.h	522;"	d
+SQLITE_OPEN_CREATE	sqlite3.h	519;"	d
+SQLITE_OPEN_DELETEONCLOSE	sqlite3.h	520;"	d
+SQLITE_OPEN_EXCLUSIVE	sqlite3.h	521;"	d
+SQLITE_OPEN_FULLMUTEX	sqlite3.h	533;"	d
+SQLITE_OPEN_MAIN_DB	sqlite3.h	525;"	d
+SQLITE_OPEN_MAIN_JOURNAL	sqlite3.h	528;"	d
+SQLITE_OPEN_MASTER_JOURNAL	sqlite3.h	531;"	d
+SQLITE_OPEN_MEMORY	sqlite3.h	524;"	d
+SQLITE_OPEN_NOMUTEX	sqlite3.h	532;"	d
+SQLITE_OPEN_PRIVATECACHE	sqlite3.h	535;"	d
+SQLITE_OPEN_READONLY	sqlite3.h	517;"	d
+SQLITE_OPEN_READWRITE	sqlite3.h	518;"	d
+SQLITE_OPEN_SHAREDCACHE	sqlite3.h	534;"	d
+SQLITE_OPEN_SUBJOURNAL	sqlite3.h	530;"	d
+SQLITE_OPEN_TEMP_DB	sqlite3.h	526;"	d
+SQLITE_OPEN_TEMP_JOURNAL	sqlite3.h	529;"	d
+SQLITE_OPEN_TRANSIENT_DB	sqlite3.h	527;"	d
+SQLITE_OPEN_URI	sqlite3.h	523;"	d
+SQLITE_OPEN_WAL	sqlite3.h	536;"	d
+SQLITE_PERM	sqlite3.h	404;"	d
+SQLITE_PRAGMA	sqlite3.h	2554;"	d
+SQLITE_PROTOCOL	sqlite3.h	416;"	d
+SQLITE_RANGE	sqlite3.h	426;"	d
+SQLITE_READ	sqlite3.h	2555;"	d
+SQLITE_READONLY	sqlite3.h	409;"	d
+SQLITE_READONLY_CANTLOCK	sqlite3.h	492;"	d
+SQLITE_READONLY_DBMOVED	sqlite3.h	494;"	d
+SQLITE_READONLY_RECOVERY	sqlite3.h	491;"	d
+SQLITE_READONLY_ROLLBACK	sqlite3.h	493;"	d
+SQLITE_RECURSIVE	sqlite3.h	2569;"	d
+SQLITE_REINDEX	sqlite3.h	2562;"	d
+SQLITE_REPLACE	sqlite3.h	7309;"	d
+SQLITE_ROLLBACK	sqlite3.h	7305;"	d
+SQLITE_ROW	sqlite3.h	430;"	d
+SQLITE_SAVEPOINT	sqlite3.h	2567;"	d
+SQLITE_SCHEMA	sqlite3.h	418;"	d
+SQLITE_SELECT	sqlite3.h	2556;"	d
+SQLITE_SET_LOCKPROXYFILE	sqlite3.h	950;"	d
+SQLITE_SHM_EXCLUSIVE	sqlite3.h	1229;"	d
+SQLITE_SHM_LOCK	sqlite3.h	1227;"	d
+SQLITE_SHM_NLOCK	sqlite3.h	1239;"	d
+SQLITE_SHM_SHARED	sqlite3.h	1228;"	d
+SQLITE_SHM_UNLOCK	sqlite3.h	1226;"	d
+SQLITE_SOURCE_ID	sqlite3.h	112;"	d
+SQLITE_STATIC	sqlite3.h	4320;"	d
+SQLITE_STATUS_MALLOC_COUNT	sqlite3.h	6250;"	d
+SQLITE_STATUS_MALLOC_SIZE	sqlite3.h	6246;"	d
+SQLITE_STATUS_MEMORY_USED	sqlite3.h	6241;"	d
+SQLITE_STATUS_PAGECACHE_OVERFLOW	sqlite3.h	6243;"	d
+SQLITE_STATUS_PAGECACHE_SIZE	sqlite3.h	6248;"	d
+SQLITE_STATUS_PAGECACHE_USED	sqlite3.h	6242;"	d
+SQLITE_STATUS_PARSER_STACK	sqlite3.h	6247;"	d
+SQLITE_STATUS_SCRATCH_OVERFLOW	sqlite3.h	6245;"	d
+SQLITE_STATUS_SCRATCH_SIZE	sqlite3.h	6249;"	d
+SQLITE_STATUS_SCRATCH_USED	sqlite3.h	6244;"	d
+SQLITE_STMTSTATUS_AUTOINDEX	sqlite3.h	6444;"	d
+SQLITE_STMTSTATUS_FULLSCAN_STEP	sqlite3.h	6442;"	d
+SQLITE_STMTSTATUS_SORT	sqlite3.h	6443;"	d
+SQLITE_STMTSTATUS_VM_STEP	sqlite3.h	6445;"	d
+SQLITE_SYNC_DATAONLY	sqlite3.h	620;"	d
+SQLITE_SYNC_FULL	sqlite3.h	619;"	d
+SQLITE_SYNC_NORMAL	sqlite3.h	618;"	d
+SQLITE_TESTCTRL_ALWAYS	sqlite3.h	6117;"	d
+SQLITE_TESTCTRL_ASSERT	sqlite3.h	6116;"	d
+SQLITE_TESTCTRL_BENIGN_MALLOC_HOOKS	sqlite3.h	6114;"	d
+SQLITE_TESTCTRL_BITVEC_TEST	sqlite3.h	6112;"	d
+SQLITE_TESTCTRL_EXPLAIN_STMT	sqlite3.h	6123;"	d
+SQLITE_TESTCTRL_FAULT_INSTALL	sqlite3.h	6113;"	d
+SQLITE_TESTCTRL_FIRST	sqlite3.h	6108;"	d
+SQLITE_TESTCTRL_ISKEYWORD	sqlite3.h	6120;"	d
+SQLITE_TESTCTRL_LAST	sqlite3.h	6125;"	d
+SQLITE_TESTCTRL_LOCALTIME_FAULT	sqlite3.h	6122;"	d
+SQLITE_TESTCTRL_NEVER_CORRUPT	sqlite3.h	6124;"	d
+SQLITE_TESTCTRL_OPTIMIZATIONS	sqlite3.h	6119;"	d
+SQLITE_TESTCTRL_PENDING_BYTE	sqlite3.h	6115;"	d
+SQLITE_TESTCTRL_PRNG_RESET	sqlite3.h	6111;"	d
+SQLITE_TESTCTRL_PRNG_RESTORE	sqlite3.h	6110;"	d
+SQLITE_TESTCTRL_PRNG_SAVE	sqlite3.h	6109;"	d
+SQLITE_TESTCTRL_RESERVE	sqlite3.h	6118;"	d
+SQLITE_TESTCTRL_SCRATCHMALLOC	sqlite3.h	6121;"	d
+SQLITE_TEXT	sqlite3.h	3720;"	d
+SQLITE_TEXT	sqlite3.h	3722;"	d
+SQLITE_TOOBIG	sqlite3.h	419;"	d
+SQLITE_TRANSACTION	sqlite3.h	2557;"	d
+SQLITE_TRANSIENT	sqlite3.h	4321;"	d
+SQLITE_UPDATE	sqlite3.h	2558;"	d
+SQLITE_UTF16	sqlite3.h	4090;"	d
+SQLITE_UTF16BE	sqlite3.h	4089;"	d
+SQLITE_UTF16LE	sqlite3.h	4088;"	d
+SQLITE_UTF16_ALIGNED	sqlite3.h	4092;"	d
+SQLITE_UTF8	sqlite3.h	4087;"	d
+SQLITE_VERSION	sqlite3.h	110;"	d
+SQLITE_VERSION	sqlite3.h	77;"	d
+SQLITE_VERSION_NUMBER	sqlite3.h	111;"	d
+SQLITE_VERSION_NUMBER	sqlite3.h	80;"	d
+SQLITE_VTAB_CONSTRAINT_SUPPORT	sqlite3.h	7280;"	d
+SQLITE_WARNING	sqlite3.h	429;"	d
+SQLITE_WARNING_AUTOINDEX	sqlite3.h	508;"	d
+STATTYPE	common_sz.h	/^}STATTYPE;$/;"	t	typeref:enum:statType
+STDC_HEADERS	config.h	90;"	d
+STRIP	Makefile	/^STRIP = $/;"	m
+STRUCT_GATE_INFO	common_sz.h	/^}STRUCT_GATE_INFO;$/;"	t	typeref:struct:gate_info_s
+STRUCT_OPERATE_INFO	common_sz.h	/^}STRUCT_OPERATE_INFO;$/;"	t	typeref:struct:struct_operate_info_s
+SUCCESS	common_sz.h	/^    SUCCESS,$/;"	e	enum:statType
+SetLogBySeqNo	logfile.c	/^int SetLogBySeqNo(struct LogFile *logFile, unsigned int seqNo[], struct SLog *pLog, unsigned int minNo[], unsigned int maxNo[])$/;"	f
+SetPassRecordLogBySeqNo	logfile.c	/^int SetPassRecordLogBySeqNo(unsigned int seqNo[], struct SPassRecordLog *pPassRecordLog, $/;"	f
+SetSockBlock	tcputil.c	/^int SetSockBlock(int sfd, int block)$/;"	f
+Substract32	bigint.c	/^int Substract32(unsigned int a[], unsigned int b, unsigned int c[])$/;"	f
+Substract64	bigint.c	/^int Substract64(unsigned int a[], unsigned int b[], unsigned int c[])$/;"	f
+TAGNOTFOUNT	common_sz.h	/^    TAGNOTFOUNT$/;"	e	enum:statType
+TAGOBJ	common_sz.h	/^}TAGOBJ,*PTAGOBJ;$/;"	t	typeref:struct:struct_get_tags_s
+TAG_NUM_MAX	common_sz.h	15;"	d
+TAG_OLD_PASSED_MAX	common_sz.h	16;"	d
+TCPUTIL_H_QVNKNSMP	tcputil.h	2;"	d
+TID	common_sz.h	/^    char TID[20];              $/;"	m	struct:struct_operate_info_s
+TID	common_sz.h	/^    char TID[20];$/;"	m	struct:struct_old_passed_obj_s
+TID_LEN	common_sz.h	14;"	d
+TIME_STR_LEN	common_sz.h	22;"	d
+TIME_WITH_SYS_TIME	config.h	93;"	d
+TcpRecvData	tcputil.c	/^int TcpRecvData(int socket, unsigned char buffer[], int n, int ms)$/;"	f
+TcpSendData	tcputil.c	/^int TcpSendData(int socket, unsigned char buffer[], int n, int ms)$/;"	f
+ThreadRun	cond_thread.c	/^void ThreadRun(struct CondThread *thread)$/;"	f
+TriggerThread	cond_thread.c	/^void TriggerThread(struct CondThread *thread, int status, void *data)$/;"	f
+VERSION	Makefile	/^VERSION = 0.0.1$/;"	m
+VERSION	config.h	96;"	d
+WHITELIST	common_sz.h	/^}WHITELIST,*PWHITELIST;$/;"	t	typeref:struct:white_list_s
+WHITELIST_H_JV8B3ZUW	whitelist.h	2;"	d
+WhiteListDatabaseInit	whitelist.c	/^int WhiteListDatabaseInit()$/;"	f
+WriteBackPassRecordLog	logfile.c	/^int WriteBackPassRecordLog(struct SPassRecordLog *pPassRecordLog)$/;"	f
+_SEND_RECORD_H	pass_record.h	2;"	d
+_SQLITE3RTREE_H_	sqlite3.h	7340;"	d
+_SQLITE3_H_	sqlite3.h	34;"	d
+_ThreadFunc	cond_thread.c	/^void _ThreadFunc(void *args)$/;"	f
+__LINUX__	tcputil.h	4;"	d
+_cond_thread_msg	cond_thread.h	/^struct _cond_thread_msg$/;"	s
+aConstraint	sqlite3.h	/^  } *aConstraint;            \/* Table of WHERE clause constraints *\/$/;"	m	struct:sqlite3_index_info	typeref:struct:sqlite3_index_info::sqlite3_index_constraint
+aConstraintUsage	sqlite3.h	/^  } *aConstraintUsage;$/;"	m	struct:sqlite3_index_info	typeref:struct:sqlite3_index_info::sqlite3_index_constraint_usage
+aOrderBy	sqlite3.h	/^  } *aOrderBy;               \/* The ORDER BY clause *\/$/;"	m	struct:sqlite3_index_info	typeref:struct:sqlite3_index_info::sqlite3_index_orderby
+aParam	sqlite3.h	/^  double *aParam;                 \/* Parameters passed to SQL geom function *\/$/;"	m	struct:sqlite3_rtree_geometry
+abs_builddir	Makefile	/^abs_builddir = \/root\/workspace\/ParkingLot_source_signl\/test$/;"	m
+abs_srcdir	Makefile	/^abs_srcdir = \/root\/workspace\/ParkingLot_source_signl\/test$/;"	m
+abs_top_builddir	Makefile	/^abs_top_builddir = \/root\/workspace\/ParkingLot_source_signl\/test$/;"	m
+abs_top_srcdir	Makefile	/^abs_top_srcdir = \/root\/workspace\/ParkingLot_source_signl\/test$/;"	m
+ac_ct_CC	Makefile	/^ac_ct_CC = gcc$/;"	m
+ac_fn_c_check_func	configure	/^ac_fn_c_check_func ()$/;"	f
+ac_fn_c_check_header_compile	configure	/^ac_fn_c_check_header_compile ()$/;"	f
+ac_fn_c_check_header_mongrel	configure	/^ac_fn_c_check_header_mongrel ()$/;"	f
+ac_fn_c_check_type	configure	/^ac_fn_c_check_type ()$/;"	f
+ac_fn_c_try_compile	configure	/^ac_fn_c_try_compile ()$/;"	f
+ac_fn_c_try_cpp	configure	/^ac_fn_c_try_cpp ()$/;"	f
+ac_fn_c_try_link	configure	/^ac_fn_c_try_link ()$/;"	f
+ac_fn_c_try_run	configure	/^ac_fn_c_try_run ()$/;"	f
+aix_post_process_depfile	depcomp	/^aix_post_process_depfile ()$/;"	f
+am__CONFIG_DISTCLEAN_FILES	Makefile	/^am__CONFIG_DISTCLEAN_FILES = config.status config.cache config.log \\$/;"	m
+am__aclocal_m4_deps	Makefile	/^am__aclocal_m4_deps = $(top_srcdir)\/configure.ac$/;"	m
+am__can_run_installinfo	Makefile	/^am__can_run_installinfo = \\$/;"	m
+am__cd	Makefile	/^am__cd = CDPATH="$${ZSH_VERSION+.}$(PATH_SEPARATOR)" && cd$/;"	m
+am__configure_deps	Makefile	/^am__configure_deps = $(am__aclocal_m4_deps) $(CONFIGURE_DEPENDENCIES) \\$/;"	m
+am__define_uniq_tagged_files	Makefile	/^am__define_uniq_tagged_files = \\$/;"	m
+am__depfiles_maybe	Makefile	/^am__depfiles_maybe = depfiles$/;"	m
+am__distuninstallcheck_listfiles	Makefile	/^am__distuninstallcheck_listfiles = $(distuninstallcheck_listfiles) \\$/;"	m
+am__include	Makefile	/^am__include = include$/;"	m
+am__installdirs	Makefile	/^am__installdirs = "$(DESTDIR)$(bindir)"$/;"	m
+am__is_gnu_make	Makefile	/^am__is_gnu_make = test -n '$(MAKEFILE_LIST)' && test -n '$(MAKELEVEL)'$/;"	m
+am__leading_dot	Makefile	/^am__leading_dot = .$/;"	m
+am__make_dryrun	Makefile	/^am__make_dryrun = (target_option=n; $(am__make_running_with_option))$/;"	m
+am__make_keepgoing	Makefile	/^am__make_keepgoing = (target_option=k; $(am__make_running_with_option))$/;"	m
+am__make_running_with_option	Makefile	/^am__make_running_with_option = \\$/;"	m
+am__mv	Makefile	/^am__mv = mv -f$/;"	m
+am__post_remove_distdir	Makefile	/^am__post_remove_distdir = $(am__remove_distdir)$/;"	m
+am__quote	Makefile	/^am__quote = $/;"	m
+am__remove_distdir	Makefile	/^am__remove_distdir = \\$/;"	m
+am__tagged_files	Makefile	/^am__tagged_files = $(HEADERS) $(SOURCES) $(TAGS_FILES) \\$/;"	m
+am__tar	Makefile	/^am__tar = $${TAR-tar} chof - "$$tardir"$/;"	m
+am__uniquify_input	Makefile	/^am__uniquify_input = $(AWK) '\\$/;"	m
+am__untar	Makefile	/^am__untar = $${TAR-tar} xf -$/;"	m
+am__v_AR_	Makefile	/^am__v_AR_ = $(am__v_AR_$(AM_DEFAULT_VERBOSITY))$/;"	m
+am__v_AR_0	Makefile	/^am__v_AR_0 = @echo "  AR      " $@;$/;"	m
+am__v_AR_1	Makefile	/^am__v_AR_1 = $/;"	m
+am__v_CCLD_	Makefile	/^am__v_CCLD_ = $(am__v_CCLD_$(AM_DEFAULT_VERBOSITY))$/;"	m
+am__v_CCLD_0	Makefile	/^am__v_CCLD_0 = @echo "  CCLD    " $@;$/;"	m
+am__v_CCLD_1	Makefile	/^am__v_CCLD_1 = $/;"	m
+am__v_CC_	Makefile	/^am__v_CC_ = $(am__v_CC_$(AM_DEFAULT_VERBOSITY))$/;"	m
+am__v_CC_0	Makefile	/^am__v_CC_0 = @echo "  CC      " $@;$/;"	m
+am__v_CC_1	Makefile	/^am__v_CC_1 = $/;"	m
+am__v_GEN_	Makefile	/^am__v_GEN_ = $(am__v_GEN_$(AM_DEFAULT_VERBOSITY))$/;"	m
+am__v_GEN_0	Makefile	/^am__v_GEN_0 = @echo "  GEN     " $@;$/;"	m
+am__v_GEN_1	Makefile	/^am__v_GEN_1 = $/;"	m
+am__v_P_	Makefile	/^am__v_P_ = $(am__v_P_$(AM_DEFAULT_VERBOSITY))$/;"	m
+am__v_P_0	Makefile	/^am__v_P_0 = false$/;"	m
+am__v_P_1	Makefile	/^am__v_P_1 = :$/;"	m
+am__v_at_	Makefile	/^am__v_at_ = $(am__v_at_$(AM_DEFAULT_VERBOSITY))$/;"	m
+am__v_at_0	Makefile	/^am__v_at_0 = @$/;"	m
+am__v_at_1	Makefile	/^am__v_at_1 = $/;"	m
+am_libtool_a_OBJECTS	Makefile	/^am_libtool_a_OBJECTS = logfile.$(OBJEXT) cond_thread.$(OBJEXT) \\$/;"	m
+am_testsuit_OBJECTS	Makefile	/^am_testsuit_OBJECTS = main.$(OBJEXT) pass_record.$(OBJEXT) \\$/;"	m
+ant_num	common_sz.h	/^	int  ant_num;$/;"	m	struct:struct_old_passed_obj_s
+ant_num	common_sz.h	/^    char    ant_num;                \/\/ the number of ants using for this gate$/;"	m	struct:gate_info_s
+ant_num	common_sz.h	/^    char ant_num;      \/\/by myjalo$/;"	m	struct:struct_operate_info_s
+ant_num	common_sz.h	/^    char ant_num;$/;"	m	struct:struct_get_tags_s
+ants	common_sz.h	/^    char    ants[4];                \/\/ the id of per ant$/;"	m	struct:gate_info_s
+argvIndex	sqlite3.h	/^    int argvIndex;           \/* if >0, constraint is part of argv to xFilter *\/$/;"	m	struct:sqlite3_index_info::sqlite3_index_constraint_usage
+as_fn_append	config.status	/^  as_fn_append ()$/;"	f
+as_fn_append	configure	/^  as_fn_append ()$/;"	f
+as_fn_arith	config.status	/^  as_fn_arith ()$/;"	f
+as_fn_arith	configure	/^  as_fn_arith ()$/;"	f
+as_fn_error	config.status	/^as_fn_error ()$/;"	f
+as_fn_error	configure	/^as_fn_error ()$/;"	f
+as_fn_executable_p	config.status	/^as_fn_executable_p ()$/;"	f
+as_fn_executable_p	configure	/^as_fn_executable_p ()$/;"	f
+as_fn_exit	config.status	/^as_fn_exit ()$/;"	f
+as_fn_exit	configure	/^as_fn_exit ()$/;"	f
+as_fn_failure	configure	/^as_fn_failure () { as_fn_return 1; }$/;"	f
+as_fn_mkdir_p	config.status	/^as_fn_mkdir_p ()$/;"	f
+as_fn_mkdir_p	configure	/^as_fn_mkdir_p ()$/;"	f
+as_fn_ret_failure	configure	/^as_fn_ret_failure () { return 1; }$/;"	f
+as_fn_ret_success	configure	/^as_fn_ret_success () { return 0; }$/;"	f
+as_fn_set_status	config.status	/^as_fn_set_status ()$/;"	f
+as_fn_set_status	configure	/^as_fn_set_status ()$/;"	f
+as_fn_success	configure	/^as_fn_success () { as_fn_return 0; }$/;"	f
+as_fn_unset	config.status	/^as_fn_unset ()$/;"	f
+as_fn_unset	configure	/^as_fn_unset ()$/;"	f
+be_enter	common_sz.h	/^    bool be_enter;                  $/;"	m	struct:struct_operate_info_s
+be_entry	common_sz.h	/^    bool    be_entry;$/;"	m	struct:led_show_info_s
+bin_PROGRAMS	Makefile	/^bin_PROGRAMS = testsuit$(EXEEXT)$/;"	m
+bindir	Makefile	/^bindir = ${exec_prefix}\/bin$/;"	m
+build_alias	Makefile	/^build_alias = $/;"	m
+builddir	Makefile	/^builddir = .$/;"	m
+callback	dbutils.c	/^static int callback(void *NotUsed, int argc, char **argv, char **azColName){$/;"	f	file:
+callback_save_result	dbutils.c	/^static int callback_save_result(void *callresult, int argc, char **argv, char **azColName){$/;"	f	file:
+car_num	common_sz.h	/^    char    car_num[CAR_NUM_LEN];$/;"	m	struct:led_show_info_s
+car_num	common_sz.h	/^    char car_num[CAR_NUM_LEN];$/;"	m	struct:struct_operate_info_s
+card_type	common_sz.h	/^    char card_type[CAR_RIGHT_LEN];$/;"	m	struct:struct_operate_info_s
+client_recv_whitelist1	main.c	/^int client_recv_whitelist1()$/;"	f
+colname	dbutils.h	/^	char **colname;$/;"	m	struct:sqlresult
+colnum	dbutils.h	/^	int colnum;$/;"	m	struct:sqlresult
+com_roadblock	common_sz.h	/^    char    com_roadblock[20];      \/\/ the com port for linking roadblock$/;"	m	struct:gate_info_s
+com_roadblock_fd	common_sz.h	/^    int     com_roadblock_fd ;      \/\/ the handler of operate com port $/;"	m	struct:gate_info_s
+consumer	cond_thread.h	/^	thread_callback          consumer;$/;"	m	struct:CondThread
+count	common_sz.h	/^	int  count;$/;"	m	struct:struct_get_tags_s
+cur_operate_num	common_sz.h	/^    int cur_operate_num;$/;"	m	struct:operate_info_s
+cur_send_info_num	common_sz.h	/^    int cur_send_info_num;$/;"	m	struct:send_info_s
+data	cond_thread.h	/^	void                    *data;$/;"	m	struct:_cond_thread_msg
+data	dbutils.h	/^	char **data;$/;"	m	struct:sqlresult
+datadir	Makefile	/^datadir = ${datarootdir}$/;"	m
+datarootdir	Makefile	/^datarootdir = ${prefix}\/share$/;"	m
+db	dbutils.h	/^	sqlite3    *db;$/;"	m	struct:sDB
+dbFile	dbutils.h	/^	char       dbFile[MAX_FILE_NAME_LEN];$/;"	m	struct:sDB
+db_close	dbutils.c	/^int db_close(struct sDB *sDB)$/;"	f
+db_open	dbutils.c	/^struct sDB * db_open(const char *dbfile, const char *table_init)$/;"	f
+db_query	dbutils.c	/^int db_query(struct sDB *sDB, const char* query_cmd)$/;"	f
+db_query_call	dbutils.c	/^int db_query_call(struct sDB *sDB, const char* query_cmd, struct query_result *query_result)$/;"	f
+depcomp	Makefile	/^depcomp = $(SHELL) $(top_srcdir)\/depcomp$/;"	m
+desc	sqlite3.h	/^     unsigned char desc;       \/* True for DESC.  False for ASC. *\/$/;"	m	struct:sqlite3_index_info::sqlite3_index_orderby
+distcleancheck_listfiles	Makefile	/^distcleancheck_listfiles = find . -type f -print$/;"	m
+distdir	Makefile	/^distdir = $(PACKAGE)-$(VERSION)$/;"	m
+distuninstallcheck_listfiles	Makefile	/^distuninstallcheck_listfiles = find . -type f -print$/;"	m
+docdir	Makefile	/^docdir = ${datarootdir}\/doc\/${PACKAGE_TARNAME}$/;"	m
+double	sqlite3.h	264;"	d
+double	sqlite3.h	7318;"	d
+dvidir	Makefile	/^dvidir = ${docdir}$/;"	m
+estimatedCost	sqlite3.h	/^  double estimatedCost;           \/* Estimated cost of using this index *\/$/;"	m	struct:sqlite3_index_info
+estimatedRows	sqlite3.h	/^  sqlite3_int64 estimatedRows;    \/* Estimated number of rows returned *\/$/;"	m	struct:sqlite3_index_info
+exec_prefix	Makefile	/^exec_prefix = ${prefix}$/;"	m
+f_error	common_sz.h	/^FILE *f_error;$/;"	v
+f_misc_running	common_sz.h	/^FILE *f_misc_running;$/;"	v
+f_passed_failed	common_sz.h	/^FILE *f_passed_failed;$/;"	v
+f_passed_success	common_sz.h	/^FILE *f_passed_success;$/;"	v
+f_sended_server	common_sz.h	/^FILE *f_sended_server;$/;"	v
+f_sync_whitelist	common_sz.h	/^FILE *f_sync_whitelist;$/;"	v
+f_sysinit	common_sz.h	/^FILE *f_sysinit;$/;"	v
+flag	cond_thread.h	/^	int                      flag;$/;"	m	struct:CondThread
+free_result	dbutils.c	/^int free_result(struct query_result * query_result)$/;"	f
+func_cl_dashL	compile	/^func_cl_dashL ()$/;"	f
+func_cl_dashl	compile	/^func_cl_dashl ()$/;"	f
+func_cl_wrapper	compile	/^func_cl_wrapper ()$/;"	f
+func_file_conv	compile	/^func_file_conv ()$/;"	f
+g_PassRecordLogInfo	logfile.c	/^struct LogFile g_PassRecordLogInfo;$/;"	v	typeref:struct:LogFile
+g_PassRecordLogWriteFileThread	main.c	/^struct CondThread *g_PassRecordLogWriteFileThread;$/;"	v	typeref:struct:CondThread
+g_PassRecordSendThread	main.c	/^struct CondThread *g_PassRecordSendThread;$/;"	v	typeref:struct:CondThread
+g_led_show_list	common_sz.h	/^PLED_SHOW_LIST g_led_show_list;$/;"	v
+g_old_passed_array	common_sz.h	/^POLDPASSEDOBJ g_old_passed_array;$/;"	v
+g_operate_info	common_sz.h	/^POPERATEINFO g_operate_info;$/;"	v
+g_send_info	common_sz.h	/^PSENDINFO g_send_info;$/;"	v
+g_show_camera	common_sz.h	/^PSHOWCAMERA g_show_camera;$/;"	v
+g_tag_flag	common_sz.h	/^char *g_tag_flag;$/;"	v
+g_tags_array	common_sz.h	/^PTAGOBJ g_tags_array;$/;"	v
+g_tags_array_count	common_sz.h	/^int     g_tags_array_count;$/;"	v
+g_white_list	common_sz.h	/^PWHITELIST g_white_list;$/;"	v
+g_whitelist	whitelist.c	/^struct sDB * g_whitelist;$/;"	v	typeref:struct:sDB
+g_wldb_file	whitelist.c	/^const char  g_wldb_file[] = "whitelist.db";$/;"	v
+gate_id	common_sz.h	/^    char    gate_id;                \/\/ the id of gate defined by server$/;"	m	struct:gate_info_s
+gate_id	common_sz.h	/^    int  gate_id;                   $/;"	m	struct:struct_operate_info_s
+gate_index	common_sz.h	/^    int  gate_index;                $/;"	m	struct:struct_operate_info_s
+gate_info_s	common_sz.h	/^typedef struct gate_info_s$/;"	s
+gate_rights	common_sz.h	/^    char    gate_rights[20];        \/\/ the rights which can entry$/;"	m	struct:gate_info_s
+gate_type	common_sz.h	/^    char    gate_type;              \/\/ 'i' or 'o'$/;"	m	struct:gate_info_s
+gates	common_sz.h	/^STRUCT_GATE_INFO gates[2];$/;"	v
+give_advice	missing	/^give_advice ()$/;"	f
+host_alias	Makefile	/^host_alias = $/;"	m
+htmldir	Makefile	/^htmldir = ${docdir}$/;"	m
+iColumn	sqlite3.h	/^     int iColumn;              \/* Column number *\/$/;"	m	struct:sqlite3_index_info::sqlite3_index_orderby
+iColumn	sqlite3.h	/^     int iColumn;              \/* Column on left-hand side of constraint *\/$/;"	m	struct:sqlite3_index_info::sqlite3_index_constraint
+iTermOffset	sqlite3.h	/^     int iTermOffset;          \/* Used internally - xBestIndex should ignore *\/$/;"	m	struct:sqlite3_index_info::sqlite3_index_constraint
+iVersion	sqlite3.h	/^  int iVersion;            \/* Structure version number (currently 3) *\/$/;"	m	struct:sqlite3_vfs
+iVersion	sqlite3.h	/^  int iVersion;$/;"	m	struct:sqlite3_io_methods
+iVersion	sqlite3.h	/^  int iVersion;$/;"	m	struct:sqlite3_module
+iVersion	sqlite3.h	/^  int iVersion;$/;"	m	struct:sqlite3_pcache_methods2
+idxNum	sqlite3.h	/^  int idxNum;                \/* Number used to identify the index *\/$/;"	m	struct:sqlite3_index_info
+idxStr	sqlite3.h	/^  char *idxStr;              \/* String, possibly obtained from sqlite3_malloc *\/$/;"	m	struct:sqlite3_index_info
+includedir	Makefile	/^includedir = ${prefix}\/include$/;"	m
+inductor_signal_keep_time	common_sz.h	/^int inductor_signal_keep_time;$/;"	v
+infodir	Makefile	/^infodir = ${datarootdir}\/info$/;"	m
+install_sh	Makefile	/^install_sh = ${SHELL} \/root\/workspace\/ParkingLot_source_signl\/test\/install-sh$/;"	m
+install_sh_DATA	Makefile	/^install_sh_DATA = $(install_sh) -c -m 644$/;"	m
+install_sh_PROGRAM	Makefile	/^install_sh_PROGRAM = $(install_sh) -c$/;"	m
+install_sh_SCRIPT	Makefile	/^install_sh_SCRIPT = $(install_sh) -c$/;"	m
+io_type	common_sz.h	/^    char io_type;                   $/;"	m	struct:struct_operate_info_s
+irix_6_4_bug	configure	/^irix_6_4_bug ()$/;"	f
+jointcompute_id	common_sz.h	/^int jointcompute_id;$/;"	v
+led_info_camera_num	common_sz.h	/^    int led_info_camera_num;$/;"	m	struct:show_camera_s
+led_info_cur_num	common_sz.h	/^    int    led_info_cur_num;$/;"	m	struct:led_show_info_list_s
+led_ip	common_sz.h	/^    char    led_ip[15];             \/\/ the ip of led$/;"	m	struct:gate_info_s
+led_ip	common_sz.h	/^    char   led_ip[15];$/;"	m	struct:led_show_info_list_s
+led_ip	common_sz.h	/^    char   led_ip[15];$/;"	m	struct:show_camera_s
+led_port	common_sz.h	/^    int     led_port;               \/\/ the port of led$/;"	m	struct:gate_info_s
+led_port	common_sz.h	/^    int    led_port;$/;"	m	struct:led_show_info_list_s
+led_port	common_sz.h	/^    int    led_port;$/;"	m	struct:show_camera_s
+led_show_array	common_sz.h	/^    LEDSHOWINFO led_show_array[LED_SHOW_MAX_NUM];$/;"	m	struct:led_show_info_list_s
+led_show_camera	common_sz.h	/^    LEDSHOWINFO led_show_camera[LED_SHOW_MAX_NUM];$/;"	m	struct:show_camera_s
+led_show_info_list_s	common_sz.h	/^typedef struct led_show_info_list_s$/;"	s
+led_show_info_s	common_sz.h	/^typedef struct led_show_info_s$/;"	s
+libdir	Makefile	/^libdir = ${exec_prefix}\/lib$/;"	m
+libexecdir	Makefile	/^libexecdir = ${exec_prefix}\/libexec$/;"	m
+libtool_a_AR	Makefile	/^libtool_a_AR = $(AR) $(ARFLAGS)$/;"	m
+libtool_a_LIBADD	Makefile	/^libtool_a_LIBADD =$/;"	m
+libtool_a_OBJECTS	Makefile	/^libtool_a_OBJECTS = $(am_libtool_a_OBJECTS)$/;"	m
+libtool_a_SOURCES	Makefile	/^libtool_a_SOURCES = logfile.c logfile.h\\$/;"	m
+localedir	Makefile	/^localedir = ${datarootdir}\/locale$/;"	m
+localstatedir	Makefile	/^localstatedir = ${prefix}\/var$/;"	m
+log_file_size	common_sz.h	/^int log_file_size; \/\/defult value$/;"	v
+m_BufRecord	logfile.h	/^	unsigned int    m_BufRecord; \/\/ 缓存记录数$/;"	m	struct:LogFileMeta
+m_Channel	pass_record.h	/^	int          m_Channel;$/;"	m	struct:SPassRecordLog
+m_CurrentCnt	logfile.h	/^	unsigned int	m_CurrentCnt; \/\/当前记录数目$/;"	m	struct:LogFile
+m_Direction	pass_record.h	/^	int          m_Direction;\/\/记录来车方向$/;"	m	struct:SPassRecordLog
+m_FileName	logfile.h	/^	char            m_FileName[500]; \/\/文件名$/;"	m	struct:LogFileMeta
+m_First	logfile.h	/^	unsigned int	m_First; \/\/第一条记录位置$/;"	m	struct:LogFile
+m_Flag	pass_record.h	/^	int          m_Flag;\/\/用于记录发送状态，1为发送成功，0为发送失败$/;"	m	struct:SPassRecordLog
+m_Fp	logfile.h	/^	FILE      *     m_Fp; \/\/ 文件指针$/;"	m	struct:LogFileMeta
+m_Last	logfile.h	/^	unsigned int	m_Last; \/\/最后一条记录位置$/;"	m	struct:LogFile
+m_MaxRecord	logfile.h	/^	unsigned int    m_MaxRecord;\/\/ 最大记录数$/;"	m	struct:LogFileMeta
+m_Meta	logfile.h	/^	struct LogFileMeta m_Meta;$/;"	m	struct:LogFile	typeref:struct:LogFile::LogFileMeta
+m_Meta	pass_record.h	/^	struct SLog  m_Meta;$/;"	m	struct:SPassRecordLog	typeref:struct:SPassRecordLog::SLog
+m_MinRecord	logfile.h	/^	unsigned int    m_MinRecord;\/\/ 最小记录数$/;"	m	struct:LogFileMeta
+m_PassResult	pass_record.h	/^	int          m_PassResult;\/\/通行结果$/;"	m	struct:SPassRecordLog
+m_RecordSize	logfile.h	/^	unsigned int    m_RecordSize; \/\/记录的大小$/;"	m	struct:LogFileMeta
+m_SeqNo	pass_record.h	/^	unsigned int m_SeqNo[2];\/\/序列号$/;"	m	struct:SLog
+m_Tid	pass_record.h	/^	char         m_Tid[20];\/\/tid$/;"	m	struct:SPassRecordLog
+m_TimeStamp	pass_record.h	/^	unsigned int m_TimeStamp[2];\/\/时间戳$/;"	m	struct:SLog
+m_Timestamp	pass_record.h	/^	char         m_Timestamp[20];$/;"	m	struct:SPassRecordLog
+m_TotalCnt	logfile.h	/^	unsigned int    m_TotalCnt; \/\/ 最大记录数目$/;"	m	struct:LogFile
+m_lock	logfile.h	/^	pthread_mutex_t m_lock; \/\/多线程访问加锁$/;"	m	struct:LogFileMeta
+m_maxSeq	logfile.h	/^	unsigned int	m_maxSeq[2]; \/\/最后一条记录序号$/;"	m	struct:LogFile
+m_maxStamp	logfile.h	/^	unsigned int	m_maxStamp[2]; \/\/最后一条记录时间戳$/;"	m	struct:LogFile
+m_minSeq	logfile.h	/^	unsigned int	m_minSeq[2]; \/\/第一条记录序号$/;"	m	struct:LogFile
+m_minStamp	logfile.h	/^	unsigned int	m_minStamp[2]; \/\/第一条记录时间戳$/;"	m	struct:LogFile
+m_next	cond_thread.h	/^	struct _cond_thread_msg *m_next;$/;"	m	struct:_cond_thread_msg	typeref:struct:_cond_thread_msg::_cond_thread_msg
+main	main.c	/^int main(int argc, char *argv[])$/;"	f
+make_dummy_depfile	depcomp	/^make_dummy_depfile ()$/;"	f
+mandir	Makefile	/^mandir = ${datarootdir}\/man$/;"	m
+mkdir_p	Makefile	/^mkdir_p = $(MKDIR_P)$/;"	m
+mkinstalldirs	Makefile	/^mkinstalldirs = $(install_sh) -d$/;"	m
+mutex_led_show	common_sz.h	/^    pthread_mutex_t mutex_led_show;$/;"	m	struct:led_show_info_list_s
+mutex_led_show_camera	common_sz.h	/^    pthread_mutex_t mutex_led_show_camera;$/;"	m	struct:show_camera_s
+mutex_operate_info	common_sz.h	/^    pthread_mutex_t mutex_operate_info;$/;"	m	struct:operate_info_s
+mutex_send_info	common_sz.h	/^    pthread_mutex_t mutex_send_info;$/;"	m	struct:send_info_s
+mutex_white_list	common_sz.h	/^    pthread_mutex_t mutex_white_list;$/;"	m	struct:white_list_s
+mxPathname	sqlite3.h	/^  int mxPathname;          \/* Maximum file pathname length *\/$/;"	m	struct:sqlite3_vfs
+nConstraint	sqlite3.h	/^  int nConstraint;           \/* Number of entries in aConstraint *\/$/;"	m	struct:sqlite3_index_info
+nOrderBy	sqlite3.h	/^  int nOrderBy;              \/* Number of terms in the ORDER BY clause *\/$/;"	m	struct:sqlite3_index_info
+nParam	sqlite3.h	/^  int nParam;                     \/* Size of array aParam[] *\/$/;"	m	struct:sqlite3_rtree_geometry
+nRef	sqlite3.h	/^  int nRef;                       \/* NO LONGER USED *\/$/;"	m	struct:sqlite3_vtab
+needToFreeIdxStr	sqlite3.h	/^  int needToFreeIdxStr;      \/* Free idxStr using sqlite3_free() if true *\/$/;"	m	struct:sqlite3_index_info
+next	dbutils.h	/^	struct sqlresult * next;$/;"	m	struct:sqlresult	typeref:struct:sqlresult::sqlresult
+noinst_LIBRARIES	Makefile	/^noinst_LIBRARIES = libtool.a$/;"	m
+oldincludedir	Makefile	/^oldincludedir = \/usr\/include$/;"	m
+omit	sqlite3.h	/^    unsigned char omit;      \/* Do not code a test for this constraint *\/$/;"	m	struct:sqlite3_index_info::sqlite3_index_constraint_usage
+op	sqlite3.h	/^     unsigned char op;         \/* Constraint operator *\/$/;"	m	struct:sqlite3_index_info::sqlite3_index_constraint
+openDoorMethodType	common_sz.h	/^typedef enum openDoorMethodType$/;"	g
+operate_info	common_sz.h	/^    STRUCT_OPERATE_INFO operate_info[MAX_OPERATE_INFO_NUM];$/;"	m	struct:operate_info_s
+operate_info_s	common_sz.h	/^typedef struct operate_info_s$/;"	s
+operate_time	common_sz.h	/^    char operate_time[TIME_STR_LEN]; $/;"	m	struct:struct_operate_info_s
+orderByConsumed	sqlite3.h	/^  int orderByConsumed;       \/* True if output is already ordered *\/$/;"	m	struct:sqlite3_index_info
+pAppData	sqlite3.h	/^  void *pAppData;                \/* Argument to xInit() and xShutdown() *\/$/;"	m	struct:sqlite3_mem_methods
+pAppData	sqlite3.h	/^  void *pAppData;          \/* Pointer to application-specific data *\/$/;"	m	struct:sqlite3_vfs
+pArg	sqlite3.h	/^  void *pArg;$/;"	m	struct:sqlite3_pcache_methods
+pArg	sqlite3.h	/^  void *pArg;$/;"	m	struct:sqlite3_pcache_methods2
+pBuf	sqlite3.h	/^  void *pBuf;        \/* The content of the page *\/$/;"	m	struct:sqlite3_pcache_page
+pContext	sqlite3.h	/^  void *pContext;                 \/* Copy of pContext passed to s_r_g_c() *\/$/;"	m	struct:sqlite3_rtree_geometry
+pExtra	sqlite3.h	/^  void *pExtra;      \/* Extra information associated with the page *\/$/;"	m	struct:sqlite3_pcache_page
+pMethods	sqlite3.h	/^  const struct sqlite3_io_methods *pMethods;  \/* Methods for an open file *\/$/;"	m	struct:sqlite3_file	typeref:struct:sqlite3_file::sqlite3_io_methods
+pModule	sqlite3.h	/^  const sqlite3_module *pModule;  \/* The module for this virtual table *\/$/;"	m	struct:sqlite3_vtab
+pNext	sqlite3.h	/^  sqlite3_vfs *pNext;      \/* Next registered VFS *\/$/;"	m	struct:sqlite3_vfs
+pUser	sqlite3.h	/^  void *pUser;                    \/* Callback implementation user data *\/$/;"	m	struct:sqlite3_rtree_geometry
+pVtab	sqlite3.h	/^  sqlite3_vtab *pVtab;      \/* Virtual table of this cursor *\/$/;"	m	struct:sqlite3_vtab_cursor
+pdfdir	Makefile	/^pdfdir = ${docdir}$/;"	m
+pid	cond_thread.h	/^	pthread_t                pid;$/;"	m	struct:CondThread
+pkgdatadir	Makefile	/^pkgdatadir = $(datadir)\/testsuit$/;"	m
+pkgincludedir	Makefile	/^pkgincludedir = $(includedir)\/testsuit$/;"	m
+pkglibdir	Makefile	/^pkglibdir = $(libdir)\/testsuit$/;"	m
+pkglibexecdir	Makefile	/^pkglibexecdir = $(libexecdir)\/testsuit$/;"	m
+prefix	Makefile	/^prefix = \/usr\/local$/;"	m
+program_details	missing	/^program_details ()$/;"	f
+program_transform_name	Makefile	/^program_transform_name = s,x,x,$/;"	m
+prototypes	configure	/^   function prototypes and stuff, but not '\\xHH' hex character constants.$/;"	f
+psdir	Makefile	/^psdir = ${docdir}$/;"	m
+qlen	cond_thread.h	/^	int                      qlen; \/\/ 队列长度$/;"	m	struct:CondThread
+qlock	cond_thread.h	/^	pthread_mutex_t          qlock;$/;"	m	struct:CondThread
+qready	cond_thread.h	/^	pthread_cond_t           qready;$/;"	m	struct:CondThread
+qtail	cond_thread.h	/^	struct _cond_thread_msg *qtail; \/\/ 队列尾指针$/;"	m	struct:CondThread	typeref:struct:CondThread::_cond_thread_msg
+query_result	dbutils.h	/^struct query_result{$/;"	s
+read_pos	common_sz.h	/^    unsigned int read_pos;$/;"	m	struct:send_info_s
+reader	common_sz.h	/^int reader;$/;"	v
+reader_ip	common_sz.h	/^char reader_ip[15];$/;"	v
+reader_port	common_sz.h	/^int reader_port;$/;"	v
+reader_rate	common_sz.h	/^int reader_rate;$/;"	v
+result	dbutils.h	/^	struct sqlresult* result;$/;"	m	struct:query_result	typeref:struct:query_result::sqlresult
+sDB	dbutils.h	/^struct sDB$/;"	s
+sbindir	Makefile	/^sbindir = ${exec_prefix}\/sbin$/;"	m
+send_info	common_sz.h	/^    STRUCT_OPERATE_INFO send_info[MAX_SEND_INFO_NUM];$/;"	m	struct:send_info_s
+send_info_s	common_sz.h	/^typedef struct send_info_s$/;"	s
+send_pass_record	pass_record.c	/^int send_pass_record(struct SPassRecordLog *sr, int flag)$/;"	f
+server_ip	common_sz.h	/^char server_ip[15];$/;"	v
+server_ip	main.c	/^char     server_ip[] = "192.168.1.211";$/;"	v
+server_port	common_sz.h	/^int server_port;$/;"	v
+server_port	main.c	/^int      server_port = 1234;$/;"	v
+set_base_from	depcomp	/^set_base_from ()$/;"	f
+set_dir_from	depcomp	/^set_dir_from ()$/;"	f
+sharedstatedir	Makefile	/^sharedstatedir = ${prefix}\/com$/;"	m
+show_camera_s	common_sz.h	/^typedef struct show_camera_s$/;"	s
+show_result	dbutils.c	/^int show_result(struct query_result * result)$/;"	f
+spring_forward_gap	configure	/^spring_forward_gap ()$/;"	f
+sqlite3	sqlite3.h	/^typedef struct sqlite3 sqlite3;$/;"	t	typeref:struct:sqlite3
+sqlite3_backup	sqlite3.h	/^typedef struct sqlite3_backup sqlite3_backup;$/;"	t	typeref:struct:sqlite3_backup
+sqlite3_blob	sqlite3.h	/^typedef struct sqlite3_blob sqlite3_blob;$/;"	t	typeref:struct:sqlite3_blob
+sqlite3_callback	sqlite3.h	/^typedef int (*sqlite3_callback)(void*,int,char**, char**);$/;"	t
+sqlite3_context	sqlite3.h	/^typedef struct sqlite3_context sqlite3_context;$/;"	t	typeref:struct:sqlite3_context
+sqlite3_data_directory	sqlite3.h	/^SQLITE_API SQLITE_EXTERN char *sqlite3_data_directory;$/;"	v
+sqlite3_destructor_type	sqlite3.h	/^typedef void (*sqlite3_destructor_type)(void*);$/;"	t
+sqlite3_file	sqlite3.h	/^struct sqlite3_file {$/;"	s
+sqlite3_file	sqlite3.h	/^typedef struct sqlite3_file sqlite3_file;$/;"	t	typeref:struct:sqlite3_file
+sqlite3_index_constraint	sqlite3.h	/^  struct sqlite3_index_constraint {$/;"	s	struct:sqlite3_index_info
+sqlite3_index_constraint_usage	sqlite3.h	/^  struct sqlite3_index_constraint_usage {$/;"	s	struct:sqlite3_index_info
+sqlite3_index_info	sqlite3.h	/^struct sqlite3_index_info {$/;"	s
+sqlite3_index_info	sqlite3.h	/^typedef struct sqlite3_index_info sqlite3_index_info;$/;"	t	typeref:struct:sqlite3_index_info
+sqlite3_index_orderby	sqlite3.h	/^  struct sqlite3_index_orderby {$/;"	s	struct:sqlite3_index_info
+sqlite3_int64	sqlite3.h	/^typedef sqlite_int64 sqlite3_int64;$/;"	t
+sqlite3_io_methods	sqlite3.h	/^struct sqlite3_io_methods {$/;"	s
+sqlite3_io_methods	sqlite3.h	/^typedef struct sqlite3_io_methods sqlite3_io_methods;$/;"	t	typeref:struct:sqlite3_io_methods
+sqlite3_mem_methods	sqlite3.h	/^struct sqlite3_mem_methods {$/;"	s
+sqlite3_mem_methods	sqlite3.h	/^typedef struct sqlite3_mem_methods sqlite3_mem_methods;$/;"	t	typeref:struct:sqlite3_mem_methods
+sqlite3_module	sqlite3.h	/^struct sqlite3_module {$/;"	s
+sqlite3_module	sqlite3.h	/^typedef struct sqlite3_module sqlite3_module;$/;"	t	typeref:struct:sqlite3_module
+sqlite3_mutex	sqlite3.h	/^typedef struct sqlite3_mutex sqlite3_mutex;$/;"	t	typeref:struct:sqlite3_mutex
+sqlite3_mutex_methods	sqlite3.h	/^struct sqlite3_mutex_methods {$/;"	s
+sqlite3_mutex_methods	sqlite3.h	/^typedef struct sqlite3_mutex_methods sqlite3_mutex_methods;$/;"	t	typeref:struct:sqlite3_mutex_methods
+sqlite3_pcache	sqlite3.h	/^typedef struct sqlite3_pcache sqlite3_pcache;$/;"	t	typeref:struct:sqlite3_pcache
+sqlite3_pcache_methods	sqlite3.h	/^struct sqlite3_pcache_methods {$/;"	s
+sqlite3_pcache_methods	sqlite3.h	/^typedef struct sqlite3_pcache_methods sqlite3_pcache_methods;$/;"	t	typeref:struct:sqlite3_pcache_methods
+sqlite3_pcache_methods2	sqlite3.h	/^struct sqlite3_pcache_methods2 {$/;"	s
+sqlite3_pcache_methods2	sqlite3.h	/^typedef struct sqlite3_pcache_methods2 sqlite3_pcache_methods2;$/;"	t	typeref:struct:sqlite3_pcache_methods2
+sqlite3_pcache_page	sqlite3.h	/^struct sqlite3_pcache_page {$/;"	s
+sqlite3_pcache_page	sqlite3.h	/^typedef struct sqlite3_pcache_page sqlite3_pcache_page;$/;"	t	typeref:struct:sqlite3_pcache_page
+sqlite3_rtree_geometry	sqlite3.h	/^struct sqlite3_rtree_geometry {$/;"	s
+sqlite3_rtree_geometry	sqlite3.h	/^typedef struct sqlite3_rtree_geometry sqlite3_rtree_geometry;$/;"	t	typeref:struct:sqlite3_rtree_geometry
+sqlite3_stmt	sqlite3.h	/^typedef struct sqlite3_stmt sqlite3_stmt;$/;"	t	typeref:struct:sqlite3_stmt
+sqlite3_syscall_ptr	sqlite3.h	/^typedef void (*sqlite3_syscall_ptr)(void);$/;"	t
+sqlite3_temp_directory	sqlite3.h	/^SQLITE_API SQLITE_EXTERN char *sqlite3_temp_directory;$/;"	v
+sqlite3_uint64	sqlite3.h	/^typedef sqlite_uint64 sqlite3_uint64;$/;"	t
+sqlite3_value	sqlite3.h	/^typedef struct Mem sqlite3_value;$/;"	t	typeref:struct:Mem
+sqlite3_version	sqlite3.h	/^SQLITE_API SQLITE_EXTERN const char sqlite3_version[];$/;"	v
+sqlite3_vfs	sqlite3.h	/^struct sqlite3_vfs {$/;"	s
+sqlite3_vfs	sqlite3.h	/^typedef struct sqlite3_vfs sqlite3_vfs;$/;"	t	typeref:struct:sqlite3_vfs
+sqlite3_vtab	sqlite3.h	/^struct sqlite3_vtab {$/;"	s
+sqlite3_vtab	sqlite3.h	/^typedef struct sqlite3_vtab sqlite3_vtab;$/;"	t	typeref:struct:sqlite3_vtab
+sqlite3_vtab_cursor	sqlite3.h	/^struct sqlite3_vtab_cursor {$/;"	s
+sqlite3_vtab_cursor	sqlite3.h	/^typedef struct sqlite3_vtab_cursor sqlite3_vtab_cursor;$/;"	t	typeref:struct:sqlite3_vtab_cursor
+sqlite_int64	sqlite3.h	/^  typedef SQLITE_INT64_TYPE sqlite_int64;$/;"	t
+sqlite_int64	sqlite3.h	/^  typedef __int64 sqlite_int64;$/;"	t
+sqlite_int64	sqlite3.h	/^  typedef long long int sqlite_int64;$/;"	t
+sqlite_uint64	sqlite3.h	/^  typedef unsigned SQLITE_INT64_TYPE sqlite_uint64;$/;"	t
+sqlite_uint64	sqlite3.h	/^  typedef unsigned __int64 sqlite_uint64;$/;"	t
+sqlite_uint64	sqlite3.h	/^  typedef unsigned long long int sqlite_uint64;$/;"	t
+sqlresult	dbutils.h	/^struct sqlresult{$/;"	s
+srcdir	Makefile	/^srcdir = .$/;"	m
+statType	common_sz.h	/^typedef enum statType$/;"	g
+status	cond_thread.h	/^	int                     status;$/;"	m	struct:_cond_thread_msg
+struct_get_tags_s	common_sz.h	/^typedef struct struct_get_tags_s$/;"	s
+struct_old_passed_obj_s	common_sz.h	/^typedef struct struct_old_passed_obj_s$/;"	s
+struct_operate_info_s	common_sz.h	/^typedef struct struct_operate_info_s$/;"	s
+subdir	Makefile	/^subdir = .$/;"	m
+sysconfdir	Makefile	/^sysconfdir = ${prefix}\/etc$/;"	m
+szOsFile	sqlite3.h	/^  int szOsFile;            \/* Size of subclassed sqlite3_file *\/$/;"	m	struct:sqlite3_vfs
+table_init_query	dbutils.h	/^	const char *table_init_query;$/;"	m	struct:sDB
+tables	dbutils.h	/^	char       tables[MAX_TABLES][MAX_TABLE_NAME_LEN];$/;"	m	struct:sDB
+tablesCnt	dbutils.h	/^	int        tablesCnt;$/;"	m	struct:sDB
+tail	dbutils.h	/^	struct sqlresult* tail;$/;"	m	struct:query_result	typeref:struct:query_result::sqlresult
+tardir	Makefile	/^	tardir=$(distdir) && $(am__tar) | BZIP2=$${BZIP2--9} bzip2 -c >$(distdir).tar.bz2$/;"	m
+tardir	Makefile	/^	tardir=$(distdir) && $(am__tar) | GZIP=$(GZIP_ENV) gzip -c >$(distdir).tar.gz$/;"	m
+tardir	Makefile	/^	tardir=$(distdir) && $(am__tar) | XZ_OPT=$${XZ_OPT--e} xz -c >$(distdir).tar.xz$/;"	m
+tardir	Makefile	/^	tardir=$(distdir) && $(am__tar) | compress -c >$(distdir).tar.Z$/;"	m
+tardir	Makefile	/^	tardir=$(distdir) && $(am__tar) | lzip -c $${LZIP_OPT--9} >$(distdir).tar.lz$/;"	m
+target_alias	Makefile	/^target_alias = $/;"	m
+testsuit_DEPENDENCIES	Makefile	/^testsuit_DEPENDENCIES = libtool.a$/;"	m
+testsuit_LDADD	Makefile	/^testsuit_LDADD = libtool.a$/;"	m
+testsuit_OBJECTS	Makefile	/^testsuit_OBJECTS = $(am_testsuit_OBJECTS)$/;"	m
+testsuit_SOURCES	Makefile	/^testsuit_SOURCES = main.c\\$/;"	m
+thread_callback	cond_thread.h	/^typedef void (*thread_callback)(void *args);$/;"	t
+tid	common_sz.h	/^    char tid[20];$/;"	m	struct:struct_get_tags_s
+time	common_sz.h	/^    unsigned long long time;$/;"	m	struct:struct_old_passed_obj_s
+time_of_update_list	common_sz.h	/^int time_of_update_list;$/;"	v
+top_build_prefix	Makefile	/^top_build_prefix = $/;"	m
+top_builddir	Makefile	/^top_builddir = .$/;"	m
+top_distdir	Makefile	/^top_distdir = $(distdir)$/;"	m
+top_srcdir	Makefile	/^top_srcdir = .$/;"	m
+total	dbutils.h	/^	int total;$/;"	m	struct:query_result
+transform	Makefile	/^transform = $(program_transform_name)$/;"	m
+usable	sqlite3.h	/^     unsigned char usable;     \/* True if this constraint is usable *\/$/;"	m	struct:sqlite3_index_info::sqlite3_index_constraint
+used	common_sz.h	/^	int  used;$/;"	m	struct:struct_old_passed_obj_s
+white_list	common_sz.h	/^    unsigned char white_list[MAX_WHITELIST_NUM][TID_LEN+2+CAR_NUM_LEN];$/;"	m	struct:white_list_s
+white_list_num	common_sz.h	/^    int white_list_num;$/;"	m	struct:white_list_s
+white_list_path	common_sz.h	/^int white_list_path[100];$/;"	v
+white_list_s	common_sz.h	/^typedef struct white_list_s$/;"	s
+workq	cond_thread.h	/^	struct _cond_thread_msg *workq;$/;"	m	struct:CondThread	typeref:struct:CondThread::_cond_thread_msg
+write_pos	common_sz.h	/^    unsigned int write_pos;$/;"	m	struct:send_info_s
+xAccess	sqlite3.h	/^  int (*xAccess)(sqlite3_vfs*, const char *zName, int flags, int *pResOut);$/;"	m	struct:sqlite3_vfs
+xBegin	sqlite3.h	/^  int (*xBegin)(sqlite3_vtab *pVTab);$/;"	m	struct:sqlite3_module
+xBestIndex	sqlite3.h	/^  int (*xBestIndex)(sqlite3_vtab *pVTab, sqlite3_index_info*);$/;"	m	struct:sqlite3_module
+xCachesize	sqlite3.h	/^  void (*xCachesize)(sqlite3_pcache*, int nCachesize);$/;"	m	struct:sqlite3_pcache_methods
+xCachesize	sqlite3.h	/^  void (*xCachesize)(sqlite3_pcache*, int nCachesize);$/;"	m	struct:sqlite3_pcache_methods2
+xCheckReservedLock	sqlite3.h	/^  int (*xCheckReservedLock)(sqlite3_file*, int *pResOut);$/;"	m	struct:sqlite3_io_methods
+xClose	sqlite3.h	/^  int (*xClose)(sqlite3_file*);$/;"	m	struct:sqlite3_io_methods
+xClose	sqlite3.h	/^  int (*xClose)(sqlite3_vtab_cursor*);$/;"	m	struct:sqlite3_module
+xColumn	sqlite3.h	/^  int (*xColumn)(sqlite3_vtab_cursor*, sqlite3_context*, int);$/;"	m	struct:sqlite3_module
+xCommit	sqlite3.h	/^  int (*xCommit)(sqlite3_vtab *pVTab);$/;"	m	struct:sqlite3_module
+xConnect	sqlite3.h	/^  int (*xConnect)(sqlite3*, void *pAux,$/;"	m	struct:sqlite3_module
+xCreate	sqlite3.h	/^  int (*xCreate)(sqlite3*, void *pAux,$/;"	m	struct:sqlite3_module
+xCreate	sqlite3.h	/^  sqlite3_pcache *(*xCreate)(int szPage, int bPurgeable);$/;"	m	struct:sqlite3_pcache_methods
+xCreate	sqlite3.h	/^  sqlite3_pcache *(*xCreate)(int szPage, int szExtra, int bPurgeable);$/;"	m	struct:sqlite3_pcache_methods2
+xCurrentTime	sqlite3.h	/^  int (*xCurrentTime)(sqlite3_vfs*, double*);$/;"	m	struct:sqlite3_vfs
+xCurrentTimeInt64	sqlite3.h	/^  int (*xCurrentTimeInt64)(sqlite3_vfs*, sqlite3_int64*);$/;"	m	struct:sqlite3_vfs
+xDelUser	sqlite3.h	/^  void (*xDelUser)(void *);       \/* Called by SQLite to clean up pUser *\/$/;"	m	struct:sqlite3_rtree_geometry
+xDelete	sqlite3.h	/^  int (*xDelete)(sqlite3_vfs*, const char *zName, int syncDir);$/;"	m	struct:sqlite3_vfs
+xDestroy	sqlite3.h	/^  int (*xDestroy)(sqlite3_vtab *pVTab);$/;"	m	struct:sqlite3_module
+xDestroy	sqlite3.h	/^  void (*xDestroy)(sqlite3_pcache*);$/;"	m	struct:sqlite3_pcache_methods
+xDestroy	sqlite3.h	/^  void (*xDestroy)(sqlite3_pcache*);$/;"	m	struct:sqlite3_pcache_methods2
+xDeviceCharacteristics	sqlite3.h	/^  int (*xDeviceCharacteristics)(sqlite3_file*);$/;"	m	struct:sqlite3_io_methods
+xDisconnect	sqlite3.h	/^  int (*xDisconnect)(sqlite3_vtab *pVTab);$/;"	m	struct:sqlite3_module
+xDlClose	sqlite3.h	/^  void (*xDlClose)(sqlite3_vfs*, void*);$/;"	m	struct:sqlite3_vfs
+xDlError	sqlite3.h	/^  void (*xDlError)(sqlite3_vfs*, int nByte, char *zErrMsg);$/;"	m	struct:sqlite3_vfs
+xDlOpen	sqlite3.h	/^  void *(*xDlOpen)(sqlite3_vfs*, const char *zFilename);$/;"	m	struct:sqlite3_vfs
+xEof	sqlite3.h	/^  int (*xEof)(sqlite3_vtab_cursor*);$/;"	m	struct:sqlite3_module
+xFetch	sqlite3.h	/^  int (*xFetch)(sqlite3_file*, sqlite3_int64 iOfst, int iAmt, void **pp);$/;"	m	struct:sqlite3_io_methods
+xFetch	sqlite3.h	/^  sqlite3_pcache_page *(*xFetch)(sqlite3_pcache*, unsigned key, int createFlag);$/;"	m	struct:sqlite3_pcache_methods2
+xFetch	sqlite3.h	/^  void *(*xFetch)(sqlite3_pcache*, unsigned key, int createFlag);$/;"	m	struct:sqlite3_pcache_methods
+xFileControl	sqlite3.h	/^  int (*xFileControl)(sqlite3_file*, int op, void *pArg);$/;"	m	struct:sqlite3_io_methods
+xFileSize	sqlite3.h	/^  int (*xFileSize)(sqlite3_file*, sqlite3_int64 *pSize);$/;"	m	struct:sqlite3_io_methods
+xFilter	sqlite3.h	/^  int (*xFilter)(sqlite3_vtab_cursor*, int idxNum, const char *idxStr,$/;"	m	struct:sqlite3_module
+xFindFunction	sqlite3.h	/^  int (*xFindFunction)(sqlite3_vtab *pVtab, int nArg, const char *zName,$/;"	m	struct:sqlite3_module
+xFree	sqlite3.h	/^  void (*xFree)(void*);          \/* Free a prior allocation *\/$/;"	m	struct:sqlite3_mem_methods
+xFullPathname	sqlite3.h	/^  int (*xFullPathname)(sqlite3_vfs*, const char *zName, int nOut, char *zOut);$/;"	m	struct:sqlite3_vfs
+xGetLastError	sqlite3.h	/^  int (*xGetLastError)(sqlite3_vfs*, int, char *);$/;"	m	struct:sqlite3_vfs
+xGetSystemCall	sqlite3.h	/^  sqlite3_syscall_ptr (*xGetSystemCall)(sqlite3_vfs*, const char *zName);$/;"	m	struct:sqlite3_vfs
+xInit	sqlite3.h	/^  int (*xInit)(void*);           \/* Initialize the memory allocator *\/$/;"	m	struct:sqlite3_mem_methods
+xInit	sqlite3.h	/^  int (*xInit)(void*);$/;"	m	struct:sqlite3_pcache_methods
+xInit	sqlite3.h	/^  int (*xInit)(void*);$/;"	m	struct:sqlite3_pcache_methods2
+xLock	sqlite3.h	/^  int (*xLock)(sqlite3_file*, int);$/;"	m	struct:sqlite3_io_methods
+xMalloc	sqlite3.h	/^  void *(*xMalloc)(int);         \/* Memory allocation function *\/$/;"	m	struct:sqlite3_mem_methods
+xMutexAlloc	sqlite3.h	/^  sqlite3_mutex *(*xMutexAlloc)(int);$/;"	m	struct:sqlite3_mutex_methods
+xMutexEnd	sqlite3.h	/^  int (*xMutexEnd)(void);$/;"	m	struct:sqlite3_mutex_methods
+xMutexEnter	sqlite3.h	/^  void (*xMutexEnter)(sqlite3_mutex *);$/;"	m	struct:sqlite3_mutex_methods
+xMutexFree	sqlite3.h	/^  void (*xMutexFree)(sqlite3_mutex *);$/;"	m	struct:sqlite3_mutex_methods
+xMutexHeld	sqlite3.h	/^  int (*xMutexHeld)(sqlite3_mutex *);$/;"	m	struct:sqlite3_mutex_methods
+xMutexInit	sqlite3.h	/^  int (*xMutexInit)(void);$/;"	m	struct:sqlite3_mutex_methods
+xMutexLeave	sqlite3.h	/^  void (*xMutexLeave)(sqlite3_mutex *);$/;"	m	struct:sqlite3_mutex_methods
+xMutexNotheld	sqlite3.h	/^  int (*xMutexNotheld)(sqlite3_mutex *);$/;"	m	struct:sqlite3_mutex_methods
+xMutexTry	sqlite3.h	/^  int (*xMutexTry)(sqlite3_mutex *);$/;"	m	struct:sqlite3_mutex_methods
+xNext	sqlite3.h	/^  int (*xNext)(sqlite3_vtab_cursor*);$/;"	m	struct:sqlite3_module
+xNextSystemCall	sqlite3.h	/^  const char *(*xNextSystemCall)(sqlite3_vfs*, const char *zName);$/;"	m	struct:sqlite3_vfs
+xOpen	sqlite3.h	/^  int (*xOpen)(sqlite3_vfs*, const char *zName, sqlite3_file*,$/;"	m	struct:sqlite3_vfs
+xOpen	sqlite3.h	/^  int (*xOpen)(sqlite3_vtab *pVTab, sqlite3_vtab_cursor **ppCursor);$/;"	m	struct:sqlite3_module
+xPagecount	sqlite3.h	/^  int (*xPagecount)(sqlite3_pcache*);$/;"	m	struct:sqlite3_pcache_methods
+xPagecount	sqlite3.h	/^  int (*xPagecount)(sqlite3_pcache*);$/;"	m	struct:sqlite3_pcache_methods2
+xRandomness	sqlite3.h	/^  int (*xRandomness)(sqlite3_vfs*, int nByte, char *zOut);$/;"	m	struct:sqlite3_vfs
+xRead	sqlite3.h	/^  int (*xRead)(sqlite3_file*, void*, int iAmt, sqlite3_int64 iOfst);$/;"	m	struct:sqlite3_io_methods
+xRealloc	sqlite3.h	/^  void *(*xRealloc)(void*,int);  \/* Resize an allocation *\/$/;"	m	struct:sqlite3_mem_methods
+xRekey	sqlite3.h	/^  void (*xRekey)(sqlite3_pcache*, sqlite3_pcache_page*,$/;"	m	struct:sqlite3_pcache_methods2
+xRekey	sqlite3.h	/^  void (*xRekey)(sqlite3_pcache*, void*, unsigned oldKey, unsigned newKey);$/;"	m	struct:sqlite3_pcache_methods
+xRelease	sqlite3.h	/^  int (*xRelease)(sqlite3_vtab *pVTab, int);$/;"	m	struct:sqlite3_module
+xRename	sqlite3.h	/^  int (*xRename)(sqlite3_vtab *pVtab, const char *zNew);$/;"	m	struct:sqlite3_module
+xRollback	sqlite3.h	/^  int (*xRollback)(sqlite3_vtab *pVTab);$/;"	m	struct:sqlite3_module
+xRollbackTo	sqlite3.h	/^  int (*xRollbackTo)(sqlite3_vtab *pVTab, int);$/;"	m	struct:sqlite3_module
+xRoundup	sqlite3.h	/^  int (*xRoundup)(int);          \/* Round up request size to allocation size *\/$/;"	m	struct:sqlite3_mem_methods
+xRowid	sqlite3.h	/^  int (*xRowid)(sqlite3_vtab_cursor*, sqlite3_int64 *pRowid);$/;"	m	struct:sqlite3_module
+xSavepoint	sqlite3.h	/^  int (*xSavepoint)(sqlite3_vtab *pVTab, int);$/;"	m	struct:sqlite3_module
+xSectorSize	sqlite3.h	/^  int (*xSectorSize)(sqlite3_file*);$/;"	m	struct:sqlite3_io_methods
+xSetSystemCall	sqlite3.h	/^  int (*xSetSystemCall)(sqlite3_vfs*, const char *zName, sqlite3_syscall_ptr);$/;"	m	struct:sqlite3_vfs
+xShmBarrier	sqlite3.h	/^  void (*xShmBarrier)(sqlite3_file*);$/;"	m	struct:sqlite3_io_methods
+xShmLock	sqlite3.h	/^  int (*xShmLock)(sqlite3_file*, int offset, int n, int flags);$/;"	m	struct:sqlite3_io_methods
+xShmMap	sqlite3.h	/^  int (*xShmMap)(sqlite3_file*, int iPg, int pgsz, int, void volatile**);$/;"	m	struct:sqlite3_io_methods
+xShmUnmap	sqlite3.h	/^  int (*xShmUnmap)(sqlite3_file*, int deleteFlag);$/;"	m	struct:sqlite3_io_methods
+xShrink	sqlite3.h	/^  void (*xShrink)(sqlite3_pcache*);$/;"	m	struct:sqlite3_pcache_methods2
+xShutdown	sqlite3.h	/^  void (*xShutdown)(void*);      \/* Deinitialize the memory allocator *\/$/;"	m	struct:sqlite3_mem_methods
+xShutdown	sqlite3.h	/^  void (*xShutdown)(void*);$/;"	m	struct:sqlite3_pcache_methods
+xShutdown	sqlite3.h	/^  void (*xShutdown)(void*);$/;"	m	struct:sqlite3_pcache_methods2
+xSize	sqlite3.h	/^  int (*xSize)(void*);           \/* Return the size of an allocation *\/$/;"	m	struct:sqlite3_mem_methods
+xSleep	sqlite3.h	/^  int (*xSleep)(sqlite3_vfs*, int microseconds);$/;"	m	struct:sqlite3_vfs
+xSync	sqlite3.h	/^  int (*xSync)(sqlite3_file*, int flags);$/;"	m	struct:sqlite3_io_methods
+xSync	sqlite3.h	/^  int (*xSync)(sqlite3_vtab *pVTab);$/;"	m	struct:sqlite3_module
+xTruncate	sqlite3.h	/^  int (*xTruncate)(sqlite3_file*, sqlite3_int64 size);$/;"	m	struct:sqlite3_io_methods
+xTruncate	sqlite3.h	/^  void (*xTruncate)(sqlite3_pcache*, unsigned iLimit);$/;"	m	struct:sqlite3_pcache_methods
+xTruncate	sqlite3.h	/^  void (*xTruncate)(sqlite3_pcache*, unsigned iLimit);$/;"	m	struct:sqlite3_pcache_methods2
+xUnfetch	sqlite3.h	/^  int (*xUnfetch)(sqlite3_file*, sqlite3_int64 iOfst, void *p);$/;"	m	struct:sqlite3_io_methods
+xUnlock	sqlite3.h	/^  int (*xUnlock)(sqlite3_file*, int);$/;"	m	struct:sqlite3_io_methods
+xUnpin	sqlite3.h	/^  void (*xUnpin)(sqlite3_pcache*, sqlite3_pcache_page*, int discard);$/;"	m	struct:sqlite3_pcache_methods2
+xUnpin	sqlite3.h	/^  void (*xUnpin)(sqlite3_pcache*, void*, int discard);$/;"	m	struct:sqlite3_pcache_methods
+xUpdate	sqlite3.h	/^  int (*xUpdate)(sqlite3_vtab *, int, sqlite3_value **, sqlite3_int64 *);$/;"	m	struct:sqlite3_module
+xWrite	sqlite3.h	/^  int (*xWrite)(sqlite3_file*, const void*, int iAmt, sqlite3_int64 iOfst);$/;"	m	struct:sqlite3_io_methods
+year_2050_test	configure	/^year_2050_test ()$/;"	f
+zErrMsg	sqlite3.h	/^  char *zErrMsg;                  \/* Error message from sqlite3_mprintf() *\/$/;"	m	struct:sqlite3_vtab
+zName	sqlite3.h	/^  const char *zName;       \/* Name of this virtual file system *\/$/;"	m	struct:sqlite3_vfs

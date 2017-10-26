@@ -40,7 +40,7 @@ void close_log_file(FILE *file)
     }
 }
 
-void print_log(FILE *file,const char *ms, ... )  
+void print_log(FILE **filep,const char *ms, ... )  
 {  
     long cur_file_size = 0;
     char wzLog[512] = {0};  
@@ -55,9 +55,9 @@ void print_log(FILE *file,const char *ms, ... )
     vsprintf( wzLog ,ms,args);  
     va_end(args);  
   
-    if( NULL == file)
+    if( NULL == filep)
         return;
-
+    FILE* file = *filep;
     time_t now;  
     time(&now);  
     struct tm *local;  
@@ -91,6 +91,7 @@ void print_log(FILE *file,const char *ms, ... )
        	file = open_log_file(rawname);
        	if( NULL != file ){
        	   printf("create log file!!\n");
+	   *filep = file;
        	}else{
        	   //do noting,still use the old file handle;
        	}

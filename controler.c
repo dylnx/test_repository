@@ -69,11 +69,11 @@ int ConnectionReader()
 			retVal = init_reader(reader);
 			if(ERROR == retVal)
 			{
-				print_log(f_sysinit,"init_reader() ERROR\n!");
+				print_log(&f_sysinit,"init_reader() ERROR\n!");
 				usleep(100*1000);
 				continue;
 			}else{
-				print_log(f_sysinit,"connected reader successfully!!!\n");
+				print_log(&f_sysinit,"connected reader successfully!!!\n");
 
                                 //连接成功后，初始last_heart)time时间，用于心跳判断条件
                                 gettimeofday(&timeval, NULL);
@@ -82,7 +82,7 @@ int ConnectionReader()
                                 break;//连接一旦建立成功，即退出while循环
 			}
 		}else{
-			print_log(f_sysinit,"new_reader() NULL\n!");
+			print_log(&f_sysinit,"new_reader() NULL\n!");
 			continue;
 		     }
 	} // end of while(.....
@@ -150,12 +150,12 @@ int CheckLandInduction(int *whitchInduction)
                       
                    //记录入口车道地感为有信号状态
 		   whitchInduction[0] = 1;    
-		   print_log(f_misc_running,"Enter GPIO=%d\n",gpioVal[0]);
+	//	   print_log(&f_misc_running,"Enter GPIO=%d\n",gpioVal[0]);
 
 		if( 1 == gpioVal[1])
                    //记录出口车道地感为有信号状态
 		   whitchInduction[1] = 2;//NO.2 induction have signal          
-		   print_log(f_misc_running,"LEAVE GPIO=%d\n",gpioVal[1]);
+	//	   print_log(&f_misc_running,"LEAVE GPIO=%d\n",gpioVal[1]);
 
 	}else{
 		retVal = NOSIGNAL;
@@ -195,7 +195,7 @@ void ThreadMonitorCapDeal(void) { int retVal = 0;
         //定义并初始化车道地感信号变量
 	int whitchInduction[2] = {0,0};
 
-        print_log(f_sysinit,"ThreadMoniterCapDeal is running......\n");    
+        print_log(&f_sysinit,"ThreadMoniterCapDeal is running......\n");    
 
 	ConnectionReader();
 
@@ -226,7 +226,7 @@ void ThreadMonitorCapDeal(void) { int retVal = 0;
 			if( ERROR == retVal ){
 
 
-		   	    print_log(f_error,"from last heartTime to now have %d seconds passed!\n", \
+		   	    print_log(&f_error,"from last heartTime to now have %d seconds passed!\n", \
 			    cur_t - last_heart_time);
 
 			    ConnectionReader();
@@ -460,12 +460,12 @@ bool OpenDoor(int operate_index,int openDoorMethodType,bool b_print_log)
 
 		if( 'i' == g_operate_info->operate_info[operate_index].io_type ){
 			//print_log("TAG:%s Number:%s  Entered in!!!\n",g_operate_info->operate_info[operate_index].TID,operate_info[operate_index].car_num); 
-			print_log(f_passed_success,"Number:%s Entered in!\n",g_operate_info->operate_info[operate_index].car_num); 
+			print_log(&f_passed_success,"Number:%s Entered in!\n",g_operate_info->operate_info[operate_index].car_num); 
 		}
 
 		if( 'o' == g_operate_info->operate_info[operate_index].io_type ){
 			//print_log("TAG:%s Number:%s  Leave away!!!\n",g_operate_info->operate_info[operate_index].TID,g_operate_info->operate_info[operate_index].car_num); 
-			print_log(f_passed_success,"Number:%s Leave away!\n",g_operate_info->operate_info[operate_index].car_num); 
+			print_log(&f_passed_success,"Number:%s Leave away!\n",g_operate_info->operate_info[operate_index].car_num); 
 		}
 		//   print_log("ant_num = %d\n",g_operate_info->operate_info[operate_index].ant_num); 
 
@@ -518,7 +518,7 @@ int GetTagsAndDeal(int *whitchInduction)
 
 	if ( ERROR == retVal)
 	{
-		print_log(f_error,"start_read_without_signal() ERROR!!!\n");
+		print_log(&f_error,"start_read_without_signal() ERROR!!!\n");
 		return ERROR;
 	}
 
@@ -590,8 +590,8 @@ int GetTagsAndDeal(int *whitchInduction)
 			g_tags_array[g_tags_array_count].ant = tag->antenna_id;
 			g_tags_array[g_tags_array_count].count = 1;
 			g_tags_array_count++;
-			print_log(f_misc_running,"tag->antenna_id=%d\n!",tag->antenna_id);
-			print_log(f_misc_running,"tag->tid=%s\n!",tag->tid);
+			print_log(&f_misc_running,"tag->antenna_id=%d\n!",tag->antenna_id);
+			print_log(&f_misc_running,"tag->tid=%s\n!",tag->tid);
 		}
 		free(tag);
 	}
@@ -632,7 +632,7 @@ int GetTagsAndDeal(int *whitchInduction)
 			n_gate_index = get_gate_index(operate->ant_num);//获取门号
 			if( -1 == n_gate_index )
 			{
-				print_log(f_error,"gate_index is error!\n");
+				print_log(&f_error,"gate_index is error!\n");
 				continue;
 			}
 
@@ -649,7 +649,7 @@ int GetTagsAndDeal(int *whitchInduction)
 		}
 		else// 未找到
 		{
-			print_log(f_passed_failed,"TID:%s is not in the whitelist!!!\n",g_tags_array[i].tid);
+			print_log(&f_passed_failed,"TID:%s is not in the whitelist!!!\n",g_tags_array[i].tid);
 			continue;
 		}
 
@@ -664,17 +664,17 @@ int GetTagsAndDeal(int *whitchInduction)
 
 			//add to Led List array to show 
 			if( !AddTagsToLedList(i) ){
-				print_log(f_error,"Error:AddTagsToLedList() faild!!\n");
+				print_log(&f_error,"Error:AddTagsToLedList() faild!!\n");
 			}
 
                         if(!strcmp(door_open_method,"RS485"))
 			{
 				if( !OpenDoor(i,RS485,true) ){
-					print_log(f_error,"Error:RS485->OpenDoor() faild!!\n");
+					print_log(&f_error,"Error:RS485->OpenDoor() faild!!\n");
 				}
 			}else if(!strcmp(door_open_method,"RELAY")){
 				if( !OpenDoor(i,RELAY,true) ){
-					print_log(f_error,"Error:RELAY->OpenDoor() faild!!\n");
+					print_log(&f_error,"Error:RELAY->OpenDoor() faild!!\n");
 				}
 			}
 
@@ -690,7 +690,7 @@ void ThreadRequestWhitelist(void)
 {
         int ret;
 
-        print_log(f_sysinit,"ThreadRequestWhitelist is running......");    
+        print_log(&f_sysinit,"ThreadRequestWhitelist is running......");    
 
 	while(1)
 	{
@@ -698,9 +698,9 @@ void ThreadRequestWhitelist(void)
 		ret = ClientRecvWhiteList();
                 if( 0 == ret )
                 {
-		        print_log(f_sync_whitelist,"update the white list successfully!!!");
+		        print_log(&f_sync_whitelist,"update the white list successfully!!!");
                 }else{
-		        print_log(f_sync_whitelist,"update the white list failed!!!");
+		        print_log(&f_sync_whitelist,"update the white list failed!!!");
                 }
 	}
 }
@@ -710,7 +710,7 @@ void ThreadResendPassrecord(void)
 {
 	int ret;
 
-        print_log(f_sysinit,"ThreadResendPassrecord is running......");    
+        print_log(&f_sysinit,"ThreadResendPassrecord is running......");    
 
 	int sended_count = 0;
 	while(1)
@@ -723,11 +723,11 @@ void ThreadResendPassrecord(void)
 		{
 		     case PK_SUCCESS:
 			//将发送成功的记录条数写入日志
-			print_log(f_sended_server,"resend %d passrecord!!!",sended_count);
+			print_log(&f_sended_server,"resend %d passrecord!!!",sended_count);
 			break;
 		     default:
 		        //发送失败，将原因写入日志	
-			print_log(f_sended_server,"error:resend passrecord failed->%s",PKErrorMsg(ret));
+			print_log(&f_sended_server,"error:resend passrecord failed->%s",PKErrorMsg(ret));
 			break;		
 		}
 
@@ -755,29 +755,29 @@ void before_fork_kill()
 {
 	if (reader != 0)
 		close_reader(reader);
-	print_log(f_sysinit,"succes close_reader before kill fork!");
+	print_log(&f_sysinit,"succes close_reader before kill fork!");
 	printf("fork be killed!close reader tcp!\n");
 
 	if( NULL != f_sysinit )
-		close_log_file(f_sysinit);
+		close_log_file(&f_sysinit);
 
 	if( NULL != f_misc_running )
-		close_log_file(f_misc_running);
+		close_log_file(&f_misc_running);
 
 	if( NULL != f_error )
-		close_log_file(f_error);
+		close_log_file(&f_error);
 
 	if( NULL != f_passed_success )
-		close_log_file(f_passed_success);
+		close_log_file(&f_passed_success);
 
 	if( NULL != f_passed_failed )
-		close_log_file(f_passed_failed);
+		close_log_file(&f_passed_failed);
 
 	if( NULL != f_sended_server )
-		close_log_file(f_sended_server);
+		close_log_file(&f_sended_server);
 
 	if( NULL != f_sync_whitelist )
-		close_log_file(f_sync_whitelist);
+		close_log_file(&f_sync_whitelist);
 
 	exit(0);
 }

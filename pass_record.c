@@ -52,7 +52,7 @@ PK_STATUS send_pass_record(struct SPassRecordLog *sr, int flag)
 		free(m_sbuff);
 		return  PK_SEND_FAILED;
 	}
-	print_log(f_sended_server,"send%dbytes\n", m_len);
+	print_log(&f_sended_server,"send%dbytes\n", m_len);
 	free(m_sbuff);
 
 	//接收server应签
@@ -61,19 +61,19 @@ PK_STATUS send_pass_record(struct SPassRecordLog *sr, int flag)
 	m_rret = TcpRecvData(sockfd,m_rbuff,4,10000);	
 	if( 4 !=m_rret )
 	{
-		print_log(f_sended_server,"ERROR:recv data failed,recv count less 4 Bytes!!!\n");
+		print_log(&f_sended_server,"ERROR:recv data failed,recv count less 4 Bytes!!!\n");
 		DisconnectTcpServer(sockfd);	
 		return PK_RECV_FAILED;
 	}
 	if( m_rbuff[3]=='0')
 	{
-		print_log(f_sended_server,"ERROR: response code 0!!!\n");
+		print_log(&f_sended_server,"ERROR: response code 0!!!\n");
 		DisconnectTcpServer(sockfd);	
 		return PK_RECV_FAILED;
 	}
 	m_rbuff[4] = 0;
 	DisconnectTcpServer(sockfd);	
-	print_log(f_sended_server,"OK:send data successfully!!!\n");
+	print_log(&f_sended_server,"OK:send data successfully!!!\n");
 	return PK_SUCCESS;
 }
 
@@ -93,7 +93,7 @@ PK_STATUS send_pass_record1(struct SPassRecordLog *sr, int count, int flag)
 	}
 	if( count > 9999 ) 
 	{
-		print_log(f_sended_server,"ERROR:count too large!!!\n");
+		print_log(&f_sended_server,"ERROR:count too large!!!\n");
 		return PK_BAD_PARAMETER_2;
 	}
 	memset(&m_sr,0,sizeof(m_sr));	
@@ -122,7 +122,7 @@ PK_STATUS send_pass_record1(struct SPassRecordLog *sr, int count, int flag)
 	m_sret = TcpSendData(sockfd,m_sbuff,m_len,10000);
 	if( m_len!=m_sret ){
 		DisconnectTcpServer(sockfd);	
-		print_log(f_sended_server,"ERROR:send head data failed!!!\n");
+		print_log(&f_sended_server,"ERROR:send head data failed!!!\n");
 		return PK_SEND_FAILED;
 	}
 	int send_count=0;
@@ -149,19 +149,19 @@ PK_STATUS send_pass_record1(struct SPassRecordLog *sr, int count, int flag)
 	m_rret = TcpRecvData(sockfd,m_rbuff,4,10000);	
 	if( 4 !=m_rret )
 	{
-		print_log(f_sended_server,"ERROR:(resend)recv data failed,recv count less 4 Bytes!!!\n");
+		print_log(&f_sended_server,"ERROR:(resend)recv data failed,recv count less 4 Bytes!!!\n");
 		DisconnectTcpServer(sockfd);	
 		return PK_RECV_FAILED;
 	}
 	if( m_rbuff[3]=='0')
 	{
-		print_log(f_sended_server,"ERROR: response code 0!!!\n");
+		print_log(&f_sended_server,"ERROR: response code 0!!!\n");
 		DisconnectTcpServer(sockfd);	
 		return PK_RECV_FAILED;
 	}
 	m_rbuff[4] = 0;
-	print_log(f_sended_server,"response : %s\n", m_rbuff); 
+	print_log(&f_sended_server,"response : %s\n", m_rbuff); 
 	DisconnectTcpServer(sockfd);	
-	print_log(f_sended_server,"OK:send data successfully!!!\n");
+	print_log(&f_sended_server,"OK:send data successfully!!!\n");
 	return PK_SUCCESS;
 }

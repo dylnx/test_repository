@@ -11,6 +11,6 @@
 
 FILE * open_log_file(char *path);
 void close_log_file(FILE *file);
-void print_log(FILE *file,const char *ms, ...);
+void print_log(FILE **file,const char *ms, ...);
 
 #endif //_LOG_INCLUDE

@@ -133,7 +133,7 @@ int CheckLandInduction(int *whitchInduction)
 		//获取出口车道地感状态
 		get_gpio(GPIO10,&gpio10Val);
 	#endif
-		get_gpio(gates[i].inductor_gpio,gpioVal[i]);
+		get_gpio(gates[i].inductor_gpio,&gpioVal[i]);
 
 
 	}
